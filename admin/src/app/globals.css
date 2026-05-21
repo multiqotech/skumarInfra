@@ -1,0 +1,149 @@
+@import "tailwindcss";
+@source "../../src";
+
+/* ===== CUSTOM THEME ===== */
+@theme {
+  --color-yellow: #FFB800;
+  --color-yellow-light: #FFC933;
+  --color-yellow-dark: #E5A600;
+  --color-dark: #0C0C0C;
+  --color-dark-secondary: #161616;
+  --color-dark-card: #1C1C1C;
+  --color-dark-border: #2A2A2A;
+  --color-light: #F7F7F7;
+  --color-light-secondary: #EEEEEE;
+  --color-muted: #888888;
+  --color-body: #AAAAAA;
+
+  --font-heading: 'Oswald', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-dark);
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Ensure Oswald headings have proper line-height - override Tailwind v4 */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2 !important;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-yellow);
+}
+
+/* ===== SELECTION ===== */
+::selection {
+  background: var(--color-yellow);
+  color: var(--color-dark);
+}
+
+/* ===== UTILITY CLASSES ===== */
+.container-custom {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 1536px) {
+  .container-custom {
+    max-width: 1400px;
+  }
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2.25rem;
+  background: var(--color-yellow);
+  color: var(--color-dark);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--color-yellow-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255, 184, 0, 0.25);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2.25rem;
+  background: transparent;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-outline:hover {
+  background: var(--color-yellow);
+  color: var(--color-dark);
+  border-color: var(--color-yellow);
+  transform: translateY(-2px);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-yellow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 184, 0, 0.4); }
+  50% { box-shadow: 0 0 0 15px rgba(255, 184, 0, 0); }
+}
+
+/* ===== HIDE SCROLLBAR FOR HORIZONTAL SCROLL ===== */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
