@@ -1,0 +1,23 @@
+{
+  "name": "sk-construction-monorepo",
+  "version": "1.0.0",
+  "scripts": {
+    "build:client": "npm run build --prefix client",
+    "build:admin": "npm run build --prefix admin",
+    "build:career": "npm run build --prefix career",
+    "build": "npm run build:client && npm run build:admin && npm run build:career",
+    "install:all": "npm install --prefix client && npm install --prefix admin && npm install --prefix career && npm install --prefix server",
+    "start:client": "npm start --prefix client",
+    "start:admin": "npm start --prefix admin",
+    "start:career": "npm start --prefix career",
+    "start:server": "npm start --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "dev:admin": "npm run dev --prefix admin",
+    "dev:career": "npm run dev --prefix career",
+    "dev:server": "npm run dev --prefix server",
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:admin\" \"npm run dev:career\" \"npm run dev:server\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

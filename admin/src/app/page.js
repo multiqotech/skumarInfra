@@ -15,7 +15,11 @@ import ProjectManager from "../components/ProjectManager";
 import WeAreManager from "../components/WeAreManager";
 import NewsroomManager from "../components/NewsroomManager";
 import ContactInfoManager from "../components/ContactInfoManager";
-import { Newspaper, Phone } from "lucide-react";
+import CareerDashboard from "../components/career/CareerDashboard";
+import JobManager from "../components/career/JobManager";
+import ApplicationManager from "../components/career/ApplicationManager";
+import CandidateManager from "../components/career/CandidateManager";
+import { Newspaper, Phone, Briefcase, FileText, UserPlus, BarChart3 } from "lucide-react";
 
 export default function Dashboard() {
   const [admin, setAdmin] = useState(null);
@@ -106,6 +110,10 @@ export default function Dashboard() {
             { id: "projects", label: "We Build (Projects)", icon: Construction },
             { id: "we-are", label: "We Are (Pages)", icon: LayoutDashboard },
             { id: "newsroom", label: "Newsroom", icon: Newspaper },
+            { id: "career-dashboard", label: "Career Dashboard", icon: BarChart3 },
+            { id: "career-jobs", label: "Career Jobs", icon: Briefcase },
+            { id: "career-applications", label: "Career Applications", icon: FileText },
+            { id: "career-candidates", label: "Career Candidates", icon: UserPlus },
             { id: "contact-info", label: "Contact Info", icon: Phone },
             { id: "faqs", label: "FAQs", icon: HelpCircle },
             { id: "team", label: "Team", icon: Users },
@@ -226,11 +234,16 @@ export default function Dashboard() {
           {activeTab === "faqs" && <FaqManager showFeedback={showFeedback} />}
           {activeTab === "team" && <TeamManager showFeedback={showFeedback} />}
           {activeTab === "testimonials" && <TestimonialManager showFeedback={showFeedback} />}
-          {activeTab === "video" && <VideoManager showFeedback={showFeedback} />}
-          {activeTab === "projects" && <ProjectManager showFeedback={showFeedback} />}
-          {activeTab === "we-are" && <WeAreManager showFeedback={showFeedback} />}
-          {activeTab === "newsroom" && <NewsroomManager showFeedback={showFeedback} />}
-          {activeTab === "contact-info" && <ContactInfoManager showFeedback={showFeedback} />}
+          { activeTab === "video" && <VideoManager showFeedback={showFeedback} /> }
+          { activeTab === "projects" && <ProjectManager showFeedback={showFeedback} /> }
+          { activeTab === "we-are" && <WeAreManager showFeedback={showFeedback} /> }
+          { activeTab === "newsroom" && <NewsroomManager showFeedback={showFeedback} /> }
+          { activeTab === "contact-info" && <ContactInfoManager showFeedback={showFeedback} /> }
+          
+          { activeTab === "career-dashboard" && <CareerDashboard showFeedback={showFeedback} /> }
+          { activeTab === "career-jobs" && <JobManager showFeedback={showFeedback} /> }
+          { activeTab === "career-applications" && <ApplicationManager showFeedback={showFeedback} /> }
+          { activeTab === "career-candidates" && <CandidateManager showFeedback={showFeedback} /> }
 
         </div>
       </main>
