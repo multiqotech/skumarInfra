@@ -24,8 +24,19 @@ const app = express();
 connectDB();
 
 // Core Middlewares
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'http://localhost:3002',
+];
+
+if (process.env.ALLOWED_ORIGINS) {
+  const origins = process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim());
+  allowedOrigins.push(...origins);
+}
+
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002'],
+  origin: allowedOrigins,
   credentials: true,
 }));
 app.use(express.json({ limit: '10mb' }));
