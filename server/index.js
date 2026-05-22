@@ -24,15 +24,20 @@ const app = express();
 connectDB();
 
 // Core Middlewares
-const allowedOrigins = [
+let allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:3001',
   'http://localhost:3002',
 ];
 
 if (process.env.ALLOWED_ORIGINS) {
-  const origins = process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim());
-  allowedOrigins.push(...origins);
+  // Parse comma-separated list, stripping brackets, quotes, newlines, and whitespace
+  const origins = process.env.ALLOWED_ORIGINS
+    .replace(/[\[\]\n\r']/g, '') // remove brackets, newlines, and single quotes
+    .split(',')
+    .map(o => o.trim())
+    .filter(o => o);
+  allowedOrigins = [...allowedOrigins, ...origins];
 }
 
 app.use(cors({

@@ -37,7 +37,7 @@ const signup = async (req, res) => {
       res.cookie('career_token', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
         maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
       });
 
@@ -72,7 +72,7 @@ const login = async (req, res) => {
       res.cookie('career_token', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
         maxAge: 30 * 24 * 60 * 60 * 1000,
       });
 
@@ -98,6 +98,8 @@ const login = async (req, res) => {
 const logout = (req, res) => {
   res.cookie('career_token', '', {
     httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
     expires: new Date(0),
   });
   res.status(200).json({ message: 'Logged out successfully' });
