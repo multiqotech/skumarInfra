@@ -348,10 +348,10 @@ export const testimonialsData = [
 
 // ===== STATS =====
 export const statsData = [
-  { value: '500+', label: 'Projects Completed' },
-  { value: '1200+', label: 'Happy Clients' },
-  { value: '25+', label: 'Years Experience' },
-  { value: '50+', label: 'Awards Won' },
+  { value: '₹650Cr+', label: 'Total Project Value' },
+  { value: '14', label: 'Completed Projects' },
+  { value: '5', label: 'Ongoing Projects' },
+  { value: '7', label: 'Indian States' },
 ];
 
 // ===== FOOTER =====

@@ -19,7 +19,8 @@ import CareerDashboard from "../components/career/CareerDashboard";
 import JobManager from "../components/career/JobManager";
 import ApplicationManager from "../components/career/ApplicationManager";
 import CandidateManager from "../components/career/CandidateManager";
-import { Newspaper, Phone, Briefcase, FileText, UserPlus, BarChart3 } from "lucide-react";
+import StatsManager from "../components/StatsManager";
+import { Newspaper, Phone, Briefcase, FileText, UserPlus, BarChart3, Trophy } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 
 export default function Dashboard() {
@@ -117,6 +118,7 @@ export default function Dashboard() {
             { id: "team", label: "Team", icon: Users },
             { id: "testimonials", label: "Testimonials", icon: MessageSquare },
             { id: "video", label: "Video Showcase", icon: Video },
+            { id: "stats", label: "Company Stats", icon: Trophy },
           ].map((item) => {
             const Icon = item.icon;
             return (
@@ -226,6 +228,13 @@ export default function Dashboard() {
                 <h3 className="text-xl font-bold text-white mb-1">Contact Info</h3>
                 <p className="text-sm text-gray-400">Manage footer contact details.</p>
               </div>
+              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
+                <div className="h-12 w-12 bg-[#FFB800]/10 rounded-xl flex items-center justify-center mb-4">
+                  <Trophy className="h-6 w-6 text-[var(--color-yellow)]" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-1">Company Stats</h3>
+                <p className="text-sm text-gray-400">Manage statistics banner values.</p>
+              </div>
             </div>
           )}
 
@@ -233,6 +242,7 @@ export default function Dashboard() {
           {activeTab === "team" && <TeamManager showFeedback={showFeedback} />}
           {activeTab === "testimonials" && <TestimonialManager showFeedback={showFeedback} />}
           { activeTab === "video" && <VideoManager showFeedback={showFeedback} /> }
+          { activeTab === "stats" && <StatsManager showFeedback={showFeedback} /> }
           { activeTab === "projects" && <ProjectManager showFeedback={showFeedback} /> }
           { activeTab === "we-are" && <WeAreManager showFeedback={showFeedback} /> }
           { activeTab === "newsroom" && <NewsroomManager showFeedback={showFeedback} /> }

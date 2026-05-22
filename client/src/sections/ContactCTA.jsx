@@ -1,11 +1,40 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { HiArrowRight } from 'react-icons/hi';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
 import { statsData } from '@/data/siteData';
 
 export default function ContactCTA() {
+  const [stats, setStats] = useState(statsData);
+
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/settings/stats`)
+      .then((res) => {
+        if (!res.ok) throw new Error('Not found');
+        return res.json();
+      })
+      .then((data) => {
+        if (data && data.value) {
+          try {
+            const parsed = JSON.parse(data.value);
+            setStats([
+              { value: parsed.projectValue || '₹650Cr+', label: 'Total Project Value' },
+              { value: parsed.completedProjects || '14', label: 'Completed Projects' },
+              { value: parsed.ongoingProjects || '5', label: 'Ongoing Projects' },
+              { value: parsed.indianStates || '7', label: 'Indian States' },
+            ]);
+          } catch (e) {
+            console.error('Error parsing stats JSON', e);
+          }
+        }
+      })
+      .catch((err) => {
+        console.log('Using default static stats');
+      });
+  }, []);
+
   return (
     <section className="relative overflow-hidden" id="contact">
       {/* Large "INDUSTRY" watermark */}
@@ -43,7 +72,7 @@ export default function ContactCTA() {
 
               {/* Stats */}
               <div className="grid grid-cols-2 gap-4 mb-8">
-                {statsData.map((stat, i) => (
+                {stats.map((stat, i) => (
                   <div key={i} className="border border-[#2A2A2A] p-4">
                     <div
                       className="text-[#FFB800] text-2xl font-bold"
