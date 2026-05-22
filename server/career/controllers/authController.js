@@ -226,11 +226,10 @@ const updateProfile = async (req, res) => {
       });
     }
 
-    // Set profileCompleted to true
-    if (!req.user.profileCompleted) {
-      req.user.profileCompleted = true;
-      await req.user.save();
-    }
+    // Set candidate profile reference and profileCompleted to true
+    req.user.candidate = candidate._id;
+    req.user.profileCompleted = true;
+    await req.user.save();
 
     res.json({
       message: 'Profile updated successfully',

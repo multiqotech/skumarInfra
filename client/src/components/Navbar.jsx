@@ -16,6 +16,10 @@ export default function Navbar({ alwaysSolid = false }) {
   }, []);
 
   const handleNavClick = (e, href) => {
+    if (href.startsWith('http') || href.startsWith('//')) {
+      setMobileOpen(false);
+      return;
+    }
     e.preventDefault();
     setMobileOpen(false);
     const el = document.querySelector(href);
@@ -57,6 +61,8 @@ export default function Navbar({ alwaysSolid = false }) {
                 <a
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
+                  target={link.href.startsWith('http') ? '_blank' : undefined}
+                  rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className="relative text-[14px] font-medium text-white/90 hover:text-[#FFB800] transition-colors duration-300 group py-1 flex items-center gap-1.5 uppercase tracking-wide"
                 >
                   {link.label}
@@ -109,6 +115,8 @@ export default function Navbar({ alwaysSolid = false }) {
                         <ul className="flex flex-col py-3">
                           {link.dropdownItems.map((item, itemIdx) => {
                             let href = '#';
+                            let target = undefined;
+                            let rel = undefined;
                             if (link.label === 'We Are') {
                               href = `/we-are/${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`;
                             } else if (link.label === 'Landmark projects') {
@@ -118,11 +126,19 @@ export default function Navbar({ alwaysSolid = false }) {
                               if (item === 'Press Releases') href = '/newsroom?type=press-releases';
                               else if (item === 'Electronic Media') href = '/newsroom?type=electronic-media';
                               else if (item === 'Featured Stories') href = '/newsroom?type=featured-stories';
+                            } else if (link.label === 'Careers') {
+                              if (item === 'Visit career portal') {
+                                href = 'https://sk-construction-s2k6.vercel.app';
+                                target = '_blank';
+                                rel = 'noopener noreferrer';
+                              }
                             }
                             return (
                               <li key={itemIdx}>
                                 <a
                                   href={href}
+                                  target={target}
+                                  rel={rel}
                                   className="block px-6 py-2.5 text-[15px] text-white/80 hover:bg-[#1A1A1A] hover:text-[#FFB800] transition-colors"
                                 >
                                   {item}
@@ -180,13 +196,15 @@ export default function Navbar({ alwaysSolid = false }) {
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
+                  target={link.href.startsWith('http') ? '_blank' : undefined}
+                  rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
                   className="flex items-center justify-between text-white/90 hover:text-[#FFB800] text-[15px] font-medium py-3 border-b border-[#1C1C1C] transition-colors tracking-wide"
                 >
                   {link.label}
-                  {link.hasDropdown && <HiChevronDown size={18} className="opacity-50" />}
+                  {link.hasDropdown && !link.href.startsWith('http') && <HiChevronDown size={18} className="opacity-50" />}
                 </motion.a>
               ))}
               <a

@@ -22,6 +22,10 @@ const careerUserSchema = new mongoose.Schema({
   profileCompleted: {
     type: Boolean,
     default: false,
+  },
+  candidate: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Candidate',
   }
 }, {
   timestamps: true,

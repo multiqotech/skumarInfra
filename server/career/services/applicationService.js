@@ -1,6 +1,7 @@
 const Application = require('../models/Application');
 const Candidate = require('../models/Candidate');
 const Job = require('../models/Job');
+const CareerUser = require('../models/CareerUser');
 const { uploadToCloudinary } = require('../../config/cloudinary');
 const emailService = require('./emailService');
 
@@ -61,6 +62,14 @@ class ApplicationService {
         experience: data.experience || 0,
         expectedSalary: data.expectedSalary || '',
         noticePeriod: data.noticePeriod || '',
+      });
+    }
+
+    // Update CareerUser's candidate reference and profileCompleted status if userId is present
+    if (userId) {
+      await CareerUser.findByIdAndUpdate(userId, {
+        candidate: candidate._id,
+        profileCompleted: true,
       });
     }
 
