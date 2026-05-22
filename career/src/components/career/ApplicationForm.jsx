@@ -1,18 +1,21 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { Upload, X, CheckCircle2, Loader2, FileText } from 'lucide-react';
+import { useAuth } from '@/context/AuthContext';
 
 const API = process.env.NEXT_PUBLIC_API_URL;
 
-export default function ApplicationForm({ job }) {
+export default function ApplicationForm({ job, onSuccess }) {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     phone: '',
     location: '',
     experience: '',
+    linkedin: '',
+    portfolio: '',
     coverLetter: '',
   });
   const [file, setFile] = useState(null);
@@ -21,6 +24,23 @@ export default function ApplicationForm({ job }) {
   const [message, setMessage] = useState('');
   
   const fileInputRef = useRef(null);
+
+  const { user, profile, fetchProfile } = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      setFormData(prev => ({
+        ...prev,
+        fullName: profile?.fullName || user.name || '',
+        email: profile?.email || user.email || '',
+        phone: profile?.phone || '',
+        location: profile?.location || '',
+        experience: profile?.experience !== undefined ? String(profile.experience) : '',
+        linkedin: profile?.linkedin || '',
+        portfolio: profile?.portfolio || '',
+      }));
+    }
+  }, [user, profile]);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -48,7 +68,7 @@ export default function ApplicationForm({ job }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!file) {
+    if (!file && !profile?.resumeUrl) {
       setStatus('error');
       setMessage('Please upload your resume');
       return;
@@ -58,15 +78,26 @@ export default function ApplicationForm({ job }) {
 
     try {
       const data = new FormData();
-      data.append('jobId', job._id);
+      data.append('jobSlug', job.slug);
       Object.keys(formData).forEach(key => data.append(key, formData[key]));
-      data.append('resume', file);
+      if (file) {
+        data.append('resume', file);
+      }
 
       await axios.post(`${API}/api/career/apply`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
+
+      // Refresh the profile to get updated appliedJobIds list!
+      if (fetchProfile) {
+        try {
+          await fetchProfile();
+        } catch (profileErr) {
+          console.error('Failed to refresh profile after application', profileErr);
+        }
+      }
 
       setStatus('success');
       setMessage('Application submitted successfully! We will review your profile and get back to you soon.');
@@ -78,10 +109,18 @@ export default function ApplicationForm({ job }) {
         phone: '',
         location: '',
         experience: '',
+        linkedin: '',
+        portfolio: '',
         coverLetter: '',
       });
       setFile(null);
       if (fileInputRef.current) fileInputRef.current.value = '';
+
+      if (onSuccess) {
+        setTimeout(() => {
+          onSuccess();
+        }, 2000);
+      }
 
     } catch (err) {
       setStatus('error');
@@ -154,12 +193,23 @@ export default function ApplicationForm({ job }) {
           <input type="text" name="location" value={formData.location} onChange={handleInputChange} className={inputClass} placeholder="City, Country" />
         </div>
 
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className={labelClass}>LinkedIn Profile</label>
+            <input type="url" name="linkedin" value={formData.linkedin} onChange={handleInputChange} className={inputClass} placeholder="https://linkedin.com/in/johndoe" />
+          </div>
+          <div>
+            <label className={labelClass}>Portfolio Website</label>
+            <input type="url" name="portfolio" value={formData.portfolio} onChange={handleInputChange} className={inputClass} placeholder="https://johndoe.com" />
+          </div>
+        </div>
+
         <div>
           <label className={labelClass}>Resume/CV * (PDF or Word, max 5MB)</label>
           <div 
             onClick={() => fileInputRef.current?.click()}
             className={`w-full border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all ${
-              file ? 'border-[#FFB800] bg-[#FFB800]/5' : 'border-[#333] hover:border-[#FFB800]/50 bg-[#1a1a1a]'
+              file || profile?.resumeUrl ? 'border-[#FFB800] bg-[#FFB800]/5' : 'border-[#333] hover:border-[#FFB800]/50 bg-[#1a1a1a]'
             }`}
           >
             <input 
@@ -178,6 +228,15 @@ export default function ApplicationForm({ job }) {
                 <button type="button" onClick={(e) => { e.stopPropagation(); setFile(null); if (fileInputRef.current) fileInputRef.current.value = ''; }} className="mt-3 text-red-400 text-xs hover:underline">
                   Remove file
                 </button>
+              </div>
+            ) : profile?.resumeUrl ? (
+              <div className="flex flex-col items-center justify-center">
+                <FileText className="w-8 h-8 text-[#FFB800] mb-3" />
+                <p className="text-[#FFB800] font-medium text-sm">Using saved resume from profile</p>
+                <a href={profile.resumeUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-400 text-xs hover:underline mt-1">
+                  View Saved Resume
+                </a>
+                <p className="text-gray-500 text-xs mt-3">Click or drag here to upload a new resume</p>
               </div>
             ) : (
               <div className="flex flex-col items-center justify-center">

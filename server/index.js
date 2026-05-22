@@ -3,7 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
-const mongoSanitize = require('express-mongo-sanitize');
+const cookieParser = require('cookie-parser');
+
 const connectDB = require('./config/db');
 
 // Portfolio routes
@@ -13,17 +14,26 @@ const newsRoutes = require('./routes/newsRoutes');
 const contactInfoRoutes = require('./routes/contactInfoRoutes');
 
 // Career routes
+const careerRoutes = require('./career/routes/adminRoutes');
 const careerPublicRoutes = require('./career/routes/publicRoutes');
-const careerAdminRoutes = require('./career/routes/adminRoutes');
+const careerAuthRoutes = require('./career/routes/authRoutes');
 
 const app = express();
 
 // Connect to MongoDB
 connectDB();
 
+// Core Middlewares
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002'],
+  credentials: true,
+}));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
 // Security Middlewares
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
-app.use(mongoSanitize());
 
 // Rate limiting
 const limiter = rateLimit({
@@ -41,10 +51,7 @@ const applyLimiter = rateLimit({
 });
 app.use('/api/career/apply', applyLimiter);
 
-// Core Middlewares
-app.use(cors());
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true }));
+
 
 // ==========================================
 // Portfolio API Routes (UNCHANGED)
@@ -56,9 +63,10 @@ app.use('/api', contactInfoRoutes);
 
 // ==========================================
 // Career API Routes (NEW)
-// ==========================================
+// ==========================================// Career routes
+app.use('/api/career/admin', careerRoutes);
 app.use('/api/career', careerPublicRoutes);
-app.use('/api/career/admin', careerAdminRoutes);
+app.use('/api/career/auth', careerAuthRoutes);
 
 // Health check
 app.get('/', (req, res) => {

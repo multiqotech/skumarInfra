@@ -11,8 +11,7 @@ export default function CandidateManager({ showFeedback }) {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : '';
-  const config = { headers: { Authorization: `Bearer ${token}` } };
+  const config = { withCredentials: true };
 
   useEffect(() => { fetchCandidates(); }, []);
 

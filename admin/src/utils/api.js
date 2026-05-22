@@ -1,11 +1,7 @@
 import axios from 'axios';
 
 export const getAuthHeader = () => {
-  if (typeof window === 'undefined') return null;
-  const adminInfo = localStorage.getItem("adminInfo");
-  if (!adminInfo) return null;
-  const token = JSON.parse(adminInfo).token;
-  return { headers: { Authorization: `Bearer ${token}` } };
+  return { withCredentials: true };
 };
 
 export const uploadFileToServer = async (file) => {
@@ -15,8 +11,8 @@ export const uploadFileToServer = async (file) => {
   }
 
   const uploadConfig = {
+    ...config,
     headers: {
-      ...config.headers,
       "Content-Type": "multipart/form-data"
     }
   };

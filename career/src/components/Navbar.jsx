@@ -2,12 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiPhone, HiMenuAlt3, HiX, HiChevronDown } from 'react-icons/hi';
+import { HiPhone, HiMenuAlt3, HiX, HiChevronDown, HiUser, HiLogout } from 'react-icons/hi';
 import { navLinks, phoneNumber } from '@/data/siteData';
+import { useAuth } from '@/context/AuthContext';
+import Link from 'next/link';
 
 export default function Navbar({ alwaysSolid = false }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { user, logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -15,14 +18,7 @@ export default function Navbar({ alwaysSolid = false }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (e, href) => {
-    e.preventDefault();
-    setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const portfolioUrl = process.env.NEXT_PUBLIC_PORTFOLIO_URL || 'http://localhost:3002';
 
   return (
     <nav
@@ -35,9 +31,8 @@ export default function Navbar({ alwaysSolid = false }) {
       <div className="container-custom">
         <div className="flex items-center justify-between h-[70px]">
           {/* Logo */}
-          <a
-            href="#home"
-            onClick={(e) => handleNavClick(e, '#home')}
+          <Link
+            href="/"
             className="flex items-center gap-3 group"
           >
             <div className="w-9 h-9 bg-[#FFB800] flex items-center justify-center rounded-sm shadow-lg shadow-[#FFB800]/20">
@@ -48,15 +43,16 @@ export default function Navbar({ alwaysSolid = false }) {
             <span className="text-white text-sm font-semibold tracking-[0.15em] uppercase hidden sm:block group-hover:text-[#FFB800] transition-colors duration-300">
               SK Constructions
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-7 h-full">
             {navLinks.map((link) => (
               <div key={link.label} className="relative h-full flex items-center group/nav">
                 <a
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
+                  href={link.label === 'Careers' ? '/' : `${portfolioUrl}${link.href}`}
+                  target={link.label === 'Careers' ? '_self' : '_blank'}
+                  rel="noopener noreferrer"
                   className="relative text-[14px] font-medium text-white/90 hover:text-[#FFB800] transition-colors duration-300 group py-1 flex items-center gap-1.5 uppercase tracking-wide"
                 >
                   {link.label}
@@ -82,12 +78,10 @@ export default function Navbar({ alwaysSolid = false }) {
                                 {col.items.map((item, itemIdx) => (
                                   <li key={itemIdx}>
                                     <a
-                                      href={`/we-build/${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`}
+                                      href={`${portfolioUrl}/we-build/${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
                                       className="text-[14px] text-white/80 hover:text-[#FFB800] transition-colors"
-                                      onClick={(e) => {
-                                        // Allow Next.js routing to handle this, remove preventDefault if it's there, but handleNavClick does e.preventDefault(). 
-                                        // Since it's a completely new page, we should NOT use handleNavClick.
-                                      }}
                                     >
                                       {item}
                                     </a>
@@ -109,22 +103,26 @@ export default function Navbar({ alwaysSolid = false }) {
                         <ul className="flex flex-col py-3">
                           {link.dropdownItems.map((item, itemIdx) => {
                             let href = '#';
-                            if (link.label === 'We Are') {
-                              href = `/we-are/${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`;
-                            } else if (link.label === 'Landmark projects') {
-                              if (item === 'Landmarks in the making') href = '/landmark-projects/landmark';
-                              else if (item === 'Iconic Projects') href = '/landmark-projects/iconic';
-                            } else if (link.label === 'Newsroom') {
-                              if (item === 'Press Releases') href = '/newsroom?type=press-releases';
-                              else if (item === 'Electronic Media') href = '/newsroom?type=electronic-media';
-                              else if (item === 'Featured Stories') href = '/newsroom?type=featured-stories';
-                            }
-                            return (
-                              <li key={itemIdx}>
-                                <a
-                                  href={href}
-                                  className="block px-6 py-2.5 text-[15px] text-white/80 hover:bg-[#1A1A1A] hover:text-[#FFB800] transition-colors"
-                                >
+                              if (link.label === 'We Are') {
+                                href = `${portfolioUrl}/we-are/${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`;
+                              } else if (link.label === 'Landmark projects') {
+                                if (item === 'Landmarks in the making') href = `${portfolioUrl}/landmark-projects/landmark`;
+                                else if (item === 'Iconic Projects') href = `${portfolioUrl}/landmark-projects/iconic`;
+                              } else if (link.label === 'Newsroom') {
+                                if (item === 'Press Releases') href = `${portfolioUrl}/newsroom?type=press-releases`;
+                                else if (item === 'Electronic Media') href = `${portfolioUrl}/newsroom?type=electronic-media`;
+                                else if (item === 'Featured Stories') href = `${portfolioUrl}/newsroom?type=featured-stories`;
+                              } else if (link.label === 'Careers') {
+                                href = '/';
+                              }
+                              return (
+                                <li key={itemIdx}>
+                                  <a
+                                    href={href}
+                                    target={link.label === 'Careers' ? '_self' : '_blank'}
+                                    rel="noopener noreferrer"
+                                    className="block px-6 py-2.5 text-[15px] text-white/80 hover:bg-[#1A1A1A] hover:text-[#FFB800] transition-colors"
+                                  >
                                   {item}
                                 </a>
                               </li>
@@ -153,6 +151,33 @@ export default function Navbar({ alwaysSolid = false }) {
               </span>
             </a>
 
+            {/* Auth Buttons */}
+            <div className="hidden lg:flex items-center gap-3 border-l border-white/20 pl-4 ml-2">
+              {user ? (
+                <>
+                  <Link href="/profile" className="flex items-center gap-2 text-white hover:text-[#FFB800] text-sm font-medium transition-colors">
+                    <HiUser className="text-[#FFB800] text-lg" />
+                    <span>{user.name.split(' ')[0]}</span>
+                  </Link>
+                  <button 
+                    onClick={logout}
+                    className="flex items-center gap-1.5 text-gray-400 hover:text-red-400 text-xs uppercase tracking-wider ml-2 transition-colors"
+                  >
+                    <HiLogout /> Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link href="/login" className="text-white hover:text-[#FFB800] text-sm font-semibold tracking-wide transition-colors uppercase">
+                    Login
+                  </Link>
+                  <Link href="/signup" className="bg-[#FFB800] text-black hover:bg-[#e5a600] px-4 py-1.5 rounded-sm text-sm font-bold tracking-wide transition-colors uppercase">
+                    Sign Up
+                  </Link>
+                </>
+              )}
+            </div>
+
             <button
               className="lg:hidden text-white p-2 hover:text-[#FFB800] transition-colors"
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -178,8 +203,10 @@ export default function Navbar({ alwaysSolid = false }) {
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.label}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
+                  href={link.label === 'Careers' ? '/' : `${portfolioUrl}${link.href}`}
+                  target={link.label === 'Careers' ? '_self' : '_blank'}
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
@@ -198,6 +225,38 @@ export default function Navbar({ alwaysSolid = false }) {
                   {phoneNumber}
                 </span>
               </a>
+
+              {/* Mobile Auth */}
+              <div className="border-t border-[#1C1C1C] mt-2 pt-4 flex flex-col gap-3">
+                {user ? (
+                  <>
+                    <Link 
+                      href="/profile"
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center gap-2 text-white hover:text-[#FFB800] transition-colors"
+                    >
+                      <HiUser className="text-[#FFB800] text-xl" />
+                      <span className="font-semibold">{user.name}</span>
+                      <span className="text-xs text-gray-400 hover:underline">(View Profile)</span>
+                    </Link>
+                    <button 
+                      onClick={() => { setMobileOpen(false); logout(); }}
+                      className="text-left text-red-400 hover:text-red-300 font-medium py-2 transition-colors flex items-center gap-2"
+                    >
+                      <HiLogout /> Logout
+                    </button>
+                  </>
+                ) : (
+                  <div className="flex items-center gap-3 mt-2">
+                    <Link href="/login" onClick={() => setMobileOpen(false)} className="flex-1 text-center py-2.5 border border-[#FFB800] text-[#FFB800] hover:bg-[#FFB800]/10 rounded-sm font-semibold transition-colors uppercase text-sm">
+                      Login
+                    </Link>
+                    <Link href="/signup" onClick={() => setMobileOpen(false)} className="flex-1 text-center py-2.5 bg-[#FFB800] text-black hover:bg-[#e5a600] rounded-sm font-semibold transition-colors uppercase text-sm">
+                      Sign Up
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
           </motion.div>
         )}

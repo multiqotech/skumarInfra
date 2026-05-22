@@ -21,8 +21,7 @@ export default function ApplicationManager({ showFeedback }) {
   const [notes, setNotes] = useState('');
   const [draggedId, setDraggedId] = useState(null);
 
-  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : '';
-  const config = { headers: { Authorization: `Bearer ${token}` } };
+  const config = { withCredentials: true };
 
   useEffect(() => { fetchApplications(); }, []);
 

@@ -50,10 +50,8 @@ const ContactInfoManager = () => {
     setSaving(true);
     setMessage('');
     try {
-      const token = localStorage.getItem('adminToken');
-      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/contact-info`, formData, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const config = { withCredentials: true };
+      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/contact-info`, formData, config);
       setMessage('Contact Information saved successfully!');
     } catch (error) {
       console.error('Error saving contact info:', error);

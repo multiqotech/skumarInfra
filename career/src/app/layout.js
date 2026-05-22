@@ -3,6 +3,7 @@ import './globals.css';
 import Providers from '../components/Providers';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { AuthProvider } from '@/context/AuthContext';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -23,13 +24,15 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="antialiased">
-        <Providers>
-          <Navbar />
-          <main className="pt-24 min-h-screen">
-            {children}
-          </main>
-          <Footer />
-        </Providers>
+        <AuthProvider>
+          <Providers>
+            <Navbar />
+            <main className="pt-24 min-h-screen">
+              {children}
+            </main>
+            <Footer />
+          </Providers>
+        </AuthProvider>
       </body>
     </html>
   );

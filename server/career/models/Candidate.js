@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const candidateSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'CareerUser',
+  },
   fullName: {
     type: String,
     required: [true, 'Full name is required'],
@@ -37,7 +41,7 @@ const candidateSchema = new mongoose.Schema({
   },
   resumeUrl: {
     type: String,
-    required: [true, 'Resume is required'],
+    default: '',
   },
   resumePublicId: {
     type: String,

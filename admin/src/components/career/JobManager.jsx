@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Plus, Pencil, Trash2, Eye, EyeOff, Archive, X } from 'lucide-react';
+import { Plus, Pencil, Trash2, Eye, EyeOff, Archive, X, Briefcase } from 'lucide-react';
 
 const API = process.env.NEXT_PUBLIC_API_URL;
 
@@ -45,8 +45,7 @@ export default function JobManager({ showFeedback }) {
   const [editingId, setEditingId] = useState(null);
   const [submitting, setSubmitting] = useState(false);
 
-  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : '';
-  const config = { headers: { Authorization: `Bearer ${token}` } };
+  const config = { withCredentials: true };
 
   useEffect(() => { fetchJobs(); }, []);
 

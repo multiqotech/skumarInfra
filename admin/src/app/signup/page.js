@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { User, Lock, Mail, Loader2, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import axios from "axios";
+import { useAuth } from "@/context/AuthContext";
 
 export default function SignupPage() {
   const [name, setName] = useState("");
@@ -13,7 +13,7 @@ export default function SignupPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const router = useRouter();
+  const { signup } = useAuth();
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -27,20 +27,12 @@ export default function SignupPage() {
     }
 
     try {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/signup`, {
-        name,
-        email,
-        password,
-      });
-
-      if (res.data.token) {
-        localStorage.setItem("adminInfo", JSON.stringify(res.data));
-        router.push("/");
+      const result = await signup(name, email, password);
+      if (!result.success) {
+        setError(result.message);
       }
     } catch (err) {
-      setError(
-        err.response?.data?.message || "An error occurred during registration."
-      );
+      setError("An error occurred during registration.");
     } finally {
       setLoading(false);
     }

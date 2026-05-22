@@ -130,7 +130,7 @@ export default function JobListings() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {jobData?.jobs?.map((job) => (
               <Link 
-                href={`/careers/${job.slug}`} 
+                href={`/${job.slug}`} 
                 key={job._id}
                 className="group bg-[var(--color-dark-card)] p-8 rounded-2xl border border-[var(--color-dark-border)] hover:border-[#FFB800] transition-all duration-300 flex flex-col h-full"
               >

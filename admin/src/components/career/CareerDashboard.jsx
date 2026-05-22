@@ -16,10 +16,11 @@ export default function CareerDashboard({ showFeedback }) {
 
   const fetchAnalytics = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const res = await axios.get(`${API}/api/career/admin/analytics`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const { getAuthHeader } = require('@/utils/api');
+      const config = getAuthHeader();
+      if (!config) return;
+
+      const res = await axios.get(`${API}/api/career/admin/analytics`, config);
       setAnalytics(res.data);
     } catch (err) {
       console.error('Failed to fetch analytics:', err);

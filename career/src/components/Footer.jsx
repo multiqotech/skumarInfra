@@ -46,6 +46,8 @@ export default function Footer() {
   // Limit businesses to 6 to keep it clean
   const businessesList = weBuildLink?.dropdownItems?.[0]?.items?.slice(0, 6) || [];
 
+  const portfolioUrl = process.env.NEXT_PUBLIC_PORTFOLIO_URL || 'http://localhost:3000';
+
   return (
     <footer className="bg-[#0C0C0C] text-white py-16 font-poppins relative z-20">
       <div className="container-custom">
@@ -62,9 +64,9 @@ export default function Footer() {
                 const slug = item.toLowerCase().replace(/[^a-z0-9]+/g, '-');
                 return (
                   <li key={idx}>
-                    <Link href={`/we-are/${slug}`} className="text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
+                    <a href={`${portfolioUrl}/we-are/${slug}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
                       {item}
-                    </Link>
+                    </a>
                   </li>
                 );
               })}
@@ -82,16 +84,16 @@ export default function Footer() {
                 const slug = item.toLowerCase().replace(/[^a-z0-9]+/g, '-');
                 return (
                   <li key={idx}>
-                    <Link href={`/we-build/${slug}`} className="text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
+                    <a href={`${portfolioUrl}/we-build/${slug}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
                       {item}
-                    </Link>
+                    </a>
                   </li>
                 );
               })}
               <li>
-                <Link href="#we-build" className="text-[#FFB800] hover:text-white transition-colors text-sm font-semibold">
+                <a href={`${portfolioUrl}/#we-build`} target="_blank" rel="noopener noreferrer" className="text-[#FFB800] hover:text-white transition-colors text-sm font-semibold">
                   View All Businesses &rarr;
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -107,9 +109,9 @@ export default function Footer() {
                 const slug = item.toLowerCase().replace(/[^a-z0-9]+/g, '-');
                 return (
                   <li key={idx}>
-                    <Link href={`/newsroom/${slug}`} className="text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
+                    <a href={`${portfolioUrl}/newsroom/${slug}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
                       {item}
-                    </Link>
+                    </a>
                   </li>
                 );
               })}
@@ -128,9 +130,9 @@ export default function Footer() {
                 const href = isLandmark ? '/landmark-projects/landmark' : '/landmark-projects/iconic';
                 return (
                   <li key={idx}>
-                    <Link href={href} className="text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
+                    <a href={`${portfolioUrl}${href}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
                       {item}
-                    </Link>
+                    </a>
                   </li>
                 );
               })}

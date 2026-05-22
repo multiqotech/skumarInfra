@@ -28,12 +28,19 @@ const signup = async (req, res) => {
     });
 
     if (admin) {
+      const token = generateToken(admin._id);
+      res.cookie('jwt', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax', // Assuming frontend and backend are on same domain in production or localhost
+        maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+      });
+
       res.status(201).json({
         _id: admin._id,
         name: admin.name,
         email: admin.email,
         roles: admin.roles,
-        token: generateToken(admin._id),
       });
     } else {
       res.status(400).json({ message: 'Invalid admin data' });
@@ -53,12 +60,19 @@ const login = async (req, res) => {
     const admin = await Admin.findOne({ email });
 
     if (admin && (await admin.matchPassword(password))) {
+      const token = generateToken(admin._id);
+      res.cookie('jwt', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+      });
+
       res.json({
         _id: admin._id,
         name: admin.name,
         email: admin.email,
         roles: admin.roles,
-        token: generateToken(admin._id),
       });
     } else {
       res.status(401).json({ message: 'Invalid email or password' });
@@ -68,7 +82,36 @@ const login = async (req, res) => {
   }
 };
 
+// @desc    Logout admin / clear cookie
+// @route   POST /api/auth/logout
+// @access  Public
+const logout = (req, res) => {
+  res.cookie('jwt', '', {
+    httpOnly: true,
+    expires: new Date(0),
+  });
+  res.status(200).json({ message: 'Logged out successfully' });
+};
+
+// @desc    Get current logged in admin
+// @route   GET /api/auth/me
+// @access  Private
+const getMe = async (req, res) => {
+  if (req.admin) {
+    res.json({
+      _id: req.admin._id,
+      name: req.admin.name,
+      email: req.admin.email,
+      roles: req.admin.roles,
+    });
+  } else {
+    res.status(404).json({ message: 'Admin not found' });
+  }
+};
+
 module.exports = {
   signup,
   login,
+  logout,
+  getMe,
 };

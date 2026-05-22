@@ -12,11 +12,20 @@ const submitApplication = async (req, res) => {
       return res.status(400).json({ message: 'Validation failed', errors });
     }
 
-    if (!req.file) {
+    let hasExistingResume = false;
+    if (req.user) {
+      const Candidate = require('../models/Candidate');
+      const candidate = await Candidate.findOne({ user: req.user._id });
+      if (candidate && candidate.resumeUrl) {
+        hasExistingResume = true;
+      }
+    }
+
+    if (!req.file && !hasExistingResume) {
       return res.status(400).json({ message: 'Resume file is required' });
     }
 
-    const result = await applicationService.submitApplication(req.body, req.file);
+    const result = await applicationService.submitApplication(req.body, req.file, req.user._id);
     res.status(201).json({
       message: 'Application submitted successfully',
       applicationId: result.application._id,

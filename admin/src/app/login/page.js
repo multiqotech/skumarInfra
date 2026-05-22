@@ -4,14 +4,14 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Lock, Mail, Loader2, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import axios from "axios";
+import { useAuth } from "@/context/AuthContext";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const router = useRouter();
+  const { login } = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -19,19 +19,12 @@ export default function LoginPage() {
     setError("");
 
     try {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`, {
-        email,
-        password,
-      });
-
-      if (res.data.token) {
-        localStorage.setItem("adminInfo", JSON.stringify(res.data));
-        router.push("/");
+      const result = await login(email, password);
+      if (!result.success) {
+        setError(result.message);
       }
     } catch (err) {
-      setError(
-        err.response?.data?.message || "An error occurred during login."
-      );
+      setError("An error occurred during login.");
     } finally {
       setLoading(false);
     }

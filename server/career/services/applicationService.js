@@ -9,7 +9,7 @@ class ApplicationService {
    * Submit a new application.
    * Creates candidate (or finds existing), uploads resume, creates application.
    */
-  async submitApplication(data, resumeFile) {
+  async submitApplication(data, resumeFile, userId) {
     // 1. Find the job
     const job = await Job.findOne({ slug: data.jobSlug, status: 'Published' });
     if (!job) {
@@ -33,6 +33,7 @@ class ApplicationService {
     let candidate = await Candidate.findOne({ email: data.email.toLowerCase() });
     if (candidate) {
       // Update candidate info with latest submission
+      candidate.user = userId;
       candidate.fullName = data.fullName;
       candidate.phone = data.phone;
       candidate.location = data.location || candidate.location;
@@ -48,6 +49,7 @@ class ApplicationService {
       await candidate.save();
     } else {
       candidate = await Candidate.create({
+        user: userId,
         fullName: data.fullName,
         email: data.email.toLowerCase(),
         phone: data.phone,

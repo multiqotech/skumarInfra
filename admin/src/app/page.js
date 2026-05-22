@@ -20,10 +20,10 @@ import JobManager from "../components/career/JobManager";
 import ApplicationManager from "../components/career/ApplicationManager";
 import CandidateManager from "../components/career/CandidateManager";
 import { Newspaper, Phone, Briefcase, FileText, UserPlus, BarChart3 } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Dashboard() {
-  const [admin, setAdmin] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { admin, loading, logout } = useAuth();
   const [activeTab, setActiveTab] = useState("dashboard"); // dashboard, faqs, team, testimonials, video, projects, we-are
   const router = useRouter();
 
@@ -31,15 +31,14 @@ export default function Dashboard() {
   const [cloudinaryConfigured, setCloudinaryConfigured] = useState(true);
 
   useEffect(() => {
-    const adminInfo = localStorage.getItem("adminInfo");
-    if (!adminInfo) {
-      router.push("/login");
-    } else {
-      setAdmin(JSON.parse(adminInfo));
-      setLoading(false);
-      checkCloudinaryStatus();
+    if (!loading) {
+      if (!admin) {
+        router.push("/login");
+      } else {
+        checkCloudinaryStatus();
+      }
     }
-  }, [router]);
+  }, [admin, loading, router]);
 
   const checkCloudinaryStatus = async () => {
     try {
@@ -53,8 +52,7 @@ export default function Dashboard() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("adminInfo");
-    router.push("/login");
+    logout();
   };
 
   const showFeedback = (text, type = "success") => {

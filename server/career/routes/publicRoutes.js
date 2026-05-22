@@ -9,13 +9,14 @@ const {
 const {
   submitApplication,
 } = require('../controllers/applicationController');
+const { protectCareerUser } = require('../middlewares/authMiddleware');
 
 // Public job routes
 router.get('/jobs', getPublishedJobs);
 router.get('/filters', getFilterOptions);
 router.get('/jobs/:slug', getJobBySlug);
 
-// Application submission (public)
-router.post('/apply', resumeUpload.single('resume'), submitApplication);
+// Application submission (protected)
+router.post('/apply', protectCareerUser, resumeUpload.single('resume'), submitApplication);
 
 module.exports = router;
