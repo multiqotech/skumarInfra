@@ -47,7 +47,7 @@ export const weBuildData = {
     title: 'Bridges',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN BRIDGES',
-    description: 'SK Constructions is a trusted leader in the development and execution of bridges projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of bridges projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -91,7 +91,7 @@ export const weBuildData = {
     title: 'Defence Installations',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN DEFENCE INSTALLATIONS',
-    description: 'SK Constructions is a trusted leader in the development and execution of defence installations projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of defence installations projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -135,7 +135,7 @@ export const weBuildData = {
     title: 'Digital Energy Solutions',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN DIGITAL ENERGY SOLUTIONS',
-    description: 'SK Constructions is a trusted leader in the development and execution of digital energy solutions projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of digital energy solutions projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -179,7 +179,7 @@ export const weBuildData = {
     title: 'Factories',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN FACTORIES',
-    description: 'SK Constructions is a trusted leader in the development and execution of factories projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of factories projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -223,7 +223,7 @@ export const weBuildData = {
     title: 'Minerals Metals',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN MINERALS METALS',
-    description: 'SK Constructions is a trusted leader in the development and execution of minerals metals projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of minerals metals projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -267,7 +267,7 @@ export const weBuildData = {
     title: 'Hospitals',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN HOSPITALS',
-    description: 'SK Constructions is a trusted leader in the development and execution of hospitals projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of hospitals projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -311,7 +311,7 @@ export const weBuildData = {
     title: 'Housing',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN HOUSING',
-    description: 'SK Constructions is a trusted leader in the development and execution of housing projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of housing projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -355,7 +355,7 @@ export const weBuildData = {
     title: 'Hydel Projects',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN HYDEL PROJECTS',
-    description: 'SK Constructions is a trusted leader in the development and execution of hydel projects projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of hydel projects projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -399,7 +399,7 @@ export const weBuildData = {
     title: 'Metros',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN METROS',
-    description: 'SK Constructions is a trusted leader in the development and execution of metros projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of metros projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -443,7 +443,7 @@ export const weBuildData = {
     title: 'Nuclear Plants',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN NUCLEAR PLANTS',
-    description: 'SK Constructions is a trusted leader in the development and execution of nuclear plants projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of nuclear plants projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -487,7 +487,7 @@ export const weBuildData = {
     title: 'Office Spaces',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN OFFICE SPACES',
-    description: 'SK Constructions is a trusted leader in the development and execution of office spaces projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of office spaces projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -531,7 +531,7 @@ export const weBuildData = {
     title: 'Ports',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN PORTS',
-    description: 'SK Constructions is a trusted leader in the development and execution of ports projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of ports projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -575,7 +575,7 @@ export const weBuildData = {
     title: 'Power Transmission Distribution Infrastructure',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN POWER TRANSMISSION DISTRIBUTION INFRASTRUCTURE',
-    description: 'SK Constructions is a trusted leader in the development and execution of power transmission distribution infrastructure projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of power transmission distribution infrastructure projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -619,7 +619,7 @@ export const weBuildData = {
     title: 'Public Spaces',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN PUBLIC SPACES',
-    description: 'SK Constructions is a trusted leader in the development and execution of public spaces projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of public spaces projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -663,7 +663,7 @@ export const weBuildData = {
     title: 'Railways',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN RAILWAYS',
-    description: 'SK Constructions is a trusted leader in the development and execution of railways projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of railways projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -707,7 +707,7 @@ export const weBuildData = {
     title: 'Renewables',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN RENEWABLES',
-    description: 'SK Constructions is a trusted leader in the development and execution of renewables projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of renewables projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -751,7 +751,7 @@ export const weBuildData = {
     title: 'Smart World Solutions',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN SMART WORLD SOLUTIONS',
-    description: 'SK Constructions is a trusted leader in the development and execution of smart world solutions projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of smart world solutions projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -795,7 +795,7 @@ export const weBuildData = {
     title: 'Transportation Infrastructure',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN TRANSPORTATION INFRASTRUCTURE',
-    description: 'SK Constructions is a trusted leader in the development and execution of transportation infrastructure projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of transportation infrastructure projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -839,7 +839,7 @@ export const weBuildData = {
     title: 'Underground Structures',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN UNDERGROUND STRUCTURES',
-    description: 'SK Constructions is a trusted leader in the development and execution of underground structures projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of underground structures projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -883,7 +883,7 @@ export const weBuildData = {
     title: 'Unique Structures',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN UNIQUE STRUCTURES',
-    description: 'SK Constructions is a trusted leader in the development and execution of unique structures projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of unique structures projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {
@@ -927,7 +927,7 @@ export const weBuildData = {
     title: 'Water Infrastructure',
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN WATER INFRASTRUCTURE',
-    description: 'SK Constructions is a trusted leader in the development and execution of water infrastructure projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
+    description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of water infrastructure projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
     descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
     projects: [
       {

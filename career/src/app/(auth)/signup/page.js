@@ -61,7 +61,7 @@ export default function SignupPage() {
       </div>
 
       <div className="w-full max-w-md bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-3xl p-8 md:p-10 shadow-2xl z-10 relative overflow-hidden">
-        
+
         {/* Top Accent Line */}
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FFB800] via-[#FFD700] to-[#FFA500]"></div>
 
@@ -70,7 +70,7 @@ export default function SignupPage() {
             Create <span className="text-[#FFB800]">Account</span>
           </h1>
           <p className="text-gray-400 text-sm">
-            Join SK Constructions and build your future.
+            Join S Kumar Infracons (India) Private Limiteds and build your future.
           </p>
         </div>
 

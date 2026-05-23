@@ -22,11 +22,10 @@ export default function Navbar({ alwaysSolid = false }) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled || alwaysSolid
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled || alwaysSolid
           ? 'bg-[#0C0C0C]/80 backdrop-blur-xl border-b border-white/5 shadow-[0_10px_40px_rgba(0,0,0,0.5)]'
           : 'bg-transparent'
-      }`}
+        }`}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-[70px]">
@@ -41,7 +40,7 @@ export default function Navbar({ alwaysSolid = false }) {
               </span>
             </div>
             <span className="text-white text-sm font-semibold tracking-[0.15em] uppercase hidden sm:block group-hover:text-[#FFB800] transition-colors duration-300">
-              SK Constructions
+              S Kumar Infracons (India) Private Limiteds
             </span>
           </Link>
 
@@ -65,9 +64,8 @@ export default function Navbar({ alwaysSolid = false }) {
                 {/* Dropdown Menu */}
                 {link.hasDropdown && link.dropdownItems && link.dropdownItems.length > 0 && (
                   <div
-                    className={`absolute top-[45px] left-0 pt-4 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-400 ease-out transform translate-y-3 group-hover/nav:translate-y-0 ${
-                      link.dropdownLayout === 'mega' ? 'w-[750px] xl:w-[900px] -left-[200px]' : 'w-[280px]'
-                    }`}
+                    className={`absolute top-[45px] left-0 pt-4 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-400 ease-out transform translate-y-3 group-hover/nav:translate-y-0 ${link.dropdownLayout === 'mega' ? 'w-[750px] xl:w-[900px] -left-[200px]' : 'w-[280px]'
+                      }`}
                   >
                     <div className="bg-[#0C0C0C]/90 backdrop-blur-2xl rounded-xl border border-white/10 text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden">
                       {link.dropdownLayout === 'mega' ? (
@@ -103,26 +101,26 @@ export default function Navbar({ alwaysSolid = false }) {
                         <ul className="flex flex-col py-3">
                           {link.dropdownItems.map((item, itemIdx) => {
                             let href = '#';
-                              if (link.label === 'We Are') {
-                                href = `${portfolioUrl}/we-are/${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`;
-                              } else if (link.label === 'Landmark projects') {
-                                if (item === 'Landmarks in the making') href = `${portfolioUrl}/landmark-projects/landmark`;
-                                else if (item === 'Iconic Projects') href = `${portfolioUrl}/landmark-projects/iconic`;
-                              } else if (link.label === 'Newsroom') {
-                                if (item === 'Press Releases') href = `${portfolioUrl}/newsroom?type=press-releases`;
-                                else if (item === 'Electronic Media') href = `${portfolioUrl}/newsroom?type=electronic-media`;
-                                else if (item === 'Featured Stories') href = `${portfolioUrl}/newsroom?type=featured-stories`;
-                              } else if (link.label === 'Careers') {
-                                href = '/';
-                              }
-                              return (
-                                <li key={itemIdx}>
-                                  <a
-                                    href={href}
-                                    target={link.label === 'Careers' ? '_self' : '_blank'}
-                                    rel="noopener noreferrer"
-                                    className="block px-6 py-2.5 text-[15px] text-white/80 hover:bg-[#1A1A1A] hover:text-[#FFB800] transition-colors"
-                                  >
+                            if (link.label === 'We Are') {
+                              href = `${portfolioUrl}/we-are/${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`;
+                            } else if (link.label === 'Landmark projects') {
+                              if (item === 'Landmarks in the making') href = `${portfolioUrl}/landmark-projects/landmark`;
+                              else if (item === 'Iconic Projects') href = `${portfolioUrl}/landmark-projects/iconic`;
+                            } else if (link.label === 'Newsroom') {
+                              if (item === 'Press Releases') href = `${portfolioUrl}/newsroom?type=press-releases`;
+                              else if (item === 'Electronic Media') href = `${portfolioUrl}/newsroom?type=electronic-media`;
+                              else if (item === 'Featured Stories') href = `${portfolioUrl}/newsroom?type=featured-stories`;
+                            } else if (link.label === 'Careers') {
+                              href = '/';
+                            }
+                            return (
+                              <li key={itemIdx}>
+                                <a
+                                  href={href}
+                                  target={link.label === 'Careers' ? '_self' : '_blank'}
+                                  rel="noopener noreferrer"
+                                  className="block px-6 py-2.5 text-[15px] text-white/80 hover:bg-[#1A1A1A] hover:text-[#FFB800] transition-colors"
+                                >
                                   {item}
                                 </a>
                               </li>
@@ -159,7 +157,7 @@ export default function Navbar({ alwaysSolid = false }) {
                     <HiUser className="text-[#FFB800] text-lg" />
                     <span>{user.name.split(' ')[0]}</span>
                   </Link>
-                  <button 
+                  <button
                     onClick={logout}
                     className="flex items-center gap-1.5 text-gray-400 hover:text-red-400 text-xs uppercase tracking-wider ml-2 transition-colors"
                   >
@@ -230,7 +228,7 @@ export default function Navbar({ alwaysSolid = false }) {
               <div className="border-t border-[#1C1C1C] mt-2 pt-4 flex flex-col gap-3">
                 {user ? (
                   <>
-                    <Link 
+                    <Link
                       href="/profile"
                       onClick={() => setMobileOpen(false)}
                       className="flex items-center gap-2 text-white hover:text-[#FFB800] transition-colors"
@@ -239,7 +237,7 @@ export default function Navbar({ alwaysSolid = false }) {
                       <span className="font-semibold">{user.name}</span>
                       <span className="text-xs text-gray-400 hover:underline">(View Profile)</span>
                     </Link>
-                    <button 
+                    <button
                       onClick={() => { setMobileOpen(false); logout(); }}
                       className="text-left text-red-400 hover:text-red-300 font-medium py-2 transition-colors flex items-center gap-2"
                     >

@@ -96,7 +96,7 @@ export default function SignupPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="w-full pl-10 pr-4 py-3 bg-[var(--color-dark-secondary)] border border-[var(--color-dark-border)] rounded-xl text-white focus:outline-none focus:border-[var(--color-yellow)] focus:ring-1 focus:ring-[var(--color-yellow)] transition-all duration-300"
-                placeholder="admin@skconstruction.com"
+                placeholder="[EMAIL_ADDRESS]"
               />
             </div>
           </div>

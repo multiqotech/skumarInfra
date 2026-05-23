@@ -39,7 +39,7 @@ export default function LoginPage() {
       </div>
 
       <div className="w-full max-w-md bg-[var(--color-dark-card)] border border-[var(--color-dark-border)] rounded-2xl p-8 shadow-2xl z-10 relative overflow-hidden">
-        
+
         {/* Top Accent Line */}
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--color-yellow-dark)] via-[var(--color-yellow)] to-[var(--color-yellow-light)]"></div>
 
@@ -48,7 +48,7 @@ export default function LoginPage() {
             Admin <span className="text-[var(--color-yellow)]">Portal</span>
           </h1>
           <p className="text-[var(--color-muted)] text-sm">
-            Sign in to access the SK Construction dashboard.
+            Sign in to access the S Kumar Infracons (India) Private Limited dashboard.
           </p>
         </div>
 
@@ -71,7 +71,7 @@ export default function LoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="w-full pl-10 pr-4 py-3 bg-[var(--color-dark-secondary)] border border-[var(--color-dark-border)] rounded-xl text-white focus:outline-none focus:border-[var(--color-yellow)] focus:ring-1 focus:ring-[var(--color-yellow)] transition-all duration-300"
-                placeholder="admin@skconstruction.com"
+                placeholder="[EMAIL_ADDRESS]"
               />
             </div>
           </div>

@@ -52,7 +52,7 @@ export default function Footer() {
     <footer className="bg-[#0C0C0C] text-white py-16 font-poppins relative z-20">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
-          
+
           {/* Column 1: Who We Are */}
           <div>
             <div className="mb-6">
@@ -146,7 +146,7 @@ export default function Footer() {
               <div className="w-12 h-1 bg-[#FFB800]"></div>
             </div>
             <div className="space-y-5 text-sm text-gray-400">
-              
+
               {contactInfo.companyAddress && (
                 <div>
                   {contactInfo.companyAddress.split('\n').map((line, i) => (
@@ -193,7 +193,7 @@ export default function Footer() {
 
         {/* Copyright Bar */}
         <div className="mt-16 pt-6 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-          <p>© {new Date().getFullYear()} SK Constructions. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} S Kumar Infracons (India) Private Limiteds. All Rights Reserved.</p>
           <p>Designed with excellence and precision.</p>
         </div>
       </div>

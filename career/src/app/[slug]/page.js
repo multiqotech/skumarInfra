@@ -11,11 +11,11 @@ export async function generateMetadata({ params }) {
     const res = await axios.get(`${API}/api/career/jobs/${resolvedParams.slug}`);
     const job = res.data;
     return {
-      title: `${job.title} | Careers at SK Construction`,
+      title: `${job.title} | Careers at S Kumar Infracons (India) Private Limited`,
       description: job.description.substring(0, 160).replace(/<[^>]+>/g, ''),
     };
   } catch (err) {
-    return { title: 'Job Not Found | SK Construction' };
+    return { title: 'Job Not Found | S Kumar Infracons (India) Private Limited' };
   }
 }
 
@@ -59,14 +59,14 @@ export default async function JobDetailsPage({ params }) {
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
                 {job.title}
               </h1>
-              
+
               <div className="flex flex-wrap gap-6 text-gray-400">
                 <span className="flex items-center gap-2"><MapPin className="w-5 h-5 text-gray-500" /> {job.location}</span>
                 <span className="flex items-center gap-2"><Briefcase className="w-5 h-5 text-gray-500" /> {job.employmentType}</span>
                 <span className="flex items-center gap-2"><Users className="w-5 h-5 text-gray-500" /> {job.experience?.min}-{job.experience?.max} Years Exp.</span>
               </div>
             </div>
-            
+
             <div className="shrink-0">
               <ApplyButton job={job} />
             </div>
@@ -78,12 +78,12 @@ export default async function JobDetailsPage({ params }) {
       <section className="py-16">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
-            
+
             <div className="bg-[var(--color-dark-card)] rounded-2xl border border-[var(--color-dark-border)] p-8 md:p-12">
               <h2 className="text-2xl font-bold text-white mb-8">About the Role</h2>
-              
+
               {/* Render HTML content safely */}
-              <div 
+              <div
                 className="prose prose-invert prose-yellow max-w-none 
                   prose-headings:font-heading prose-headings:font-bold 
                   prose-a:text-[#FFB800] prose-a:no-underline hover:prose-a:underline
@@ -92,7 +92,7 @@ export default async function JobDetailsPage({ params }) {
                 dangerouslySetInnerHTML={{ __html: job.description }}
               />
             </div>
-            
+
             <div className="mt-12 text-center">
               <h3 className="text-xl text-white font-semibold mb-6">Ready to join us?</h3>
               <ApplyButton job={job} />

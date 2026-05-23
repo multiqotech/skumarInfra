@@ -13,8 +13,8 @@ const oswald = Oswald({
 });
 
 export const metadata = {
-  title: "Admin Portal | SK Construction",
-  description: "Administrative portal for SK Construction company.",
+  title: "Admin Portal | S Kumar Infracons (India) Private Limited",
+  description: "Administrative portal for S Kumar Infracons (India) Private Limited company.",
 };
 
 export default function RootLayout({ children }) {

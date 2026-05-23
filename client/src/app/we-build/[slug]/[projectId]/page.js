@@ -15,8 +15,8 @@ export default async function ProjectDetailsPage({ params }) {
 
   // Try to fetch from DB first
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects/${projectId}`, { 
-      cache: 'no-store' 
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects/${projectId}`, {
+      cache: 'no-store'
     });
     if (res.ok) {
       project = await res.json();
@@ -48,7 +48,7 @@ export default async function ProjectDetailsPage({ params }) {
       <main className="min-h-screen bg-[#FFFDF9] text-[#0C0C0C] pt-24 pb-20">
         <div className="container-custom">
           {/* Back Button */}
-          <Link 
+          <Link
             href={`/we-build/${slug}`}
             className="inline-flex items-center gap-2 text-[#FFB800] hover:text-[#0C0C0C] font-semibold tracking-wide uppercase transition-colors mb-8"
             style={{ fontFamily: 'var(--font-heading)' }}
@@ -58,7 +58,7 @@ export default async function ProjectDetailsPage({ params }) {
           </Link>
 
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
-            
+
             {/* Left Column: Image & Details */}
             <div className="lg:col-span-8 space-y-8">
               <div className="relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl border border-black/5">
@@ -75,7 +75,7 @@ export default async function ProjectDetailsPage({ params }) {
                 <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-wide text-[#0C0C0C] mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
                   {project.title}
                 </h1>
-                
+
                 <div className="bg-[#F5F1EA] rounded-xl p-6 md:p-8 border border-[#E8E0D0]">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-8 h-1 bg-[#FFB800]"></div>
@@ -154,7 +154,7 @@ export default async function ProjectDetailsPage({ params }) {
                 {/* Decorative Elements */}
                 <div className="mt-12 pt-8 border-t border-white/10 flex justify-between items-center">
                   <div className="text-[#FFB800] text-xs font-bold tracking-[0.2em] uppercase">
-                    SK Construction
+                    S Kumar Infracons (India) Private Limited
                   </div>
                   <div className="flex gap-1">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#FFB800]"></div>

@@ -13,8 +13,8 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: 'SK Constructions Careers | Build Your Future',
-  description: 'Join SK Constructions and build landmark infrastructure with us. Browse open positions and apply today.',
+  title: 'S Kumar Infracons (India) Private Limiteds Careers | Build Your Future',
+  description: 'Join S Kumar Infracons (India) Private Limiteds and build landmark infrastructure with us. Browse open positions and apply today.',
 };
 
 export default function RootLayout({ children }) {

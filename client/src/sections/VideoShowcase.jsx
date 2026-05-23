@@ -47,7 +47,7 @@ export default function VideoShowcase() {
       <div className="container-custom">
         {/* Video Preview */}
         <AnimateOnScroll>
-          <div 
+          <div
             onClick={() => setIsOpen(true)}
             className="relative group cursor-pointer overflow-hidden mb-16 rounded-3xl shadow-2xl border border-[#2A2A2A]/40"
           >
@@ -92,7 +92,7 @@ export default function VideoShowcase() {
                   <div className="flex-1 flex flex-col justify-start">
                     <h4
                       className="text-white text-[15px] sm:text-base font-bold uppercase tracking-wider mb-2 max-w-[210px] mx-auto leading-snug group-hover:text-[#FFB800] transition-colors duration-300"
-                      
+
                     >
                       {item.title}
                     </h4>
@@ -100,12 +100,12 @@ export default function VideoShowcase() {
                       Step {index + 1}
                     </span>
                   </div>
-                  
+
                   {/* Timeline indicator circle dot */}
                   <div className="relative flex items-center justify-center mt-2">
                     {/* Glowing outer ring on hover */}
                     <div className="absolute w-6 h-6 rounded-full bg-[#FFB800]/20 scale-0 group-hover:scale-100 transition-transform duration-300" />
-                    
+
                     {/* The Dot */}
                     <div className="w-4 h-4 rounded-full bg-white border-[3px] border-[#0C0C0C] group-hover:bg-[#FFB800] group-hover:border-white shadow-[0_0_12px_rgba(255,255,255,0.4)] z-10 transition-all duration-300" />
                   </div>
@@ -119,17 +119,17 @@ export default function VideoShowcase() {
       {/* Video Modal Overlay */}
       {isOpen && (
         <div className="fixed inset-0 bg-[#0C0C0C]/90 backdrop-blur-md flex items-center justify-center z-50 p-4">
-          <button 
+          <button
             onClick={() => setIsOpen(false)}
             className="absolute top-6 right-6 text-white hover:text-[#FFB800] transition-colors p-2 bg-[#161616] border border-[#2A2A2A] rounded-full"
           >
             <HiX size={24} />
           </button>
-          
+
           <div className="w-full max-w-4xl aspect-video rounded-2xl overflow-hidden shadow-2xl border border-[#2A2A2A]">
             <iframe
               src={getEmbedUrl(videoUrl)}
-              title="SK Construction Video Showcase"
+              title="S Kumar Infracons (India) Private Limited Video Showcase"
               className="w-full h-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
