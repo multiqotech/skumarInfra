@@ -14,7 +14,7 @@ const LAYOUT_MAP = {
   'our-company': 'section',
   'our-global-presence': 'location',
   'our-unique-capabilities': 'section',
-  'our-technology-innovation-centres': 'card',
+  'our-innovation-centres': 'card',
 };
 
 async function getPageData(slug) {
@@ -95,7 +95,7 @@ function WeAreRenderer({ data, layoutType }) {
           <div className="inline-flex items-center gap-4 mb-6">
             <div className="w-12 h-1 bg-[#FFB800]" />
             <span className="text-[#FFB800] uppercase tracking-[0.3em] font-bold text-sm md:text-base">
-              SK CONSTRUCTIONS
+              S KUMAR INFRACONS
             </span>
             <div className="w-12 h-1 bg-[#FFB800]" />
           </div>

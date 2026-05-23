@@ -1,14 +1,33 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { HiArrowLeft, HiArrowRight } from 'react-icons/hi';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
-import { featuredProjects } from '@/data/siteData';
+import Link from 'next/link';
 
 export default function FeaturedProjects() {
   const scrollRef = useRef(null);
+  const [featuredProjects, setFeaturedProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects`);
+        if (res.ok) {
+          const data = await res.json();
+          setFeaturedProjects(data);
+        }
+      } catch (err) {
+        console.error("Failed to fetch featured projects", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProjects();
+  }, []);
 
   const scroll = (direction) => {
     if (scrollRef.current) {
@@ -66,39 +85,43 @@ export default function FeaturedProjects() {
         ref={scrollRef}
         className="flex gap-6 overflow-x-auto pb-4 px-5 lg:px-[calc((100vw-1280px)/2+1.25rem)] scrollbar-hide"
       >
-        {featuredProjects.map((project, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.08 }}
-            whileHover={{ y: -5 }}
-            whileTap={{ scale: 0.98 }}
-            viewport={{ once: true }}
-            className="group relative flex-shrink-0 w-[280px] h-[380px] rounded-2xl overflow-hidden cursor-pointer"
-          >
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0C] via-[#0C0C0C]/30 to-transparent" />
-
-            <div className="absolute bottom-0 left-0 right-0 p-5">
-              <div className="w-6 h-[3px] bg-[#FFB800] mb-2 transition-all duration-300 group-hover:w-10" />
-              <h3
-                className="text-white text-lg font-bold"
-                
+        {loading ? (
+          <div className="text-white/50 px-5">Loading projects...</div>
+        ) : (
+          featuredProjects.map((project, index) => (
+            <Link key={project._id || index} href={`/we-build/${project.category}/${project._id}`}>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                whileHover={{ y: -5 }}
+                whileTap={{ scale: 0.98 }}
+                viewport={{ once: true }}
+                className="group relative flex-shrink-0 w-[280px] h-[380px] rounded-2xl overflow-hidden cursor-pointer block"
               >
-                {project.title}
-              </h3>
-              <p className="text-white/50 text-[13px]">{project.location}</p>
-            </div>
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0C] via-[#0C0C0C]/30 to-transparent" />
 
-            <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#FFB800]/30 transition-all duration-500" />
-          </motion.div>
-        ))}
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <div className="w-6 h-[3px] bg-[#FFB800] mb-2 transition-all duration-300 group-hover:w-10" />
+                  <h3
+                    className="text-white text-lg font-bold"
+                  >
+                    {project.title}
+                  </h3>
+                  <p className="text-white/50 text-[13px] mt-1">{project.location}</p>
+                </div>
+
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#FFB800]/30 transition-all duration-500 rounded-2xl" />
+              </motion.div>
+            </Link>
+          ))
+        )}
       </div>
     </section>
   );

@@ -22,6 +22,7 @@ const {
 } = require('../controllers/contentController');
 const {
   getProjectsByCategory,
+  getAllProjects,
   getProjectsByType,
   getProjectById,
   createProject,
@@ -74,6 +75,7 @@ router.route('/settings/:key')
 
 // Projects Routes
 router.route('/projects')
+  .get(getAllProjects)
   .post(protect, createProject);
 router.route('/projects/category/:category')
   .get(getProjectsByCategory);

@@ -191,7 +191,7 @@ export default function Footer() {
 
         {/* Copyright Bar */}
         <div className="mt-16 pt-6 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-          <p>© {new Date().getFullYear()} SK Constructions. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} S Kumar Infracons (India) Private Limited. All Rights Reserved.</p>
           <p>Designed with excellence and precision.</p>
         </div>
       </div>

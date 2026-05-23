@@ -10,6 +10,16 @@ const getProjectsByCategory = async (req, res) => {
   }
 };
 
+// Get all projects
+const getAllProjects = async (req, res) => {
+  try {
+    const projects = await Project.find({}).sort({ createdAt: -1 });
+    res.json(projects);
+  } catch (error) {
+    res.status(500).json({ message: 'Server Error fetching all projects', error: error.message });
+  }
+};
+
 // Get all projects by projectType
 const getProjectsByType = async (req, res) => {
   try {
@@ -118,6 +128,7 @@ const deleteProject = async (req, res) => {
 
 module.exports = {
   getProjectsByCategory,
+  getAllProjects,
   getProjectsByType,
   getProjectById,
   createProject,

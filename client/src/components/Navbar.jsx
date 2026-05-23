@@ -50,7 +50,7 @@ export default function Navbar({ alwaysSolid = false }) {
               </span>
             </div>
             <span className="text-white text-sm font-semibold tracking-[0.15em] uppercase hidden sm:block group-hover:text-[#FFB800] transition-colors duration-300">
-              SK Constructions
+              S Kumar Infracons
             </span>
           </a>
 
