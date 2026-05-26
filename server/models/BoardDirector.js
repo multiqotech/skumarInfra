@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const teamMemberSchema = new mongoose.Schema({
+const boardDirectorSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
   },
-  role: {
+  designation: {
     type: String,
     required: true,
   },
@@ -21,4 +21,4 @@ const teamMemberSchema = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('TeamMember', teamMemberSchema);
+module.exports = mongoose.model('BoardDirector', boardDirectorSchema);

@@ -4,12 +4,17 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { 
   LogOut, LayoutDashboard, Settings, Loader2, Check, X,
-  HelpCircle, Users, MessageSquare, Video, Construction
+  HelpCircle, Users, MessageSquare, Video, Construction,
+  Newspaper, Phone, Briefcase, FileText, UserPlus, BarChart3, Trophy, Truck
 } from "lucide-react";
 import axios from "axios";
 import FaqManager from "../components/FaqManager";
 import TeamManager from "../components/TeamManager";
 import TestimonialManager from "../components/TestimonialManager";
+import BoardDirectorManager from "../components/BoardDirectorManager";
+import InvestorManager from "../components/InvestorManager";
+import PlantMachineryManager from "../components/PlantMachineryManager";
+import FinancialHighlightsManager from "../components/FinancialHighlightsManager";
 import VideoManager from "../components/VideoManager";
 import ProjectManager from "../components/ProjectManager";
 import WeAreManager from "../components/WeAreManager";
@@ -20,7 +25,6 @@ import JobManager from "../components/career/JobManager";
 import ApplicationManager from "../components/career/ApplicationManager";
 import CandidateManager from "../components/career/CandidateManager";
 import StatsManager from "../components/StatsManager";
-import { Newspaper, Phone, Briefcase, FileText, UserPlus, BarChart3, Trophy } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 
 export default function Dashboard() {
@@ -114,7 +118,11 @@ export default function Dashboard() {
             { id: "career-applications", label: "Career Applications", icon: FileText },
             { id: "career-candidates", label: "Career Candidates", icon: UserPlus },
             { id: "contact-info", label: "Contact Info", icon: Phone },
+            { id: "plant-machinery", label: "Plants & Machinery", icon: Truck },
             { id: "faqs", label: "FAQs", icon: HelpCircle },
+            { id: "financial-highlights", label: "Financial Highlights", icon: BarChart3 },
+            { id: "investors", label: "Investors", icon: Users },
+            { id: "board-directors", label: "Board of Directors", icon: Users },
             { id: "team", label: "Team", icon: Users },
             { id: "testimonials", label: "Testimonials", icon: MessageSquare },
             { id: "video", label: "Video Showcase", icon: Video },
@@ -202,6 +210,27 @@ export default function Dashboard() {
               </div>
               <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
                 <div className="h-12 w-12 bg-[#FFB800]/10 rounded-xl flex items-center justify-center mb-4">
+                  <BarChart3 className="h-6 w-6 text-[var(--color-yellow)]" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-1">Financial Highlights</h3>
+                <p className="text-sm text-gray-400">Manage financial stats & charts.</p>
+              </div>
+              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
+                <div className="h-12 w-12 bg-[#FFB800]/10 rounded-xl flex items-center justify-center mb-4">
+                  <Users className="h-6 w-6 text-[var(--color-yellow)]" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-1">Investors</h3>
+                <p className="text-sm text-gray-400">Manage investors section.</p>
+              </div>
+              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
+                <div className="h-12 w-12 bg-[#FFB800]/10 rounded-xl flex items-center justify-center mb-4">
+                  <Users className="h-6 w-6 text-[var(--color-yellow)]" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-1">Board of Directors</h3>
+                <p className="text-sm text-gray-400">Manage board members.</p>
+              </div>
+              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
+                <div className="h-12 w-12 bg-[#FFB800]/10 rounded-xl flex items-center justify-center mb-4">
                   <Users className="h-6 w-6 text-[var(--color-yellow)]" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-1">Team</h3>
@@ -239,6 +268,9 @@ export default function Dashboard() {
           )}
 
           {activeTab === "faqs" && <FaqManager showFeedback={showFeedback} />}
+          {activeTab === "financial-highlights" && <FinancialHighlightsManager showFeedback={showFeedback} />}
+          {activeTab === "investors" && <InvestorManager showFeedback={showFeedback} />}
+          {activeTab === "board-directors" && <BoardDirectorManager showFeedback={showFeedback} />}
           {activeTab === "team" && <TeamManager showFeedback={showFeedback} />}
           {activeTab === "testimonials" && <TestimonialManager showFeedback={showFeedback} />}
           { activeTab === "video" && <VideoManager showFeedback={showFeedback} /> }
@@ -247,6 +279,7 @@ export default function Dashboard() {
           { activeTab === "we-are" && <WeAreManager showFeedback={showFeedback} /> }
           { activeTab === "newsroom" && <NewsroomManager showFeedback={showFeedback} /> }
           { activeTab === "contact-info" && <ContactInfoManager showFeedback={showFeedback} /> }
+          { activeTab === "plant-machinery" && <PlantMachineryManager showFeedback={showFeedback} /> }
           
           { activeTab === "career-dashboard" && <CareerDashboard showFeedback={showFeedback} /> }
           { activeTab === "career-jobs" && <JobManager showFeedback={showFeedback} /> }

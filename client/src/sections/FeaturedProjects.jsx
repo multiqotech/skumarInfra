@@ -39,7 +39,7 @@ export default function FeaturedProjects() {
   };
 
   return (
-    <section className="bg-[#0C0C0C] py-14 lg:py-20" id="projects">
+    <section className="bg-gray-50 dark:bg-[#0C0C0C] py-14 lg:py-20" id="projects">
       <div className="container-custom">
         {/* Header */}
         <div className="flex items-end justify-between mb-10">
@@ -54,7 +54,7 @@ export default function FeaturedProjects() {
               </span>
             </div>
             <h2
-              className="text-white text-2xl md:text-3xl lg:text-4xl font-bold"
+              className="text-gray-900 dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold"
               
             >
               Our Featured Projects
@@ -64,7 +64,7 @@ export default function FeaturedProjects() {
           <div className="hidden md:flex items-center gap-2">
             <button
               onClick={() => scroll('left')}
-              className="w-11 h-11 border border-[#2A2A2A] rounded-lg flex items-center justify-center text-white hover:bg-[#FFB800] hover:border-[#FFB800] hover:text-[#0C0C0C] transition-all duration-300"
+              className="w-11 h-11 border border-gray-200 dark:border-[#2A2A2A] rounded-lg flex items-center justify-center text-gray-900 dark:text-white hover:bg-[#FFB800] dark:hover:bg-[#FFB800] hover:border-[#FFB800] dark:hover:border-[#FFB800] hover:text-[#0C0C0C] dark:hover:text-[#0C0C0C] transition-all duration-300"
               aria-label="Previous"
             >
               <HiArrowLeft size={16} />
@@ -86,7 +86,7 @@ export default function FeaturedProjects() {
         className="flex gap-6 overflow-x-auto pb-4 px-5 lg:px-[calc((100vw-1280px)/2+1.25rem)] scrollbar-hide"
       >
         {loading ? (
-          <div className="text-white/50 px-5">Loading projects...</div>
+          <div className="text-gray-500 dark:text-white/50 px-5">Loading projects...</div>
         ) : (
           featuredProjects.map((project, index) => (
             <Link key={project._id || index} href={`/we-build/${project.category}/${project._id}`}>

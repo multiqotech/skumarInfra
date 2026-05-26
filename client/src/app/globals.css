@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @source "../../src";
+@custom-variant dark (&:is(.dark *));
 
 /* ===== CUSTOM THEME ===== */
 @theme {
@@ -33,9 +34,14 @@ html {
 
 body {
   font-family: var(--font-body);
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  overflow-x: hidden;
+}
+
+.dark body {
   background-color: var(--color-dark);
   color: #ffffff;
-  overflow-x: hidden;
 }
 
 /* Ensure headings have proper line-height - override Tailwind v4 */

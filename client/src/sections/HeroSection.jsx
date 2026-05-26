@@ -48,7 +48,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="home" className="relative min-h-screen flex items-center overflow-hidden bg-[#0C0C0C]">
+    <section ref={sectionRef} id="home" className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-[#0C0C0C]">
       {/* Background carousel */}
       <div ref={bgRef} className="absolute inset-[-20%] w-[140%] h-[140%]">
         <AnimatePresence initial={false}>
@@ -64,13 +64,13 @@ export default function HeroSection() {
               src={backgroundImages[currentBg]}
               alt="Construction site background"
               fill
-              className="object-cover opacity-[0.65]"
+              className="object-cover opacity-[0.2] dark:opacity-[0.65]"
               priority
             />
           </motion.div>
         </AnimatePresence>
         {/* Gradient for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0C0C0C]/95 via-[#0C0C0C]/60 to-[#0C0C0C]/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 to-transparent dark:from-[#0C0C0C]/95 dark:via-[#0C0C0C]/60 dark:to-[#0C0C0C]/20" />
       </div>
 
       {/* Content */}
@@ -96,7 +96,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold leading-[1.08] mb-3 text-white drop-shadow-xl tracking-tight"
+            className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold leading-[1.08] mb-3 text-gray-900 dark:text-white drop-shadow-xl tracking-tight"
           >
             Comprehensive{' '}
             <span className="text-[#FFB800]">Construction</span>{' '}
@@ -107,7 +107,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-white/80 text-[15px] lg:text-[16px] leading-relaxed mb-5 max-w-lg drop-shadow-md"
+            className="text-gray-700 dark:text-white/80 text-[15px] lg:text-[16px] leading-relaxed mb-5 max-w-lg drop-shadow-md"
           >
             {heroData.subtext}
           </motion.p>
@@ -123,12 +123,12 @@ export default function HeroSection() {
               <HiPhone className="text-[#0C0C0C] text-md" />
             </div>
             <div>
-              <p className="text-white/70 text-[10px] uppercase tracking-[0.2em]">
+              <p className="text-gray-500 dark:text-white/70 text-[10px] uppercase tracking-[0.2em]">
                 Call Us Anytime
               </p>
               <a
                 href={`tel:${phoneNumber.replace(/\s/g, '')}`}
-                className="text-white text-xl font-bold hover:text-[#FFB800] transition-colors"
+                className="text-gray-900 dark:text-white text-xl font-bold hover:text-[#FFB800] transition-colors"
               >
                 {phoneNumber}
               </a>
@@ -145,7 +145,7 @@ export default function HeroSection() {
               {heroData.cta}
               <HiArrowRight />
             </a>
-            <a href="#projects" className="btn-outline">
+            <a href="#projects" className="btn-outline !text-gray-900 !border-gray-300 hover:!bg-gray-100 dark:!text-white dark:!border-white/30 dark:hover:!bg-white/5">
               VIEW PROJECTS
             </a>
           </motion.div>
@@ -162,7 +162,7 @@ export default function HeroSection() {
                 key={i}
                 onClick={() => setCurrentBg(i)}
                 className={`h-[4px] transition-all duration-300 ${
-                  currentBg === i ? 'w-10 bg-[#FFB800]' : 'w-4 bg-white/30 hover:bg-white/60'
+                  currentBg === i ? 'w-10 bg-[#FFB800]' : 'w-4 bg-gray-300 hover:bg-gray-400 dark:bg-white/30 dark:hover:bg-white/60'
                 } rounded-full`}
                 aria-label={`Go to slide ${i + 1}`}
               />
@@ -183,7 +183,8 @@ export default function HeroSection() {
           {/* Main light background fill */}
           <path
             d="M0,0 C300,120 900,120 1200,0 L1200,120 L0,120 Z"
-            fill="#FFFDF9"
+            fill="currentColor"
+            className="text-[#FFFDF9] dark:text-[#111111]"
           />
           {/* Yellow top stroke only */}
           <path

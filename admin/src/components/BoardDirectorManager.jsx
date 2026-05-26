@@ -3,25 +3,25 @@ import axios from 'axios';
 import { Plus, Edit2, Trash2, Loader2, Upload } from 'lucide-react';
 import { getAuthHeader, uploadFileToServer } from '../utils/api';
 
-export default function TeamManager({ showFeedback }) {
-  const [team, setTeam] = useState([]);
+export default function BoardDirectorManager({ showFeedback }) {
+  const [directors, setDirectors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [formLoading, setFormLoading] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   
-  const [form, setForm] = useState({ id: "", name: "", role: "", image: "", description: "" });
-  const [teamFile, setTeamFile] = useState(null);
-  const [teamPreview, setTeamPreview] = useState("");
+  const [form, setForm] = useState({ id: "", name: "", designation: "", image: "", description: "" });
+  const [directorFile, setDirectorFile] = useState(null);
+  const [directorPreview, setDirectorPreview] = useState("");
   const [uploadingImage, setUploadingImage] = useState(false);
 
   useEffect(() => {
-    fetchTeam();
+    fetchDirectors();
   }, []);
 
-  const fetchTeam = async () => {
+  const fetchDirectors = async () => {
     try {
-      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/team`);
-      setTeam(res.data);
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/board-directors`);
+      setDirectors(res.data);
     } catch (err) {
       console.error(err);
     } finally {
@@ -39,25 +39,25 @@ export default function TeamManager({ showFeedback }) {
     }
 
     const previewUrl = URL.createObjectURL(file);
-    if (teamPreview && teamPreview.startsWith("blob:")) {
-      URL.revokeObjectURL(teamPreview);
+    if (directorPreview && directorPreview.startsWith("blob:")) {
+      URL.revokeObjectURL(directorPreview);
     }
-    setTeamFile(file);
-    setTeamPreview(previewUrl);
+    setDirectorFile(file);
+    setDirectorPreview(previewUrl);
     showFeedback("Image selected. It will upload when you save!");
   };
 
   const handleRemoveFile = () => {
-    if (teamPreview && teamPreview.startsWith("blob:")) {
-      URL.revokeObjectURL(teamPreview);
+    if (directorPreview && directorPreview.startsWith("blob:")) {
+      URL.revokeObjectURL(directorPreview);
     }
-    setTeamFile(null);
-    setTeamPreview("");
+    setDirectorFile(null);
+    setDirectorPreview("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!teamFile && !form.image) {
+    if (!directorFile && !form.image) {
       showFeedback("Please select an image file first!", "error");
       return;
     }
@@ -72,10 +72,10 @@ export default function TeamManager({ showFeedback }) {
     let finalImageUrl = form.image;
 
     try {
-      if (teamFile) {
+      if (directorFile) {
         setUploadingImage(true);
         try {
-          finalImageUrl = await uploadFileToServer(teamFile);
+          finalImageUrl = await uploadFileToServer(directorFile);
         } catch (uploadErr) {
           const errMsg = uploadErr.response?.data?.message || uploadErr.message || "Failed to upload to Cloudinary.";
           showFeedback(errMsg, "error");
@@ -87,59 +87,59 @@ export default function TeamManager({ showFeedback }) {
       }
 
       if (isEditing) {
-        await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/team/${form.id}`, {
+        await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/board-directors/${form.id}`, {
           name: form.name,
-          role: form.role,
+          designation: form.designation,
           image: finalImageUrl,
           description: form.description
         }, config);
-        showFeedback("Team member updated successfully!");
+        showFeedback("Board Director updated successfully!");
       } else {
-        await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/team`, {
+        await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/board-directors`, {
           name: form.name,
-          role: form.role,
+          designation: form.designation,
           image: finalImageUrl,
           description: form.description
         }, config);
-        showFeedback("Team member added successfully!");
+        showFeedback("Board Director added successfully!");
       }
       
       handleRemoveFile();
-      setForm({ id: "", name: "", role: "", image: "", description: "" });
+      setForm({ id: "", name: "", designation: "", image: "", description: "" });
       setIsEditing(false);
-      fetchTeam();
+      fetchDirectors();
     } catch (err) {
-      showFeedback("Error saving team member", "error");
+      showFeedback("Error saving board director", "error");
     } finally {
       setFormLoading(false);
     }
   };
 
-  const handleEdit = (member) => {
-    setForm({ id: member._id, name: member.name, role: member.role, image: member.image, description: member.description || "" });
-    setTeamPreview(member.image);
-    setTeamFile(null);
+  const handleEdit = (director) => {
+    setForm({ id: director._id, name: director.name, designation: director.designation, image: director.image, description: director.description || "" });
+    setDirectorPreview(director.image);
+    setDirectorFile(null);
     setIsEditing(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Are you sure you want to delete this member?")) return;
+    if (!confirm("Are you sure you want to delete this director?")) return;
     const config = getAuthHeader();
     if (!config) return;
 
     try {
-      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/team/${id}`, config);
-      showFeedback("Team member deleted successfully!");
-      fetchTeam();
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/board-directors/${id}`, config);
+      showFeedback("Board Director deleted successfully!");
+      fetchDirectors();
     } catch (err) {
-      showFeedback("Error deleting team member", "error");
+      showFeedback("Error deleting board director", "error");
     }
   };
 
   const cancelEdit = () => {
     setIsEditing(false);
-    setForm({ id: "", name: "", role: "", image: "", description: "" });
+    setForm({ id: "", name: "", designation: "", image: "", description: "" });
     handleRemoveFile();
   };
 
@@ -149,7 +149,7 @@ export default function TeamManager({ showFeedback }) {
         <div className="p-6 border-b border-[var(--color-dark-border)] bg-[#1a1a1a]">
           <h3 className="text-lg font-semibold flex items-center gap-2">
             <Plus className="h-5 w-5 text-[var(--color-yellow)]" />
-            {isEditing ? "Edit Team Member" : "Add Team Member"}
+            {isEditing ? "Edit Board Director" : "Add Board Director"}
           </h3>
         </div>
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
@@ -162,7 +162,7 @@ export default function TeamManager({ showFeedback }) {
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2.5 focus:outline-none focus:border-[var(--color-yellow)]"
-                placeholder="e.g. John Doe"
+                placeholder="e.g. Jane Doe"
               />
             </div>
             <div>
@@ -170,34 +170,29 @@ export default function TeamManager({ showFeedback }) {
               <input
                 type="text"
                 required
-                value={form.role}
-                onChange={(e) => setForm({ ...form, role: e.target.value })}
+                value={form.designation}
+                onChange={(e) => setForm({ ...form, designation: e.target.value })}
                 className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2.5 focus:outline-none focus:border-[var(--color-yellow)]"
-                placeholder="e.g. Chief Architect"
+                placeholder="e.g. Managing Director"
               />
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">
-              Description <span className="text-gray-400 font-normal text-xs">(Recommended: max 100 words)</span>
-            </label>
+            <label className="block text-sm font-medium mb-1">Description (No limit)</label>
             <textarea
-              rows="3"
+              rows="6"
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
-              className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2.5 focus:outline-none focus:border-[var(--color-yellow)] resize-none"
-              placeholder="Enter a brief description..."
+              className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2.5 focus:outline-none focus:border-[var(--color-yellow)] resize-y"
+              placeholder="Enter detailed description..."
             ></textarea>
-            <div className="text-xs mt-1 text-right text-gray-500">
-              {form.description ? form.description.split(/\s+/).filter(word => word.length > 0).length : 0} words
-            </div>
           </div>
           <div>
             <label className="block text-sm font-medium mb-1">Photo (Upload)</label>
             <div className="flex gap-4 items-end">
-              {teamPreview && (
+              {directorPreview && (
                 <div className="relative w-32 h-32 rounded-lg overflow-hidden border border-[var(--color-dark-border)] group">
-                  <img src={teamPreview} alt="Preview" className="w-full h-full object-cover" />
+                  <img src={directorPreview} alt="Preview" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <button type="button" onClick={handleRemoveFile} className="text-red-400 hover:text-red-300">
                       <Trash2 className="h-5 w-5" />
@@ -223,7 +218,7 @@ export default function TeamManager({ showFeedback }) {
               className="px-6 py-2.5 bg-[var(--color-yellow)] text-black font-semibold rounded-lg hover:bg-[#e5a600] disabled:opacity-50 flex items-center gap-2"
             >
               {(formLoading || uploadingImage) ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
-              {uploadingImage ? "Uploading Image..." : isEditing ? "Update Member" : "Add Member"}
+              {uploadingImage ? "Uploading Image..." : isEditing ? "Update Director" : "Add Director"}
             </button>
             {isEditing && (
               <button
@@ -240,35 +235,35 @@ export default function TeamManager({ showFeedback }) {
 
       <div className="bg-[var(--color-dark-card)] rounded-xl border border-[var(--color-dark-border)] overflow-hidden">
         <div className="p-6 border-b border-[var(--color-dark-border)] flex justify-between items-center">
-          <h3 className="text-lg font-semibold">Current Team ({team.length})</h3>
+          <h3 className="text-lg font-semibold">Current Directors ({directors.length})</h3>
         </div>
         {loading ? (
           <div className="p-12 flex justify-center text-gray-400">
             <Loader2 className="h-8 w-8 animate-spin text-[var(--color-yellow)]" />
           </div>
-        ) : team.length === 0 ? (
+        ) : directors.length === 0 ? (
           <div className="p-12 text-center text-gray-400 border-t border-[var(--color-dark-border)]">
-            No team members added yet.
+            No board directors added yet.
           </div>
         ) : (
           <div className="divide-y divide-[var(--color-dark-border)]">
-            {team.map((member) => (
-              <div key={member._id} className="p-6 flex items-center gap-6 hover:bg-[var(--color-dark)]/50 transition-colors">
+            {directors.map((director) => (
+              <div key={director._id} className="p-6 flex items-center gap-6 hover:bg-[var(--color-dark)]/50 transition-colors">
                 <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[var(--color-yellow)] flex-shrink-0">
-                  <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                  <img src={director.image} alt={director.name} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-lg font-bold text-white">{member.name}</h4>
-                  <p className="text-[var(--color-yellow)] text-sm">{member.role}</p>
-                  {member.description && (
-                    <p className="text-gray-400 text-sm mt-1 line-clamp-2">{member.description}</p>
+                  <h4 className="text-lg font-bold text-white">{director.name}</h4>
+                  <p className="text-[var(--color-yellow)] text-sm">{director.designation}</p>
+                  {director.description && (
+                    <p className="text-gray-400 text-sm mt-1 line-clamp-2">{director.description}</p>
                   )}
                 </div>
                 <div className="flex gap-2">
-                  <button onClick={() => handleEdit(member)} className="p-2 text-gray-400 hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
+                  <button onClick={() => handleEdit(director)} className="p-2 text-gray-400 hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
                     <Edit2 className="h-4 w-4" />
                   </button>
-                  <button onClick={() => handleDelete(member._id)} className="p-2 text-gray-400 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
+                  <button onClick={() => handleDelete(director._id)} className="p-2 text-gray-400 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
                     <Trash2 className="h-4 w-4" />
                   </button>
                 </div>

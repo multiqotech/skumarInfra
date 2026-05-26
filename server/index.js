@@ -12,6 +12,7 @@ const authRoutes = require('./routes/authRoutes');
 const contentRoutes = require('./routes/contentRoutes');
 const newsRoutes = require('./routes/newsRoutes');
 const contactInfoRoutes = require('./routes/contactInfoRoutes');
+const financialRoutes = require('./routes/financialRoutes');
 
 // Career routes
 const careerRoutes = require('./career/routes/adminRoutes');
@@ -76,6 +77,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api', contentRoutes);
 app.use('/api', newsRoutes);
 app.use('/api', contactInfoRoutes);
+app.use('/api', financialRoutes);
 
 // ==========================================
 // Career API Routes (NEW)

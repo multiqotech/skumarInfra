@@ -27,13 +27,13 @@ export default function TeamSection() {
   }, []);
 
   return (
-    <section className="relative bg-[#0C0C0C] py-14 lg:py-20 overflow-hidden">
+    <section className="relative bg-white dark:bg-[#0C0C0C] py-14 lg:py-20 overflow-hidden">
       {/* Large "OUR TEAM" watermark text */}
       <div
         className="absolute bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none select-none"
         
       >
-        <span className="text-[100px] sm:text-[130px] lg:text-[180px] xl:text-[220px] font-bold text-white/[0.03] uppercase tracking-[0.15em]">
+        <span className="text-[100px] sm:text-[130px] lg:text-[180px] xl:text-[220px] font-bold text-black/[0.03] dark:text-white/[0.03] uppercase tracking-[0.15em]">
           OUR TEAM
         </span>
       </div>
@@ -52,7 +52,7 @@ export default function TeamSection() {
               </span>
             </div>
             <h2
-              className="text-white text-2xl md:text-3xl lg:text-4xl font-bold"
+              className="text-gray-900 dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold"
               
             >
               Building Team
@@ -75,7 +75,7 @@ export default function TeamSection() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {team.map((member, index) => (
             <AnimateOnScroll key={index} delay={index * 0.1}>
-              <div className="group relative overflow-hidden bg-[#161616] border border-[#2A2A2A] rounded-2xl hover:border-[#FFB800]/20 hover:shadow-[0_8px_30px_rgba(255,184,0,0.05)] transition-all duration-500">
+              <div className="group relative overflow-hidden bg-gray-50 dark:bg-[#161616] border border-gray-200 dark:border-[#2A2A2A] rounded-2xl hover:border-[#FFB800]/20 hover:shadow-[0_8px_30px_rgba(255,184,0,0.05)] transition-all duration-500">
                 {/* Image */}
                 <div className="relative h-64 overflow-hidden">
                   <Image
@@ -85,7 +85,7 @@ export default function TeamSection() {
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
                     unoptimized={true} // Allow external Unsplash URLs pasted by admin
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0C] via-transparent to-transparent opacity-50" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 dark:from-[#0C0C0C] via-transparent to-transparent opacity-50" />
 
                   {/* Social hover */}
                   <div className="absolute bottom-3 left-3 flex gap-2 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
@@ -104,7 +104,7 @@ export default function TeamSection() {
                 {/* Info */}
                 <div className="p-4">
                   <h3
-                    className="text-white text-base font-bold"
+                    className="text-gray-900 dark:text-white text-base font-bold"
                     
                   >
                     {member.name}
@@ -115,6 +115,11 @@ export default function TeamSection() {
                   >
                     {member.role}
                   </p>
+                  {member.description && (
+                    <p className="text-gray-600 dark:text-gray-400 text-xs mt-3 line-clamp-4 leading-relaxed">
+                      {member.description}
+                    </p>
+                  )}
                 </div>
               </div>
             </AnimateOnScroll>

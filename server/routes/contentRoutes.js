@@ -19,6 +19,18 @@ const {
   getSettingByKey,
   updateSetting,
   uploadImage,
+  getBoardDirectors,
+  createBoardDirector,
+  updateBoardDirector,
+  deleteBoardDirector,
+  getInvestors,
+  createInvestor,
+  updateInvestor,
+  deleteInvestor,
+  getPlantMachinery,
+  createPlantMachinery,
+  updatePlantMachinery,
+  deletePlantMachinery,
 } = require('../controllers/contentController');
 const {
   getProjectsByCategory,
@@ -59,6 +71,30 @@ router.route('/team')
 router.route('/team/:id')
   .put(protect, updateTeamMember)
   .delete(protect, deleteTeamMember);
+
+// Board Directors Routes
+router.route('/board-directors')
+  .get(getBoardDirectors)
+  .post(protect, createBoardDirector);
+router.route('/board-directors/:id')
+  .put(protect, updateBoardDirector)
+  .delete(protect, deleteBoardDirector);
+
+// Investors Routes
+router.route('/investors')
+  .get(getInvestors)
+  .post(protect, createInvestor);
+router.route('/investors/:id')
+  .put(protect, updateInvestor)
+  .delete(protect, deleteInvestor);
+
+// Plant and Machinery Routes
+router.route('/plant-machinery')
+  .get(getPlantMachinery)
+  .post(protect, createPlantMachinery);
+router.route('/plant-machinery/:id')
+  .put(protect, updatePlantMachinery)
+  .delete(protect, deletePlantMachinery);
 
 // Testimonials Routes
 router.route('/testimonials')

@@ -2,12 +2,16 @@ import Navbar from '@/components/Navbar';
 import HeroSection from '@/sections/HeroSection';
 import ContactStrip from '@/sections/ContactStrip';
 import VerticalsSection from '@/sections/VerticalsSection';
+import PlantMachinerySection from '@/sections/PlantMachinerySection';
 import ServicesCards from '@/sections/ServicesCards';
 import WhyChooseUs from '@/sections/WhyChooseUs';
 import EngineeringSolutions from '@/sections/EngineeringSolutions';
 import FeaturedProjects from '@/sections/FeaturedProjects';
 import VideoShowcase from '@/sections/VideoShowcase';
 import FAQSection from '@/sections/FAQSection';
+import InvestorSection from '@/sections/InvestorSection';
+import FinancialHighlightsSection from '@/sections/FinancialHighlightsSection';
+import BoardDirectorSection from '@/sections/BoardDirectorSection';
 import TeamSection from '@/sections/TeamSection';
 import TestimonialsSection from '@/sections/TestimonialsSection';
 import ContactCTA from '@/sections/ContactCTA';
@@ -22,11 +26,15 @@ export default function Home() {
         <ContactStrip />
         <ServicesCards />
         <VerticalsSection />
+        <PlantMachinerySection />
         <WhyChooseUs />
         <EngineeringSolutions />
         <FeaturedProjects />
         <VideoShowcase />
         <FAQSection />
+        <InvestorSection />
+        <FinancialHighlightsSection />
+        <BoardDirectorSection />
         <TeamSection />
         <TestimonialsSection />
         <ContactCTA />

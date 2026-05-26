@@ -47,7 +47,7 @@ export default function Footer() {
   const businessesList = weBuildLink?.dropdownItems?.[0]?.items?.slice(0, 6) || [];
 
   return (
-    <footer className="bg-[#0C0C0C] text-white py-16 font-poppins relative z-20">
+    <footer className="bg-gray-50 dark:bg-[#0C0C0C] text-gray-900 dark:text-white py-16 font-poppins relative z-20">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           
@@ -62,7 +62,7 @@ export default function Footer() {
                 const slug = item.toLowerCase().replace(/[^a-z0-9]+/g, '-');
                 return (
                   <li key={idx}>
-                    <Link href={`/we-are/${slug}`} className="text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
+                    <Link href={`/we-are/${slug}`} className="text-gray-600 dark:text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
                       {item}
                     </Link>
                   </li>
@@ -82,14 +82,14 @@ export default function Footer() {
                 const slug = item.toLowerCase().replace(/[^a-z0-9]+/g, '-');
                 return (
                   <li key={idx}>
-                    <Link href={`/we-build/${slug}`} className="text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
+                    <Link href={`/we-build/${slug}`} className="text-gray-600 dark:text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
                       {item}
                     </Link>
                   </li>
                 );
               })}
               <li>
-                <Link href="#we-build" className="text-[#FFB800] hover:text-white transition-colors text-sm font-semibold">
+                <Link href="#we-build" className="text-[#FFB800] hover:text-gray-900 dark:hover:text-white transition-colors text-sm font-semibold">
                   View All Businesses &rarr;
                 </Link>
               </li>
@@ -107,7 +107,7 @@ export default function Footer() {
                 const slug = item.toLowerCase().replace(/[^a-z0-9]+/g, '-');
                 return (
                   <li key={idx}>
-                    <Link href={`/newsroom/${slug}`} className="text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
+                    <Link href={`/newsroom/${slug}`} className="text-gray-600 dark:text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
                       {item}
                     </Link>
                   </li>
@@ -128,7 +128,7 @@ export default function Footer() {
                 const href = isLandmark ? '/landmark-projects/landmark' : '/landmark-projects/iconic';
                 return (
                   <li key={idx}>
-                    <Link href={href} className="text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
+                    <Link href={href} className="text-gray-600 dark:text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
                       {item}
                     </Link>
                   </li>
@@ -143,7 +143,7 @@ export default function Footer() {
               <h3 className="text-xl font-semibold mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Contact Us</h3>
               <div className="w-12 h-1 bg-[#FFB800]"></div>
             </div>
-            <div className="space-y-5 text-sm text-gray-400">
+            <div className="space-y-5 text-sm text-gray-600 dark:text-gray-400">
               
               {contactInfo.companyAddress && (
                 <div>
@@ -155,21 +155,21 @@ export default function Footer() {
 
               {(contactInfo.tollFreeNumber || contactInfo.availability) && (
                 <div>
-                  {contactInfo.tollFreeNumber && <p className="font-semibold text-white">Toll Free: <span className="font-normal text-gray-400">{contactInfo.tollFreeNumber}</span></p>}
+                  {contactInfo.tollFreeNumber && <p className="font-semibold text-gray-900 dark:text-white">Toll Free: <span className="font-normal text-gray-600 dark:text-gray-400">{contactInfo.tollFreeNumber}</span></p>}
                   {contactInfo.availability && <p>{contactInfo.availability}</p>}
                 </div>
               )}
 
               {(contactInfo.internationalNumber || contactInfo.internationalAvailability) && (
                 <div>
-                  {contactInfo.internationalNumber && <p className="font-semibold text-white">International No: <span className="font-normal text-gray-400">{contactInfo.internationalNumber}</span></p>}
+                  {contactInfo.internationalNumber && <p className="font-semibold text-gray-900 dark:text-white">International No: <span className="font-normal text-gray-600 dark:text-gray-400">{contactInfo.internationalNumber}</span></p>}
                   {contactInfo.internationalAvailability && <p>{contactInfo.internationalAvailability}</p>}
                 </div>
               )}
 
               {contactInfo.email && (
                 <div>
-                  <p className="font-semibold text-white">Email:</p>
+                  <p className="font-semibold text-gray-900 dark:text-white">Email:</p>
                   {contactInfo.email.split('/').map((em, i) => (
                     <a key={i} href={`mailto:${em.trim()}`} className="block hover:text-[#FFB800] transition-colors">{em.trim()}</a>
                   ))}
@@ -177,7 +177,7 @@ export default function Footer() {
               )}
 
               {contactInfo.tagline && (
-                <div className="pt-4 border-t border-gray-800 text-xs italic">
+                <div className="pt-4 border-t border-gray-200 dark:border-gray-800 text-xs italic">
                   {contactInfo.tagline.split('\n').map((line, i) => (
                     <p key={i}>{line}</p>
                   ))}
@@ -190,7 +190,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright Bar */}
-        <div className="mt-16 pt-6 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+        <div className="mt-16 pt-6 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
           <p>© {new Date().getFullYear()} S Kumar Infracons (India) Private Limited. All Rights Reserved.</p>
           <p>Designed with excellence and precision.</p>
         </div>
