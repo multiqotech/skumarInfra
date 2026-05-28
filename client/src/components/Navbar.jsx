@@ -38,10 +38,10 @@ export default function Navbar({ alwaysSolid = false }) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white/40 dark:bg-[#0C0C0C]/40 backdrop-blur-lg ${
         scrolled || alwaysSolid
-          ? 'bg-white/80 dark:bg-[#0C0C0C]/80 backdrop-blur-xl border-b border-black/5 dark:border-white/5 shadow-[0_10px_40px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.5)]'
-          : 'bg-transparent'
+          ? 'border-b border-black/5 dark:border-white/5 shadow-[0_10px_40px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.5)]'
+          : 'border-b border-transparent shadow-none'
       }`}
     >
       <div className="container-custom">

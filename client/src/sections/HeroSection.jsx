@@ -64,13 +64,15 @@ export default function HeroSection() {
               src={backgroundImages[currentBg]}
               alt="Construction site background"
               fill
-              className="object-cover opacity-[0.2] dark:opacity-[0.65]"
+              className="object-cover opacity-100 dark:opacity-[0.65]"
               priority
             />
           </motion.div>
         </AnimatePresence>
-        {/* Gradient for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 to-transparent dark:from-[#0C0C0C]/95 dark:via-[#0C0C0C]/60 dark:to-[#0C0C0C]/20" />
+        {/* Gradient and blur for text readability (Light Theme) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/10 to-transparent backdrop-blur-md [-webkit-mask-image:linear-gradient(to_right,black_40%,transparent_100%)] [mask-image:linear-gradient(to_right,black_40%,transparent_100%)] dark:hidden" />
+        {/* Gradient for text readability (Dark Theme) */}
+        <div className="absolute inset-0 hidden dark:block bg-gradient-to-r from-[#0C0C0C]/95 via-[#0C0C0C]/60 to-[#0C0C0C]/20" />
       </div>
 
       {/* Content */}
