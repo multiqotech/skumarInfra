@@ -48,7 +48,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="home" className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-[#0C0C0C]">
+    <section ref={sectionRef} id="home" className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-[#09090B]">
       {/* Background carousel */}
       <div ref={bgRef} className="absolute inset-[-20%] w-[140%] h-[140%]">
         <AnimatePresence initial={false}>
@@ -72,7 +72,7 @@ export default function HeroSection() {
         {/* Gradient and blur for text readability (Light Theme) */}
         <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/10 to-transparent backdrop-blur-md [-webkit-mask-image:linear-gradient(to_right,black_40%,transparent_100%)] [mask-image:linear-gradient(to_right,black_40%,transparent_100%)] dark:hidden" />
         {/* Gradient for text readability (Dark Theme) */}
-        <div className="absolute inset-0 hidden dark:block bg-gradient-to-r from-[#0C0C0C]/95 via-[#0C0C0C]/60 to-[#0C0C0C]/20" />
+        <div className="absolute inset-0 hidden dark:block bg-gradient-to-r from-[#09090B]/95 via-[#09090B]/60 to-[#09090B]/20" />
       </div>
 
       {/* Content */}
@@ -98,7 +98,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold leading-[1.08] mb-3 text-gray-900 dark:text-white drop-shadow-xl tracking-tight"
+            className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold leading-[1.08] mb-3 text-zinc-900 dark:text-white drop-shadow-xl tracking-tight"
           >
             Comprehensive{' '}
             <span className="text-[#FFB800]">Construction</span>{' '}
@@ -109,7 +109,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-gray-700 dark:text-white/80 text-[15px] lg:text-[16px] leading-relaxed mb-5 max-w-lg drop-shadow-md"
+            className="text-zinc-700 dark:text-white/80 text-[15px] lg:text-[16px] leading-relaxed mb-5 max-w-lg drop-shadow-md"
           >
             {heroData.subtext}
           </motion.p>
@@ -122,15 +122,15 @@ export default function HeroSection() {
             className="flex items-center gap-4 mb-6"
           >
             <div className="w-10 h-10 bg-[#FFB800] rounded-full flex items-center justify-center">
-              <HiPhone className="text-[#0C0C0C] text-md" />
+              <HiPhone className="text-[#09090B] text-md" />
             </div>
             <div>
-              <p className="text-gray-500 dark:text-white/70 text-[10px] uppercase tracking-[0.2em]">
+              <p className="text-zinc-500 dark:text-white/70 text-[10px] uppercase tracking-[0.2em]">
                 Call Us Anytime
               </p>
               <a
                 href={`tel:${phoneNumber.replace(/\s/g, '')}`}
-                className="text-gray-900 dark:text-white text-xl font-bold hover:text-[#FFB800] transition-colors"
+                className="text-zinc-900 dark:text-white text-xl font-bold hover:text-[#FFB800] transition-colors"
               >
                 {phoneNumber}
               </a>
@@ -147,7 +147,7 @@ export default function HeroSection() {
               {heroData.cta}
               <HiArrowRight />
             </a>
-            <a href="#projects" className="btn-outline !text-gray-900 !border-gray-300 hover:!bg-gray-100 dark:!text-white dark:!border-white/30 dark:hover:!bg-white/5">
+            <a href="#projects" className="btn-outline !text-zinc-900 !border-gray-300 hover:!bg-zinc-100 dark:!text-white dark:!border-white/30 dark:hover:!bg-white/5">
               VIEW PROJECTS
             </a>
           </motion.div>
@@ -186,7 +186,7 @@ export default function HeroSection() {
           <path
             d="M0,0 C300,120 900,120 1200,0 L1200,120 L0,120 Z"
             fill="currentColor"
-            className="text-[#FFFDF9] dark:text-[#111111]"
+            className="text-[#FAFAFA] dark:text-[#09090B]"
           />
           {/* Yellow top stroke only */}
           <path

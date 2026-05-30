@@ -5,9 +5,6 @@ import { getAuthHeader, uploadFileToServer } from '../utils/api';
 
 const WE_ARE_PAGES = [
   { id: 'our-company', name: 'Our Company', itemType: 'section' },
-  { id: 'our-global-presence', name: 'Our Global Presence', itemType: 'location' },
-  { id: 'our-unique-capabilities', name: 'Our Unique Capabilities', itemType: 'section' },
-  { id: 'our-technology-innovation-centres', name: 'Our Innovation Centres', itemType: 'card' },
 ];
 
 export default function WeAreManager({ showFeedback }) {

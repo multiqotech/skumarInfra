@@ -17,7 +17,7 @@ const getContactInfo = async (req, res) => {
 // Update Contact Info
 const updateContactInfo = async (req, res) => {
   try {
-    const { companyAddress, tollFreeNumber, availability, internationalNumber, internationalAvailability, email, tagline } = req.body;
+    const { companyAddress, tollFreeNumber, availability, internationalNumber, internationalAvailability, email, tagline, linkedin, twitter, facebook, instagram, qrCodeImage } = req.body;
     let info = await ContactInfo.findOne();
     
     if (info) {
@@ -28,6 +28,11 @@ const updateContactInfo = async (req, res) => {
       info.internationalAvailability = internationalAvailability !== undefined ? internationalAvailability : info.internationalAvailability;
       info.email = email !== undefined ? email : info.email;
       info.tagline = tagline !== undefined ? tagline : info.tagline;
+      info.linkedin = linkedin !== undefined ? linkedin : info.linkedin;
+      info.twitter = twitter !== undefined ? twitter : info.twitter;
+      info.facebook = facebook !== undefined ? facebook : info.facebook;
+      info.instagram = instagram !== undefined ? instagram : info.instagram;
+      info.qrCodeImage = qrCodeImage !== undefined ? qrCodeImage : info.qrCodeImage;
       
       const updatedInfo = await info.save();
       res.json(updatedInfo);

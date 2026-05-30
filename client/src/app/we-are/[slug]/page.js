@@ -8,6 +8,13 @@ import CardLayout from '../components/CardLayout';
 import LocationLayout from '../components/LocationLayout';
 import GalleryLayout from '../components/GalleryLayout';
 import OfficeLayout from '../components/OfficeLayout';
+import BoardDirectorSection from '@/sections/BoardDirectorSection';
+import TeamSection from '@/sections/TeamSection';
+import VideoShowcase from '@/sections/VideoShowcase';
+import WhyChooseUs from '@/sections/WhyChooseUs';
+import VerticalsSection from '@/sections/VerticalsSection';
+import TestimonialsSection from '@/sections/TestimonialsSection';
+import FAQSection from '@/sections/FAQSection';
 
 // Define the layout mapping based on the slug
 const LAYOUT_MAP = {
@@ -32,30 +39,147 @@ async function getPageData(slug) {
   return weAreData[slug];
 }
 
+async function getSubsidiaries() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/subsidiaries`, { next: { revalidate: 60 } });
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch (error) {
+    console.error("Error fetching subsidiaries:", error);
+  }
+  return [];
+}
+
 export default async function WeArePage({ params }) {
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
   
   if (slug === 'our-businesses') {
-    // Generate page data dynamically from weBuildData
-    const items = Object.entries(weBuildData).map(([key, data]) => ({
-      id: key,
-      title: data.title,
-      description: data.tagline || data.description.substring(0, 100) + '...',
-      image: (data.projects && data.projects.length > 0) ? data.projects[0].image : data.heroImage,
-      link: `/we-build/${key}`
+    const subsidiaries = await getSubsidiaries();
+    const subsidiaryItems = subsidiaries.map(sub => ({
+      id: sub._id,
+      title: sub.name,
+      description: sub.description,
+      image: sub.image,
+      link: sub.link
     }));
 
-    const businessData = {
-      title: 'Our Businesses',
+    return (
+      <main className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090B]">
+        <Navbar />
+        
+        {/* Simple Page Header */}
+        <section className="relative h-[40vh] min-h-[300px] w-full flex items-center justify-center overflow-hidden pt-20">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://images.unsplash.com/photo-1448630360428-65456885c650?w=1920&h=600&fit=crop"
+              alt="Our Businesses"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/60 dark:bg-black/80" />
+          </div>
+          <div className="container-custom relative z-10 text-center text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+              Our <span className="text-[#FFB800]">Businesses</span>
+            </h1>
+            <p className="text-lg text-zinc-300 max-w-2xl mx-auto">
+              Diverse Capabilities, Singular Focus
+            </p>
+          </div>
+        </section>
+
+        <VerticalsSection />
+
+        {subsidiaryItems.length > 0 && (
+          <section className="py-24 bg-[#FAFAFA] dark:bg-[#09090B]">
+            <div className="container-custom">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-white" style={{ fontFamily: 'var(--font-heading)' }}>
+                  Our <span className="text-[#FFB800]">Subsidiaries</span>
+                </h2>
+                <div className="w-24 h-1 bg-[#FFB800] mx-auto mt-6" />
+              </div>
+              <CardLayout items={subsidiaryItems} />
+            </div>
+          </section>
+        )}
+        
+        <Footer />
+      </main>
+    );
+  }
+
+  if (slug === 'board-of-directors') {
+    return (
+      <main className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090B]">
+        <Navbar />
+        <div className="pt-[70px]">
+           <BoardDirectorSection />
+        </div>
+        <Footer />
+      </main>
+    );
+  }
+
+  if (slug === 'our-team') {
+    return (
+      <main className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090B]">
+        <Navbar />
+        <div className="pt-[70px]">
+           <TeamSection />
+        </div>
+        <Footer />
+      </main>
+    );
+  }
+
+  if (slug === 'our-subsidiary') {
+    const subsidiaries = await getSubsidiaries();
+    const items = subsidiaries.map(sub => ({
+      id: sub._id,
+      title: sub.name,
+      description: sub.description,
+      image: sub.image,
+      link: sub.link
+    }));
+
+    const subsidiaryData = {
+      title: 'Our Subsidiary',
       pageData: {
-        tagline: 'Diverse Capabilities, Singular Focus',
-        heroImage: 'https://images.unsplash.com/photo-1448630360428-65456885c650?w=1600&h=600&fit=crop',
+        tagline: 'Expanding our horizons with strategic partnerships and group companies.',
+        heroImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&h=600&fit=crop',
         items
       }
     };
 
-    return <WeAreRenderer data={businessData} layoutType="card" />;
+    return <WeAreRenderer data={subsidiaryData} layoutType="card" />;
+  }
+
+  if (slug === 'about-us') {
+    const companyData = await getPageData('our-company');
+    const missionVisionItems = companyData?.pageData?.items?.filter(item => 
+      item.title && (item.title.toLowerCase().includes('vision') || item.title.toLowerCase().includes('mission'))
+    ) || [];
+
+    return (
+      <main className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090B]">
+        <Navbar />
+        <div className="pt-[70px]">
+           <VideoShowcase />
+           <WhyChooseUs />
+           {missionVisionItems.length > 0 && (
+             <div className="container-custom py-16">
+               <SectionLayout items={missionVisionItems} />
+             </div>
+           )}
+           <VerticalsSection />
+           <TestimonialsSection />
+           <FAQSection />
+        </div>
+        <Footer />
+      </main>
+    );
   }
 
   const layoutType = LAYOUT_MAP[slug];
@@ -76,7 +200,7 @@ function WeAreRenderer({ data, layoutType }) {
   const pageInfo = data.pageData || {};
 
   return (
-    <main className="min-h-screen bg-[#F5F1EA]">
+    <main className="min-h-screen bg-[#FAFAFA]">
       <Navbar />
 
       {/* Hero Section */}

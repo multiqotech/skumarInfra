@@ -52,9 +52,12 @@ export const navLinks = [
     dropdownItems: [
       'Our Company',
       'Our Businesses',
-      'Our Global Presence',
-      'Our Unique Capabilities',
-      'Our Innovation Centres',
+      'About Us',
+      'Board of Directors',
+      'Our Team',
+      'Our Subsidiary',
+      'Corporate Excellence',
+      'CSR & Sustainability',
     ]
   },
   {
@@ -63,8 +66,9 @@ export const navLinks = [
     hasDropdown: true,
     dropdownLayout: 'simple',
     dropdownItems: [
-      'Landmarks in the making',
-      'Iconic Projects',
+      'Ongoing Projects',
+      'Completed Projects',
+      'Awarded Projects',
     ]
   },
   {
@@ -87,6 +91,11 @@ export const navLinks = [
       'Visit career portal',
     ]
   },
+  {
+    label: 'Contact us',
+    href: '/contact-us',
+    hasDropdown: false
+  }
 ];
 
 export const phoneNumber = '+91 98765 43210';

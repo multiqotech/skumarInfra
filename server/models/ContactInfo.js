@@ -7,7 +7,12 @@ const contactInfoSchema = new mongoose.Schema({
   internationalNumber: { type: String, default: '' },
   internationalAvailability: { type: String, default: '' },
   email: { type: String, default: '' },
-  tagline: { type: String, default: '' }
+  tagline: { type: String, default: '' },
+  linkedin: { type: String, default: '' },
+  twitter: { type: String, default: '' },
+  facebook: { type: String, default: '' },
+  instagram: { type: String, default: '' },
+  qrCodeImage: { type: String, default: '' }
 }, {
   timestamps: true
 });

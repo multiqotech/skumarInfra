@@ -23,10 +23,10 @@ const getAllProjects = async (req, res) => {
 // Get all projects by projectType
 const getProjectsByType = async (req, res) => {
   try {
-    // Expected types: 'Landmark' or 'Iconic'
     const typeMap = {
-      'landmark': 'Landmark',
-      'iconic': 'Iconic'
+      'ongoing': 'Ongoing',
+      'completed': 'Completed',
+      'awarded': 'Awarded'
     };
     const reqType = req.params.type.toLowerCase();
     const projectType = typeMap[reqType];
@@ -68,7 +68,7 @@ const createProject = async (req, res) => {
     const project = new Project({
       title,
       category,
-      projectType: projectType || 'Normal',
+      projectType: projectType || 'Ongoing',
       image,
       description,
       timeToBuild,

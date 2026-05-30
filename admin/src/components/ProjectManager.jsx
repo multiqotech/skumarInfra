@@ -3,33 +3,10 @@ import axios from 'axios';
 import { Plus, Edit2, Trash2, Loader2, Upload } from 'lucide-react';
 import { getAuthHeader, uploadFileToServer } from '../utils/api';
 
-const CATEGORIES = [
-  { id: 'airports', name: 'Airports' },
-  { id: 'bridges', name: 'Bridges' },
-  { id: 'defence-installations', name: 'Defence Installations' },
-  { id: 'digital-energy-solutions', name: 'Digital Energy Solutions' },
-  { id: 'factories', name: 'Factories' },
-  { id: 'minerals-metals', name: 'Minerals Metals' },
-  { id: 'hospitals', name: 'Hospitals' },
-  { id: 'housing', name: 'Housing' },
-  { id: 'hydel-projects', name: 'Hydel Projects' },
-  { id: 'metros', name: 'Metros' },
-  { id: 'nuclear-plants', name: 'Nuclear Plants' },
-  { id: 'office-spaces', name: 'Office Spaces' },
-  { id: 'ports', name: 'Ports' },
-  { id: 'power-transmission-distribution-infrastructure', name: 'Power Transmission Distribution Infrastructure' },
-  { id: 'public-spaces', name: 'Public Spaces' },
-  { id: 'railways', name: 'Railways' },
-  { id: 'renewables', name: 'Renewables' },
-  { id: 'smart-world-solutions', name: 'Smart World Solutions' },
-  { id: 'transportation-infrastructure', name: 'Transportation Infrastructure' },
-  { id: 'underground-structures', name: 'Underground Structures' },
-  { id: 'unique-structures', name: 'Unique Structures' },
-  { id: 'water-infrastructure', name: 'Water Infrastructure' },
-];
-
+// CATEGORIES will be fetched dynamically from API
 export default function ProjectManager({ showFeedback }) {
-  const [selectedCategory, setSelectedCategory] = useState(CATEGORIES[0].id);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
@@ -38,12 +15,13 @@ export default function ProjectManager({ showFeedback }) {
   const [form, setForm] = useState({
     id: "",
     title: "",
+    category: "",
     description: "",
     timeToBuild: "",
     engineers: "",
     location: "",
     image: "",
-    projectType: "Normal"
+    projectType: "Ongoing"
   });
 
   const [projectFile, setProjectFile] = useState(null);
@@ -51,13 +29,37 @@ export default function ProjectManager({ showFeedback }) {
   const [uploadingImage, setUploadingImage] = useState(false);
 
   useEffect(() => {
-    fetchProjects();
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    if (selectedCategory) {
+      fetchProjects();
+    }
   }, [selectedCategory]);
+
+  const fetchCategories = async () => {
+    try {
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`);
+      setCategories(res.data);
+      if (res.data.length > 0) {
+        setSelectedCategory("all");
+        // default form category to first category if empty
+        setForm(prev => ({ ...prev, category: res.data[0].slug }));
+      }
+    } catch (err) {
+      console.error(err);
+      showFeedback("Failed to fetch categories", "error");
+    }
+  };
 
   const fetchProjects = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/projects/category/${selectedCategory}`);
+      const url = selectedCategory === "all" 
+        ? `${process.env.NEXT_PUBLIC_API_URL}/api/projects`
+        : `${process.env.NEXT_PUBLIC_API_URL}/api/projects/category/${selectedCategory}`;
+      const res = await axios.get(url);
       setProjects(res.data);
     } catch (err) {
       console.error(err);
@@ -126,7 +128,7 @@ export default function ProjectManager({ showFeedback }) {
 
       const payload = {
         title: form.title,
-        category: selectedCategory,
+        category: form.category || (categories.length > 0 ? categories[0].slug : ""),
         description: form.description,
         timeToBuild: form.timeToBuild,
         engineers: form.engineers,
@@ -144,7 +146,7 @@ export default function ProjectManager({ showFeedback }) {
       }
 
       handleRemoveFile();
-      setForm({ id: "", title: "", description: "", timeToBuild: "", engineers: "", location: "", image: "", projectType: "Normal" });
+      setForm({ id: "", title: "", category: categories.length > 0 ? categories[0].slug : "", description: "", timeToBuild: "", engineers: "", location: "", image: "", projectType: "Ongoing" });
       setIsEditing(false);
       fetchProjects();
     } catch (err) {
@@ -158,12 +160,13 @@ export default function ProjectManager({ showFeedback }) {
     setForm({
       id: project._id,
       title: project.title,
+      category: project.category || (categories.length > 0 ? categories[0].slug : ""),
       description: project.description || "",
       timeToBuild: project.timeToBuild || "",
       engineers: project.engineers || "",
       location: project.location || "",
       image: project.image,
-      projectType: project.projectType || "Normal"
+      projectType: project.projectType || "Ongoing"
     });
     setProjectPreview(project.image);
     setProjectFile(null);
@@ -187,7 +190,7 @@ export default function ProjectManager({ showFeedback }) {
 
   const cancelEdit = () => {
     setIsEditing(false);
-    setForm({ id: "", title: "", description: "", timeToBuild: "", engineers: "", location: "", image: "", projectType: "Normal" });
+    setForm({ id: "", title: "", category: categories.length > 0 ? categories[0].slug : "", description: "", timeToBuild: "", engineers: "", location: "", image: "", projectType: "Ongoing" });
     handleRemoveFile();
   };
 
@@ -205,8 +208,9 @@ export default function ProjectManager({ showFeedback }) {
             }}
             className="bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-[var(--color-yellow)]"
           >
-            {CATEGORIES.map(cat => (
-              <option key={cat.id} value={cat.id}>{cat.name}</option>
+            <option value="all">All Projects</option>
+            {categories.map(cat => (
+              <option key={cat.slug} value={cat.slug}>{cat.name}</option>
             ))}
           </select>
         </div>
@@ -218,7 +222,9 @@ export default function ProjectManager({ showFeedback }) {
             <Plus className="h-5 w-5 text-[var(--color-yellow)]" />
             {isEditing ? "Edit Project" : "Add New Project"}
           </h3>
-          <p className="text-sm text-gray-400 mt-1">Add projects for the {CATEGORIES.find(c => c.id === selectedCategory)?.name} category.</p>
+          <p className="text-sm text-gray-400 mt-1">
+            {selectedCategory === "all" ? "Add projects." : `Add projects for the ${categories.find(c => c.slug === selectedCategory)?.name} category.`}
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
@@ -233,6 +239,19 @@ export default function ProjectManager({ showFeedback }) {
                 className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2.5 focus:outline-none focus:border-[var(--color-yellow)] transition-colors"
                 placeholder="e.g. Iconic Bridge Project I"
               />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1">Category <span className="text-red-500">*</span></label>
+              <select
+                value={form.category}
+                onChange={(e) => setForm({ ...form, category: e.target.value })}
+                className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2.5 focus:outline-none focus:border-[var(--color-yellow)] transition-colors appearance-none"
+                required
+              >
+                {categories.map(cat => (
+                  <option key={cat.slug} value={cat.slug}>{cat.name}</option>
+                ))}
+              </select>
             </div>
             <div>
               <label className="block text-sm font-medium mb-1">Location</label>
@@ -251,9 +270,9 @@ export default function ProjectManager({ showFeedback }) {
                 onChange={(e) => setForm({ ...form, projectType: e.target.value })}
                 className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2.5 focus:outline-none focus:border-[var(--color-yellow)] transition-colors appearance-none"
               >
-                <option value="Normal">Normal</option>
-                <option value="Landmark">Landmark</option>
-                <option value="Iconic">Iconic</option>
+                <option value="Ongoing">Ongoing</option>
+                <option value="Completed">Completed</option>
+                <option value="Awarded">Awarded</option>
               </select>
             </div>
             <div>
@@ -338,7 +357,9 @@ export default function ProjectManager({ showFeedback }) {
 
       <div className="bg-[var(--color-dark-card)] rounded-xl border border-[var(--color-dark-border)] overflow-hidden">
         <div className="p-6 border-b border-[var(--color-dark-border)] flex justify-between items-center">
-          <h3 className="text-lg font-semibold">Current Projects in {CATEGORIES.find(c => c.id === selectedCategory)?.name}</h3>
+          <h3 className="text-lg font-semibold">
+            {selectedCategory === "all" ? "All Projects" : `Current Projects in ${categories.find(c => c.slug === selectedCategory)?.name}`}
+          </h3>
         </div>
         
         {loading ? (
@@ -362,7 +383,7 @@ export default function ProjectManager({ showFeedback }) {
                   <div className="flex justify-between items-start mb-2">
                     <h4 className="text-lg font-bold text-white flex items-center gap-2">
                       {project.title}
-                      {project.projectType && project.projectType !== 'Normal' && (
+                      {project.projectType && (
                         <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-[var(--color-yellow)]/20 text-[var(--color-yellow)] rounded">
                           {project.projectType}
                         </span>

@@ -17,9 +17,11 @@ import PlantMachineryManager from "../components/PlantMachineryManager";
 import FinancialHighlightsManager from "../components/FinancialHighlightsManager";
 import VideoManager from "../components/VideoManager";
 import ProjectManager from "../components/ProjectManager";
+import CategoryManager from "../components/CategoryManager";
 import WeAreManager from "../components/WeAreManager";
 import NewsroomManager from "../components/NewsroomManager";
 import ContactInfoManager from "../components/ContactInfoManager";
+import SubsidiaryManager from "../components/SubsidiaryManager";
 import CareerDashboard from "../components/career/CareerDashboard";
 import JobManager from "../components/career/JobManager";
 import ApplicationManager from "../components/career/ApplicationManager";
@@ -74,7 +76,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--color-dark)] flex flex-col md:flex-row">
+    <div className="h-screen w-full overflow-hidden bg-[#09090b] flex flex-col md:flex-row">
       
       {/* Feedback Banner */}
       {message.text && (
@@ -100,23 +102,90 @@ export default function Dashboard() {
       )}
 
       {/* Sidebar */}
-      <aside className="w-full md:w-64 bg-[var(--color-dark-card)] border-r border-[var(--color-dark-border)] flex flex-col hidden md:flex min-h-screen relative z-10">
-        <div className="p-6 border-b border-[var(--color-dark-border)]">
-          <h1 className="text-2xl font-bold text-white tracking-wider" style={{ fontFamily: 'var(--font-heading)' }}>
-            SK <span className="text-[var(--color-yellow)]">ADMIN</span>
-          </h1>
+      <aside className="w-full md:w-72 bg-[#09090b] border-r border-white/5 flex flex-col hidden md:flex h-screen relative z-10 shadow-2xl">
+        <div className="p-6 border-b border-white/5 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-gradient-to-br from-[#ECA500] to-[#C68900] rounded-lg flex items-center justify-center shadow-lg shadow-yellow-900/20">
+              <span className="text-[#09090b] font-bold text-sm">SK</span>
+            </div>
+            <h1 className="text-xl font-bold text-white tracking-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+              Workspace
+            </h1>
+          </div>
         </div>
         
-        <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
+        <nav className="flex-1 px-4 py-6 space-y-1 overflow-y-auto scrollbar-hide">
+          <div className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3 px-3">Main</div>
           {[
             { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
-            { id: "projects", label: "We Build (Projects)", icon: Construction },
-            { id: "we-are", label: "We Are (Pages)", icon: LayoutDashboard },
+          ].map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setActiveTab(item.id)}
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all text-sm font-medium ${
+                  activeTab === item.id 
+                    ? "bg-white/10 text-white shadow-sm ring-1 ring-white/10" 
+                    : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
+                }`}
+              >
+                <Icon className={`h-4 w-4 ${activeTab === item.id ? "text-[#ECA500]" : "text-zinc-500"}`} />
+                {item.label}
+              </button>
+            );
+          })}
+
+          <div className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mt-8 mb-3 px-3">Content</div>
+          {[
+            { id: "categories", label: "Categories", icon: LayoutDashboard },
+            { id: "projects", label: "Projects", icon: Construction },
+            { id: "we-are", label: "Pages", icon: LayoutDashboard },
             { id: "newsroom", label: "Newsroom", icon: Newspaper },
-            { id: "career-dashboard", label: "Career Dashboard", icon: BarChart3 },
-            { id: "career-jobs", label: "Career Jobs", icon: Briefcase },
-            { id: "career-applications", label: "Career Applications", icon: FileText },
-            { id: "career-candidates", label: "Career Candidates", icon: UserPlus },
+          ].map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setActiveTab(item.id)}
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all text-sm font-medium ${
+                  activeTab === item.id 
+                    ? "bg-white/10 text-white shadow-sm ring-1 ring-white/10" 
+                    : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
+                }`}
+              >
+                <Icon className={`h-4 w-4 ${activeTab === item.id ? "text-[#ECA500]" : "text-zinc-500"}`} />
+                {item.label}
+              </button>
+            );
+          })}
+
+          <div className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mt-8 mb-3 px-3">Careers</div>
+          {[
+            { id: "career-dashboard", label: "Overview", icon: BarChart3 },
+            { id: "career-jobs", label: "Jobs", icon: Briefcase },
+            { id: "career-applications", label: "Applications", icon: FileText },
+            { id: "career-candidates", label: "Candidates", icon: UserPlus },
+          ].map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setActiveTab(item.id)}
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all text-sm font-medium ${
+                  activeTab === item.id 
+                    ? "bg-white/10 text-white shadow-sm ring-1 ring-white/10" 
+                    : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
+                }`}
+              >
+                <Icon className={`h-4 w-4 ${activeTab === item.id ? "text-[#ECA500]" : "text-zinc-500"}`} />
+                {item.label}
+              </button>
+            );
+          })}
+
+          <div className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mt-8 mb-3 px-3">Company Info</div>
+          {[
             { id: "contact-info", label: "Contact Info", icon: Phone },
             { id: "plant-machinery", label: "Plants & Machinery", icon: Truck },
             { id: "faqs", label: "FAQs", icon: HelpCircle },
@@ -124,6 +193,7 @@ export default function Dashboard() {
             { id: "investors", label: "Investors", icon: Users },
             { id: "board-directors", label: "Board of Directors", icon: Users },
             { id: "team", label: "Team", icon: Users },
+            { id: "subsidiary", label: "Our Subsidiary", icon: Users },
             { id: "testimonials", label: "Testimonials", icon: MessageSquare },
             { id: "video", label: "Video Showcase", icon: Video },
             { id: "stats", label: "Company Stats", icon: Trophy },
@@ -133,37 +203,47 @@ export default function Dashboard() {
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all text-sm font-medium ${
                   activeTab === item.id 
-                    ? "bg-[var(--color-yellow)] text-black font-semibold shadow-[0_0_15px_rgba(255,184,0,0.2)]" 
-                    : "text-gray-400 hover:bg-[var(--color-dark)] hover:text-white"
+                    ? "bg-white/10 text-white shadow-sm ring-1 ring-white/10" 
+                    : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
                 }`}
               >
-                <Icon className="h-5 w-5" />
+                <Icon className={`h-4 w-4 ${activeTab === item.id ? "text-[#ECA500]" : "text-zinc-500"}`} />
                 {item.label}
               </button>
             );
           })}
         </nav>
-
-        <div className="p-4 border-t border-[var(--color-dark-border)]">
-          <div className="mb-4 px-4 py-3 bg-[var(--color-dark)] rounded-xl border border-[var(--color-dark-border)]">
-            <p className="text-sm text-gray-400">Logged in as</p>
-            <p className="font-semibold text-white truncate">{admin?.email}</p>
-          </div>
-          <button 
-            onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-red-500/10 text-red-500 hover:bg-red-500/20 rounded-xl transition-colors font-medium"
-          >
-            <LogOut className="h-4 w-4" />
-            Logout
-          </button>
-        </div>
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 max-h-screen overflow-y-auto">
-        <div className="p-6 md:p-10 max-w-6xl mx-auto pb-24">
+      <div className="flex-1 flex flex-col relative h-screen overflow-hidden bg-[#09090b]">
+        
+        {/* Topbar */}
+        <header className="h-[72px] bg-[#09090b]/80 backdrop-blur-md border-b border-white/5 flex items-center justify-between px-8 shrink-0 z-20 sticky top-0">
+          <div className="flex items-center gap-4">
+            <div className="text-zinc-400 text-sm font-medium uppercase tracking-wider">
+              {activeTab.replace(/-/g, ' ')}
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 px-3 py-1.5 rounded-full bg-white/5 ring-1 ring-white/10">
+              <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-zinc-700 to-zinc-500" />
+              <span className="text-sm font-medium text-zinc-300">Admin</span>
+            </div>
+            <button 
+              onClick={handleLogout}
+              className="p-2 text-zinc-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors flex items-center gap-2"
+            >
+              <LogOut className="h-4 w-4" />
+              <span className="text-sm font-medium hidden sm:block">Logout</span>
+            </button>
+          </div>
+        </header>
+
+        <main className="flex-1 overflow-y-auto overflow-x-hidden">
+          <div className="max-w-7xl mx-auto p-6 md:p-10 pb-24">
           
           <header className="mb-10 flex justify-between items-end">
             <div>
@@ -186,6 +266,13 @@ export default function Dashboard() {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-1">Projects</h3>
                 <p className="text-sm text-gray-400">Manage 'We Build' portfolio.</p>
+              </div>
+              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
+                <div className="h-12 w-12 bg-[#FFB800]/10 rounded-xl flex items-center justify-center mb-4">
+                  <LayoutDashboard className="h-6 w-6 text-[var(--color-yellow)]" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-1">Categories</h3>
+                <p className="text-sm text-gray-400">Manage 'We Build' categories.</p>
               </div>
               <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
                 <div className="h-12 w-12 bg-[#FFB800]/10 rounded-xl flex items-center justify-center mb-4">
@@ -272,9 +359,11 @@ export default function Dashboard() {
           {activeTab === "investors" && <InvestorManager showFeedback={showFeedback} />}
           {activeTab === "board-directors" && <BoardDirectorManager showFeedback={showFeedback} />}
           {activeTab === "team" && <TeamManager showFeedback={showFeedback} />}
+          {activeTab === "subsidiary" && <SubsidiaryManager showFeedback={showFeedback} />}
           {activeTab === "testimonials" && <TestimonialManager showFeedback={showFeedback} />}
           { activeTab === "video" && <VideoManager showFeedback={showFeedback} /> }
           { activeTab === "stats" && <StatsManager showFeedback={showFeedback} /> }
+          { activeTab === "categories" && <CategoryManager showFeedback={showFeedback} /> }
           { activeTab === "projects" && <ProjectManager showFeedback={showFeedback} /> }
           { activeTab === "we-are" && <WeAreManager showFeedback={showFeedback} /> }
           { activeTab === "newsroom" && <NewsroomManager showFeedback={showFeedback} /> }
@@ -288,7 +377,7 @@ export default function Dashboard() {
 
         </div>
       </main>
-
+      </div>
     </div>
   );
 }

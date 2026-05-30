@@ -19,41 +19,43 @@ async function getLandmarkProjects(type) {
 
 export default async function LandmarkProjectsPage({ params }) {
   const resolvedParams = await params;
-  const type = resolvedParams.type; // 'landmark' or 'iconic'
+  const type = resolvedParams.type;
 
-  if (type !== 'landmark' && type !== 'iconic') {
+  if (type !== 'ongoing' && type !== 'completed' && type !== 'awarded') {
     notFound();
   }
 
   let projects = await getLandmarkProjects(type);
-  const isLandmark = type === 'landmark';
 
   if (!projects || projects.length === 0) {
-    const fallbackProjects = [];
-    const targetType = isLandmark ? 'Landmark' : 'Iconic';
-    Object.keys(weBuildData).forEach((catSlug) => {
-      weBuildData[catSlug].projects.forEach((proj, idx) => {
-        if (proj.projectType && proj.projectType === targetType) {
-          fallbackProjects.push({
-            ...proj,
-            _id: `${catSlug}-${idx}`, // Dummy ID
-            category: catSlug,
-          });
-        }
-      });
-    });
-    projects = fallbackProjects;
+    // Basic fallback if DB is empty
+    projects = [];
   }
-  const pageTitle = isLandmark ? 'Landmarks in the Making' : 'Iconic Projects';
-  const pageTagline = isLandmark 
-    ? 'Building the future with groundbreaking infrastructure across the globe.' 
-    : 'Masterpieces of engineering that stand the test of time.';
-  const heroImage = isLandmark 
-    ? 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&h=800&fit=crop'
-    : 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=800&fit=crop';
+  
+  const typeLabels = {
+    'ongoing': { 
+      title: 'Ongoing Projects', 
+      tagline: 'Building the future with groundbreaking infrastructure across the globe.',
+      heroImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&h=800&fit=crop'
+    },
+    'completed': { 
+      title: 'Completed Projects', 
+      tagline: 'Masterpieces of engineering that stand the test of time.',
+      heroImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=800&fit=crop'
+    },
+    'awarded': { 
+      title: 'Awarded Projects', 
+      tagline: 'Upcoming landmark projects poised to shape tomorrow.',
+      heroImage: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&h=800&fit=crop'
+    }
+  };
+
+  const pageTitle = typeLabels[type].title;
+  const pageTagline = typeLabels[type].tagline;
+  const heroImage = typeLabels[type].heroImage;
 
   return (
-    <main className="min-h-screen bg-[#F5F1EA]">
+    <main className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090B]">
       <Navbar />
 
       {/* Hero Section */}
@@ -68,7 +70,7 @@ export default async function LandmarkProjectsPage({ params }) {
           <div className="inline-flex items-center gap-4 mb-4 md:mb-6">
             <div className="w-12 h-1 bg-[#FFB800]" />
             <span className="text-[#FFB800] uppercase tracking-[0.3em] font-bold text-xs md:text-sm">
-              {isLandmark ? 'Ongoing Projects' : 'Completed Masterpieces'}
+              {pageTitle}
             </span>
             <div className="w-12 h-1 bg-[#FFB800]" />
           </div>
@@ -90,14 +92,14 @@ export default async function LandmarkProjectsPage({ params }) {
       <section className="py-20 md:py-32">
         <div className="container-custom">
           {!projects || projects.length === 0 ? (
-            <div className="text-center py-20 bg-white rounded-3xl border border-black/5 shadow-xl">
-              <h3 className="text-2xl font-bold text-[#0C0C0C] mb-4" style={{ fontFamily: 'var(--font-heading)' }}>No {isLandmark ? 'Landmark' : 'Iconic'} Projects Found</h3>
-              <p className="text-gray-500">More projects are being added. Check back soon.</p>
+            <div className="text-center py-20 bg-white dark:bg-[#18181B] rounded-3xl border border-black/5 dark:border-white/5 shadow-xl">
+              <h3 className="text-2xl font-bold text-[#09090B] dark:text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>No {pageTitle} Found</h3>
+              <p className="text-zinc-500 dark:text-zinc-400">More projects are being added. Check back soon.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project) => (
-                <div key={project._id} className="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-black/5 flex flex-col h-full">
+                <div key={project._id} className="group block bg-white dark:bg-[#18181B] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-black/5 dark:border-white/5 flex flex-col h-full">
                   <div className="relative w-full h-64 overflow-hidden">
                     <Image
                       src={project.image}
@@ -121,18 +123,18 @@ export default async function LandmarkProjectsPage({ params }) {
                   
                   <div className="p-6 md:p-8 flex-1 flex flex-col">
                     {project.location && (
-                      <div className="flex items-center gap-2 text-gray-500 mb-4 text-sm font-medium">
+                      <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 mb-4 text-sm font-medium">
                         <HiMapPin className="w-5 h-5 text-[#FFB800]" />
                         {project.location}
                       </div>
                     )}
-                    <p className="text-gray-600 line-clamp-3 flex-1">
+                    <p className="text-zinc-600 dark:text-zinc-400 line-clamp-3 flex-1">
                       {project.description || "No description provided."}
                     </p>
                     
                     <Link 
                       href={`/we-build/${project.category}/${project._id}`}
-                      className="mt-6 inline-flex items-center gap-2 text-[#FFB800] font-semibold uppercase tracking-wider text-sm hover:text-[#0C0C0C] transition-colors"
+                      className="mt-6 inline-flex items-center gap-2 text-[#FFB800] font-semibold uppercase tracking-wider text-sm hover:text-[#09090B] dark:hover:text-white transition-colors"
                     >
                       View Project Details
                       <span className="transition-transform group-hover:translate-x-1">→</span>

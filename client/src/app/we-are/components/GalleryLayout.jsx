@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function GalleryLayout({ items }) {
   if (!items || items.length === 0) {
-    return <div className="text-center text-gray-500">Content coming soon.</div>;
+    return <div className="text-center text-zinc-500">Content coming soon.</div>;
   }
 
   return (

@@ -6,14 +6,14 @@ import { contactStripData } from '@/data/siteData';
 
 export default function ContactStrip() {
   return (
-    <section className="bg-[#FFFDF9] dark:bg-[#111111] py-14 lg:py-16" id="about">
+    <section className="bg-[#FAFAFA] dark:bg-[#09090B] py-14 lg:py-16" id="about">
       <div className="container-custom">
         <div className="grid md:grid-cols-3 gap-8 lg:gap-14 items-start">
           {/* Phone */}
           <AnimateOnScroll delay={0}>
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-[#FFB800] flex items-center justify-center flex-shrink-0">
-                <HiPhone className="text-[#0C0C0C] text-lg" />
+                <HiPhone className="text-[#09090B] text-lg" />
               </div>
               <div>
                 <p
@@ -24,7 +24,7 @@ export default function ContactStrip() {
                 </p>
                 <a
                   href={`tel:${contactStripData.phone.replace(/\s/g, '')}`}
-                  className="text-[#0C0C0C] dark:text-white text-xl lg:text-2xl font-bold hover:text-[#FFB800] dark:hover:text-[#FFB800] transition-colors"
+                  className="text-[#09090B] dark:text-white text-xl lg:text-2xl font-bold hover:text-[#FFB800] dark:hover:text-[#FFB800] transition-colors"
                   
                 >
                   {contactStripData.phone}
@@ -35,14 +35,14 @@ export default function ContactStrip() {
 
           {/* Intro */}
           <AnimateOnScroll delay={0.15}>
-            <p className="text-[#555] dark:text-gray-300 text-[14px] leading-relaxed">
+            <p className="text-[#555] dark:text-zinc-300 text-[14px] leading-relaxed">
               {contactStripData.intro}
             </p>
           </AnimateOnScroll>
 
           {/* Description */}
           <AnimateOnScroll delay={0.3}>
-            <p className="text-[#555] dark:text-gray-300 text-[14px] leading-relaxed">
+            <p className="text-[#555] dark:text-zinc-300 text-[14px] leading-relaxed">
               {contactStripData.description}
             </p>
           </AnimateOnScroll>

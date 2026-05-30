@@ -49,7 +49,7 @@ export default function ContactCTA() {
 
       <div className="grid lg:grid-cols-2 min-h-[480px]">
         {/* Left */}
-        <div className="bg-white dark:bg-[#0C0C0C] flex items-center py-14 lg:py-20 px-6 lg:px-14 xl:px-20">
+        <div className="bg-white dark:bg-[#09090B] flex items-center py-14 lg:py-20 px-6 lg:px-14 xl:px-20">
           <AnimateOnScroll>
             <div className="max-w-md">
               <div className="flex items-center gap-3 mb-5">
@@ -63,7 +63,7 @@ export default function ContactCTA() {
               </div>
 
               <h2
-                className="text-gray-900 dark:text-white text-2xl lg:text-3xl xl:text-4xl font-bold mb-7 leading-tight"
+                className="text-zinc-900 dark:text-white text-2xl lg:text-3xl xl:text-4xl font-bold mb-7 leading-tight"
                 
               >
                 Ready to Get Started?{' '}
@@ -73,7 +73,7 @@ export default function ContactCTA() {
               {/* Stats */}
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {stats.map((stat, i) => (
-                  <div key={i} className="border border-gray-200 dark:border-[#2A2A2A] p-4">
+                  <div key={i} className="border border-black/5 dark:border-white/10 p-4">
                     <div
                       className="text-[#FFB800] text-2xl font-bold"
                       
@@ -81,7 +81,7 @@ export default function ContactCTA() {
                       {stat.value}
                     </div>
                     <div
-                      className="text-gray-500 dark:text-white/35 text-[10px] uppercase tracking-[0.12em] mt-0.5"
+                      className="text-zinc-500 dark:text-white/35 text-[10px] uppercase tracking-[0.12em] mt-0.5"
                       
                     >
                       {stat.label}
@@ -98,7 +98,7 @@ export default function ContactCTA() {
         </div>
 
         {/* Right */}
-        <div className="relative min-h-[400px] lg:min-h-full lg:p-10 flex items-center bg-white dark:bg-[#0C0C0C]">
+        <div className="relative min-h-[400px] lg:min-h-full lg:p-10 flex items-center bg-white dark:bg-[#09090B]">
           <div className="relative w-full h-full min-h-[350px] lg:min-h-[500px] rounded-3xl overflow-hidden shadow-2xl">
             <Image
               src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=900&h=700&fit=crop"
@@ -106,7 +106,7 @@ export default function ContactCTA() {
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/30 dark:to-[#0C0C0C]/30" />
+            <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/30 dark:to-[#09090B]/30" />
           </div>
         </div>
       </div>

@@ -3,17 +3,17 @@
 
 /* ===== CUSTOM THEME ===== */
 @theme {
-  --color-yellow: #FFB800;
-  --color-yellow-light: #FFC933;
-  --color-yellow-dark: #E5A600;
-  --color-dark: #0C0C0C;
-  --color-dark-secondary: #161616;
-  --color-dark-card: #1C1C1C;
-  --color-dark-border: #2A2A2A;
+  --color-yellow: #ECA500;
+  --color-yellow-light: #FBCB35;
+  --color-yellow-dark: #C68900;
+  --color-dark: #09090b; /* Zinc 950 base */
+  --color-dark-secondary: #18181b; /* Zinc 900 */
+  --color-dark-card: #18181b; /* Zinc 900 surface */
+  --color-dark-border: rgba(255, 255, 255, 0.08); /* Soft translucent borders */
   --color-light: #F7F7F7;
   --color-light-secondary: #EEEEEE;
-  --color-muted: #888888;
-  --color-body: #AAAAAA;
+  --color-muted: #A1A1AA; /* Zinc 400 */
+  --color-body: #E4E4E7; /* Zinc 200 */
 
   --font-heading: 'Oswald', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -56,8 +56,90 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ===== SELECTION ===== */
 ::selection {
-  background: var(--color-yellow);
-  color: var(--color-dark);
+  background: rgba(236, 165, 0, 0.3);
+  color: #ffffff;
+}
+
+/* ===== GLOBAL INPUT, TEXTAREA, SELECT STYLES ===== */
+input[type="text"], input[type="url"], input[type="number"], input[type="email"], input[type="password"], select, textarea {
+  background: #09090b !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.2) !important;
+  transition: all 0.2s ease !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--color-yellow) !important;
+  box-shadow: 0 0 0 2px rgba(236, 165, 0, 0.15) !important;
+  outline: none !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #71717A !important; /* Zinc 500 */
+  font-weight: 400;
+}
+
+/* ===== GLOBAL TABLE STYLES ===== */
+table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+th {
+  background-color: #121214 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem !important;
+  color: #A1A1AA !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+  color: #E4E4E7 !important;
+}
+tr:hover td {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* ===== GLOBAL COMPONENT UPGRADES ===== */
+/* Upgrade cards globally */
+.bg-\[var\(--color-dark-card\)\] {
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.02) inset !important;
+  border-radius: 16px !important;
+}
+
+/* Upgrade yellow text globally */
+.text-\[var\(--color-yellow\)\] {
+  color: var(--color-yellow) !important;
+  text-shadow: 0 0 20px rgba(236, 165, 0, 0.2);
+}
+
+/* Upgrade modal backdrop globally */
+.bg-black\/50 {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* Upgrade yellow buttons globally */
+.bg-\[var\(--color-yellow\)\] {
+  background: linear-gradient(to bottom, #FBCB35, #ECA500) !important;
+  color: #09090b !important;
+  box-shadow: 0 2px 10px rgba(236, 165, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.4) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+.bg-\[var\(--color-yellow\)\]:hover {
+  background: linear-gradient(to bottom, #FFD452, #FBCB35) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 15px rgba(236, 165, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.5) !important;
+}
+
+/* Upgrade danger buttons globally */
+.bg-red-500 {
+  background: linear-gradient(to bottom, #EF4444, #DC2626) !important;
+  box-shadow: 0 2px 10px rgba(239, 68, 68, 0.2), inset 0 1px 0 rgba(255,255,255,0.2) !important;
 }
 
 /* ===== UTILITY CLASSES ===== */

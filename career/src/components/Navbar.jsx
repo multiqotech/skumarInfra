@@ -18,6 +18,17 @@ export default function Navbar({ alwaysSolid = false }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileOpen]);
+
   const portfolioUrl = process.env.NEXT_PUBLIC_PORTFOLIO_URL || 'http://localhost:3002';
 
   return (
@@ -39,9 +50,14 @@ export default function Navbar({ alwaysSolid = false }) {
                 SK
               </span>
             </div>
-            <span className="text-white text-sm font-semibold tracking-[0.15em] uppercase hidden sm:block group-hover:text-[#FFB800] transition-colors duration-300">
-              S Kumar Infracons (India) Private Limiteds
-            </span>
+            <div className="hidden sm:flex flex-col justify-center">
+              <span className="text-white text-[13px] md:text-[14px] font-bold tracking-wider uppercase group-hover:text-[#FFB800] transition-colors duration-300 leading-none mb-0.5">
+                S Kumar Infracons
+              </span>
+              <span className="text-gray-400 text-[9px] md:text-[10px] font-medium tracking-widest uppercase leading-none">
+                (India) Private Limited
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
@@ -102,10 +118,13 @@ export default function Navbar({ alwaysSolid = false }) {
                           {link.dropdownItems.map((item, itemIdx) => {
                             let href = '#';
                             if (link.label === 'We Are') {
-                              href = `${portfolioUrl}/we-are/${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`;
+                              if (item === 'Corporate Excellence') href = `${portfolioUrl}/we-are/corporate`;
+                              else if (item === 'CSR & Sustainability') href = `${portfolioUrl}/we-are/csr`;
+                              else href = `${portfolioUrl}/we-are/${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`;
                             } else if (link.label === 'Landmark projects') {
-                              if (item === 'Landmarks in the making') href = `${portfolioUrl}/landmark-projects/landmark`;
-                              else if (item === 'Iconic Projects') href = `${portfolioUrl}/landmark-projects/iconic`;
+                              if (item === 'Ongoing Projects') href = `${portfolioUrl}/landmark-projects/ongoing`;
+                              else if (item === 'Completed Projects') href = `${portfolioUrl}/landmark-projects/completed`;
+                              else if (item === 'Awarded Projects') href = `${portfolioUrl}/landmark-projects/awarded`;
                             } else if (link.label === 'Newsroom') {
                               if (item === 'Press Releases') href = `${portfolioUrl}/newsroom?type=press-releases`;
                               else if (item === 'Electronic Media') href = `${portfolioUrl}/newsroom?type=electronic-media`;

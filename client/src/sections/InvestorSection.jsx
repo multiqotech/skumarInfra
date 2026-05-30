@@ -26,7 +26,7 @@ export default function InvestorSection() {
   if (investors.length === 0) return null; // Don't render if no investors
 
   return (
-    <section className="relative bg-white dark:bg-[#0C0C0C] py-14 lg:py-20 overflow-hidden">
+    <section className="relative bg-white dark:bg-[#09090B] py-14 lg:py-20 overflow-hidden">
       {/* Large watermark text */}
       <div
         className="absolute bottom-10 right-10 whitespace-nowrap pointer-events-none select-none"
@@ -49,7 +49,7 @@ export default function InvestorSection() {
               </span>
             </div>
             <h2
-              className="text-gray-900 dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold"
+              className="text-zinc-900 dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold"
             >
               Key Investors
             </h2>
@@ -79,10 +79,10 @@ function InvestorCard({ investor, index }) {
 
   return (
     <AnimateOnScroll delay={index * 0.1}>
-      <div className="group relative overflow-hidden bg-gray-50 dark:bg-[#161616] border border-gray-200 dark:border-[#2A2A2A] rounded-2xl hover:border-[#FFB800]/30 dark:hover:border-[#FFB800]/30 hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+      <div className="group relative overflow-hidden bg-[#FAFAFA] dark:bg-[#18181B] border border-black/5 dark:border-white/10 rounded-2xl hover:border-[#FFB800]/30 dark:hover:border-[#FFB800]/30 hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
         
         {/* Image Section */}
-        <div className="relative w-full h-80 overflow-hidden bg-gray-100 dark:bg-[#0a0a0a]">
+        <div className="relative w-full h-80 overflow-hidden bg-zinc-100 dark:bg-[#0a0a0a]">
           <Image
             src={investor.image}
             alt={investor.name}
@@ -90,16 +90,16 @@ function InvestorCard({ investor, index }) {
             className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
             unoptimized={true}
           />
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-gray-50 dark:from-[#161616] via-gray-50/70 dark:via-[#161616]/70 to-transparent"></div>
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-gray-50 dark:from-[#18181B] via-gray-50/70 dark:via-[#18181B]/70 to-transparent"></div>
         </div>
 
         {/* Content Section */}
         <div className="p-6 md:px-8 md:pb-8 flex-1 flex flex-col relative z-10 -mt-8">
-          <h3 className="text-gray-900 dark:text-white text-2xl font-bold mb-3 drop-shadow-md group-hover:text-[#FFB800] dark:group-hover:text-[#FFB800] transition-colors">
+          <h3 className="text-zinc-900 dark:text-white text-2xl font-bold mb-3 drop-shadow-md group-hover:text-[#FFB800] dark:group-hover:text-[#FFB800] transition-colors">
             {investor.name}
           </h3>
           <div className="w-16 h-[2px] bg-[#FFB800]/50 mb-5 transition-all duration-300 group-hover:w-full group-hover:bg-[#FFB800]" />
-          <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed whitespace-pre-line flex-1">
+          <p className="text-zinc-600 dark:text-zinc-300 text-sm leading-relaxed whitespace-pre-line flex-1">
             {displayDescription || "No description provided."}
           </p>
           

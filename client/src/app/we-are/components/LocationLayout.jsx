@@ -2,7 +2,7 @@ import { HiMapPin } from 'react-icons/hi2';
 
 export default function LocationLayout({ items }) {
   if (!items || items.length === 0) {
-    return <div className="text-center text-gray-500">Content coming soon.</div>;
+    return <div className="text-center text-zinc-500">Content coming soon.</div>;
   }
 
   return (
@@ -18,11 +18,11 @@ export default function LocationLayout({ items }) {
               <div className="w-14 h-14 rounded-full bg-[#FFB800]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#FFB800] transition-colors duration-300">
                 <HiMapPin className="w-7 h-7 text-[#FFB800] group-hover:text-white transition-colors duration-300" />
               </div>
-              <div className="flex-1 pb-8 border-b border-gray-100 last:border-0 last:pb-0">
-                <h3 className="text-2xl font-bold text-[#0C0C0C] mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
+              <div className="flex-1 pb-8 border-b border-black/5 last:border-0 last:pb-0">
+                <h3 className="text-2xl font-bold text-[#09090B] mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
                   {item.country}
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-lg">
+                <p className="text-zinc-600 leading-relaxed text-lg">
                   {item.details}
                 </p>
               </div>

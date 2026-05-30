@@ -8,7 +8,7 @@ import { servicesData } from '@/data/siteData';
 
 export default function ServicesCards() {
   return (
-    <section className="bg-[#FFFDF9] dark:bg-[#111111] pb-14 lg:pb-24 pt-4" id="services">
+    <section className="bg-[#FAFAFA] dark:bg-[#09090B] pb-14 lg:pb-24 pt-4" id="services">
       <div className="container-custom">
         {/* Heading */}
         <AnimateOnScroll className="text-center mb-16">
@@ -23,7 +23,7 @@ export default function ServicesCards() {
             <div className="w-8 h-[2px] bg-[#FFB800]" />
           </div>
           <h2
-            className="text-[#0C0C0C] dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold max-w-2xl mx-auto leading-tight"
+            className="text-[#09090B] dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold max-w-2xl mx-auto leading-tight"
             
           >
             We Assist in Choosing the Perfect Materials for Your Project
@@ -39,8 +39,8 @@ export default function ServicesCards() {
                 whileTap={{ scale: 0.98 }}
                 className={`group relative overflow-hidden rounded-2xl transition-all duration-500 h-full flex flex-col ${
                   service.featured
-                    ? 'bg-[#0C0C0C] text-white shadow-[0_20px_50px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10 border border-transparent dark:border-[#FFB800]/30'
-                    : 'bg-[#FDFCF8] dark:bg-[#161616] text-[#0C0C0C] dark:text-white border border-[#EAEAEA] dark:border-[#2A2A2A] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] hover:border-[#FFB800]/30 dark:hover:border-[#FFB800]/30'
+                    ? 'bg-[#09090B] text-white shadow-[0_20px_50px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10 border border-transparent dark:border-[#FFB800]/30'
+                    : 'bg-[#FDFCF8] dark:bg-[#18181B] text-[#09090B] dark:text-white border border-[#EAEAEA] dark:border-white/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] hover:border-[#FFB800]/30 dark:hover:border-[#FFB800]/30'
                 }`}
               >
                 {/* Image */}
@@ -52,7 +52,7 @@ export default function ServicesCards() {
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   {service.featured && (
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0C] via-[#0C0C0C]/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#09090B] via-[#09090B]/40 to-transparent" />
                   )}
                   {/* Yellow accent on featured */}
                   {service.featured && (
@@ -71,7 +71,7 @@ export default function ServicesCards() {
                   </h3>
                   <p
                     className={`text-sm leading-relaxed mb-5 ${
-                      service.featured ? 'text-white/60' : 'text-[#666] dark:text-gray-400'
+                      service.featured ? 'text-white/60' : 'text-[#666] dark:text-zinc-400'
                     }`}
                   >
                     {service.description}
@@ -80,7 +80,7 @@ export default function ServicesCards() {
                     className={`inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.15em] transition-colors duration-300 ${
                       service.featured
                         ? 'text-[#FFB800] hover:text-[#FFC933]'
-                        : 'text-[#0C0C0C] dark:text-gray-300 hover:text-[#FFB800] dark:hover:text-[#FFB800]'
+                        : 'text-[#09090B] dark:text-zinc-300 hover:text-[#FFB800] dark:hover:text-[#FFB800]'
                     }`}
                     
                   >

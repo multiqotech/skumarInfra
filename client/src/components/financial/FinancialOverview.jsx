@@ -13,10 +13,10 @@ export default function FinancialOverview({ overview }) {
             At a Glance
           </span>
         </div>
-        <h2 className="text-gray-900 dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
+        <h2 className="text-zinc-900 dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
           {overview.title}
         </h2>
-        <p className="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed max-w-3xl">
+        <p className="text-zinc-600 dark:text-zinc-300 text-sm md:text-base leading-relaxed max-w-3xl">
           {overview.description}
         </p>
       </AnimateOnScroll>

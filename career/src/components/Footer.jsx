@@ -12,7 +12,8 @@ export default function Footer() {
     internationalNumber: '',
     internationalAvailability: '',
     email: '',
-    tagline: ''
+    tagline: '',
+    qrCodeImage: ''
   });
 
   useEffect(() => {
@@ -28,7 +29,8 @@ export default function Footer() {
             internationalNumber: data.internationalNumber || '',
             internationalAvailability: data.internationalAvailability || '',
             email: data.email || '',
-            tagline: data.tagline || ''
+            tagline: data.tagline || '',
+            qrCodeImage: data.qrCodeImage || ''
           });
         }
       } catch (err) {
@@ -126,11 +128,13 @@ export default function Footer() {
             </div>
             <ul className="space-y-3">
               {landmarkLink?.dropdownItems?.map((item, idx) => {
-                const isLandmark = item === 'Landmarks in the making';
-                const href = isLandmark ? '/landmark-projects/landmark' : '/landmark-projects/iconic';
+                let href = '#';
+                if (item === 'Ongoing Projects') href = `${portfolioUrl}/landmark-projects/ongoing`;
+                else if (item === 'Completed Projects') href = `${portfolioUrl}/landmark-projects/completed`;
+                else if (item === 'Awarded Projects') href = `${portfolioUrl}/landmark-projects/awarded`;
                 return (
                   <li key={idx}>
-                    <a href={`${portfolioUrl}${href}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
+                    <a href={href} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FFB800] transition-colors text-sm">
                       {item}
                     </a>
                   </li>
@@ -179,10 +183,19 @@ export default function Footer() {
               )}
 
               {contactInfo.tagline && (
-                <div className="pt-4 border-t border-gray-800 text-xs italic">
+                <div className="pt-4 border-t border-gray-200 dark:border-gray-800 text-xs italic">
                   {contactInfo.tagline.split('\n').map((line, i) => (
                     <p key={i}>{line}</p>
                   ))}
+                </div>
+              )}
+
+              {contactInfo.qrCodeImage && (
+                <div className="pt-4 border-t border-gray-200 dark:border-gray-800">
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Get Directions</h4>
+                  <div className="bg-white p-2 rounded inline-block shadow-sm">
+                    <img src={contactInfo.qrCodeImage} alt="Get Directions QR Code" className="w-24 h-24 object-contain" />
+                  </div>
                 </div>
               )}
 

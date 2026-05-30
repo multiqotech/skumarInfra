@@ -3,14 +3,17 @@ import Link from 'next/link';
 
 export default function CardLayout({ items }) {
   if (!items || items.length === 0) {
-    return <div className="text-center text-gray-500">Content coming soon.</div>;
+    return <div className="text-center text-zinc-500">Content coming soon.</div>;
   }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {items.map((item, index) => {
-        const CardWrapper = item.link ? Link : 'div';
-        const wrapperProps = item.link ? { href: item.link } : {};
+        const isExternal = item.link && item.link.startsWith('http');
+        const CardWrapper = item.link ? (isExternal ? 'a' : Link) : 'div';
+        const wrapperProps = item.link 
+          ? (isExternal ? { href: item.link, target: '_blank', rel: 'noopener noreferrer' } : { href: item.link }) 
+          : {};
 
         return (
           <CardWrapper 
@@ -37,7 +40,7 @@ export default function CardLayout({ items }) {
             
             {(!item.image && item.title) && (
               <div className="p-8 pb-4">
-                <h3 className="text-2xl font-bold text-[#0C0C0C]" style={{ fontFamily: 'var(--font-heading)' }}>
+                <h3 className="text-2xl font-bold text-[#09090B]" style={{ fontFamily: 'var(--font-heading)' }}>
                   {item.title}
                 </h3>
                 <div className="w-12 h-1 bg-[#FFB800] mt-4" />
@@ -46,12 +49,12 @@ export default function CardLayout({ items }) {
 
             {item.description && (
               <div className="p-6 md:p-8 flex-1 flex flex-col">
-                <p className="text-gray-600 line-clamp-4 flex-1">
+                <p className="text-zinc-600 line-clamp-4 flex-1">
                   {item.description}
                 </p>
                 {item.link && (
-                  <div className="mt-6 flex items-center gap-2 text-[#FFB800] font-semibold uppercase tracking-wider text-sm hover:text-[#0C0C0C] transition-colors">
-                    Read More
+                  <div className="mt-6 flex items-center gap-2 text-[#FFB800] font-semibold uppercase tracking-wider text-sm hover:text-[#09090B] transition-colors">
+                    Visit Website
                     <span className="transition-transform group-hover:translate-x-1">→</span>
                   </div>
                 )}

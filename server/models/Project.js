@@ -12,8 +12,8 @@ const projectSchema = new mongoose.Schema({
   },
   projectType: {
     type: String,
-    enum: ['Normal', 'Landmark', 'Iconic'],
-    default: 'Normal'
+    enum: ['Ongoing', 'Completed', 'Awarded'],
+    default: 'Ongoing'
   },
   image: {
     type: String,

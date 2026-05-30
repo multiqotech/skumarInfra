@@ -45,12 +45,12 @@ export default async function ProjectDetailsPage({ params }) {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#FFFDF9] text-[#0C0C0C] pt-24 pb-20">
+      <main className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090B] text-[#09090B] dark:text-white pt-24 pb-20">
         <div className="container-custom">
           {/* Back Button */}
           <Link
             href={`/we-build/${slug}`}
-            className="inline-flex items-center gap-2 text-[#FFB800] hover:text-[#0C0C0C] font-semibold tracking-wide uppercase transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-[#FFB800] hover:text-[#09090B] dark:hover:text-white font-semibold tracking-wide uppercase transition-colors mb-8"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             <HiArrowLeft className="h-5 w-5" />
@@ -72,18 +72,18 @@ export default async function ProjectDetailsPage({ params }) {
               </div>
 
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-wide text-[#0C0C0C] mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
+                <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-wide text-[#09090B] dark:text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
                   {project.title}
                 </h1>
 
-                <div className="bg-[#F5F1EA] rounded-xl p-6 md:p-8 border border-[#E8E0D0]">
+                <div className="bg-white dark:bg-[#18181B] rounded-xl p-6 md:p-8 border border-black/5 dark:border-white/5">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-8 h-1 bg-[#FFB800]"></div>
-                    <h3 className="text-[#0C0C0C] text-sm font-bold tracking-[0.15em] uppercase" style={{ fontFamily: 'var(--font-heading)' }}>
+                    <h3 className="text-[#09090B] dark:text-white text-sm font-bold tracking-[0.15em] uppercase" style={{ fontFamily: 'var(--font-heading)' }}>
                       Project Description
                     </h3>
                   </div>
-                  <p className="text-gray-600 text-[16px] leading-relaxed text-justify">
+                  <p className="text-zinc-600 dark:text-zinc-400 text-[16px] leading-relaxed text-justify">
                     {project.description || 'Detailed description for this project will be available soon. This is a landmark project showcasing our engineering excellence and commitment to delivering world-class infrastructure.'}
                   </p>
                 </div>
@@ -92,7 +92,7 @@ export default async function ProjectDetailsPage({ params }) {
 
             {/* Right Column: Key Stats Sidebar */}
             <div className="lg:col-span-4">
-              <div className="bg-[#0C0C0C] rounded-xl p-8 sticky top-32 shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
+              <div className="bg-[#09090B] rounded-xl p-8 sticky top-32 shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
                 <h3 className="text-white text-2xl font-bold uppercase tracking-wider mb-8 flex items-center gap-3" style={{ fontFamily: 'var(--font-heading)' }}>
                   <div className="w-8 h-1 bg-[#FFB800]"></div>
                   Project Details

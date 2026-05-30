@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function SectionLayout({ items }) {
   if (!items || items.length === 0) {
-    return <div className="text-center text-gray-500">Content coming soon.</div>;
+    return <div className="text-center text-zinc-500">Content coming soon.</div>;
   }
 
   return (
@@ -32,7 +32,7 @@ export default function SectionLayout({ items }) {
             <div className={`w-full ${item.image ? 'lg:w-1/2' : ''}`}>
               {item.title && (
                 <div className="mb-6">
-                  <h2 className="text-3xl md:text-4xl font-bold text-[#0C0C0C] mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+                  <h2 className="text-3xl md:text-4xl font-bold text-[#09090B] dark:text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
                     {item.title}
                   </h2>
                   <div className="w-16 h-1 bg-[#FFB800]" />
@@ -40,7 +40,7 @@ export default function SectionLayout({ items }) {
               )}
               
               {item.content && (
-                <div className="prose prose-lg max-w-none text-gray-600 text-justify">
+                <div className="prose prose-lg max-w-none text-zinc-600 dark:text-zinc-400 text-justify">
                   {item.content.split('\n').map((paragraph, i) => (
                     <p key={i} className="mb-4">{paragraph}</p>
                   ))}

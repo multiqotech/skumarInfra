@@ -26,7 +26,7 @@ export default function BoardDirectorSection() {
   if (directors.length === 0) return null; // Don't render if no directors
 
   return (
-    <section className="relative bg-white dark:bg-[#111111] py-14 lg:py-20 overflow-hidden">
+    <section className="relative bg-white dark:bg-[#09090B] py-14 lg:py-20 overflow-hidden">
       {/* Large watermark text */}
       <div
         className="absolute bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none select-none"
@@ -49,7 +49,7 @@ export default function BoardDirectorSection() {
               </span>
             </div>
             <h2
-              className="text-gray-900 dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold"
+              className="text-zinc-900 dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold"
             >
               Board of Directors
             </h2>
@@ -60,10 +60,10 @@ export default function BoardDirectorSection() {
         <div className="flex flex-col gap-8">
           {directors.map((director, index) => (
             <AnimateOnScroll key={director._id || index} delay={index * 0.1}>
-              <div className="group relative overflow-hidden bg-gray-50 dark:bg-[#161616] border border-gray-200 dark:border-[#2A2A2A] rounded-2xl hover:border-[#FFB800]/20 hover:shadow-[0_8px_30px_rgba(255,184,0,0.05)] transition-all duration-500 flex flex-col md:flex-row">
+              <div className="group relative overflow-hidden bg-[#FAFAFA] dark:bg-[#18181B] border border-black/5 dark:border-white/10 rounded-2xl hover:border-[#FFB800]/20 hover:shadow-[0_8px_30px_rgba(255,184,0,0.05)] transition-all duration-500 flex flex-col md:flex-row">
                 
                 {/* Left Side: Image, Name, Designation */}
-                <div className="w-full md:w-[350px] flex-shrink-0 bg-white dark:bg-[#0C0C0C] border-r border-gray-200 dark:border-[#2A2A2A] flex flex-col items-center justify-center p-8">
+                <div className="w-full md:w-[350px] flex-shrink-0 bg-white dark:bg-[#09090B] border-r border-black/5 dark:border-white/10 flex flex-col items-center justify-center p-8">
                   <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-[#FFB800]/20 group-hover:border-[#FFB800] transition-colors duration-500 mb-6">
                     <Image
                       src={director.image}
@@ -73,7 +73,7 @@ export default function BoardDirectorSection() {
                       unoptimized={true}
                     />
                   </div>
-                  <h3 className="text-gray-900 dark:text-white text-xl font-bold text-center mb-1">
+                  <h3 className="text-zinc-900 dark:text-white text-xl font-bold text-center mb-1">
                     {director.name}
                   </h3>
                   <p className="text-[#FFB800] text-sm uppercase tracking-[0.12em] text-center">
@@ -84,7 +84,7 @@ export default function BoardDirectorSection() {
                 {/* Right Side: Description */}
                 <div className="flex-1 p-8 md:p-10 flex flex-col justify-center">
                   <div className="w-12 h-[2px] bg-[#FFB800]/50 mb-6" />
-                  <p className="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed whitespace-pre-line">
+                  <p className="text-zinc-600 dark:text-zinc-300 text-sm md:text-base leading-relaxed whitespace-pre-line">
                     {director.description || "No description provided."}
                   </p>
                 </div>

@@ -28,7 +28,7 @@ export default function FAQSection() {
   }, []);
 
   return (
-    <section className="bg-gray-50 dark:bg-[#161616] py-14 lg:py-20">
+    <section className="bg-[#FAFAFA] dark:bg-[#18181B] py-14 lg:py-20">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           {/* Left - Image */}
@@ -49,9 +49,9 @@ export default function FAQSection() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 dark:from-[#0C0C0C]/50 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 dark:from-[#09090B]/50 to-transparent" />
               {/* Info overlay */}
-              <div className="absolute bottom-0 left-0 right-0 bg-white/90 dark:bg-[#0C0C0C]/85 backdrop-blur-sm p-4 border-l-[3px] border-[#FFB800]">
+              <div className="absolute bottom-0 left-0 right-0 bg-white/90 dark:bg-[#09090B]/85 backdrop-blur-sm p-4 border-l-[3px] border-[#FFB800]">
                 <p
                   className="text-[#FFB800] text-[10px] uppercase tracking-[0.2em] mb-0.5"
                   
@@ -59,7 +59,7 @@ export default function FAQSection() {
                   Trusted by
                 </p>
                 <p
-                  className="text-gray-900 dark:text-white text-lg font-bold"
+                  className="text-zinc-900 dark:text-white text-lg font-bold"
                   
                 >
                   1200+ Happy Clients
@@ -90,7 +90,7 @@ export default function FAQSection() {
                 </span>
               </div>
               <h2
-                className="text-gray-900 dark:text-white text-2xl lg:text-3xl font-bold mb-8"
+                className="text-zinc-900 dark:text-white text-2xl lg:text-3xl font-bold mb-8"
                 
               >
                 Trusted Engineering Services for Your Project
@@ -98,14 +98,14 @@ export default function FAQSection() {
 
               <div>
                 {faqs.map((faq, index) => (
-                  <div key={index} className="border-b border-[#2A2A2A]">
+                  <div key={index} className="border-b border-white/10">
                     <button
                       onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
                       className="flex items-center justify-between w-full py-4 text-left group"
                     >
                       <span
                         className={`text-[15px] font-medium transition-colors duration-300 pr-4 ${
-                          openIndex === index ? 'text-[#FFB800]' : 'text-gray-800 dark:text-white group-hover:text-[#FFB800] dark:group-hover:text-[#FFB800]'
+                          openIndex === index ? 'text-[#FFB800]' : 'text-zinc-800 dark:text-white group-hover:text-[#FFB800] dark:group-hover:text-[#FFB800]'
                         }`}
                         
                       >
@@ -114,8 +114,8 @@ export default function FAQSection() {
                       <div
                         className={`w-7 h-7 flex-shrink-0 flex items-center justify-center transition-all duration-300 ${
                           openIndex === index
-                            ? 'bg-[#FFB800] text-[#0C0C0C]'
-                            : 'border border-gray-200 dark:border-[#2A2A2A] text-gray-500 dark:text-white/50'
+                            ? 'bg-[#FFB800] text-[#09090B]'
+                            : 'border border-black/5 dark:border-white/10 text-zinc-500 dark:text-white/50'
                         }`}
                       >
                         {openIndex === index ? <HiMinus size={12} /> : <HiPlus size={12} />}
@@ -129,7 +129,7 @@ export default function FAQSection() {
                         opacity: openIndex === index ? 1 : 0,
                       }}
                     >
-                      <p className="text-gray-600 dark:text-white/45 text-[13px] leading-relaxed pb-4">
+                      <p className="text-zinc-600 dark:text-white/45 text-[13px] leading-relaxed pb-4">
                         {faq.answer}
                       </p>
                     </div>

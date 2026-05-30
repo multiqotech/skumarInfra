@@ -27,7 +27,7 @@ export default function TeamSection() {
   }, []);
 
   return (
-    <section className="relative bg-white dark:bg-[#0C0C0C] py-14 lg:py-20 overflow-hidden">
+    <section className="relative bg-white dark:bg-[#09090B] py-14 lg:py-20 overflow-hidden">
       {/* Large "OUR TEAM" watermark text */}
       <div
         className="absolute bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none select-none"
@@ -52,7 +52,7 @@ export default function TeamSection() {
               </span>
             </div>
             <h2
-              className="text-gray-900 dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold"
+              className="text-zinc-900 dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold"
               
             >
               Building Team
@@ -75,7 +75,7 @@ export default function TeamSection() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {team.map((member, index) => (
             <AnimateOnScroll key={index} delay={index * 0.1}>
-              <div className="group relative overflow-hidden bg-gray-50 dark:bg-[#161616] border border-gray-200 dark:border-[#2A2A2A] rounded-2xl hover:border-[#FFB800]/20 hover:shadow-[0_8px_30px_rgba(255,184,0,0.05)] transition-all duration-500">
+              <div className="group relative overflow-hidden bg-[#FAFAFA] dark:bg-[#18181B] border border-black/5 dark:border-white/10 rounded-2xl hover:border-[#FFB800]/20 hover:shadow-[0_8px_30px_rgba(255,184,0,0.05)] transition-all duration-500">
                 {/* Image */}
                 <div className="relative h-64 overflow-hidden">
                   <Image
@@ -85,7 +85,7 @@ export default function TeamSection() {
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
                     unoptimized={true} // Allow external Unsplash URLs pasted by admin
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 dark:from-[#0C0C0C] via-transparent to-transparent opacity-50" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 dark:from-[#09090B] via-transparent to-transparent opacity-50" />
 
                   {/* Social hover */}
                   <div className="absolute bottom-3 left-3 flex gap-2 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
@@ -93,7 +93,7 @@ export default function TeamSection() {
                       <a
                         key={i}
                         href="#"
-                        className="w-7 h-7 bg-[#FFB800] flex items-center justify-center text-[#0C0C0C] text-[10px] hover:bg-[#FFC933] transition-colors"
+                        className="w-7 h-7 bg-[#FFB800] flex items-center justify-center text-[#09090B] text-[10px] hover:bg-[#FFC933] transition-colors"
                       >
                         <Icon />
                       </a>
@@ -104,7 +104,7 @@ export default function TeamSection() {
                 {/* Info */}
                 <div className="p-4">
                   <h3
-                    className="text-gray-900 dark:text-white text-base font-bold"
+                    className="text-zinc-900 dark:text-white text-base font-bold"
                     
                   >
                     {member.name}
@@ -116,7 +116,7 @@ export default function TeamSection() {
                     {member.role}
                   </p>
                   {member.description && (
-                    <p className="text-gray-600 dark:text-gray-400 text-xs mt-3 line-clamp-4 leading-relaxed">
+                    <p className="text-zinc-600 dark:text-zinc-400 text-xs mt-3 line-clamp-4 leading-relaxed">
                       {member.description}
                     </p>
                   )}

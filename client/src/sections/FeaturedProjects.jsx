@@ -39,7 +39,7 @@ export default function FeaturedProjects() {
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-[#0C0C0C] py-14 lg:py-20" id="projects">
+    <section className="bg-[#FAFAFA] dark:bg-[#09090B] py-14 lg:py-20" id="projects">
       <div className="container-custom">
         {/* Header */}
         <div className="flex items-end justify-between mb-10">
@@ -54,7 +54,7 @@ export default function FeaturedProjects() {
               </span>
             </div>
             <h2
-              className="text-gray-900 dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold"
+              className="text-zinc-900 dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold"
               
             >
               Our Featured Projects
@@ -64,14 +64,14 @@ export default function FeaturedProjects() {
           <div className="hidden md:flex items-center gap-2">
             <button
               onClick={() => scroll('left')}
-              className="w-11 h-11 border border-gray-200 dark:border-[#2A2A2A] rounded-lg flex items-center justify-center text-gray-900 dark:text-white hover:bg-[#FFB800] dark:hover:bg-[#FFB800] hover:border-[#FFB800] dark:hover:border-[#FFB800] hover:text-[#0C0C0C] dark:hover:text-[#0C0C0C] transition-all duration-300"
+              className="w-11 h-11 border border-black/5 dark:border-white/10 rounded-lg flex items-center justify-center text-zinc-900 dark:text-white hover:bg-[#FFB800] dark:hover:bg-[#FFB800] hover:border-[#FFB800] dark:hover:border-[#FFB800] hover:text-[#09090B] dark:hover:text-[#09090B] transition-all duration-300"
               aria-label="Previous"
             >
               <HiArrowLeft size={16} />
             </button>
             <button
               onClick={() => scroll('right')}
-              className="w-11 h-11 bg-[#FFB800] rounded-lg flex items-center justify-center text-[#0C0C0C] hover:bg-[#FFC933] transition-all duration-300"
+              className="w-11 h-11 bg-[#FFB800] rounded-lg flex items-center justify-center text-[#09090B] hover:bg-[#FFC933] transition-all duration-300"
               aria-label="Next"
             >
               <HiArrowRight size={16} />
@@ -86,7 +86,7 @@ export default function FeaturedProjects() {
         className="flex gap-6 overflow-x-auto pb-4 px-5 lg:px-[calc((100vw-1280px)/2+1.25rem)] scrollbar-hide"
       >
         {loading ? (
-          <div className="text-gray-500 dark:text-white/50 px-5">Loading projects...</div>
+          <div className="text-zinc-500 dark:text-white/50 px-5">Loading projects...</div>
         ) : (
           featuredProjects.map((project, index) => (
             <Link key={project._id || index} href={`/we-build/${project.category}/${project._id}`}>
@@ -105,7 +105,7 @@ export default function FeaturedProjects() {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0C] via-[#0C0C0C]/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#09090B] via-[#09090B]/30 to-transparent" />
 
                 <div className="absolute bottom-0 left-0 right-0 p-5">
                   <div className="w-6 h-[3px] bg-[#FFB800] mb-2 transition-all duration-300 group-hover:w-10" />

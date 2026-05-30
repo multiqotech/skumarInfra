@@ -43,13 +43,13 @@ export default function VideoShowcase() {
   };
 
   return (
-    <section className="relative py-14 lg:py-24 bg-white dark:bg-[#0C0C0C]">
+    <section className="relative py-14 lg:py-24 bg-white dark:bg-[#09090B]">
       <div className="container-custom">
         {/* Video Preview */}
         <AnimateOnScroll>
           <div
             onClick={() => setIsOpen(true)}
-            className="relative group cursor-pointer overflow-hidden mb-16 rounded-3xl shadow-2xl border border-gray-200 dark:border-[#2A2A2A]/40"
+            className="relative group cursor-pointer overflow-hidden mb-16 rounded-3xl shadow-2xl border border-black/5 dark:border-white/10/40"
           >
             <div className="relative w-full h-[280px] sm:h-[380px] lg:h-[500px]">
               <Image
@@ -66,7 +66,7 @@ export default function VideoShowcase() {
                   className="w-18 h-18 lg:w-22 lg:h-22 bg-[#FFB800] rounded-full flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-[0_0_30px_rgba(255,184,0,0.4)]"
                   style={{ width: '80px', height: '80px' }}
                 >
-                  <HiPlay className="text-[#0C0C0C] text-4xl ml-1" />
+                  <HiPlay className="text-[#09090B] text-4xl ml-1" />
                 </div>
               </div>
 
@@ -91,7 +91,7 @@ export default function VideoShowcase() {
                 <div key={index} className="text-center flex flex-col items-center justify-between min-h-[130px] group">
                   <div className="flex-1 flex flex-col justify-start">
                     <h4
-                      className="text-gray-900 dark:text-white text-[15px] sm:text-base font-bold uppercase tracking-wider mb-2 max-w-[210px] mx-auto leading-snug group-hover:text-[#FFB800] dark:group-hover:text-[#FFB800] transition-colors duration-300"
+                      className="text-zinc-900 dark:text-white text-[15px] sm:text-base font-bold uppercase tracking-wider mb-2 max-w-[210px] mx-auto leading-snug group-hover:text-[#FFB800] dark:group-hover:text-[#FFB800] transition-colors duration-300"
 
                     >
                       {item.title}
@@ -107,7 +107,7 @@ export default function VideoShowcase() {
                     <div className="absolute w-6 h-6 rounded-full bg-[#FFB800]/20 scale-0 group-hover:scale-100 transition-transform duration-300" />
 
                     {/* The Dot */}
-                    <div className="w-4 h-4 rounded-full bg-white border-[3px] border-gray-200 dark:border-[#0C0C0C] group-hover:bg-[#FFB800] group-hover:border-white shadow-[0_0_12px_rgba(0,0,0,0.1)] dark:shadow-[0_0_12px_rgba(255,255,255,0.4)] z-10 transition-all duration-300" />
+                    <div className="w-4 h-4 rounded-full bg-white border-[3px] border-black/5 dark:border-[#09090B] group-hover:bg-[#FFB800] group-hover:border-white shadow-[0_0_12px_rgba(0,0,0,0.1)] dark:shadow-[0_0_12px_rgba(255,255,255,0.4)] z-10 transition-all duration-300" />
                   </div>
                 </div>
               ))}

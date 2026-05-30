@@ -5,7 +5,16 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/sections/Footer';
 import { weBuildData } from '@/data/weBuildData';
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`);
+    if (res.ok) {
+      const categories = await res.json();
+      return categories.map((cat) => ({ slug: cat.slug }));
+    }
+  } catch (err) {
+    console.error(err);
+  }
   return Object.keys(weBuildData).map((slug) => ({
     slug,
   }));
@@ -14,48 +23,61 @@ export function generateStaticParams() {
 export default async function WeBuildPage({ params }) {
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
-  const staticData = weBuildData[slug];
-
-  if (!staticData) {
-    notFound();
-  }
-
-  // Fetch dynamic projects from DB
+  let categoryData = null;
   let dynamicProjects = [];
+
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects/category/${slug}`, { 
+    const resCat = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories/slug/${slug}`, { 
       cache: 'no-store' 
     });
-    if (res.ok) {
-      dynamicProjects = await res.json();
+    if (resCat.ok) {
+      categoryData = await resCat.json();
+      if (categoryData.projects && categoryData.projects.length > 0) {
+        dynamicProjects = categoryData.projects;
+      } else {
+        // Fallback to fetch from projects API directly just in case
+        const resProj = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects/category/${slug}`, { cache: 'no-store' });
+        if (resProj.ok) dynamicProjects = await resProj.json();
+      }
     }
   } catch (err) {
-    console.log(`Failed to fetch projects for ${slug}, using fallback dummy data.`);
+    console.log(`Failed to fetch category data for ${slug}.`);
   }
 
-  // Use dynamic projects if available, otherwise use static fallback
-  const projectsToDisplay = dynamicProjects.length > 0 ? dynamicProjects : staticData.projects;
+  // Fallback to static data
+  if (!categoryData) {
+    categoryData = weBuildData[slug];
+    if (!categoryData) notFound();
+    
+    // Try to fetch projects for static category
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects/category/${slug}`, { cache: 'no-store' });
+      if (res.ok) dynamicProjects = await res.json();
+    } catch (err) {}
+  }
+
+  const projectsToDisplay = dynamicProjects.length > 0 ? dynamicProjects : (categoryData.projects || []);
 
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#FFFDF9] text-[#0C0C0C]">
+      <main className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090B] text-[#09090B] dark:text-white">
         {/* Hero Section */}
         <section className="relative w-full h-[65vh] flex items-end pb-16">
           <div className="absolute inset-0 z-0">
             <Image
-              src={staticData.heroImage}
-              alt={staticData.title}
+              src={categoryData.heroImage || 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920&h=800&fit=crop'}
+              alt={categoryData.name || categoryData.title}
               fill
               className="object-cover brightness-75"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0C] via-[#0C0C0C]/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#09090B] via-[#09090B]/40 to-transparent" />
           </div>
           <div className="container-custom relative z-10">
             <div className="w-12 h-1 bg-[#FFB800] mb-6" />
             <h1 className="text-white text-5xl md:text-7xl font-bold uppercase tracking-wider drop-shadow-2xl" style={{ fontFamily: 'var(--font-heading)' }}>
-              {staticData.title}
+              {categoryData.name || categoryData.title}
             </h1>
           </div>
         </section>
@@ -64,18 +86,18 @@ export default async function WeBuildPage({ params }) {
         <section className="py-20 lg:py-28 container-custom">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-[#0C0C0C] text-3xl md:text-[2.5rem] font-bold uppercase mb-8 leading-[1.2]" style={{ fontFamily: 'var(--font-heading)' }}>
-                {staticData.tagline}
+              <h2 className="text-[#09090B] dark:text-white text-3xl md:text-[2.5rem] font-bold uppercase mb-8 leading-[1.2]" style={{ fontFamily: 'var(--font-heading)' }}>
+                {categoryData.tagline}
               </h2>
-              <div className="w-full h-[1px] bg-gray-200 mb-8" />
-              <p className="text-gray-600 text-lg leading-relaxed text-justify">
-                {staticData.description}
+              <div className="w-full h-[1px] bg-zinc-200 dark:bg-white/10 mb-8" />
+              <p className="text-zinc-600 dark:text-white/80 text-lg leading-relaxed text-justify">
+                {categoryData.description}
               </p>
             </div>
             <div className="relative">
-              <div className="relative h-[400px] lg:h-[500px] w-full overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] z-10 border-4 border-white">
+              <div className="relative h-[400px] lg:h-[500px] w-full overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] z-10 border-4 border-white dark:border-white/5">
                 <Image
-                  src={staticData.descriptionImage}
+                  src={categoryData.descriptionImage || 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop'}
                   alt="Infrastructure Overview"
                   fill
                   className="object-cover"
@@ -88,7 +110,7 @@ export default async function WeBuildPage({ params }) {
         </section>
 
         {/* Projects Grid Section */}
-        <section className="bg-[#0C0C0C] py-24 border-t border-white/10">
+        <section className="bg-[#09090B] py-24 border-t border-white/10">
           <div className="container-custom">
             <div className="flex items-center gap-6 mb-16">
               <h2 className="text-white text-3xl lg:text-4xl font-bold uppercase tracking-wide" style={{ fontFamily: 'var(--font-heading)' }}>
@@ -116,7 +138,7 @@ export default async function WeBuildPage({ params }) {
                         fill
                         className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-100"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0C] via-transparent to-transparent opacity-90" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#09090B] via-transparent to-transparent opacity-90" />
                       
                       <div className="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                         <h3 className="text-white text-xl md:text-2xl font-medium tracking-wide drop-shadow-md" style={{ fontFamily: 'var(--font-heading)' }}>

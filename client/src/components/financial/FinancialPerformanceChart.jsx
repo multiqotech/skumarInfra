@@ -22,13 +22,13 @@ export default function FinancialPerformanceChart({ data }) {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-[#2A2A2A] p-4 rounded-lg shadow-xl">
-          <p className="text-gray-900 dark:text-white font-bold mb-2">{label}</p>
+        <div className="bg-white dark:bg-[#1a1a1a] border border-black/5 dark:border-white/10 p-4 rounded-lg shadow-xl">
+          <p className="text-zinc-900 dark:text-white font-bold mb-2">{label}</p>
           {payload.map((entry, index) => (
             <p key={`item-${index}`} className="text-sm flex items-center gap-2">
               <span className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }}></span>
-              <span className="text-gray-600 dark:text-gray-300 capitalize">{entry.name}:</span>
-              <span className="text-gray-900 dark:text-white font-semibold">{entry.value}</span>
+              <span className="text-zinc-600 dark:text-zinc-300 capitalize">{entry.name}:</span>
+              <span className="text-zinc-900 dark:text-white font-semibold">{entry.value}</span>
             </p>
           ))}
         </div>
@@ -39,8 +39,8 @@ export default function FinancialPerformanceChart({ data }) {
 
   return (
     <AnimateOnScroll delay={0.1}>
-      <div className="bg-gray-50 dark:bg-[#161616] border border-gray-200 dark:border-[#2A2A2A] rounded-2xl p-6 md:p-8 mb-8 hover:border-[#FFB800]/30 dark:hover:border-[#FFB800]/20 transition-colors">
-        <h3 className="text-gray-900 dark:text-white text-xl font-bold mb-6">Financial Performance</h3>
+      <div className="bg-[#FAFAFA] dark:bg-[#18181B] border border-black/5 dark:border-white/10 rounded-2xl p-6 md:p-8 mb-8 hover:border-[#FFB800]/30 dark:hover:border-[#FFB800]/20 transition-colors">
+        <h3 className="text-zinc-900 dark:text-white text-xl font-bold mb-6">Financial Performance</h3>
         <div className="h-[400px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart

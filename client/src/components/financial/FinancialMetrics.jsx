@@ -39,24 +39,24 @@ function MetricCard({ metric, index }) {
     <AnimateOnScroll delay={index * 0.1}>
       <div 
         ref={cardRef}
-        className="bg-gray-50 dark:bg-[#161616] border border-gray-200 dark:border-[#2A2A2A] rounded-2xl p-6 hover:border-[#FFB800]/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(255,184,0,0.05)] dark:hover:shadow-[0_10px_30px_rgba(255,184,0,0.1)]"
+        className="bg-[#FAFAFA] dark:bg-[#18181B] border border-black/5 dark:border-white/10 rounded-2xl p-6 hover:border-[#FFB800]/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(255,184,0,0.05)] dark:hover:shadow-[0_10px_30px_rgba(255,184,0,0.1)]"
       >
         <div className="flex items-end justify-between mb-4">
-          <h4 className="text-gray-900 dark:text-white font-bold text-lg">{metric.title}</h4>
+          <h4 className="text-zinc-900 dark:text-white font-bold text-lg">{metric.title}</h4>
           <span className="text-[#FFB800] font-black text-3xl">
             {metric.value}{metric.suffix}
           </span>
         </div>
         
         {/* Animated Progress Bar */}
-        <div className="w-full bg-gray-200 dark:bg-[#0C0C0C] h-2 rounded-full overflow-hidden mb-4">
+        <div className="w-full bg-zinc-200 dark:bg-[#09090B] h-2 rounded-full overflow-hidden mb-4">
           <div 
             className="h-full bg-gradient-to-r from-[#FFB800]/50 to-[#FFB800] rounded-full transition-all duration-1500 ease-out"
             style={{ width: inView ? `${Math.min(Math.max(metric.value, 5), 100)}%` : '0%' }}
           />
         </div>
         
-        <p className="text-gray-600 dark:text-gray-400 text-sm">
+        <p className="text-zinc-600 dark:text-zinc-400 text-sm">
           {metric.description}
         </p>
       </div>
