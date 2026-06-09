@@ -208,10 +208,9 @@ export default function Footer() {
 
         </div>
 
-        {/* Copyright Bar */}
         <div className="mt-16 pt-6 border-t border-[#224c85] flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-blue-200">
-          <p>© {new Date().getFullYear()} S Kumar Infracons (India) Private Limiteds. All Rights Reserved.</p>
-          <p>Designed with excellence and precision.</p>
+          <p>© {new Date().getFullYear()} S Kumar Infracons (India) Private Limited. All Rights Reserved.</p>
+          <p>Powered By Multiqo Concept Management Private Limited</p>
         </div>
       </div>
     </footer>
