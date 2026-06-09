@@ -128,23 +128,23 @@ export default function ApplicationForm({ job, onSuccess }) {
     }
   };
 
-  const inputClass = "w-full bg-[#1a1a1a] border border-[#2a2a2a] px-4 py-3.5 text-white rounded-xl focus:border-[#FFB800] focus:ring-1 focus:ring-[#FFB800] focus:outline-none transition-all";
-  const labelClass = "block text-sm font-medium text-gray-400 mb-2";
+  const inputClass = "w-full bg-[#f7f9fc] border border-[#183964]/10 px-4 py-3.5 text-[#183964] rounded-xl focus:border-[#f36c21] focus:ring-1 focus:ring-[#f36c21]/30 focus:outline-none transition-all";
+  const labelClass = "block text-sm font-semibold text-[#6b7280] mb-2";
 
   if (status === 'success') {
     return (
-      <div className="bg-[#141414] rounded-3xl p-8 md:p-10 border border-[#2a2a2a] shadow-2xl text-center relative overflow-hidden">
+      <div className="bg-white rounded-3xl p-8 md:p-10 border border-[#183964]/10 shadow-[0_20px_50px_rgba(24,57,100,0.05)] text-center relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-[#22C55E]" />
         <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
           <CheckCircle2 className="w-10 h-10 text-green-500" />
         </div>
-        <h3 className="text-2xl font-bold text-white mb-4">Application Sent!</h3>
-        <p className="text-gray-400 leading-relaxed mb-8">
+        <h3 className="text-2xl font-bold text-[#183964] mb-4">Application Sent!</h3>
+        <p className="text-[#6b7280] leading-relaxed mb-8 font-medium">
           {message}
         </p>
         <button 
           onClick={() => setStatus('idle')}
-          className="text-[#FFB800] font-medium hover:underline"
+          className="text-[#f36c21] font-bold hover:underline"
         >
           Submit another application
         </button>
@@ -153,16 +153,16 @@ export default function ApplicationForm({ job, onSuccess }) {
   }
 
   return (
-    <div className="bg-[#141414] rounded-3xl p-8 md:p-10 border border-[#2a2a2a] shadow-2xl">
+    <div className="bg-white rounded-3xl p-8 md:p-10 border border-[#183964]/10 shadow-[0_20px_50px_rgba(24,57,100,0.05)]">
       <div className="mb-8">
-        <h3 className="text-2xl font-bold text-white mb-2">Apply Now</h3>
-        <p className="text-gray-400 text-sm">Submit your details for the {job.title} position.</p>
+        <h3 className="text-2xl font-bold text-[#183964] mb-2">Apply Now</h3>
+        <p className="text-[#6b7280] text-sm font-medium">Submit your details for the {job.title} position.</p>
       </div>
 
       {status === 'error' && (
-        <div className="mb-6 p-4 bg-red-500/10 border border-red-500/50 rounded-xl flex items-start gap-3 text-red-400">
+        <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-xl flex items-start gap-3 text-red-500">
           <X className="w-5 h-5 shrink-0 mt-0.5" />
-          <p className="text-sm font-medium">{message}</p>
+          <p className="text-sm font-semibold">{message}</p>
         </div>
       )}
 
@@ -209,7 +209,7 @@ export default function ApplicationForm({ job, onSuccess }) {
           <div 
             onClick={() => fileInputRef.current?.click()}
             className={`w-full border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all ${
-              file || profile?.resumeUrl ? 'border-[#FFB800] bg-[#FFB800]/5' : 'border-[#333] hover:border-[#FFB800]/50 bg-[#1a1a1a]'
+              file || profile?.resumeUrl ? 'border-[#f36c21] bg-[#f36c21]/5' : 'border-[#183964]/20 hover:border-[#f36c21]/50 bg-[#f7f9fc]'
             }`}
           >
             <input 
@@ -222,29 +222,29 @@ export default function ApplicationForm({ job, onSuccess }) {
             
             {file ? (
               <div className="flex flex-col items-center justify-center">
-                <FileText className="w-8 h-8 text-[#FFB800] mb-3" />
-                <p className="text-white font-medium text-sm truncate max-w-[250px]">{file.name}</p>
-                <p className="text-gray-500 text-xs mt-1">{(file.size / (1024 * 1024)).toFixed(2)} MB</p>
-                <button type="button" onClick={(e) => { e.stopPropagation(); setFile(null); if (fileInputRef.current) fileInputRef.current.value = ''; }} className="mt-3 text-red-400 text-xs hover:underline">
+                <FileText className="w-8 h-8 text-[#f36c21] mb-3" />
+                <p className="text-[#183964] font-bold text-sm truncate max-w-[250px]">{file.name}</p>
+                <p className="text-[#6b7280] text-xs mt-1 font-medium">{(file.size / (1024 * 1024)).toFixed(2)} MB</p>
+                <button type="button" onClick={(e) => { e.stopPropagation(); setFile(null); if (fileInputRef.current) fileInputRef.current.value = ''; }} className="mt-3 text-red-500 font-medium text-xs hover:underline">
                   Remove file
                 </button>
               </div>
             ) : profile?.resumeUrl ? (
               <div className="flex flex-col items-center justify-center">
-                <FileText className="w-8 h-8 text-[#FFB800] mb-3" />
-                <p className="text-[#FFB800] font-medium text-sm">Using saved resume from profile</p>
-                <a href={profile.resumeUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-gray-400 text-xs hover:underline mt-1">
+                <FileText className="w-8 h-8 text-[#f36c21] mb-3" />
+                <p className="text-[#f36c21] font-bold text-sm">Using saved resume from profile</p>
+                <a href={profile.resumeUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="text-[#6b7280] font-medium text-xs hover:underline mt-1">
                   View Saved Resume
                 </a>
-                <p className="text-gray-500 text-xs mt-3">Click or drag here to upload a new resume</p>
+                <p className="text-[#6b7280] font-medium text-xs mt-3">Click or drag here to upload a new resume</p>
               </div>
             ) : (
               <div className="flex flex-col items-center justify-center">
-                <div className="w-12 h-12 bg-[#222] rounded-full flex items-center justify-center mb-4">
-                  <Upload className="w-6 h-6 text-gray-400" />
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm">
+                  <Upload className="w-6 h-6 text-[#183964]" />
                 </div>
-                <p className="text-white font-medium text-sm mb-1">Click to upload resume</p>
-                <p className="text-gray-500 text-xs">or drag and drop</p>
+                <p className="text-[#183964] font-bold text-sm mb-1">Click to upload resume</p>
+                <p className="text-[#6b7280] font-medium text-xs">or drag and drop</p>
               </div>
             )}
           </div>
@@ -258,7 +258,7 @@ export default function ApplicationForm({ job, onSuccess }) {
         <button 
           type="submit" 
           disabled={status === 'loading'}
-          className="w-full bg-[#FFB800] text-black font-bold py-4 rounded-xl hover:bg-[#e5a600] transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="w-full bg-[#f36c21] text-white font-bold py-4 rounded-xl hover:bg-[#d45a14] transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-[0_10px_20px_rgba(243,108,33,0.2)]"
         >
           {status === 'loading' ? (
             <>

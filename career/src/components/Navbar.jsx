@@ -6,6 +6,7 @@ import { HiPhone, HiMenuAlt3, HiX, HiChevronDown, HiUser, HiLogout } from 'react
 import { navLinks, phoneNumber } from '@/data/siteData';
 import { useAuth } from '@/context/AuthContext';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Navbar({ alwaysSolid = false }) {
   const [scrolled, setScrolled] = useState(false);
@@ -33,9 +34,9 @@ export default function Navbar({ alwaysSolid = false }) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled || alwaysSolid
-          ? 'bg-[#0C0C0C]/80 backdrop-blur-xl border-b border-white/5 shadow-[0_10px_40px_rgba(0,0,0,0.5)]'
-          : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white/80 backdrop-blur-lg ${scrolled || alwaysSolid
+          ? 'border-b border-[#183964]/10 shadow-[0_10px_40px_rgba(24,57,100,0.08)]'
+          : 'border-b border-transparent shadow-none'
         }`}
     >
       <div className="container-custom">
@@ -45,19 +46,14 @@ export default function Navbar({ alwaysSolid = false }) {
             href="/"
             className="flex items-center gap-3 group"
           >
-            <div className="w-9 h-9 bg-[#FFB800] flex items-center justify-center rounded-sm shadow-lg shadow-[#FFB800]/20">
-              <span className="text-[#0C0C0C] font-bold text-sm tracking-wider">
-                SK
-              </span>
-            </div>
-            <div className="hidden sm:flex flex-col justify-center">
-              <span className="text-white text-[13px] md:text-[14px] font-bold tracking-wider uppercase group-hover:text-[#FFB800] transition-colors duration-300 leading-none mb-0.5">
-                S Kumar Infracons
-              </span>
-              <span className="text-gray-400 text-[9px] md:text-[10px] font-medium tracking-widest uppercase leading-none">
-                (India) Private Limited
-              </span>
-            </div>
+            <Image
+              src="/logo.png"
+              alt="S Kumar Infracons"
+              width={300}
+              height={80}
+              className="h-[45px] md:h-[55px] w-auto object-contain py-1"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}
@@ -68,13 +64,13 @@ export default function Navbar({ alwaysSolid = false }) {
                   href={link.label === 'Careers' ? '/' : `${portfolioUrl}${link.href}`}
                   target={link.label === 'Careers' ? '_self' : '_blank'}
                   rel="noopener noreferrer"
-                  className="relative text-[14px] font-medium text-white/90 hover:text-[#FFB800] transition-colors duration-300 group py-1 flex items-center gap-1.5 uppercase tracking-wide"
+                  className="relative text-[14px] font-medium text-[#183964] hover:text-[#f36c21] transition-colors duration-300 group py-1 flex items-center gap-1.5 uppercase tracking-wide"
                 >
                   {link.label}
                   {link.hasDropdown && (
                     <HiChevronDown className="opacity-70 mt-[1px] transition-transform duration-300 group-hover/nav:-rotate-180" size={16} />
                   )}
-                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#FFB800] transition-all duration-300 group-hover/nav:w-full rounded-full" />
+                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#f36c21] transition-all duration-300 group-hover/nav:w-full rounded-full" />
                 </a>
 
                 {/* Dropdown Menu */}
@@ -83,11 +79,11 @@ export default function Navbar({ alwaysSolid = false }) {
                     className={`absolute top-[45px] left-0 pt-4 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-400 ease-out transform translate-y-3 group-hover/nav:translate-y-0 ${link.dropdownLayout === 'mega' ? 'w-[750px] xl:w-[900px] -left-[200px]' : 'w-[280px]'
                       }`}
                   >
-                    <div className="bg-[#0C0C0C]/90 backdrop-blur-2xl rounded-xl border border-white/10 text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden">
+                    <div className="bg-white/95 backdrop-blur-2xl rounded-xl border border-[#183964]/10 text-[#183964] shadow-[0_20px_50px_rgba(24,57,100,0.12)] overflow-hidden">
                       {link.dropdownLayout === 'mega' ? (
                         <div className="grid grid-cols-4 min-h-[350px]">
                           {link.dropdownItems.map((col, idx) => (
-                            <div key={idx} className={`p-6 ${idx < 2 ? 'border-r border-white/20' : ''}`}>
+                            <div key={idx} className={`p-6 ${idx < 2 ? 'border-r border-[#183964]/10' : ''}`}>
                               <ul className="flex flex-col gap-3.5">
                                 {col.items.map((item, itemIdx) => (
                                   <li key={itemIdx}>
@@ -95,7 +91,7 @@ export default function Navbar({ alwaysSolid = false }) {
                                       href={`${portfolioUrl}/we-build/${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="text-[14px] text-white/80 hover:text-[#FFB800] transition-colors"
+                                      className="text-[14px] text-[#183964]/80 hover:text-[#f36c21] transition-colors"
                                     >
                                       {item}
                                     </a>
@@ -138,7 +134,7 @@ export default function Navbar({ alwaysSolid = false }) {
                                   href={href}
                                   target={link.label === 'Careers' ? '_self' : '_blank'}
                                   rel="noopener noreferrer"
-                                  className="block px-6 py-2.5 text-[15px] text-white/80 hover:bg-[#1A1A1A] hover:text-[#FFB800] transition-colors"
+                                  className="block px-6 py-2.5 text-[15px] text-[#183964]/80 hover:bg-[#f0f4f8] hover:text-[#f36c21] transition-colors"
                                 >
                                   {item}
                                 </a>
@@ -158,10 +154,10 @@ export default function Navbar({ alwaysSolid = false }) {
           <div className="flex items-center gap-4">
             <a
               href={`tel:${phoneNumber.replace(/\s/g, '')}`}
-              className="hidden md:flex items-center gap-2 text-white hover:text-[#FFB800] transition-colors duration-300"
+              className="hidden md:flex items-center gap-2 text-[#183964] hover:text-[#f36c21] transition-colors duration-300"
             >
-              <div className="w-8 h-8 border border-white/20 flex items-center justify-center hover:border-[#FFB800]/50 transition-colors">
-                <HiPhone className="text-[#FFB800] text-sm" />
+              <div className="w-8 h-8 border border-[#183964]/20 flex items-center justify-center hover:border-[#f36c21]/50 transition-colors">
+                <HiPhone className="text-[#f36c21] text-sm" />
               </div>
               <span className="text-[12px] font-medium tracking-wider">
                 {phoneNumber}
@@ -169,26 +165,26 @@ export default function Navbar({ alwaysSolid = false }) {
             </a>
 
             {/* Auth Buttons */}
-            <div className="hidden lg:flex items-center gap-3 border-l border-white/20 pl-4 ml-2">
+            <div className="hidden lg:flex items-center gap-3 border-l border-[#183964]/20 pl-4 ml-2">
               {user ? (
                 <>
-                  <Link href="/profile" className="flex items-center gap-2 text-white hover:text-[#FFB800] text-sm font-medium transition-colors">
-                    <HiUser className="text-[#FFB800] text-lg" />
+                  <Link href="/profile" className="flex items-center gap-2 text-[#183964] hover:text-[#f36c21] text-sm font-medium transition-colors">
+                    <HiUser className="text-[#f36c21] text-lg" />
                     <span>{user.name.split(' ')[0]}</span>
                   </Link>
                   <button
                     onClick={logout}
-                    className="flex items-center gap-1.5 text-gray-400 hover:text-red-400 text-xs uppercase tracking-wider ml-2 transition-colors"
+                    className="flex items-center gap-1.5 text-[#6b7280] hover:text-red-500 text-xs uppercase tracking-wider ml-2 transition-colors"
                   >
                     <HiLogout /> Logout
                   </button>
                 </>
               ) : (
                 <>
-                  <Link href="/login" className="text-white hover:text-[#FFB800] text-sm font-semibold tracking-wide transition-colors uppercase">
+                  <Link href="/login" className="text-[#183964] hover:text-[#f36c21] text-sm font-semibold tracking-wide transition-colors uppercase">
                     Login
                   </Link>
-                  <Link href="/signup" className="bg-[#FFB800] text-black hover:bg-[#e5a600] px-4 py-1.5 rounded-sm text-sm font-bold tracking-wide transition-colors uppercase">
+                  <Link href="/signup" className="bg-[#f36c21] text-white hover:bg-[#d45a14] px-4 py-1.5 rounded-sm text-sm font-bold tracking-wide transition-colors uppercase">
                     Sign Up
                   </Link>
                 </>
@@ -196,7 +192,7 @@ export default function Navbar({ alwaysSolid = false }) {
             </div>
 
             <button
-              className="lg:hidden text-white p-2 hover:text-[#FFB800] transition-colors"
+              className="lg:hidden text-[#183964] p-2 hover:text-[#f36c21] transition-colors"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
@@ -214,7 +210,7 @@ export default function Navbar({ alwaysSolid = false }) {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden overflow-hidden bg-[#0C0C0C] border-t border-[#2A2A2A]"
+            className="lg:hidden overflow-hidden bg-white border-t border-[#183964]/5 shadow-[0_20px_50px_rgba(24,57,100,0.12)]"
           >
             <div className="container-custom py-6 flex flex-col gap-3">
               {navLinks.map((link, i) => (
@@ -227,7 +223,7 @@ export default function Navbar({ alwaysSolid = false }) {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="flex items-center justify-between text-white/90 hover:text-[#FFB800] text-[15px] font-medium py-3 border-b border-[#1C1C1C] transition-colors tracking-wide"
+                  className="flex items-center justify-between text-[#183964]/90 hover:text-[#f36c21] text-[15px] font-medium py-3 border-b border-[#183964]/5 transition-colors tracking-wide"
                 >
                   {link.label}
                   {link.hasDropdown && <HiChevronDown size={18} className="opacity-50" />}
@@ -235,7 +231,7 @@ export default function Navbar({ alwaysSolid = false }) {
               ))}
               <a
                 href={`tel:${phoneNumber.replace(/\s/g, '')}`}
-                className="flex items-center gap-2 text-[#FFB800] mt-3"
+                className="flex items-center gap-2 text-[#f36c21] mt-3"
               >
                 <HiPhone />
                 <span className="text-sm font-medium tracking-wider">
@@ -244,31 +240,31 @@ export default function Navbar({ alwaysSolid = false }) {
               </a>
 
               {/* Mobile Auth */}
-              <div className="border-t border-[#1C1C1C] mt-2 pt-4 flex flex-col gap-3">
+              <div className="border-t border-[#183964]/5 mt-2 pt-4 flex flex-col gap-3">
                 {user ? (
                   <>
                     <Link
                       href="/profile"
                       onClick={() => setMobileOpen(false)}
-                      className="flex items-center gap-2 text-white hover:text-[#FFB800] transition-colors"
+                      className="flex items-center gap-2 text-[#183964] hover:text-[#f36c21] transition-colors"
                     >
-                      <HiUser className="text-[#FFB800] text-xl" />
+                      <HiUser className="text-[#f36c21] text-xl" />
                       <span className="font-semibold">{user.name}</span>
-                      <span className="text-xs text-gray-400 hover:underline">(View Profile)</span>
+                      <span className="text-xs text-[#6b7280] hover:underline">(View Profile)</span>
                     </Link>
                     <button
                       onClick={() => { setMobileOpen(false); logout(); }}
-                      className="text-left text-red-400 hover:text-red-300 font-medium py-2 transition-colors flex items-center gap-2"
+                      className="text-left text-red-500 hover:text-red-400 font-medium py-2 transition-colors flex items-center gap-2"
                     >
                       <HiLogout /> Logout
                     </button>
                   </>
                 ) : (
                   <div className="flex items-center gap-3 mt-2">
-                    <Link href="/login" onClick={() => setMobileOpen(false)} className="flex-1 text-center py-2.5 border border-[#FFB800] text-[#FFB800] hover:bg-[#FFB800]/10 rounded-sm font-semibold transition-colors uppercase text-sm">
+                    <Link href="/login" onClick={() => setMobileOpen(false)} className="flex-1 text-center py-2.5 border border-[#f36c21] text-[#f36c21] hover:bg-[#f36c21]/10 rounded-sm font-semibold transition-colors uppercase text-sm">
                       Login
                     </Link>
-                    <Link href="/signup" onClick={() => setMobileOpen(false)} className="flex-1 text-center py-2.5 bg-[#FFB800] text-black hover:bg-[#e5a600] rounded-sm font-semibold transition-colors uppercase text-sm">
+                    <Link href="/signup" onClick={() => setMobileOpen(false)} className="flex-1 text-center py-2.5 bg-[#f36c21] text-white hover:bg-[#d45a14] rounded-sm font-semibold transition-colors uppercase text-sm">
                       Sign Up
                     </Link>
                   </div>

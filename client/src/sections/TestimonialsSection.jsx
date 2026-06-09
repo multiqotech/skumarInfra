@@ -7,7 +7,7 @@ import AnimateOnScroll from '@/components/AnimateOnScroll';
 import { testimonialsData } from '@/data/siteData';
 
 export default function TestimonialsSection() {
-  const [testimonials, setTestimonials] = useState(testimonialsData); // Default fallback data
+  const [testimonials, setTestimonials] = useState(testimonialsData);
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/testimonials`)
@@ -16,7 +16,6 @@ export default function TestimonialsSection() {
         return res.json();
       })
       .then((data) => {
-        // Fall back to dummy data if DB collection is empty
         if (data && data.length > 0) {
           setTestimonials(data);
         }
@@ -27,24 +26,18 @@ export default function TestimonialsSection() {
   }, []);
 
   return (
-    <section className="bg-white dark:bg-[#09090B] py-14 lg:py-24" id="testimonials">
+    <section className="bg-[#f0f4f8] py-14 lg:py-24 border-y border-[#183964]/5" id="testimonials">
       <div className="container-custom">
         {/* Header */}
         <div className="flex items-end justify-between mb-16">
           <AnimateOnScroll>
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-[3px] bg-[#FFB800]" />
-              <span
-                className="text-[#FFB800] text-[11px] tracking-[0.25em] uppercase font-semibold"
-                
-              >
+              <div className="w-10 h-[3px] bg-[#f36c21]" />
+              <span className="text-[#f36c21] text-[11px] tracking-[0.25em] uppercase font-semibold">
                 Testimonials
               </span>
             </div>
-            <h2
-              className="text-zinc-900 dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold"
-              
-            >
+            <h2 className="text-[#183964] text-2xl md:text-3xl lg:text-4xl font-bold">
               Public Cheers For Us!
             </h2>
           </AnimateOnScroll>
@@ -52,8 +45,7 @@ export default function TestimonialsSection() {
           <AnimateOnScroll delay={0.2}>
             <a
               href="#"
-              className="hidden md:inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.15em] text-zinc-900 dark:text-white hover:text-[#FFB800] dark:hover:text-[#FFB800] transition-colors border-2 border-gray-900 dark:border-white rounded-lg hover:border-[#FFB800] dark:hover:border-[#FFB800] px-6 py-3"
-              
+              className="hidden md:inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.15em] text-[#183964] hover:text-white transition-colors border-2 border-[#183964] rounded-lg hover:bg-[#183964] px-6 py-3"
             >
               View All Testimonials <HiArrowRight size={14} />
             </a>
@@ -64,22 +56,22 @@ export default function TestimonialsSection() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((t, index) => (
             <AnimateOnScroll key={index} delay={index * 0.08}>
-              <div className="bg-[#FAFAFA] dark:bg-[#18181B] rounded-2xl p-8 border border-black/5 dark:border-white/10 hover:border-[#FFB800]/30 dark:hover:border-[#FFB800]/30 shadow-sm dark:shadow-none hover:shadow-[0_8px_30px_rgba(255,184,0,0.1)] transition-all duration-500 h-full flex flex-col">
+              <div className="bg-white rounded-2xl p-8 border border-[#183964]/5 hover:border-[#f36c21]/30 shadow-sm hover:shadow-[0_10px_30px_rgba(24,57,100,0.06)] transition-all duration-500 h-full flex flex-col">
                 {/* Stars */}
                 <div className="flex gap-0.5 mb-5">
                   {[...Array(t.rating)].map((_, i) => (
-                    <HiStar key={i} className="text-[#FFB800] text-[16px]" />
+                    <HiStar key={i} className="text-[#f36c21] text-[16px]" />
                   ))}
                 </div>
 
                 {/* Text */}
-                <p className="text-zinc-600 dark:text-zinc-300 text-[14px] leading-relaxed mb-8 italic flex-1">
+                <p className="text-[#4b5563] text-[14px] leading-relaxed mb-8 italic flex-1">
                   &ldquo;{t.text}&rdquo;
                 </p>
 
                 {/* Author */}
-                <div className="flex items-center gap-4 mt-auto">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-[#FFB800]/20">
+                <div className="flex items-center gap-4 mt-auto pt-4 border-t border-[#183964]/5">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-[#f36c21]/20">
                     <Image
                       src={t.image}
                       alt={t.name}
@@ -89,13 +81,10 @@ export default function TestimonialsSection() {
                     />
                   </div>
                   <div>
-                    <h4
-                      className="text-zinc-900 dark:text-white text-[15px] font-bold"
-                      
-                    >
+                    <h4 className="text-[#183964] text-[15px] font-bold">
                       {t.name}
                     </h4>
-                    <p className="text-zinc-500 dark:text-zinc-400 text-[12px] mt-0.5">{t.role}</p>
+                    <p className="text-[#6b7280] text-[12px] mt-0.5 font-medium">{t.role}</p>
                   </div>
                 </div>
               </div>

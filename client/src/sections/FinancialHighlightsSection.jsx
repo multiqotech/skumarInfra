@@ -35,8 +35,8 @@ export default function FinancialHighlightsSection() {
 
   if (loading) {
     return (
-      <section className="bg-white dark:bg-[#09090B] py-14 lg:py-20 flex justify-center items-center min-h-[400px]">
-        <div className="w-10 h-10 border-4 border-[#FFB800] border-t-transparent rounded-full animate-spin"></div>
+      <section className="bg-[#f0f4f8] py-14 lg:py-20 flex justify-center items-center min-h-[400px]">
+        <div className="w-10 h-10 border-4 border-[#f36c21] border-t-transparent rounded-full animate-spin"></div>
       </section>
     );
   }
@@ -45,7 +45,7 @@ export default function FinancialHighlightsSection() {
   if (error || !data) return null;
 
   return (
-    <section className="relative bg-[#FAFAFA] dark:bg-[#09090B] py-14 lg:py-24 overflow-hidden border-t border-black/5 dark:border-[#1a1a1a]">
+    <section className="relative bg-[#f0f4f8] py-14 lg:py-24 overflow-hidden border-t border-[#183964]/5">
       <div className="relative container-custom z-10">
         
         <FinancialOverview overview={data.overview} />

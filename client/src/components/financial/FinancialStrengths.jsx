@@ -6,14 +6,14 @@ export default function FinancialStrengths({ strengths }) {
   if (!strengths || strengths.length === 0) return null;
 
   return (
-    <div className="bg-white dark:bg-[#09090B] border border-black/5 dark:border-white/10 rounded-2xl p-6 md:p-10 relative overflow-hidden">
+    <div className="bg-white border border-[#183964]/5 shadow-[0_10px_30px_rgba(24,57,100,0.04)] rounded-2xl p-6 md:p-10 relative overflow-hidden">
       {/* Decorative background element */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFB800]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-[#f36c21]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       
       <AnimateOnScroll>
-        <h3 className="text-zinc-900 dark:text-white text-xl md:text-2xl font-bold mb-8 flex items-center gap-3">
-          <span className="w-8 h-8 rounded-full bg-[#FFB800]/20 flex items-center justify-center">
-            <span className="w-3 h-3 rounded-full bg-[#FFB800]" />
+        <h3 className="text-[#183964] text-xl md:text-2xl font-bold mb-8 flex items-center gap-3">
+          <span className="w-8 h-8 rounded-full bg-[#f36c21]/20 flex items-center justify-center">
+            <span className="w-3 h-3 rounded-full bg-[#f36c21]" />
           </span>
           Key Financial Strengths
         </h3>
@@ -24,14 +24,14 @@ export default function FinancialStrengths({ strengths }) {
           <AnimateOnScroll key={index} delay={index * 0.1}>
             <div className="flex items-start gap-4 group">
               <div className="mt-1 flex-shrink-0">
-                <CheckCircle2 className="w-5 h-5 text-[#FFB800] group-hover:scale-110 transition-transform" />
+                <CheckCircle2 className="w-5 h-5 text-[#f36c21] group-hover:scale-110 transition-transform" />
               </div>
               <div>
-                <h4 className="text-zinc-900 dark:text-white font-semibold text-base mb-1 group-hover:text-[#FFB800] dark:group-hover:text-[#FFB800] transition-colors">
+                <h4 className="text-[#183964] font-bold text-base mb-1 group-hover:text-[#f36c21] transition-colors">
                   {strength.title}
                 </h4>
                 {strength.description && (
-                  <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
+                  <p className="text-[#4b5563] text-sm leading-relaxed">
                     {strength.description}
                   </p>
                 )}

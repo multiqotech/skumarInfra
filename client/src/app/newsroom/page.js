@@ -84,21 +84,21 @@ function NewsroomContent() {
     : news;
 
   return (
-    <main className="min-h-screen bg-white dark:bg-[#09090B] text-[#09090B] dark:text-white">
-      <div className="bg-[#09090B]">
+    <main className="min-h-screen bg-[#f7f9fc]">
+      <div className="bg-white">
         <Navbar alwaysSolid={true} />
       </div>
 
       {/* Header Section */}
-      <section className="pt-28 pb-6 border-b border-black/5">
+      <section className="pt-28 pb-6 border-b border-[#183964]/10 bg-white">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <h1 className="text-3xl font-light text-[#09090B] dark:text-white uppercase tracking-wide flex flex-col gap-2">
+              <h1 className="text-3xl font-bold text-[#183964] uppercase tracking-wide flex flex-col gap-2">
                 LATEST HAPPENINGS
                 <div className="flex">
-                  <div className="h-1 w-24 bg-[#FFB800]"></div>
-                  <div className="h-1 w-16 bg-[#17375E]"></div>
+                  <div className="h-1 w-24 bg-[#f36c21]"></div>
+                  <div className="h-1 w-16 bg-[#183964]"></div>
                 </div>
               </h1>
             </div>
@@ -110,10 +110,10 @@ function NewsroomContent() {
                   whileTap={{ scale: 0.95 }}
                   key={tab.id}
                   onClick={() => handleTabChange(tab.id)}
-                  className={`px-4 py-2 text-sm font-medium transition-colors ${
+                  className={`px-4 py-2 text-sm font-bold transition-all shadow-sm ${
                     activeTab === tab.id 
-                      ? 'bg-[#FFB800] text-[#09090B] shadow-md' 
-                      : 'bg-[#17375E] text-white hover:bg-[#17375E]/90'
+                      ? 'bg-[#f36c21] text-white shadow-md' 
+                      : 'bg-[#183964]/5 text-[#183964] hover:bg-[#183964]/10 border border-[#183964]/10'
                   }`}
                 >
                   {tab.label}
@@ -125,18 +125,18 @@ function NewsroomContent() {
       </section>
 
       {/* Main Content Area */}
-      <section className="py-12">
+      <section className="py-12 bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             
             {/* Left Column (Years & News List) */}
             <div className="lg:col-span-2">
               {loading ? (
-                <div className="py-20 text-center text-zinc-500 dark:text-zinc-400">Loading...</div>
+                <div className="py-20 text-center text-[#4b5563] font-medium">Loading...</div>
               ) : (
                 <>
                   {/* Years Grid */}
-                  <div className="mb-12 border-y border-black/5 py-4">
+                  <div className="mb-12 border-y border-[#183964]/5 py-4">
                     <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-7 gap-y-4 gap-x-2 text-center text-sm">
                       {availableYears.map((year, i) => (
                         <motion.button
@@ -147,10 +147,10 @@ function NewsroomContent() {
                           whileTap={{ scale: 0.95 }}
                           key={year}
                           onClick={() => setSelectedYear(selectedYear === year ? null : year)}
-                          className={`py-2 transition-colors rounded-md ${
+                          className={`py-2 transition-all rounded-md border ${
                             selectedYear === year 
-                              ? 'bg-[#17375E] text-white font-bold shadow-md' 
-                              : 'text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/10'
+                              ? 'bg-[#183964] text-white font-bold shadow-md border-[#183964]' 
+                              : 'text-[#4b5563] hover:text-[#183964] bg-white border-[#183964]/10 hover:border-[#183964]/30'
                           }`}
                         >
                           {year}
@@ -162,7 +162,7 @@ function NewsroomContent() {
                   {/* News List */}
                   <div className="space-y-8">
                     {filteredNews.length === 0 ? (
-                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-zinc-500 dark:text-zinc-400 italic">No updates available for the selected criteria.</motion.p>
+                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-[#4b5563] italic">No updates available for the selected criteria.</motion.p>
                     ) : (
                       <AnimatePresence mode="popLayout">
                         {filteredNews.map((item, index) => {
@@ -183,12 +183,12 @@ function NewsroomContent() {
                               exit={{ opacity: 0, scale: 0.95 }}
                               transition={{ duration: 0.4, delay: index * 0.05 }}
                               key={item._id} 
-                              className="flex gap-6 border-b border-black/5 pb-8 last:border-0 group"
+                              className="flex gap-6 border-b border-[#183964]/5 pb-8 last:border-0 group"
                             >
                             {/* Date Box */}
-                            <div className="flex-shrink-0 flex flex-col items-center bg-white dark:bg-[#18181B] shadow-[0_2px_10px_rgba(0,0,0,0.08)] border border-black/5 dark:border-white/10 w-16 h-16">
-                              <div className="bg-[#17375E] text-white text-xs w-full text-center py-1 font-medium">{month}</div>
-                              <div className="text-[#17375E] text-xl font-light py-1">{day}</div>
+                            <div className="flex-shrink-0 flex flex-col items-center bg-white shadow-[0_2px_10px_rgba(24,57,100,0.06)] border border-[#183964]/10 w-16 h-16 rounded overflow-hidden">
+                              <div className="bg-[#183964] text-white text-xs w-full text-center py-1 font-bold tracking-wide">{month}</div>
+                              <div className="text-[#f36c21] text-xl font-bold py-1 bg-[#f7f9fc] w-full text-center">{day}</div>
                             </div>
                             
                             {/* Headline */}
@@ -199,10 +199,10 @@ function NewsroomContent() {
                                 rel={item.type === 'featured-stories' ? "noopener noreferrer" : ""}
                                 className="block"
                               >
-                                <h3 className="text-lg md:text-xl text-zinc-700 dark:text-zinc-200 font-light hover:text-[#17375E] dark:hover:text-[#FFB800] transition-colors line-clamp-2">
+                                <h3 className="text-lg md:text-xl text-[#183964] font-bold hover:text-[#f36c21] transition-colors line-clamp-2">
                                   {item.headline}
                                 </h3>
-                                <p className="text-xs text-zinc-400 mt-2">{day} {month} {year}</p>
+                                <p className="text-xs text-[#4b5563] font-medium mt-2">{day} {month} {year}</p>
                               </a>
                             </div>
                             </motion.div>
@@ -217,20 +217,21 @@ function NewsroomContent() {
 
             {/* Right Column (Media Contacts) */}
             <div className="lg:col-span-1">
-              <div className="bg-[#FFB800] sticky top-24 shadow-lg">
-                <div className="p-6 border-b border-black/10">
-                  <h3 className="text-xl font-light text-[#09090B]">Media Contacts</h3>
+              <div className="bg-white sticky top-24 shadow-[0_10px_40px_rgba(24,57,100,0.08)] border border-[#183964]/10 rounded-xl overflow-hidden">
+                <div className="p-6 border-b border-[#183964]/10 bg-[#f7f9fc]">
+                  <h3 className="text-xl font-bold text-[#183964]">Media Contacts</h3>
+                  <div className="h-1 w-12 bg-[#f36c21] mt-3"></div>
                 </div>
                 <div className="p-6 space-y-8 max-h-[70vh] overflow-y-auto custom-scrollbar">
                   {contacts.length === 0 ? (
-                    <p className="text-[#09090B]/60 text-sm">No media contacts available.</p>
+                    <p className="text-[#4b5563] text-sm font-medium">No media contacts available.</p>
                   ) : (
                     contacts.map(contact => (
-                      <div key={contact._id} className="text-[#09090B]">
-                        <h4 className="text-[#17375E] text-lg font-medium mb-1">{contact.name}</h4>
-                        <p className="text-xs font-medium mb-1">{contact.designation}</p>
-                        <p className="text-xs">
-                          Email: <a href={`mailto:${contact.email}`} className="text-[#17375E] hover:underline">{contact.email}</a>
+                      <div key={contact._id} className="text-[#183964]">
+                        <h4 className="text-[#f36c21] text-lg font-bold mb-1">{contact.name}</h4>
+                        <p className="text-sm font-medium mb-1 text-[#4b5563]">{contact.designation}</p>
+                        <p className="text-sm font-medium text-[#4b5563]">
+                          Email: <a href={`mailto:${contact.email}`} className="text-[#183964] font-bold hover:text-[#f36c21] transition-colors">{contact.email}</a>
                         </p>
                       </div>
                     ))
@@ -250,7 +251,7 @@ function NewsroomContent() {
 
 export default function NewsroomPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-white dark:bg-[#09090B] flex items-center justify-center text-zinc-900 dark:text-white">Loading...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center text-[#183964] font-bold text-xl">Loading...</div>}>
       <NewsroomContent />
     </Suspense>
   );

@@ -115,7 +115,7 @@ export default function FinancialHighlightsManager({ showFeedback }) {
         <button
           onClick={handleSave}
           disabled={saving}
-          className="px-6 py-2 bg-[var(--color-yellow)] text-black font-semibold rounded-lg hover:bg-[#e5a600] transition flex items-center gap-2"
+          className="px-6 py-2 bg-[var(--color-yellow)] text-white font-semibold rounded-lg hover:bg-[#e5a600] transition flex items-center gap-2"
         >
           {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
           Save All Changes
@@ -124,7 +124,7 @@ export default function FinancialHighlightsManager({ showFeedback }) {
 
       {/* Overview Section */}
       <div className="bg-[var(--color-dark-card)] rounded-xl border border-[var(--color-dark-border)] overflow-hidden">
-        <div className="p-4 border-b border-[var(--color-dark-border)] bg-[#1a1a1a]">
+        <div className="p-4 border-b border-[var(--color-dark-border)] bg-[#f7f9fc]">
           <h3 className="text-lg font-semibold">1. Overview</h3>
         </div>
         <div className="p-6 space-y-4">
@@ -151,7 +151,7 @@ export default function FinancialHighlightsManager({ showFeedback }) {
 
       {/* Financial Performance Section */}
       <div className="bg-[var(--color-dark-card)] rounded-xl border border-[var(--color-dark-border)] overflow-hidden">
-        <div className="p-4 border-b border-[var(--color-dark-border)] bg-[#1a1a1a] flex justify-between items-center">
+        <div className="p-4 border-b border-[var(--color-dark-border)] bg-[#f7f9fc] flex justify-between items-center">
           <h3 className="text-lg font-semibold">2. Financial Performance (Chart Data)</h3>
           <button onClick={handleAddPerformance} className="flex items-center gap-1 text-sm text-[var(--color-yellow)] hover:underline">
             <Plus className="h-4 w-4" /> Add Year
@@ -161,7 +161,7 @@ export default function FinancialHighlightsManager({ showFeedback }) {
           {performance.map((item, index) => (
             <div key={index} className="flex gap-4 items-end bg-[var(--color-dark)] p-4 rounded-lg border border-[var(--color-dark-border)]">
               <div className="flex-1">
-                <label className="block text-xs text-gray-400 mb-1">Year (e.g., FY 2021-22)</label>
+                <label className="block text-xs text-[#6b7280] mb-1">Year (e.g., FY 2021-22)</label>
                 <input
                   type="text"
                   value={item.year}
@@ -170,7 +170,7 @@ export default function FinancialHighlightsManager({ showFeedback }) {
                 />
               </div>
               <div className="flex-1">
-                <label className="block text-xs text-gray-400 mb-1">Revenue</label>
+                <label className="block text-xs text-[#6b7280] mb-1">Revenue</label>
                 <input
                   type="number"
                   value={item.revenue}
@@ -179,7 +179,7 @@ export default function FinancialHighlightsManager({ showFeedback }) {
                 />
               </div>
               <div className="flex-1">
-                <label className="block text-xs text-gray-400 mb-1">Net Profit</label>
+                <label className="block text-xs text-[#6b7280] mb-1">Net Profit</label>
                 <input
                   type="number"
                   value={item.netProfit}
@@ -192,13 +192,13 @@ export default function FinancialHighlightsManager({ showFeedback }) {
               </button>
             </div>
           ))}
-          {performance.length === 0 && <p className="text-gray-500 text-sm">No performance data added.</p>}
+          {performance.length === 0 && <p className="text-[#6b7280] text-sm">No performance data added.</p>}
         </div>
       </div>
 
       {/* KPI Metrics Section */}
       <div className="bg-[var(--color-dark-card)] rounded-xl border border-[var(--color-dark-border)] overflow-hidden">
-        <div className="p-4 border-b border-[var(--color-dark-border)] bg-[#1a1a1a] flex justify-between items-center">
+        <div className="p-4 border-b border-[var(--color-dark-border)] bg-[#f7f9fc] flex justify-between items-center">
           <h3 className="text-lg font-semibold">3. KPI Metrics</h3>
           <button onClick={handleAddMetric} className="flex items-center gap-1 text-sm text-[var(--color-yellow)] hover:underline">
             <Plus className="h-4 w-4" /> Add Metric
@@ -212,31 +212,31 @@ export default function FinancialHighlightsManager({ showFeedback }) {
               </button>
               <div className="flex gap-4">
                 <div className="flex-1">
-                  <label className="block text-xs text-gray-400 mb-1">Title</label>
+                  <label className="block text-xs text-[#6b7280] mb-1">Title</label>
                   <input type="text" value={item.title} onChange={(e) => handleChangeMetric(index, 'title', e.target.value)} className="w-full bg-transparent border-b border-gray-600 px-2 py-1 focus:outline-none focus:border-[var(--color-yellow)]" />
                 </div>
                 <div className="w-24">
-                  <label className="block text-xs text-gray-400 mb-1">Value</label>
+                  <label className="block text-xs text-[#6b7280] mb-1">Value</label>
                   <input type="number" value={item.value} onChange={(e) => handleChangeMetric(index, 'value', e.target.value)} className="w-full bg-transparent border-b border-gray-600 px-2 py-1 focus:outline-none focus:border-[var(--color-yellow)]" />
                 </div>
                 <div className="w-24">
-                  <label className="block text-xs text-gray-400 mb-1">Suffix</label>
+                  <label className="block text-xs text-[#6b7280] mb-1">Suffix</label>
                   <input type="text" value={item.suffix} onChange={(e) => handleChangeMetric(index, 'suffix', e.target.value)} className="w-full bg-transparent border-b border-gray-600 px-2 py-1 focus:outline-none focus:border-[var(--color-yellow)]" placeholder="e.g. %" />
                 </div>
               </div>
               <div>
-                <label className="block text-xs text-gray-400 mb-1">Description</label>
+                <label className="block text-xs text-[#6b7280] mb-1">Description</label>
                 <input type="text" value={item.description} onChange={(e) => handleChangeMetric(index, 'description', e.target.value)} className="w-full bg-transparent border-b border-gray-600 px-2 py-1 focus:outline-none focus:border-[var(--color-yellow)]" />
               </div>
             </div>
           ))}
-          {metrics.length === 0 && <p className="text-gray-500 text-sm">No metrics added.</p>}
+          {metrics.length === 0 && <p className="text-[#6b7280] text-sm">No metrics added.</p>}
         </div>
       </div>
 
       {/* Strengths Section */}
       <div className="bg-[var(--color-dark-card)] rounded-xl border border-[var(--color-dark-border)] overflow-hidden">
-        <div className="p-4 border-b border-[var(--color-dark-border)] bg-[#1a1a1a] flex justify-between items-center">
+        <div className="p-4 border-b border-[var(--color-dark-border)] bg-[#f7f9fc] flex justify-between items-center">
           <h3 className="text-lg font-semibold">4. Key Strengths</h3>
           <button onClick={handleAddStrength} className="flex items-center gap-1 text-sm text-[var(--color-yellow)] hover:underline">
             <Plus className="h-4 w-4" /> Add Strength
@@ -249,16 +249,16 @@ export default function FinancialHighlightsManager({ showFeedback }) {
                 <Trash2 className="h-4 w-4" />
               </button>
               <div>
-                <label className="block text-xs text-gray-400 mb-1">Title</label>
+                <label className="block text-xs text-[#6b7280] mb-1">Title</label>
                 <input type="text" value={item.title} onChange={(e) => handleChangeStrength(index, 'title', e.target.value)} className="w-full bg-transparent border-b border-gray-600 px-2 py-1 focus:outline-none focus:border-[var(--color-yellow)]" />
               </div>
               <div>
-                <label className="block text-xs text-gray-400 mb-1">Description</label>
+                <label className="block text-xs text-[#6b7280] mb-1">Description</label>
                 <input type="text" value={item.description} onChange={(e) => handleChangeStrength(index, 'description', e.target.value)} className="w-full bg-transparent border-b border-gray-600 px-2 py-1 focus:outline-none focus:border-[var(--color-yellow)]" />
               </div>
             </div>
           ))}
-          {strengths.length === 0 && <p className="text-gray-500 text-sm">No strengths added.</p>}
+          {strengths.length === 0 && <p className="text-[#6b7280] text-sm">No strengths added.</p>}
         </div>
       </div>
 

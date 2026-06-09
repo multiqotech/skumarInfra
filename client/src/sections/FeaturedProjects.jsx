@@ -39,24 +39,18 @@ export default function FeaturedProjects() {
   };
 
   return (
-    <section className="bg-[#FAFAFA] dark:bg-[#09090B] py-14 lg:py-20" id="projects">
+    <section className="bg-white py-14 lg:py-20" id="projects">
       <div className="container-custom">
         {/* Header */}
         <div className="flex items-end justify-between mb-10">
           <AnimateOnScroll>
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-[3px] bg-[#FFB800]" />
-              <span
-                className="text-[#FFB800] text-[11px] tracking-[0.25em] uppercase font-semibold"
-                
-              >
+              <div className="w-10 h-[3px] bg-[#f36c21]" />
+              <span className="text-[#f36c21] text-[11px] tracking-[0.25em] uppercase font-semibold">
                 Portfolio
               </span>
             </div>
-            <h2
-              className="text-zinc-900 dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold"
-              
-            >
+            <h2 className="text-[#183964] text-2xl md:text-3xl lg:text-4xl font-bold">
               Our Featured Projects
             </h2>
           </AnimateOnScroll>
@@ -64,14 +58,14 @@ export default function FeaturedProjects() {
           <div className="hidden md:flex items-center gap-2">
             <button
               onClick={() => scroll('left')}
-              className="w-11 h-11 border border-black/5 dark:border-white/10 rounded-lg flex items-center justify-center text-zinc-900 dark:text-white hover:bg-[#FFB800] dark:hover:bg-[#FFB800] hover:border-[#FFB800] dark:hover:border-[#FFB800] hover:text-[#09090B] dark:hover:text-[#09090B] transition-all duration-300"
+              className="w-11 h-11 border border-[#183964]/10 rounded-lg flex items-center justify-center text-[#183964] hover:bg-[#f36c21] hover:border-[#f36c21] hover:text-white transition-all duration-300"
               aria-label="Previous"
             >
               <HiArrowLeft size={16} />
             </button>
             <button
               onClick={() => scroll('right')}
-              className="w-11 h-11 bg-[#FFB800] rounded-lg flex items-center justify-center text-[#09090B] hover:bg-[#FFC933] transition-all duration-300"
+              className="w-11 h-11 bg-[#f36c21] rounded-lg flex items-center justify-center text-white hover:bg-[#d45a14] hover:shadow-lg transition-all duration-300"
               aria-label="Next"
             >
               <HiArrowRight size={16} />
@@ -83,10 +77,10 @@ export default function FeaturedProjects() {
       {/* Scrollable Cards */}
       <div
         ref={scrollRef}
-        className="flex gap-6 overflow-x-auto pb-4 px-5 lg:px-[calc((100vw-1280px)/2+1.25rem)] scrollbar-hide"
+        className="flex gap-6 overflow-x-auto pb-8 px-5 lg:px-[calc((100vw-1280px)/2+1.25rem)] scrollbar-hide"
       >
         {loading ? (
-          <div className="text-zinc-500 dark:text-white/50 px-5">Loading projects...</div>
+          <div className="text-zinc-500 px-5 font-medium">Loading projects...</div>
         ) : (
           featuredProjects.map((project, index) => (
             <Link key={project._id || index} href={`/we-build/${project.category}/${project._id}`}>
@@ -97,7 +91,7 @@ export default function FeaturedProjects() {
                 whileHover={{ y: -5 }}
                 whileTap={{ scale: 0.98 }}
                 viewport={{ once: true }}
-                className="group relative flex-shrink-0 w-[280px] h-[380px] rounded-2xl overflow-hidden cursor-pointer block"
+                className="group relative flex-shrink-0 w-[280px] h-[380px] rounded-2xl overflow-hidden cursor-pointer block shadow-[0_10px_30px_rgba(24,57,100,0.1)]"
               >
                 <Image
                   src={project.image}
@@ -105,19 +99,17 @@ export default function FeaturedProjects() {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#09090B] via-[#09090B]/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#183964]/90 via-[#183964]/20 to-transparent" />
 
                 <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <div className="w-6 h-[3px] bg-[#FFB800] mb-2 transition-all duration-300 group-hover:w-10" />
-                  <h3
-                    className="text-white text-lg font-bold"
-                  >
+                  <div className="w-6 h-[3px] bg-[#f36c21] mb-2 transition-all duration-300 group-hover:w-10" />
+                  <h3 className="text-white text-lg font-bold leading-tight">
                     {project.title}
                   </h3>
-                  <p className="text-white/50 text-[13px] mt-1">{project.location}</p>
+                  <p className="text-white/70 text-[13px] mt-2 font-medium">{project.location}</p>
                 </div>
 
-                <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#FFB800]/30 transition-all duration-500 rounded-2xl" />
+                <div className="absolute inset-0 border-[3px] border-transparent group-hover:border-[#f36c21]/80 transition-all duration-500 rounded-2xl" />
               </motion.div>
             </Link>
           ))

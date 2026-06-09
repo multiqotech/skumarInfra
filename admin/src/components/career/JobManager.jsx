@@ -160,7 +160,7 @@ export default function JobManager({ showFeedback }) {
 
   const statusBadge = (status) => {
     const colors = {
-      Draft: 'bg-gray-600/20 text-gray-400 border-gray-600/30',
+      Draft: 'bg-gray-600/20 text-[#6b7280] border-gray-600/30',
       Published: 'bg-green-600/20 text-green-400 border-green-600/30',
       Archived: 'bg-orange-600/20 text-orange-400 border-orange-600/30',
     };
@@ -171,16 +171,16 @@ export default function JobManager({ showFeedback }) {
     );
   };
 
-  const inputClass = 'w-full bg-[#1a1a1a] border border-[var(--color-dark-border)] px-4 py-2.5 text-white text-sm rounded-lg focus:border-[#FFB800] focus:outline-none transition-colors';
-  const labelClass = 'block text-sm font-medium text-gray-400 mb-1.5';
+  const inputClass = 'w-full bg-[#f7f9fc] border border-[var(--color-dark-border)] px-4 py-2.5 text-[#183964] text-sm rounded-lg focus:border-[#f36c21] focus:outline-none transition-colors';
+  const labelClass = 'block text-sm font-medium text-[#6b7280] mb-1.5';
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-white">Job Management</h2>
+        <h2 className="text-2xl font-bold text-[#183964]">Job Management</h2>
         <button
           onClick={() => { resetForm(); setShowForm(true); }}
-          className="flex items-center gap-2 px-4 py-2.5 bg-[#FFB800] text-black font-semibold rounded-lg hover:bg-[#e5a600] transition-colors text-sm"
+          className="flex items-center gap-2 px-4 py-2.5 bg-[#f36c21] text-white font-semibold rounded-lg hover:bg-[#e5a600] transition-colors text-sm"
         >
           <Plus className="w-4 h-4" /> New Job
         </button>
@@ -189,12 +189,12 @@ export default function JobManager({ showFeedback }) {
       {/* Job Form Modal */}
       {showForm && (
         <div className="fixed inset-0 bg-black/70 z-50 flex items-start justify-center overflow-y-auto py-8">
-          <div className="bg-[#141414] rounded-2xl border border-[var(--color-dark-border)] w-full max-w-3xl mx-4 shadow-2xl">
+          <div className="bg-white rounded-2xl border border-[var(--color-dark-border)] w-full max-w-3xl mx-4 shadow-2xl">
             <div className="flex items-center justify-between p-6 border-b border-[var(--color-dark-border)]">
-              <h3 className="text-xl font-bold text-white">
+              <h3 className="text-xl font-bold text-[#183964]">
                 {editingId ? 'Edit Job' : 'Create New Job'}
               </h3>
-              <button onClick={resetForm} className="text-gray-400 hover:text-white">
+              <button onClick={resetForm} className="text-[#6b7280] hover:text-[#183964]">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -263,7 +263,7 @@ export default function JobManager({ showFeedback }) {
                   </select>
                 </div>
                 <div className="flex items-end">
-                  <label className="flex items-center gap-2 text-sm text-gray-400 cursor-pointer">
+                  <label className="flex items-center gap-2 text-sm text-[#6b7280] cursor-pointer">
                     <input type="checkbox" checked={form.salaryNegotiable} onChange={(e) => setForm({ ...form, salaryNegotiable: e.target.checked })} className="accent-[#FFB800]" />
                     Salary Negotiable
                   </label>
@@ -298,10 +298,10 @@ export default function JobManager({ showFeedback }) {
               </div>
 
               <div className="flex justify-end gap-3 pt-4 border-t border-[var(--color-dark-border)]">
-                <button type="button" onClick={resetForm} className="px-6 py-2.5 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors text-sm">
+                <button type="button" onClick={resetForm} className="px-6 py-2.5 bg-gray-200 text-[#183964] rounded-lg hover:bg-gray-600 transition-colors text-sm">
                   Cancel
                 </button>
-                <button type="submit" disabled={submitting} className="px-6 py-2.5 bg-[#FFB800] text-black font-semibold rounded-lg hover:bg-[#e5a600] transition-colors text-sm disabled:opacity-50">
+                <button type="submit" disabled={submitting} className="px-6 py-2.5 bg-[#f36c21] text-white font-semibold rounded-lg hover:bg-[#e5a600] transition-colors text-sm disabled:opacity-50">
                   {submitting ? 'Saving...' : editingId ? 'Update Job' : 'Create Job'}
                 </button>
               </div>
@@ -315,15 +315,15 @@ export default function JobManager({ showFeedback }) {
         <div className="space-y-3">
           {[1, 2, 3].map((i) => (
             <div key={i} className="bg-[var(--color-dark-card)] p-4 rounded-xl border border-[var(--color-dark-border)] animate-pulse">
-              <div className="h-5 w-48 bg-gray-700 rounded mb-2" />
-              <div className="h-4 w-32 bg-gray-700 rounded" />
+              <div className="h-5 w-48 bg-gray-200 rounded mb-2" />
+              <div className="h-4 w-32 bg-gray-200 rounded" />
             </div>
           ))}
         </div>
       ) : jobs.length === 0 ? (
         <div className="text-center py-16 bg-[var(--color-dark-card)] rounded-2xl border border-[var(--color-dark-border)]">
           <Briefcase className="w-12 h-12 text-gray-600 mx-auto mb-4" />
-          <p className="text-gray-400 text-lg mb-2">No jobs created yet</p>
+          <p className="text-[#6b7280] text-lg mb-2">No jobs created yet</p>
           <p className="text-gray-600 text-sm">Click "New Job" to create your first posting</p>
         </div>
       ) : (
@@ -331,15 +331,15 @@ export default function JobManager({ showFeedback }) {
           {jobs.map((job) => (
             <div
               key={job._id}
-              className="bg-[var(--color-dark-card)] p-5 rounded-xl border border-[var(--color-dark-border)] hover:border-[#FFB800]/20 transition-all group"
+              className="bg-[var(--color-dark-card)] p-5 rounded-xl border border-[var(--color-dark-border)] hover:border-[#f36c21]/20 transition-all group"
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-3 mb-1">
-                    <h3 className="text-white font-semibold text-lg truncate">{job.title}</h3>
+                    <h3 className="text-[#183964] font-semibold text-lg truncate">{job.title}</h3>
                     {statusBadge(job.status)}
                   </div>
-                  <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                  <div className="flex flex-wrap items-center gap-4 text-sm text-[#6b7280]">
                     <span>{job.department}</span>
                     <span>•</span>
                     <span>{job.location}</span>
@@ -359,7 +359,7 @@ export default function JobManager({ showFeedback }) {
                     </button>
                   )}
                   {job.status === 'Published' && (
-                    <button onClick={() => handleToggleStatus(job, 'Draft')} title="Unpublish" className="p-2 text-gray-400 hover:bg-gray-400/10 rounded-lg transition-colors">
+                    <button onClick={() => handleToggleStatus(job, 'Draft')} title="Unpublish" className="p-2 text-[#6b7280] hover:bg-gray-400/10 rounded-lg transition-colors">
                       <EyeOff className="w-4 h-4" />
                     </button>
                   )}

@@ -28,24 +28,24 @@ const values = [
 
 export default function CultureSection() {
   return (
-    <section className="py-24 bg-[var(--color-dark)]">
+    <section className="py-24 bg-white relative">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-white mb-6"
+            className="text-3xl md:text-5xl font-bold text-[#183964] mb-6"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            Why Work With <span className="text-[#FFB800]">S Kumar Infracons (India) Private Limiteds</span>?
+            Why Work With <span className="text-[#f36c21]">S Kumar Infracons (India) Private Limiteds</span>?
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-gray-400 text-lg leading-relaxed"
+            className="text-[#6b7280] text-lg leading-relaxed font-medium"
           >
             We don't just build infrastructure; we build careers. Join a team where your expertise is valued, safety is paramount, and innovation is encouraged.
           </motion.p>
@@ -59,13 +59,13 @@ export default function CultureSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="bg-[var(--color-dark-card)] p-8 rounded-2xl border border-[var(--color-dark-border)] hover:border-[#FFB800]/50 hover:bg-[#1a1a1a] transition-all group"
+              className="bg-[#f7f9fc] p-8 rounded-2xl border border-[#183964]/10 hover:border-[#f36c21]/50 hover:bg-white hover:shadow-[0_20px_50px_rgba(24,57,100,0.08)] transition-all duration-300 group"
             >
-              <div className="w-14 h-14 bg-[#FFB800]/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#FFB800] transition-colors">
-                <value.icon className="w-7 h-7 text-[#FFB800] group-hover:text-black transition-colors" />
+              <div className="w-14 h-14 bg-[#183964]/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#f36c21] transition-colors duration-300">
+                <value.icon className="w-7 h-7 text-[#183964] group-hover:text-white transition-colors duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <h3 className="text-xl font-bold text-[#183964] mb-3">{value.title}</h3>
+              <p className="text-[#4b5563] text-sm leading-relaxed font-medium">
                 {value.description}
               </p>
             </motion.div>

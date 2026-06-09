@@ -263,7 +263,7 @@ export default function NewsroomManager({ showFeedback }) {
             className={`pb-3 px-2 font-medium transition-colors border-b-2 ${
               activeTab === tab.id 
                 ? 'border-[var(--color-yellow)] text-[var(--color-yellow)]' 
-                : 'border-transparent text-gray-400 hover:text-white'
+                : 'border-transparent text-[#6b7280] hover:text-[#183964]'
             }`}
           >
             {tab.label}
@@ -280,8 +280,8 @@ export default function NewsroomManager({ showFeedback }) {
                 onClick={() => { setActiveNewsType(type.id); setNewsForm({ ...newsForm, type: type.id }); cancelNewsEdit(); }}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   activeNewsType === type.id 
-                    ? 'bg-[var(--color-yellow)] text-black' 
-                    : 'bg-[var(--color-dark-card)] text-white hover:bg-[var(--color-dark-border)]'
+                    ? 'bg-[var(--color-yellow)] text-white' 
+                    : 'bg-[var(--color-dark-card)] text-[#183964] hover:bg-[var(--color-dark-border)]'
                 }`}
               >
                 {type.label}
@@ -326,8 +326,8 @@ export default function NewsroomManager({ showFeedback }) {
                           </div>
                         )}
                         <label className="flex-1 flex flex-col items-center justify-center h-24 border-2 border-dashed border-[var(--color-dark-border)] rounded-lg cursor-pointer hover:border-[var(--color-yellow)] bg-[var(--color-dark)]/50 transition-colors">
-                          <Upload className="h-6 w-6 text-gray-400 mb-2" />
-                          <span className="text-sm text-gray-400">Click to upload image</span>
+                          <Upload className="h-6 w-6 text-[#6b7280] mb-2" />
+                          <span className="text-sm text-[#6b7280]">Click to upload image</span>
                           <input type="file" className="hidden" accept="image/*" onChange={handleFileSelect} />
                         </label>
                       </div>
@@ -375,8 +375,8 @@ export default function NewsroomManager({ showFeedback }) {
                         </div>
                       )}
                       <label className="flex-1 flex flex-col items-center justify-center h-24 border-2 border-dashed border-[var(--color-dark-border)] rounded-lg cursor-pointer hover:border-[var(--color-yellow)] bg-[var(--color-dark)]/50 transition-colors">
-                        <Upload className="h-6 w-6 text-gray-400 mb-2" />
-                        <span className="text-sm text-gray-400">Click to upload PDF document</span>
+                        <Upload className="h-6 w-6 text-[#6b7280] mb-2" />
+                        <span className="text-sm text-[#6b7280]">Click to upload PDF document</span>
                         <input type="file" className="hidden" accept=".pdf" onChange={handleFileSelect} />
                       </label>
                     </div>
@@ -386,11 +386,11 @@ export default function NewsroomManager({ showFeedback }) {
 
               <div className="flex justify-end gap-3 pt-4 border-t border-[var(--color-dark-border)]">
                 {isEditing && (
-                  <button type="button" onClick={cancelNewsEdit} className="px-6 py-2 rounded-lg font-medium bg-gray-800 hover:bg-gray-700 transition-colors">
+                  <button type="button" onClick={cancelNewsEdit} className="px-6 py-2 rounded-lg font-medium bg-[#f0f4f8] hover:bg-gray-200 transition-colors">
                     Cancel
                   </button>
                 )}
-                <button type="submit" disabled={formLoading || uploadingFile} className="px-6 py-2 rounded-lg font-bold bg-[var(--color-yellow)] text-black hover:bg-yellow-500 transition-colors disabled:opacity-50">
+                <button type="submit" disabled={formLoading || uploadingFile} className="px-6 py-2 rounded-lg font-bold bg-[var(--color-yellow)] text-white hover:bg-[#f36c21] transition-colors disabled:opacity-50">
                   {formLoading || uploadingFile ? "Saving..." : isEditing ? "Update News" : "Add News"}
                 </button>
               </div>
@@ -401,16 +401,16 @@ export default function NewsroomManager({ showFeedback }) {
             {news.map(item => (
               <div key={item._id} className="bg-[var(--color-dark-card)] p-4 rounded-xl border border-[var(--color-dark-border)] flex justify-between items-center">
                 <div>
-                  <h4 className="font-bold text-white">{item.headline}</h4>
-                  <p className="text-sm text-gray-400">{new Date(item.date).toDateString()}</p>
+                  <h4 className="font-bold text-[#183964]">{item.headline}</h4>
+                  <p className="text-sm text-[#6b7280]">{new Date(item.date).toDateString()}</p>
                 </div>
                 <div className="flex gap-2">
-                  <button onClick={() => editNews(item)} className="p-2 text-gray-400 hover:text-[var(--color-yellow)] rounded transition-colors"><Edit2 className="w-4 h-4"/></button>
-                  <button onClick={() => handleNewsDelete(item._id)} className="p-2 text-gray-400 hover:text-red-500 rounded transition-colors"><Trash2 className="w-4 h-4"/></button>
+                  <button onClick={() => editNews(item)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] rounded transition-colors"><Edit2 className="w-4 h-4"/></button>
+                  <button onClick={() => handleNewsDelete(item._id)} className="p-2 text-[#6b7280] hover:text-red-500 rounded transition-colors"><Trash2 className="w-4 h-4"/></button>
                 </div>
               </div>
             ))}
-            {news.length === 0 && <p className="text-center text-gray-400 py-8">No news found.</p>}
+            {news.length === 0 && <p className="text-center text-[#6b7280] py-8">No news found.</p>}
           </div>
         </div>
       )}
@@ -434,8 +434,8 @@ export default function NewsroomManager({ showFeedback }) {
                   <input type="email" required value={contactForm.email} onChange={(e) => setContactForm({...contactForm, email: e.target.value})} className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2 focus:border-[var(--color-yellow)] outline-none"/>
                 </div>
                 <div className="flex gap-2 pt-2">
-                  {isEditing && <button type="button" onClick={cancelContactEdit} className="flex-1 py-2 rounded-lg font-medium bg-gray-800 hover:bg-gray-700 transition-colors">Cancel</button>}
-                  <button type="submit" disabled={formLoading} className="flex-1 py-2 rounded-lg font-bold bg-[var(--color-yellow)] text-black hover:bg-yellow-500 transition-colors">Save</button>
+                  {isEditing && <button type="button" onClick={cancelContactEdit} className="flex-1 py-2 rounded-lg font-medium bg-[#f0f4f8] hover:bg-gray-200 transition-colors">Cancel</button>}
+                  <button type="submit" disabled={formLoading} className="flex-1 py-2 rounded-lg font-bold bg-[var(--color-yellow)] text-white hover:bg-[#f36c21] transition-colors">Save</button>
                 </div>
               </form>
             </div>
@@ -446,12 +446,12 @@ export default function NewsroomManager({ showFeedback }) {
               <div key={c._id} className="bg-[var(--color-dark-card)] p-4 rounded-xl border border-[var(--color-dark-border)] flex justify-between items-center">
                 <div>
                   <h4 className="font-bold text-[var(--color-yellow)]">{c.name}</h4>
-                  <p className="text-sm text-white">{c.designation}</p>
-                  <p className="text-sm text-gray-400">{c.email}</p>
+                  <p className="text-sm text-[#183964]">{c.designation}</p>
+                  <p className="text-sm text-[#6b7280]">{c.email}</p>
                 </div>
                 <div className="flex gap-2">
-                  <button onClick={() => editContact(c)} className="p-2 text-gray-400 hover:text-[var(--color-yellow)] rounded transition-colors"><Edit2 className="w-4 h-4"/></button>
-                  <button onClick={() => handleContactDelete(c._id)} className="p-2 text-gray-400 hover:text-red-500 rounded transition-colors"><Trash2 className="w-4 h-4"/></button>
+                  <button onClick={() => editContact(c)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] rounded transition-colors"><Edit2 className="w-4 h-4"/></button>
+                  <button onClick={() => handleContactDelete(c._id)} className="p-2 text-[#6b7280] hover:text-red-500 rounded transition-colors"><Trash2 className="w-4 h-4"/></button>
                 </div>
               </div>
             ))}

@@ -3,17 +3,17 @@
 
 /* ===== CUSTOM THEME ===== */
 @theme {
-  --color-yellow: #ECA500;
-  --color-yellow-light: #FBCB35;
-  --color-yellow-dark: #C68900;
-  --color-dark: #09090b; /* Zinc 950 base */
-  --color-dark-secondary: #18181b; /* Zinc 900 */
-  --color-dark-card: #18181b; /* Zinc 900 surface */
-  --color-dark-border: rgba(255, 255, 255, 0.08); /* Soft translucent borders */
-  --color-light: #F7F7F7;
-  --color-light-secondary: #EEEEEE;
-  --color-muted: #A1A1AA; /* Zinc 400 */
-  --color-body: #E4E4E7; /* Zinc 200 */
+  --color-yellow: #f36c21;
+  --color-yellow-light: #f58445;
+  --color-yellow-dark: #d45a14;
+  --color-dark: #f7f9fc;
+  --color-dark-secondary: #ffffff;
+  --color-dark-card: #ffffff;
+  --color-dark-border: rgba(24, 57, 100, 0.1);
+  --color-light: #183964;
+  --color-light-secondary: #224c85;
+  --color-muted: #6b7280;
+  --color-body: #4b5563;
 
   --font-heading: 'Oswald', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -34,13 +34,14 @@ html {
 body {
   font-family: var(--font-body);
   background-color: var(--color-dark);
-  color: #ffffff;
+  color: var(--color-light);
   overflow-x: hidden;
 }
 
 /* Ensure Oswald headings have proper line-height - override Tailwind v4 */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.2 !important;
+  color: var(--color-light);
 }
 
 /* ===== SCROLLBAR ===== */
@@ -56,28 +57,28 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ===== SELECTION ===== */
 ::selection {
-  background: rgba(236, 165, 0, 0.3);
-  color: #ffffff;
+  background: rgba(243, 108, 33, 0.3);
+  color: var(--color-light);
 }
 
 /* ===== GLOBAL INPUT, TEXTAREA, SELECT STYLES ===== */
 input[type="text"], input[type="url"], input[type="number"], input[type="email"], input[type="password"], select, textarea {
-  background: #09090b !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(24, 57, 100, 0.15) !important;
   border-radius: 8px !important;
-  color: #ffffff !important;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.2) !important;
+  color: #183964 !important;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05) !important;
   transition: all 0.2s ease !important;
 }
 
 input:focus, select:focus, textarea:focus {
   border-color: var(--color-yellow) !important;
-  box-shadow: 0 0 0 2px rgba(236, 165, 0, 0.15) !important;
+  box-shadow: 0 0 0 2px rgba(243, 108, 33, 0.15) !important;
   outline: none !important;
 }
 
 input::placeholder, textarea::placeholder {
-  color: #71717A !important; /* Zinc 500 */
+  color: #6b7280 !important;
   font-weight: 400;
 }
 
@@ -87,59 +88,59 @@ table {
   border-spacing: 0 !important;
 }
 th {
-  background-color: #121214 !important;
+  background-color: #f1f5f9 !important;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-size: 0.75rem !important;
-  color: #A1A1AA !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #6b7280 !important;
+  border-bottom: 1px solid rgba(24, 57, 100, 0.1) !important;
 }
 td {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
-  color: #E4E4E7 !important;
+  border-bottom: 1px solid rgba(24, 57, 100, 0.05) !important;
+  color: #4b5563 !important;
 }
 tr:hover td {
-  background-color: rgba(255, 255, 255, 0.02) !important;
+  background-color: rgba(24, 57, 100, 0.02) !important;
 }
 
 /* ===== GLOBAL COMPONENT UPGRADES ===== */
 /* Upgrade cards globally */
 .bg-\[var\(--color-dark-card\)\] {
-  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.02) inset !important;
+  box-shadow: 0 10px 40px -10px rgba(24,57,100,0.1), 0 0 0 1px rgba(24,57,100,0.05) inset !important;
   border-radius: 16px !important;
 }
 
 /* Upgrade yellow text globally */
 .text-\[var\(--color-yellow\)\] {
   color: var(--color-yellow) !important;
-  text-shadow: 0 0 20px rgba(236, 165, 0, 0.2);
 }
 
 /* Upgrade modal backdrop globally */
 .bg-black\/50 {
-  background-color: rgba(0, 0, 0, 0.7) !important;
+  background-color: rgba(24, 57, 100, 0.4) !important;
   backdrop-filter: blur(8px) !important;
 }
 
 /* Upgrade yellow buttons globally */
 .bg-\[var\(--color-yellow\)\] {
-  background: linear-gradient(to bottom, #FBCB35, #ECA500) !important;
-  color: #09090b !important;
-  box-shadow: 0 2px 10px rgba(236, 165, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.4) !important;
+  background: var(--color-yellow) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(243, 108, 33, 0.2) !important;
   border-radius: 8px !important;
   font-weight: 600 !important;
   transition: all 0.2s ease !important;
 }
 .bg-\[var\(--color-yellow\)\]:hover {
-  background: linear-gradient(to bottom, #FFD452, #FBCB35) !important;
+  background: var(--color-yellow-light) !important;
   transform: translateY(-1px) !important;
-  box-shadow: 0 4px 15px rgba(236, 165, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.5) !important;
+  box-shadow: 0 4px 15px rgba(243, 108, 33, 0.4) !important;
 }
 
 /* Upgrade danger buttons globally */
 .bg-red-500 {
   background: linear-gradient(to bottom, #EF4444, #DC2626) !important;
-  box-shadow: 0 2px 10px rgba(239, 68, 68, 0.2), inset 0 1px 0 rgba(255,255,255,0.2) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(239, 68, 68, 0.2) !important;
 }
 
 /* ===== UTILITY CLASSES ===== */
@@ -164,7 +165,7 @@ tr:hover td {
   gap: 0.5rem;
   padding: 1rem 2.25rem;
   background: var(--color-yellow);
-  color: var(--color-dark);
+  color: #ffffff;
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 0.8rem;
@@ -180,7 +181,7 @@ tr:hover td {
 .btn-primary:hover {
   background: var(--color-yellow-light);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(255, 184, 0, 0.25);
+  box-shadow: 0 8px 30px rgba(243, 108, 33, 0.25);
 }
 
 .btn-outline {
@@ -190,13 +191,13 @@ tr:hover td {
   gap: 0.5rem;
   padding: 1rem 2.25rem;
   background: transparent;
-  color: #ffffff;
+  color: var(--color-light);
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 0.8rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  border: 2px solid #ffffff;
+  border: 2px solid var(--color-light);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -205,7 +206,7 @@ tr:hover td {
 
 .btn-outline:hover {
   background: var(--color-yellow);
-  color: var(--color-dark);
+  color: #ffffff;
   border-color: var(--color-yellow);
   transform: translateY(-2px);
 }
@@ -217,8 +218,8 @@ tr:hover td {
 }
 
 @keyframes pulse-yellow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 184, 0, 0.4); }
-  50% { box-shadow: 0 0 0 15px rgba(255, 184, 0, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(243, 108, 33, 0.4); }
+  50% { box-shadow: 0 0 0 15px rgba(243, 108, 33, 0); }
 }
 
 /* ===== HIDE SCROLLBAR FOR HORIZONTAL SCROLL ===== */

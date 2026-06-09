@@ -71,7 +71,7 @@ export default function ProfilePage() {
   if (loading || !user) {
     return (
       <div className="min-h-[70vh] flex flex-col items-center justify-center gap-4">
-        <Loader2 className="w-10 h-10 animate-spin text-[#FFB800]" />
+        <Loader2 className="w-10 h-10 animate-spin text-[#f36c21]" />
         <p className="text-gray-400 text-sm tracking-wide">Loading your profile details...</p>
       </div>
     );
@@ -153,7 +153,7 @@ export default function ProfilePage() {
     const isFieldEditable = isEditing && name !== 'email';
     return `w-full px-4 py-3.5 rounded-xl transition-all pl-11 text-sm focus:outline-none ${
       isFieldEditable
-        ? 'bg-[#1A1A1A] border border-[#2A2A2A] text-white focus:border-[#FFB800] focus:ring-1 focus:ring-[#FFB800]'
+        ? 'bg-white border border-[#2A2A2A] text-white focus:border-[#f36c21] focus:ring-1 focus:ring-[#FFB800]'
         : 'bg-[#151515] border border-transparent text-gray-400 cursor-not-allowed'
     }`;
   };
@@ -179,7 +179,7 @@ export default function ProfilePage() {
       <div className="container-custom max-w-5xl">
         {/* Profile Header Card */}
         <div className="bg-[#141414] rounded-3xl p-6 md:p-8 border border-[#2A2A2A] shadow-xl mb-8 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFB800]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#f36c21]/5 rounded-full blur-3xl pointer-events-none" />
           
           {/* Edit Button on Top Right */}
           <button
@@ -188,7 +188,7 @@ export default function ProfilePage() {
             className={`absolute top-4 right-4 md:top-6 md:right-6 z-20 flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2.5 rounded-xl border text-[11px] md:text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md ${
               isEditing
                 ? 'bg-red-500/10 border-red-500/30 text-red-400 hover:bg-red-500/20'
-                : 'bg-[#FFB800] border-transparent text-[#0C0C0C] hover:bg-[#e5a600] shadow-lg shadow-[#FFB800]/10'
+                : 'bg-[#f36c21] border-transparent text-[#0C0C0C] hover:bg-[#e5a600] shadow-lg shadow-[#FFB800]/10'
             }`}
           >
             {isEditing ? (
@@ -218,7 +218,7 @@ export default function ProfilePage() {
                   <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${
                     user.profileCompleted 
                       ? 'bg-green-500/10 text-green-400 border border-green-500/20' 
-                      : 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20'
+                      : 'bg-[#f36c21]/10 text-yellow-400 border border-[#f36c21]/20'
                   }`}>
                     {user.profileCompleted ? 'Verified Profile' : 'Incomplete Profile'}
                   </span>
@@ -230,7 +230,7 @@ export default function ProfilePage() {
             <div className="w-full md:w-64 bg-[#1C1C1C] border border-[#2A2A2A] rounded-2xl p-4 mt-4 md:mt-0">
               <div className="flex justify-between items-center mb-2">
                 <span className="text-xs font-semibold text-gray-400 tracking-wide uppercase">Profile Setup</span>
-                <span className="text-sm font-bold text-[#FFB800]">{completionPercentage}%</span>
+                <span className="text-sm font-bold text-[#f36c21]">{completionPercentage}%</span>
               </div>
               <div className="w-full bg-[#2A2A2A] h-2 rounded-full overflow-hidden">
                 <div 
@@ -272,14 +272,14 @@ export default function ProfilePage() {
               {/* Personal Details Section */}
               <div className="bg-[#141414] rounded-3xl p-6 md:p-8 border border-[#2A2A2A] shadow-xl space-y-6">
                 <h2 className="text-lg font-bold text-white border-b border-[#2A2A2A] pb-4 tracking-tight flex items-center gap-2">
-                  <User className="text-[#FFB800] w-5 h-5" /> Personal Details
+                  <User className="text-[#f36c21] w-5 h-5" /> Personal Details
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className={labelClass}>Full Name *</label>
                     <div className="relative">
-                      <User className={`absolute left-4 top-[17px] w-4 h-4 transition-colors ${isEditing ? 'text-[#FFB800]' : 'text-gray-600'}`} />
+                      <User className={`absolute left-4 top-[17px] w-4 h-4 transition-colors ${isEditing ? 'text-[#f36c21]' : 'text-gray-600'}`} />
                       <input 
                         required 
                         type="text" 
@@ -309,7 +309,7 @@ export default function ProfilePage() {
                   <div>
                     <label className={labelClass}>Phone Number *</label>
                     <div className="relative">
-                      <Phone className={`absolute left-4 top-[17px] w-4 h-4 transition-colors ${isEditing ? 'text-[#FFB800]' : 'text-gray-600'}`} />
+                      <Phone className={`absolute left-4 top-[17px] w-4 h-4 transition-colors ${isEditing ? 'text-[#f36c21]' : 'text-gray-600'}`} />
                       <input 
                         required 
                         type="tel" 
@@ -326,7 +326,7 @@ export default function ProfilePage() {
                   <div>
                     <label className={labelClass}>Current Location</label>
                     <div className="relative">
-                      <MapPin className={`absolute left-4 top-[17px] w-4 h-4 transition-colors ${isEditing ? 'text-[#FFB800]' : 'text-gray-600'}`} />
+                      <MapPin className={`absolute left-4 top-[17px] w-4 h-4 transition-colors ${isEditing ? 'text-[#f36c21]' : 'text-gray-600'}`} />
                       <input 
                         type="text" 
                         name="location" 
@@ -344,14 +344,14 @@ export default function ProfilePage() {
               {/* Professional & Social Details Section */}
               <div className="bg-[#141414] rounded-3xl p-6 md:p-8 border border-[#2A2A2A] shadow-xl space-y-6">
                 <h2 className="text-lg font-bold text-white border-b border-[#2A2A2A] pb-4 tracking-tight flex items-center gap-2">
-                  <Briefcase className="text-[#FFB800] w-5 h-5" /> Professional Details
+                  <Briefcase className="text-[#f36c21] w-5 h-5" /> Professional Details
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div>
                     <label className={labelClass}>Total Experience (Yrs)</label>
                     <div className="relative">
-                      <Briefcase className={`absolute left-4 top-[17px] w-4 h-4 transition-colors ${isEditing ? 'text-[#FFB800]' : 'text-gray-600'}`} />
+                      <Briefcase className={`absolute left-4 top-[17px] w-4 h-4 transition-colors ${isEditing ? 'text-[#f36c21]' : 'text-gray-600'}`} />
                       <input 
                         type="number" 
                         name="experience" 
@@ -369,7 +369,7 @@ export default function ProfilePage() {
                   <div>
                     <label className={labelClass}>Expected Salary</label>
                     <div className="relative">
-                      <DollarSign className={`absolute left-4 top-[17px] w-4 h-4 transition-colors ${isEditing ? 'text-[#FFB800]' : 'text-gray-600'}`} />
+                      <DollarSign className={`absolute left-4 top-[17px] w-4 h-4 transition-colors ${isEditing ? 'text-[#f36c21]' : 'text-gray-600'}`} />
                       <input 
                         type="text" 
                         name="expectedSalary" 
@@ -385,7 +385,7 @@ export default function ProfilePage() {
                   <div>
                     <label className={labelClass}>Notice Period</label>
                     <div className="relative">
-                      <Clock className={`absolute left-4 top-[17px] w-4 h-4 transition-colors ${isEditing ? 'text-[#FFB800]' : 'text-gray-600'}`} />
+                      <Clock className={`absolute left-4 top-[17px] w-4 h-4 transition-colors ${isEditing ? 'text-[#f36c21]' : 'text-gray-600'}`} />
                       <input 
                         type="text" 
                         name="noticePeriod" 
@@ -403,7 +403,7 @@ export default function ProfilePage() {
                   <div>
                     <label className={labelClass}>LinkedIn Profile URL</label>
                     <div className="relative">
-                      <FaLinkedin className={`absolute left-4 top-[17px] w-4 h-4 transition-colors ${isEditing ? 'text-[#FFB800]' : 'text-gray-600'}`} />
+                      <FaLinkedin className={`absolute left-4 top-[17px] w-4 h-4 transition-colors ${isEditing ? 'text-[#f36c21]' : 'text-gray-600'}`} />
                       <input 
                         type="url" 
                         name="linkedin" 
@@ -419,7 +419,7 @@ export default function ProfilePage() {
                   <div>
                     <label className={labelClass}>Portfolio Website URL</label>
                     <div className="relative">
-                      <Globe className={`absolute left-4 top-[17px] w-4 h-4 transition-colors ${isEditing ? 'text-[#FFB800]' : 'text-gray-600'}`} />
+                      <Globe className={`absolute left-4 top-[17px] w-4 h-4 transition-colors ${isEditing ? 'text-[#f36c21]' : 'text-gray-600'}`} />
                       <input 
                         type="url" 
                         name="portfolio" 
@@ -441,7 +441,7 @@ export default function ProfilePage() {
               {/* Resume Card */}
               <div className="bg-[#141414] rounded-3xl p-6 md:p-8 border border-[#2A2A2A] shadow-xl space-y-6">
                 <h2 className="text-lg font-bold text-white border-b border-[#2A2A2A] pb-4 tracking-tight flex items-center gap-2">
-                  <FileText className="text-[#FFB800] w-5 h-5" /> Resume / CV
+                  <FileText className="text-[#f36c21] w-5 h-5" /> Resume / CV
                 </h2>
 
                 <div 
@@ -454,8 +454,8 @@ export default function ProfilePage() {
                     !isEditing
                       ? 'border-[#222] bg-[#111] cursor-not-allowed opacity-80'
                       : file || profile?.resumeUrl 
-                        ? 'border-[#FFB800] bg-[#FFB800]/5 cursor-pointer' 
-                        : 'border-[#333] hover:border-[#FFB800]/50 bg-[#1A1A1A] cursor-pointer'
+                        ? 'border-[#f36c21] bg-[#f36c21]/5 cursor-pointer' 
+                        : 'border-[#333] hover:border-[#f36c21]/50 bg-white cursor-pointer'
                   }`}
                 >
                   <input 
@@ -469,7 +469,7 @@ export default function ProfilePage() {
 
                   {file ? (
                     <div className="flex flex-col items-center justify-center">
-                      <FileText className="w-8 h-8 text-[#FFB800] mb-3" />
+                      <FileText className="w-8 h-8 text-[#f36c21] mb-3" />
                       <p className="text-white font-medium text-xs truncate max-w-[180px]">{file.name}</p>
                       <p className="text-gray-500 text-[10px] mt-1">{(file.size / (1024 * 1024)).toFixed(2)} MB</p>
                       {isEditing && (
@@ -488,8 +488,8 @@ export default function ProfilePage() {
                     </div>
                   ) : profile?.resumeUrl ? (
                     <div className="flex flex-col items-center justify-center">
-                      <FileText className="w-8 h-8 text-[#FFB800] mb-3" />
-                      <p className="text-white font-semibold text-xs text-[#FFB800]">Resume is Uploaded</p>
+                      <FileText className="w-8 h-8 text-[#f36c21] mb-3" />
+                      <p className="text-white font-semibold text-xs text-[#f36c21]">Resume is Uploaded</p>
                       <a 
                         href={profile.resumeUrl} 
                         target="_blank" 
@@ -531,7 +531,7 @@ export default function ProfilePage() {
                   <button 
                     type="submit" 
                     disabled={submitting}
-                    className="w-full bg-[#FFB800] text-black font-bold py-4 rounded-xl hover:bg-[#e5a600] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-[#FFB800]/5 text-sm"
+                    className="w-full bg-[#f36c21] text-black font-bold py-4 rounded-xl hover:bg-[#e5a600] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-[#FFB800]/5 text-sm"
                   >
                     {submitting ? (
                       <>
@@ -546,7 +546,7 @@ export default function ProfilePage() {
                   <button 
                     type="button"
                     onClick={() => setIsEditing(true)}
-                    className="w-full bg-transparent border border-[#FFB800] text-[#FFB800] hover:bg-[#FFB800]/10 font-bold py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm shadow-md"
+                    className="w-full bg-transparent border border-[#f36c21] text-[#f36c21] hover:bg-[#f36c21]/10 font-bold py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm shadow-md"
                   >
                     <Edit2 className="w-4 h-4" />
                     Edit Profile Details

@@ -52,7 +52,7 @@ export default function SignupPage() {
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--color-yellow-dark)] via-[var(--color-yellow)] to-[var(--color-yellow-light)]"></div>
 
         <div className="text-center mb-8 mt-2">
-          <h1 className="text-3xl font-bold font-heading text-white mb-2 uppercase tracking-wider">
+          <h1 className="text-3xl font-bold font-heading text-[#183964] mb-2 uppercase tracking-wider">
             Admin <span className="text-[var(--color-yellow)]">Signup</span>
           </h1>
           <p className="text-[var(--color-muted)] text-sm">
@@ -78,7 +78,7 @@ export default function SignupPage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-[var(--color-dark-secondary)] border border-[var(--color-dark-border)] rounded-xl text-white focus:outline-none focus:border-[var(--color-yellow)] focus:ring-1 focus:ring-[var(--color-yellow)] transition-all duration-300"
+                className="w-full pl-10 pr-4 py-3 bg-[var(--color-dark-secondary)] border border-[var(--color-dark-border)] rounded-xl text-[#183964] focus:outline-none focus:border-[var(--color-yellow)] focus:ring-1 focus:ring-[var(--color-yellow)] transition-all duration-300"
                 placeholder="John Doe"
               />
             </div>
@@ -95,7 +95,7 @@ export default function SignupPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-[var(--color-dark-secondary)] border border-[var(--color-dark-border)] rounded-xl text-white focus:outline-none focus:border-[var(--color-yellow)] focus:ring-1 focus:ring-[var(--color-yellow)] transition-all duration-300"
+                className="w-full pl-10 pr-4 py-3 bg-[var(--color-dark-secondary)] border border-[var(--color-dark-border)] rounded-xl text-[#183964] focus:outline-none focus:border-[var(--color-yellow)] focus:ring-1 focus:ring-[var(--color-yellow)] transition-all duration-300"
                 placeholder="[EMAIL_ADDRESS]"
               />
             </div>
@@ -112,7 +112,7 @@ export default function SignupPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-[var(--color-dark-secondary)] border border-[var(--color-dark-border)] rounded-xl text-white focus:outline-none focus:border-[var(--color-yellow)] focus:ring-1 focus:ring-[var(--color-yellow)] transition-all duration-300"
+                className="w-full pl-10 pr-4 py-3 bg-[var(--color-dark-secondary)] border border-[var(--color-dark-border)] rounded-xl text-[#183964] focus:outline-none focus:border-[var(--color-yellow)] focus:ring-1 focus:ring-[var(--color-yellow)] transition-all duration-300"
                 placeholder="••••••••"
               />
             </div>
@@ -129,7 +129,7 @@ export default function SignupPage() {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-[var(--color-dark-secondary)] border border-[var(--color-dark-border)] rounded-xl text-white focus:outline-none focus:border-[var(--color-yellow)] focus:ring-1 focus:ring-[var(--color-yellow)] transition-all duration-300"
+                className="w-full pl-10 pr-4 py-3 bg-[var(--color-dark-secondary)] border border-[var(--color-dark-border)] rounded-xl text-[#183964] focus:outline-none focus:border-[var(--color-yellow)] focus:ring-1 focus:ring-[var(--color-yellow)] transition-all duration-300"
                 placeholder="••••••••"
               />
             </div>

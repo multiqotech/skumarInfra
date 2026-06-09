@@ -177,7 +177,7 @@ export default function CategoryManager({ showFeedback }) {
       </div>
 
       <div className="bg-[var(--color-dark-card)] rounded-xl border border-[var(--color-dark-border)] overflow-hidden">
-        <div className="p-6 border-b border-[var(--color-dark-border)] bg-[#1a1a1a]">
+        <div className="p-6 border-b border-[var(--color-dark-border)] bg-[#f7f9fc]">
           <h3 className="text-lg font-semibold flex items-center gap-2">
             <Plus className="h-5 w-5 text-[var(--color-yellow)]" />
             {isEditing ? "Edit Category" : "Add New Category"}
@@ -226,7 +226,7 @@ export default function CategoryManager({ showFeedback }) {
                 {heroPreview && (
                   <div className="relative w-32 h-20 rounded-lg overflow-hidden border border-[var(--color-dark-border)] group">
                     <img src={heroPreview} alt="Preview" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="absolute inset-0 bg-[#183964]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                       <button type="button" onClick={() => handleRemoveFile('hero')} className="text-red-400 hover:text-red-300">
                         <Trash2 className="h-5 w-5" />
                       </button>
@@ -236,8 +236,8 @@ export default function CategoryManager({ showFeedback }) {
                 <div className="flex-1">
                   <label className="flex flex-col items-center justify-center w-full h-20 border-2 border-dashed border-[var(--color-dark-border)] rounded-lg cursor-pointer hover:border-[var(--color-yellow)] transition-colors bg-[var(--color-dark)]/50">
                     <div className="flex flex-col items-center justify-center">
-                      <Upload className="w-6 h-6 mb-1 text-gray-400" />
-                      <p className="text-xs text-gray-400"><span className="font-semibold text-white">Upload</span></p>
+                      <Upload className="w-6 h-6 mb-1 text-[#6b7280]" />
+                      <p className="text-xs text-[#6b7280]"><span className="font-semibold text-[#183964]">Upload</span></p>
                     </div>
                     <input type="file" className="hidden" accept="image/*" onChange={(e) => handleFileSelect(e, 'hero')} />
                   </label>
@@ -251,7 +251,7 @@ export default function CategoryManager({ showFeedback }) {
                 {descPreview && (
                   <div className="relative w-32 h-20 rounded-lg overflow-hidden border border-[var(--color-dark-border)] group">
                     <img src={descPreview} alt="Preview" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="absolute inset-0 bg-[#183964]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                       <button type="button" onClick={() => handleRemoveFile('desc')} className="text-red-400 hover:text-red-300">
                         <Trash2 className="h-5 w-5" />
                       </button>
@@ -261,8 +261,8 @@ export default function CategoryManager({ showFeedback }) {
                 <div className="flex-1">
                   <label className="flex flex-col items-center justify-center w-full h-20 border-2 border-dashed border-[var(--color-dark-border)] rounded-lg cursor-pointer hover:border-[var(--color-yellow)] transition-colors bg-[var(--color-dark)]/50">
                     <div className="flex flex-col items-center justify-center">
-                      <Upload className="w-6 h-6 mb-1 text-gray-400" />
-                      <p className="text-xs text-gray-400"><span className="font-semibold text-white">Upload</span></p>
+                      <Upload className="w-6 h-6 mb-1 text-[#6b7280]" />
+                      <p className="text-xs text-[#6b7280]"><span className="font-semibold text-[#183964]">Upload</span></p>
                     </div>
                     <input type="file" className="hidden" accept="image/*" onChange={(e) => handleFileSelect(e, 'desc')} />
                   </label>
@@ -275,7 +275,7 @@ export default function CategoryManager({ showFeedback }) {
             <button
               type="submit"
               disabled={formLoading || uploadingImage}
-              className="px-6 py-2.5 bg-[var(--color-yellow)] text-black font-semibold rounded-lg hover:bg-[#e5a600] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="px-6 py-2.5 bg-[var(--color-yellow)] text-white font-semibold rounded-lg hover:bg-[#e5a600] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
             >
               {(formLoading || uploadingImage) ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
               {uploadingImage ? "Uploading..." : isEditing ? "Update Category" : "Add Category"}
@@ -284,7 +284,7 @@ export default function CategoryManager({ showFeedback }) {
               <button
                 type="button"
                 onClick={cancelEdit}
-                className="px-6 py-2.5 bg-gray-800 text-white font-medium rounded-lg hover:bg-gray-700 transition-colors"
+                className="px-6 py-2.5 bg-[#f0f4f8] text-[#183964] font-medium rounded-lg hover:bg-gray-200 transition-colors"
               >
                 Cancel
               </button>
@@ -299,11 +299,11 @@ export default function CategoryManager({ showFeedback }) {
         </div>
         
         {loading ? (
-          <div className="p-12 flex justify-center text-gray-400">
+          <div className="p-12 flex justify-center text-[#6b7280]">
             <Loader2 className="h-8 w-8 animate-spin text-[var(--color-yellow)]" />
           </div>
         ) : categories.length === 0 ? (
-          <div className="p-12 text-center text-gray-400 border-t border-[var(--color-dark-border)]">
+          <div className="p-12 text-center text-[#6b7280] border-t border-[var(--color-dark-border)]">
             <p>No categories added yet.</p>
           </div>
         ) : (
@@ -314,28 +314,28 @@ export default function CategoryManager({ showFeedback }) {
                   {category.heroImage ? (
                     <img src={category.heroImage} alt={category.name} className="w-full h-full object-cover" />
                   ) : (
-                    <div className="w-full h-full bg-gray-800 flex items-center justify-center text-gray-500 text-xs">No Hero</div>
+                    <div className="w-full h-full bg-[#f0f4f8] flex items-center justify-center text-[#6b7280] text-xs">No Hero</div>
                   )}
                 </div>
                 
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <h4 className="text-lg font-bold text-white">{category.name}</h4>
-                      <p className="text-xs font-mono text-gray-500">/{category.slug}</p>
+                      <h4 className="text-lg font-bold text-[#183964]">{category.name}</h4>
+                      <p className="text-xs font-mono text-[#6b7280]">/{category.slug}</p>
                     </div>
                     <div className="flex gap-2">
-                      <button onClick={() => handleEdit(category)} className="p-2 text-gray-400 hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
+                      <button onClick={() => handleEdit(category)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
                         <Edit2 className="h-4 w-4" />
                       </button>
-                      <button onClick={() => handleDelete(category._id)} className="p-2 text-gray-400 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
+                      <button onClick={() => handleDelete(category._id)} className="p-2 text-[#6b7280] hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
                         <Trash2 className="h-4 w-4" />
                       </button>
                     </div>
                   </div>
                   
                   <div className="mt-2 text-sm">
-                    <div className="text-gray-400 line-clamp-2">{category.tagline || 'No tagline'}</div>
+                    <div className="text-[#6b7280] line-clamp-2">{category.tagline || 'No tagline'}</div>
                     <div className="mt-2 text-[var(--color-yellow)] text-xs font-semibold">
                       {category.projects ? category.projects.length : 0} Project(s) linked
                     </div>

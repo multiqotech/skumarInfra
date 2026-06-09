@@ -199,7 +199,7 @@ export default function ProjectManager({ showFeedback }) {
       <div className="flex justify-between items-center bg-[var(--color-dark-card)] p-4 rounded-xl border border-[var(--color-dark-border)]">
         <h2 className="text-xl font-bold">Manage "We Build" Projects</h2>
         <div className="flex items-center gap-3">
-          <label className="text-sm text-gray-400">Category:</label>
+          <label className="text-sm text-[#6b7280]">Category:</label>
           <select 
             value={selectedCategory} 
             onChange={(e) => {
@@ -217,12 +217,12 @@ export default function ProjectManager({ showFeedback }) {
       </div>
 
       <div className="bg-[var(--color-dark-card)] rounded-xl border border-[var(--color-dark-border)] overflow-hidden">
-        <div className="p-6 border-b border-[var(--color-dark-border)] bg-[#1a1a1a]">
+        <div className="p-6 border-b border-[var(--color-dark-border)] bg-[#f7f9fc]">
           <h3 className="text-lg font-semibold flex items-center gap-2">
             <Plus className="h-5 w-5 text-[var(--color-yellow)]" />
             {isEditing ? "Edit Project" : "Add New Project"}
           </h3>
-          <p className="text-sm text-gray-400 mt-1">
+          <p className="text-sm text-[#6b7280] mt-1">
             {selectedCategory === "all" ? "Add projects." : `Add projects for the ${categories.find(c => c.slug === selectedCategory)?.name} category.`}
           </p>
         </div>
@@ -314,7 +314,7 @@ export default function ProjectManager({ showFeedback }) {
               {projectPreview && (
                 <div className="relative w-32 h-32 rounded-lg overflow-hidden border border-[var(--color-dark-border)] group">
                   <img src={projectPreview} alt="Preview" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="absolute inset-0 bg-[#183964]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <button type="button" onClick={handleRemoveFile} className="text-red-400 hover:text-red-300">
                       <Trash2 className="h-5 w-5" />
                     </button>
@@ -324,8 +324,8 @@ export default function ProjectManager({ showFeedback }) {
               <div className="flex-1">
                 <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-[var(--color-dark-border)] rounded-lg cursor-pointer hover:border-[var(--color-yellow)] transition-colors bg-[var(--color-dark)]/50">
                   <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                    <Upload className="w-8 h-8 mb-2 text-gray-400" />
-                    <p className="text-sm text-gray-400"><span className="font-semibold text-white">Click to upload</span></p>
+                    <Upload className="w-8 h-8 mb-2 text-[#6b7280]" />
+                    <p className="text-sm text-[#6b7280]"><span className="font-semibold text-[#183964]">Click to upload</span></p>
                   </div>
                   <input type="file" className="hidden" accept="image/*" onChange={handleFileSelect} />
                 </label>
@@ -337,7 +337,7 @@ export default function ProjectManager({ showFeedback }) {
             <button
               type="submit"
               disabled={formLoading || uploadingImage}
-              className="px-6 py-2.5 bg-[var(--color-yellow)] text-black font-semibold rounded-lg hover:bg-[#e5a600] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="px-6 py-2.5 bg-[var(--color-yellow)] text-white font-semibold rounded-lg hover:bg-[#e5a600] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
             >
               {(formLoading || uploadingImage) ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
               {uploadingImage ? "Uploading Image..." : isEditing ? "Update Project" : "Add Project"}
@@ -346,7 +346,7 @@ export default function ProjectManager({ showFeedback }) {
               <button
                 type="button"
                 onClick={cancelEdit}
-                className="px-6 py-2.5 bg-gray-800 text-white font-medium rounded-lg hover:bg-gray-700 transition-colors"
+                className="px-6 py-2.5 bg-[#f0f4f8] text-[#183964] font-medium rounded-lg hover:bg-gray-200 transition-colors"
               >
                 Cancel
               </button>
@@ -363,13 +363,13 @@ export default function ProjectManager({ showFeedback }) {
         </div>
         
         {loading ? (
-          <div className="p-12 flex justify-center text-gray-400">
+          <div className="p-12 flex justify-center text-[#6b7280]">
             <Loader2 className="h-8 w-8 animate-spin text-[var(--color-yellow)]" />
           </div>
         ) : projects.length === 0 ? (
-          <div className="p-12 text-center text-gray-400 border-t border-[var(--color-dark-border)]">
+          <div className="p-12 text-center text-[#6b7280] border-t border-[var(--color-dark-border)]">
             <p>No projects added for this category yet.</p>
-            <p className="text-sm mt-1 text-gray-500">The website will show default dummy data for this category.</p>
+            <p className="text-sm mt-1 text-[#6b7280]">The website will show default dummy data for this category.</p>
           </div>
         ) : (
           <div className="divide-y divide-[var(--color-dark-border)]">
@@ -381,7 +381,7 @@ export default function ProjectManager({ showFeedback }) {
                 
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between items-start mb-2">
-                    <h4 className="text-lg font-bold text-white flex items-center gap-2">
+                    <h4 className="text-lg font-bold text-[#183964] flex items-center gap-2">
                       {project.title}
                       {project.projectType && (
                         <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-[var(--color-yellow)]/20 text-[var(--color-yellow)] rounded">
@@ -390,20 +390,20 @@ export default function ProjectManager({ showFeedback }) {
                       )}
                     </h4>
                     <div className="flex gap-2">
-                      <button onClick={() => handleEdit(project)} className="p-2 text-gray-400 hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
+                      <button onClick={() => handleEdit(project)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
                         <Edit2 className="h-4 w-4" />
                       </button>
-                      <button onClick={() => handleDelete(project._id)} className="p-2 text-gray-400 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
+                      <button onClick={() => handleDelete(project._id)} className="p-2 text-[#6b7280] hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
                         <Trash2 className="h-4 w-4" />
                       </button>
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm mt-4">
-                    <div><span className="text-gray-500">Location:</span> {project.location || '-'}</div>
-                    <div><span className="text-gray-500">Time:</span> {project.timeToBuild || '-'}</div>
-                    <div className="col-span-2 truncate"><span className="text-gray-500">Engineers:</span> {project.engineers || '-'}</div>
-                    <div className="col-span-2 text-gray-400 line-clamp-2 mt-2">{project.description}</div>
+                    <div><span className="text-[#6b7280]">Location:</span> {project.location || '-'}</div>
+                    <div><span className="text-[#6b7280]">Time:</span> {project.timeToBuild || '-'}</div>
+                    <div className="col-span-2 truncate"><span className="text-[#6b7280]">Engineers:</span> {project.engineers || '-'}</div>
+                    <div className="col-span-2 text-[#6b7280] line-clamp-2 mt-2">{project.description}</div>
                   </div>
                 </div>
               </div>

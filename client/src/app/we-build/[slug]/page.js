@@ -61,7 +61,7 @@ export default async function WeBuildPage({ params }) {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090B] text-[#09090B] dark:text-white">
+      <main className="min-h-screen bg-[#f7f9fc]">
         {/* Hero Section */}
         <section className="relative w-full h-[65vh] flex items-end pb-16">
           <div className="absolute inset-0 z-0">
@@ -69,33 +69,34 @@ export default async function WeBuildPage({ params }) {
               src={categoryData.heroImage || 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920&h=800&fit=crop'}
               alt={categoryData.name || categoryData.title}
               fill
-              className="object-cover brightness-75"
+              className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#09090B] via-[#09090B]/40 to-transparent" />
+            <div className="absolute inset-0 bg-[#183964]/80 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#183964] via-[#183964]/40 to-transparent" />
           </div>
           <div className="container-custom relative z-10">
-            <div className="w-12 h-1 bg-[#FFB800] mb-6" />
-            <h1 className="text-white text-5xl md:text-7xl font-bold uppercase tracking-wider drop-shadow-2xl" style={{ fontFamily: 'var(--font-heading)' }}>
+            <div className="w-12 h-1 bg-[#f36c21] mb-6 shadow-[0_0_10px_rgba(243,108,33,0.5)]" />
+            <h1 className="text-white text-5xl md:text-7xl font-bold uppercase tracking-wider drop-shadow-lg" style={{ fontFamily: 'var(--font-heading)' }}>
               {categoryData.name || categoryData.title}
             </h1>
           </div>
         </section>
 
         {/* Tagline & Description Section */}
-        <section className="py-20 lg:py-28 container-custom">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <section className="py-20 lg:py-28 container-custom bg-white mt-12 rounded-3xl shadow-[0_20px_50px_rgba(24,57,100,0.04)] border border-[#183964]/5 relative z-20 -top-24">
+          <div className="grid lg:grid-cols-2 gap-16 items-center px-4 lg:px-8">
             <div>
-              <h2 className="text-[#09090B] dark:text-white text-3xl md:text-[2.5rem] font-bold uppercase mb-8 leading-[1.2]" style={{ fontFamily: 'var(--font-heading)' }}>
+              <h2 className="text-[#183964] text-3xl md:text-[2.5rem] font-bold uppercase mb-8 leading-[1.2]" style={{ fontFamily: 'var(--font-heading)' }}>
                 {categoryData.tagline}
               </h2>
-              <div className="w-full h-[1px] bg-zinc-200 dark:bg-white/10 mb-8" />
-              <p className="text-zinc-600 dark:text-white/80 text-lg leading-relaxed text-justify">
+              <div className="w-full h-[2px] bg-[#183964]/10 mb-8" />
+              <p className="text-[#4b5563] text-lg leading-relaxed text-justify font-medium">
                 {categoryData.description}
               </p>
             </div>
             <div className="relative">
-              <div className="relative h-[400px] lg:h-[500px] w-full overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] z-10 border-4 border-white dark:border-white/5">
+              <div className="relative h-[400px] lg:h-[500px] w-full overflow-hidden shadow-2xl z-10 border-[6px] border-white rounded-xl">
                 <Image
                   src={categoryData.descriptionImage || 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop'}
                   alt="Infrastructure Overview"
@@ -104,47 +105,48 @@ export default async function WeBuildPage({ params }) {
                 />
               </div>
               {/* Decorative background border */}
-              <div className="absolute inset-0 border-2 border-[#FFB800] translate-x-6 translate-y-6 -z-0" />
+              <div className="absolute inset-0 border-[4px] border-[#f36c21] translate-x-6 translate-y-6 rounded-xl -z-0" />
             </div>
           </div>
         </section>
 
         {/* Projects Grid Section */}
-        <section className="bg-[#09090B] py-24 border-t border-white/10">
+        <section className="bg-[#183964] py-24 mt-[-6rem] pt-32">
           <div className="container-custom">
             <div className="flex items-center gap-6 mb-16">
               <h2 className="text-white text-3xl lg:text-4xl font-bold uppercase tracking-wide" style={{ fontFamily: 'var(--font-heading)' }}>
                 Projects
               </h2>
-              <div className="flex-1 h-[1px] bg-white/20" />
-              <div className="text-white/60 text-sm tracking-widest uppercase font-medium">Show All | India | Global</div>
+              <div className="flex-1 h-[2px] bg-white/20" />
+              <div className="text-[#f36c21] text-sm tracking-widest uppercase font-bold">Show All | India | Global</div>
             </div>
             
             {projectsToDisplay.length === 0 ? (
-              <div className="text-white/50 text-center py-20">No projects found.</div>
+              <div className="text-white/70 text-center py-20 font-medium">No projects found.</div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 auto-rows-[250px] md:auto-rows-[300px]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-[250px] md:auto-rows-[350px]">
                 {projectsToDisplay.map((project, idx) => {
                   const projectId = project._id || idx.toString();
                   return (
                     <Link 
                       href={`/we-build/${slug}/${projectId}`} 
                       key={projectId} 
-                      className={`block relative group overflow-hidden rounded-md border border-white/10 ${project.className || 'col-span-1 md:col-span-1 md:row-span-1'}`}
+                      className={`block relative group overflow-hidden rounded-xl border border-white/10 shadow-lg ${project.className || 'col-span-1 md:col-span-1 md:row-span-1'}`}
                     >
                       <Image
                         src={project.image}
                         alt={project.title}
                         fill
-                        className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                        className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#09090B] via-transparent to-transparent opacity-90" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#183964] via-[#183964]/40 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+                      <div className="absolute inset-0 border-4 border-transparent group-hover:border-[#f36c21]/50 transition-colors duration-500 rounded-xl" />
                       
-                      <div className="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                        <h3 className="text-white text-xl md:text-2xl font-medium tracking-wide drop-shadow-md" style={{ fontFamily: 'var(--font-heading)' }}>
+                      <div className="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                        <h3 className="text-white text-2xl md:text-3xl font-bold tracking-wide drop-shadow-md" style={{ fontFamily: 'var(--font-heading)' }}>
                           {project.title}
                         </h3>
-                        <div className="w-0 h-[2px] bg-[#FFB800] mt-3 group-hover:w-16 transition-all duration-500" />
+                        <div className="w-0 h-[3px] bg-[#f36c21] mt-4 group-hover:w-20 transition-all duration-500" />
                       </div>
                     </Link>
                   );

@@ -92,13 +92,13 @@ export default function ApplicationManager({ showFeedback }) {
   if (loading) {
     return (
       <div className="space-y-6">
-        <h2 className="text-2xl font-bold text-white">Applications</h2>
+        <h2 className="text-2xl font-bold text-[#183964]">Applications</h2>
         <div className="grid grid-cols-5 gap-3">
           {[1, 2, 3, 4, 5].map((i) => (
             <div key={i} className="bg-[var(--color-dark-card)] rounded-xl p-4 h-64 animate-pulse border border-[var(--color-dark-border)]">
-              <div className="h-4 w-20 bg-gray-700 rounded mb-4" />
-              <div className="h-16 bg-gray-700/50 rounded mb-2" />
-              <div className="h-16 bg-gray-700/50 rounded" />
+              <div className="h-4 w-20 bg-gray-200 rounded mb-4" />
+              <div className="h-16 bg-gray-200/50 rounded mb-2" />
+              <div className="h-16 bg-gray-200/50 rounded" />
             </div>
           ))}
         </div>
@@ -109,8 +109,8 @@ export default function ApplicationManager({ showFeedback }) {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-white">Application Kanban</h2>
-        <span className="text-sm text-gray-500">{applications.length} total applications</span>
+        <h2 className="text-2xl font-bold text-[#183964]">Application Kanban</h2>
+        <span className="text-sm text-[#6b7280]">{applications.length} total applications</span>
       </div>
 
       {/* Kanban Board */}
@@ -120,15 +120,15 @@ export default function ApplicationManager({ showFeedback }) {
           return (
             <div
               key={col.id}
-              className="bg-[#111] rounded-xl border border-[var(--color-dark-border)] overflow-hidden flex flex-col"
+              className="bg-white rounded-xl border border-[var(--color-dark-border)] overflow-hidden flex flex-col"
               onDragOver={handleDragOver}
               onDrop={(e) => handleDrop(e, col.id)}
             >
               {/* Column header */}
               <div className="p-3 border-b border-[var(--color-dark-border)] flex items-center gap-2">
                 <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: col.color }} />
-                <span className="text-sm font-semibold text-white">{col.label}</span>
-                <span className="ml-auto text-xs text-gray-500 bg-gray-800 px-2 py-0.5 rounded-full">
+                <span className="text-sm font-semibold text-[#183964]">{col.label}</span>
+                <span className="ml-auto text-xs text-[#6b7280] bg-[#f0f4f8] px-2 py-0.5 rounded-full">
                   {colApps.length}
                 </span>
               </div>
@@ -146,17 +146,17 @@ export default function ApplicationManager({ showFeedback }) {
                       draggable
                       onDragStart={(e) => handleDragStart(e, app._id)}
                       onClick={() => { setSelectedApp(app); setNotes(app.adminNotes || ''); }}
-                      className={`bg-[var(--color-dark-card)] p-3 rounded-lg border border-[var(--color-dark-border)] cursor-pointer hover:border-[#FFB800]/30 transition-all ${
+                      className={`bg-[var(--color-dark-card)] p-3 rounded-lg border border-[var(--color-dark-border)] cursor-pointer hover:border-[#f36c21]/30 transition-all ${
                         draggedId === app._id ? 'opacity-50' : ''
                       }`}
                     >
                       <div className="flex items-start gap-2">
                         <GripVertical className="w-3.5 h-3.5 text-gray-600 mt-0.5 shrink-0 cursor-grab" />
                         <div className="min-w-0">
-                          <p className="text-white text-sm font-medium truncate">
+                          <p className="text-[#183964] text-sm font-medium truncate">
                             {app.candidateId?.fullName || 'Unknown'}
                           </p>
-                          <p className="text-gray-500 text-xs truncate mt-0.5">
+                          <p className="text-[#6b7280] text-xs truncate mt-0.5">
                             {app.jobId?.title || 'Unknown Job'}
                           </p>
                           <p className="text-gray-600 text-xs mt-1">
@@ -176,10 +176,10 @@ export default function ApplicationManager({ showFeedback }) {
       {/* Detail Panel */}
       {selectedApp && (
         <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
-          <div className="bg-[#141414] rounded-2xl border border-[var(--color-dark-border)] w-full max-w-lg shadow-2xl max-h-[80vh] overflow-y-auto">
+          <div className="bg-white rounded-2xl border border-[var(--color-dark-border)] w-full max-w-lg shadow-2xl max-h-[80vh] overflow-y-auto">
             <div className="flex items-center justify-between p-5 border-b border-[var(--color-dark-border)]">
-              <h3 className="text-lg font-bold text-white">Application Details</h3>
-              <button onClick={() => setSelectedApp(null)} className="text-gray-400 hover:text-white">
+              <h3 className="text-lg font-bold text-[#183964]">Application Details</h3>
+              <button onClick={() => setSelectedApp(null)} className="text-[#6b7280] hover:text-[#183964]">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -187,35 +187,35 @@ export default function ApplicationManager({ showFeedback }) {
             <div className="p-5 space-y-4">
               <div className="grid grid-cols-2 gap-3 text-sm">
                 <div>
-                  <span className="text-gray-500">Candidate</span>
-                  <p className="text-white font-medium">{selectedApp.candidateId?.fullName}</p>
+                  <span className="text-[#6b7280]">Candidate</span>
+                  <p className="text-[#183964] font-medium">{selectedApp.candidateId?.fullName}</p>
                 </div>
                 <div>
-                  <span className="text-gray-500">Email</span>
-                  <p className="text-white font-medium">{selectedApp.candidateId?.email}</p>
+                  <span className="text-[#6b7280]">Email</span>
+                  <p className="text-[#183964] font-medium">{selectedApp.candidateId?.email}</p>
                 </div>
                 <div>
-                  <span className="text-gray-500">Phone</span>
-                  <p className="text-white font-medium">{selectedApp.candidateId?.phone}</p>
+                  <span className="text-[#6b7280]">Phone</span>
+                  <p className="text-[#183964] font-medium">{selectedApp.candidateId?.phone}</p>
                 </div>
                 <div>
-                  <span className="text-gray-500">Experience</span>
-                  <p className="text-white font-medium">{selectedApp.candidateId?.experience || 0} yrs</p>
+                  <span className="text-[#6b7280]">Experience</span>
+                  <p className="text-[#183964] font-medium">{selectedApp.candidateId?.experience || 0} yrs</p>
                 </div>
                 <div>
-                  <span className="text-gray-500">Position</span>
-                  <p className="text-white font-medium">{selectedApp.jobId?.title}</p>
+                  <span className="text-[#6b7280]">Position</span>
+                  <p className="text-[#183964] font-medium">{selectedApp.jobId?.title}</p>
                 </div>
                 <div>
-                  <span className="text-gray-500">Applied</span>
-                  <p className="text-white font-medium">{new Date(selectedApp.appliedAt).toLocaleDateString()}</p>
+                  <span className="text-[#6b7280]">Applied</span>
+                  <p className="text-[#183964] font-medium">{new Date(selectedApp.appliedAt).toLocaleDateString()}</p>
                 </div>
               </div>
 
               {selectedApp.coverLetter && (
                 <div>
-                  <span className="text-gray-500 text-sm">Cover Letter</span>
-                  <p className="text-gray-300 text-sm mt-1 bg-[#1a1a1a] p-3 rounded-lg max-h-32 overflow-y-auto">
+                  <span className="text-[#6b7280] text-sm">Cover Letter</span>
+                  <p className="text-[#4b5563] text-sm mt-1 bg-[#f7f9fc] p-3 rounded-lg max-h-32 overflow-y-auto">
                     {selectedApp.coverLetter}
                   </p>
                 </div>
@@ -226,7 +226,7 @@ export default function ApplicationManager({ showFeedback }) {
                   href={selectedApp.candidateId.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 bg-[#FFB800]/10 border border-[#FFB800]/30 text-[#FFB800] rounded-lg hover:bg-[#FFB800]/20 transition-colors text-sm font-medium"
+                  className="flex items-center gap-2 px-4 py-2.5 bg-[#f36c21]/10 border border-[#f36c21]/30 text-[#f36c21] rounded-lg hover:bg-[#f36c21]/20 transition-colors text-sm font-medium"
                 >
                   <Download className="w-4 h-4" /> Download Resume
                 </a>
@@ -234,7 +234,7 @@ export default function ApplicationManager({ showFeedback }) {
 
               {/* Status Selector */}
               <div>
-                <span className="text-gray-500 text-sm">Update Status</span>
+                <span className="text-[#6b7280] text-sm">Update Status</span>
                 <div className="flex flex-wrap gap-2 mt-2">
                   {COLUMNS.map((col) => (
                     <button
@@ -245,8 +245,8 @@ export default function ApplicationManager({ showFeedback }) {
                       }}
                       className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
                         selectedApp.status === col.id
-                          ? 'text-white border-transparent'
-                          : 'text-gray-400 border-gray-700 hover:border-gray-500'
+                          ? 'text-[#183964] border-transparent'
+                          : 'text-[#6b7280] border-[#183964]/10 hover:border-gray-500'
                       }`}
                       style={selectedApp.status === col.id ? { backgroundColor: col.color } : {}}
                     >
@@ -258,11 +258,11 @@ export default function ApplicationManager({ showFeedback }) {
 
               {/* Admin Notes */}
               <div>
-                <span className="text-gray-500 text-sm flex items-center gap-1">
+                <span className="text-[#6b7280] text-sm flex items-center gap-1">
                   <MessageSquare className="w-3.5 h-3.5" /> Admin Notes
                 </span>
                 <textarea
-                  className="w-full bg-[#1a1a1a] border border-[var(--color-dark-border)] px-4 py-2.5 text-white text-sm rounded-lg focus:border-[#FFB800] focus:outline-none transition-colors resize-none mt-2"
+                  className="w-full bg-[#f7f9fc] border border-[var(--color-dark-border)] px-4 py-2.5 text-[#183964] text-sm rounded-lg focus:border-[#f36c21] focus:outline-none transition-colors resize-none mt-2"
                   rows={3}
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
@@ -270,7 +270,7 @@ export default function ApplicationManager({ showFeedback }) {
                 />
                 <button
                   onClick={saveNotes}
-                  className="mt-2 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors text-sm"
+                  className="mt-2 px-4 py-2 bg-gray-200 text-[#183964] rounded-lg hover:bg-gray-600 transition-colors text-sm"
                 >
                   Save Notes
                 </button>

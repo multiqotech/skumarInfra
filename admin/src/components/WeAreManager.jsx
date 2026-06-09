@@ -140,7 +140,7 @@ export default function WeAreManager({ showFeedback }) {
           <img src={item.previewUrl || item.image} className="w-full h-full object-cover" alt="Item preview" />
         </div>
       )}
-      <label className="flex-1 flex items-center justify-center h-10 border border-dashed border-[var(--color-dark-border)] rounded cursor-pointer hover:border-[var(--color-yellow)] bg-[var(--color-dark)]/50 transition-colors text-sm text-gray-400">
+      <label className="flex-1 flex items-center justify-center h-10 border border-dashed border-[var(--color-dark-border)] rounded cursor-pointer hover:border-[var(--color-yellow)] bg-[var(--color-dark)]/50 transition-colors text-sm text-[#6b7280]">
         <Upload className="h-4 w-4 mr-2" /> Upload Image
         <input type="file" className="hidden" accept="image/*" onChange={(e) => handleItemFileSelect(index, e)} />
       </label>
@@ -154,7 +154,7 @@ export default function WeAreManager({ showFeedback }) {
       <div key={item.id || index} className="p-4 border border-[var(--color-dark-border)] rounded-lg bg-[var(--color-dark)]/50 relative mb-4">
         <button 
           onClick={() => removeItem(index)}
-          className="absolute top-4 right-4 text-gray-500 hover:text-red-400"
+          className="absolute top-4 right-4 text-[#6b7280] hover:text-red-400"
         >
           <Trash2 className="h-5 w-5" />
         </button>
@@ -207,7 +207,7 @@ export default function WeAreManager({ showFeedback }) {
       <div className="flex justify-between items-center bg-[var(--color-dark-card)] p-4 rounded-xl border border-[var(--color-dark-border)] shadow-lg">
         <div>
           <h2 className="text-xl font-bold">Manage "We Are" Pages</h2>
-          <p className="text-sm text-gray-400 mt-1">Select a page to edit its content and layout.</p>
+          <p className="text-sm text-[#6b7280] mt-1">Select a page to edit its content and layout.</p>
         </div>
         <select 
           value={selectedPage} 
@@ -221,7 +221,7 @@ export default function WeAreManager({ showFeedback }) {
       </div>
 
       {loading ? (
-        <div className="p-12 flex justify-center text-gray-400 bg-[var(--color-dark-card)] rounded-xl border border-[var(--color-dark-border)]">
+        <div className="p-12 flex justify-center text-[#6b7280] bg-[var(--color-dark-card)] rounded-xl border border-[var(--color-dark-border)]">
           <Loader2 className="h-8 w-8 animate-spin text-[var(--color-yellow)]" />
         </div>
       ) : (
@@ -229,7 +229,7 @@ export default function WeAreManager({ showFeedback }) {
           
           {/* Hero Section */}
           <div className="bg-[var(--color-dark-card)] rounded-xl border border-[var(--color-dark-border)] overflow-hidden">
-            <div className="p-4 border-b border-[var(--color-dark-border)] bg-[#1a1a1a]">
+            <div className="p-4 border-b border-[var(--color-dark-border)] bg-[#f7f9fc]">
               <h3 className="text-lg font-semibold flex items-center gap-2">
                 <ImageIcon className="h-5 w-5 text-[var(--color-yellow)]" />
                 Hero Section
@@ -263,7 +263,7 @@ export default function WeAreManager({ showFeedback }) {
                     </div>
                   )}
                   <label className="flex-1 flex flex-col items-center justify-center h-32 border-2 border-dashed border-[var(--color-dark-border)] rounded-lg cursor-pointer hover:border-[var(--color-yellow)] bg-[var(--color-dark)]/50 transition-colors">
-                    <Upload className="h-6 w-6 text-gray-400 mb-2" />
+                    <Upload className="h-6 w-6 text-[#6b7280] mb-2" />
                     <span className="text-sm font-medium">Click to upload new hero image</span>
                     <input type="file" className="hidden" accept="image/*" onChange={handleHeroFileSelect} />
                   </label>
@@ -274,7 +274,7 @@ export default function WeAreManager({ showFeedback }) {
 
           {/* Dynamic Content Section */}
           <div className="bg-[var(--color-dark-card)] rounded-xl border border-[var(--color-dark-border)] overflow-hidden">
-            <div className="p-4 border-b border-[var(--color-dark-border)] bg-[#1a1a1a] flex justify-between items-center">
+            <div className="p-4 border-b border-[var(--color-dark-border)] bg-[#f7f9fc] flex justify-between items-center">
               <h3 className="text-lg font-semibold flex items-center gap-2">
                 <Edit2 className="h-5 w-5 text-[var(--color-yellow)]" />
                 Page Content Items ({currentPageDef.itemType})
@@ -288,7 +288,7 @@ export default function WeAreManager({ showFeedback }) {
             </div>
             <div className="p-6">
               {items.length === 0 ? (
-                <div className="text-center py-8 text-gray-500">
+                <div className="text-center py-8 text-[#6b7280]">
                   No content items added yet. Click 'Add Item' to start.
                 </div>
               ) : (
@@ -305,7 +305,7 @@ export default function WeAreManager({ showFeedback }) {
         <button
           onClick={handleSave}
           disabled={saving || loading}
-          className="flex items-center gap-2 px-6 py-3 bg-[var(--color-yellow)] hover:bg-[#e5a600] text-black rounded-full font-bold shadow-[0_10px_25px_rgba(255,184,0,0.3)] disabled:opacity-50 transition-all hover:-translate-y-1"
+          className="flex items-center gap-2 px-6 py-3 bg-[var(--color-yellow)] hover:bg-[#e5a600] text-white rounded-full font-bold shadow-[0_10px_25px_rgba(255,184,0,0.3)] disabled:opacity-50 transition-all hover:-translate-y-1"
         >
           {saving ? <Loader2 className="h-5 w-5 animate-spin" /> : <Save className="h-5 w-5" />}
           {saving ? 'Saving Changes...' : 'Save Page Content'}

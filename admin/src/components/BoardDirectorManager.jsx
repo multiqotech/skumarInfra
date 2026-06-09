@@ -146,7 +146,7 @@ export default function BoardDirectorManager({ showFeedback }) {
   return (
     <div className="space-y-6">
       <div className="bg-[var(--color-dark-card)] rounded-xl border border-[var(--color-dark-border)] overflow-hidden">
-        <div className="p-6 border-b border-[var(--color-dark-border)] bg-[#1a1a1a]">
+        <div className="p-6 border-b border-[var(--color-dark-border)] bg-[#f7f9fc]">
           <h3 className="text-lg font-semibold flex items-center gap-2">
             <Plus className="h-5 w-5 text-[var(--color-yellow)]" />
             {isEditing ? "Edit Board Director" : "Add Board Director"}
@@ -193,7 +193,7 @@ export default function BoardDirectorManager({ showFeedback }) {
               {directorPreview && (
                 <div className="relative w-32 h-32 rounded-lg overflow-hidden border border-[var(--color-dark-border)] group">
                   <img src={directorPreview} alt="Preview" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="absolute inset-0 bg-[#183964]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <button type="button" onClick={handleRemoveFile} className="text-red-400 hover:text-red-300">
                       <Trash2 className="h-5 w-5" />
                     </button>
@@ -203,8 +203,8 @@ export default function BoardDirectorManager({ showFeedback }) {
               <div className="flex-1">
                 <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-[var(--color-dark-border)] rounded-lg cursor-pointer hover:border-[var(--color-yellow)] transition-colors bg-[var(--color-dark)]/50">
                   <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                    <Upload className="w-8 h-8 mb-2 text-gray-400" />
-                    <p className="text-sm text-gray-400"><span className="font-semibold text-white">Click to upload</span></p>
+                    <Upload className="w-8 h-8 mb-2 text-[#6b7280]" />
+                    <p className="text-sm text-[#6b7280]"><span className="font-semibold text-[#183964]">Click to upload</span></p>
                   </div>
                   <input type="file" className="hidden" accept="image/*" onChange={handleFileSelect} />
                 </label>
@@ -215,7 +215,7 @@ export default function BoardDirectorManager({ showFeedback }) {
             <button
               type="submit"
               disabled={formLoading || uploadingImage}
-              className="px-6 py-2.5 bg-[var(--color-yellow)] text-black font-semibold rounded-lg hover:bg-[#e5a600] disabled:opacity-50 flex items-center gap-2"
+              className="px-6 py-2.5 bg-[var(--color-yellow)] text-white font-semibold rounded-lg hover:bg-[#e5a600] disabled:opacity-50 flex items-center gap-2"
             >
               {(formLoading || uploadingImage) ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
               {uploadingImage ? "Uploading Image..." : isEditing ? "Update Director" : "Add Director"}
@@ -224,7 +224,7 @@ export default function BoardDirectorManager({ showFeedback }) {
               <button
                 type="button"
                 onClick={cancelEdit}
-                className="px-6 py-2.5 bg-gray-800 text-white font-medium rounded-lg hover:bg-gray-700 transition-colors"
+                className="px-6 py-2.5 bg-[#f0f4f8] text-[#183964] font-medium rounded-lg hover:bg-gray-200 transition-colors"
               >
                 Cancel
               </button>
@@ -238,11 +238,11 @@ export default function BoardDirectorManager({ showFeedback }) {
           <h3 className="text-lg font-semibold">Current Directors ({directors.length})</h3>
         </div>
         {loading ? (
-          <div className="p-12 flex justify-center text-gray-400">
+          <div className="p-12 flex justify-center text-[#6b7280]">
             <Loader2 className="h-8 w-8 animate-spin text-[var(--color-yellow)]" />
           </div>
         ) : directors.length === 0 ? (
-          <div className="p-12 text-center text-gray-400 border-t border-[var(--color-dark-border)]">
+          <div className="p-12 text-center text-[#6b7280] border-t border-[var(--color-dark-border)]">
             No board directors added yet.
           </div>
         ) : (
@@ -253,17 +253,17 @@ export default function BoardDirectorManager({ showFeedback }) {
                   <img src={director.image} alt={director.name} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-lg font-bold text-white">{director.name}</h4>
+                  <h4 className="text-lg font-bold text-[#183964]">{director.name}</h4>
                   <p className="text-[var(--color-yellow)] text-sm">{director.designation}</p>
                   {director.description && (
-                    <p className="text-gray-400 text-sm mt-1 line-clamp-2">{director.description}</p>
+                    <p className="text-[#6b7280] text-sm mt-1 line-clamp-2">{director.description}</p>
                   )}
                 </div>
                 <div className="flex gap-2">
-                  <button onClick={() => handleEdit(director)} className="p-2 text-gray-400 hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
+                  <button onClick={() => handleEdit(director)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
                     <Edit2 className="h-4 w-4" />
                   </button>
-                  <button onClick={() => handleDelete(director._id)} className="p-2 text-gray-400 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
+                  <button onClick={() => handleDelete(director._id)} className="p-2 text-[#6b7280] hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
                     <Trash2 className="h-4 w-4" />
                   </button>
                 </div>

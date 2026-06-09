@@ -67,7 +67,7 @@ export default function SignupPage() {
 
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold font-heading text-white mb-2 tracking-wide">
-            Create <span className="text-[#FFB800]">Account</span>
+            Create <span className="text-[#f36c21]">Account</span>
           </h1>
           <p className="text-gray-400 text-sm">
             Join S Kumar Infracons (India) Private Limiteds and build your future.
@@ -85,14 +85,14 @@ export default function SignupPage() {
             <label className="text-sm font-medium text-gray-400 ml-1">Full Name</label>
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <User className="h-5 w-5 text-gray-500 group-focus-within:text-[#FFB800] transition-colors" />
+                <User className="h-5 w-5 text-gray-500 group-focus-within:text-[#f36c21] transition-colors" />
               </div>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="w-full pl-12 pr-4 py-3.5 bg-[#141414] border border-[#2a2a2a] rounded-xl text-white focus:outline-none focus:border-[#FFB800] focus:ring-1 focus:ring-[#FFB800] transition-all duration-300"
+                className="w-full pl-12 pr-4 py-3.5 bg-[#141414] border border-[#2a2a2a] rounded-xl text-white focus:outline-none focus:border-[#f36c21] focus:ring-1 focus:ring-[#FFB800] transition-all duration-300"
                 placeholder="John Doe"
               />
             </div>
@@ -102,14 +102,14 @@ export default function SignupPage() {
             <label className="text-sm font-medium text-gray-400 ml-1">Email Address</label>
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <Mail className="h-5 w-5 text-gray-500 group-focus-within:text-[#FFB800] transition-colors" />
+                <Mail className="h-5 w-5 text-gray-500 group-focus-within:text-[#f36c21] transition-colors" />
               </div>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full pl-12 pr-4 py-3.5 bg-[#141414] border border-[#2a2a2a] rounded-xl text-white focus:outline-none focus:border-[#FFB800] focus:ring-1 focus:ring-[#FFB800] transition-all duration-300"
+                className="w-full pl-12 pr-4 py-3.5 bg-[#141414] border border-[#2a2a2a] rounded-xl text-white focus:outline-none focus:border-[#f36c21] focus:ring-1 focus:ring-[#FFB800] transition-all duration-300"
                 placeholder="john@example.com"
               />
             </div>
@@ -119,14 +119,14 @@ export default function SignupPage() {
             <label className="text-sm font-medium text-gray-400 ml-1">Password</label>
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <Lock className="h-5 w-5 text-gray-500 group-focus-within:text-[#FFB800] transition-colors" />
+                <Lock className="h-5 w-5 text-gray-500 group-focus-within:text-[#f36c21] transition-colors" />
               </div>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full pl-12 pr-4 py-3.5 bg-[#141414] border border-[#2a2a2a] rounded-xl text-white focus:outline-none focus:border-[#FFB800] focus:ring-1 focus:ring-[#FFB800] transition-all duration-300"
+                className="w-full pl-12 pr-4 py-3.5 bg-[#141414] border border-[#2a2a2a] rounded-xl text-white focus:outline-none focus:border-[#f36c21] focus:ring-1 focus:ring-[#FFB800] transition-all duration-300"
                 placeholder="••••••••"
               />
             </div>
@@ -136,14 +136,14 @@ export default function SignupPage() {
             <label className="text-sm font-medium text-gray-400 ml-1">Confirm Password</label>
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <Lock className="h-5 w-5 text-gray-500 group-focus-within:text-[#FFB800] transition-colors" />
+                <Lock className="h-5 w-5 text-gray-500 group-focus-within:text-[#f36c21] transition-colors" />
               </div>
               <input
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
-                className="w-full pl-12 pr-4 py-3.5 bg-[#141414] border border-[#2a2a2a] rounded-xl text-white focus:outline-none focus:border-[#FFB800] focus:ring-1 focus:ring-[#FFB800] transition-all duration-300"
+                className="w-full pl-12 pr-4 py-3.5 bg-[#141414] border border-[#2a2a2a] rounded-xl text-white focus:outline-none focus:border-[#f36c21] focus:ring-1 focus:ring-[#FFB800] transition-all duration-300"
                 placeholder="••••••••"
               />
             </div>
@@ -152,7 +152,7 @@ export default function SignupPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 py-4 px-4 bg-[#FFB800] hover:bg-[#e5a600] text-black font-bold text-sm tracking-widest uppercase rounded-xl transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(255,184,0,0.25)] mt-4"
+            className="w-full flex items-center justify-center gap-2 py-4 px-4 bg-[#f36c21] hover:bg-[#e5a600] text-black font-bold text-sm tracking-widest uppercase rounded-xl transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(255,184,0,0.25)] mt-4"
           >
             {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : "Create Account"}
             {!loading && <ArrowRight className="h-4 w-4" />}
@@ -161,7 +161,7 @@ export default function SignupPage() {
 
         <div className="mt-8 text-center text-sm text-gray-400">
           Already have an account?{" "}
-          <Link href={`/login${redirect !== '/' ? `?redirect=${encodeURIComponent(redirect)}` : ''}`} className="text-[#FFB800] hover:underline font-medium transition-colors">
+          <Link href={`/login${redirect !== '/' ? `?redirect=${encodeURIComponent(redirect)}` : ''}`} className="text-[#f36c21] hover:underline font-medium transition-colors">
             Sign In Here
           </Link>
         </div>

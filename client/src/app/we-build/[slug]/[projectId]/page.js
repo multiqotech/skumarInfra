@@ -45,12 +45,12 @@ export default async function ProjectDetailsPage({ params }) {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090B] text-[#09090B] dark:text-white pt-24 pb-20">
+      <main className="min-h-screen bg-[#f7f9fc] pt-24 pb-20">
         <div className="container-custom">
           {/* Back Button */}
           <Link
             href={`/we-build/${slug}`}
-            className="inline-flex items-center gap-2 text-[#FFB800] hover:text-[#09090B] dark:hover:text-white font-semibold tracking-wide uppercase transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-[#f36c21] hover:text-[#d45a14] font-bold tracking-wide uppercase transition-colors mb-8"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             <HiArrowLeft className="h-5 w-5" />
@@ -61,7 +61,7 @@ export default async function ProjectDetailsPage({ params }) {
 
             {/* Left Column: Image & Details */}
             <div className="lg:col-span-8 space-y-8">
-              <div className="relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl border border-black/5">
+              <div className="relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl border-[4px] border-white">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -72,18 +72,18 @@ export default async function ProjectDetailsPage({ params }) {
               </div>
 
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-wide text-[#09090B] dark:text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
+                <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-wide text-[#183964] mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
                   {project.title}
                 </h1>
 
-                <div className="bg-white dark:bg-[#18181B] rounded-xl p-6 md:p-8 border border-black/5 dark:border-white/5">
+                <div className="bg-white rounded-xl p-6 md:p-8 border border-[#183964]/10 shadow-[0_10px_30px_rgba(24,57,100,0.05)]">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-8 h-1 bg-[#FFB800]"></div>
-                    <h3 className="text-[#09090B] dark:text-white text-sm font-bold tracking-[0.15em] uppercase" style={{ fontFamily: 'var(--font-heading)' }}>
+                    <div className="w-8 h-[3px] bg-[#f36c21]"></div>
+                    <h3 className="text-[#183964] text-sm font-bold tracking-[0.15em] uppercase" style={{ fontFamily: 'var(--font-heading)' }}>
                       Project Description
                     </h3>
                   </div>
-                  <p className="text-zinc-600 dark:text-zinc-400 text-[16px] leading-relaxed text-justify">
+                  <p className="text-[#4b5563] text-[16px] leading-relaxed text-justify font-medium">
                     {project.description || 'Detailed description for this project will be available soon. This is a landmark project showcasing our engineering excellence and commitment to delivering world-class infrastructure.'}
                   </p>
                 </div>
@@ -92,21 +92,21 @@ export default async function ProjectDetailsPage({ params }) {
 
             {/* Right Column: Key Stats Sidebar */}
             <div className="lg:col-span-4">
-              <div className="bg-[#09090B] rounded-xl p-8 sticky top-32 shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
+              <div className="bg-[#183964] rounded-xl p-8 sticky top-32 shadow-2xl border border-white/10">
                 <h3 className="text-white text-2xl font-bold uppercase tracking-wider mb-8 flex items-center gap-3" style={{ fontFamily: 'var(--font-heading)' }}>
-                  <div className="w-8 h-1 bg-[#FFB800]"></div>
+                  <div className="w-8 h-[3px] bg-[#f36c21]"></div>
                   Project Details
                 </h3>
 
                 <div className="space-y-6">
                   {/* Category */}
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-[#FFB800]/10 flex items-center justify-center flex-shrink-0">
-                      <HiBuildingOffice2 className="h-5 w-5 text-[#FFB800]" />
+                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                      <HiBuildingOffice2 className="h-5 w-5 text-[#f36c21]" />
                     </div>
                     <div>
-                      <p className="text-white/50 text-xs tracking-widest uppercase mb-1 font-semibold">Category</p>
-                      <p className="text-white font-medium capitalize">{slug.replace(/-/g, ' ')}</p>
+                      <p className="text-white/60 text-xs tracking-widest uppercase mb-1 font-bold">Category</p>
+                      <p className="text-white font-bold capitalize">{slug.replace(/-/g, ' ')}</p>
                     </div>
                   </div>
 
@@ -114,12 +114,12 @@ export default async function ProjectDetailsPage({ params }) {
 
                   {/* Location */}
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-[#FFB800]/10 flex items-center justify-center flex-shrink-0">
-                      <HiMapPin className="h-5 w-5 text-[#FFB800]" />
+                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                      <HiMapPin className="h-5 w-5 text-[#f36c21]" />
                     </div>
                     <div>
-                      <p className="text-white/50 text-xs tracking-widest uppercase mb-1 font-semibold">Location</p>
-                      <p className="text-white font-medium">{project.location || 'Global Hub'}</p>
+                      <p className="text-white/60 text-xs tracking-widest uppercase mb-1 font-bold">Location</p>
+                      <p className="text-white font-bold">{project.location || 'Global Hub'}</p>
                     </div>
                   </div>
 
@@ -127,12 +127,12 @@ export default async function ProjectDetailsPage({ params }) {
 
                   {/* Time to Build */}
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-[#FFB800]/10 flex items-center justify-center flex-shrink-0">
-                      <HiClock className="h-5 w-5 text-[#FFB800]" />
+                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                      <HiClock className="h-5 w-5 text-[#f36c21]" />
                     </div>
                     <div>
-                      <p className="text-white/50 text-xs tracking-widest uppercase mb-1 font-semibold">Time to Build</p>
-                      <p className="text-white font-medium">{project.timeToBuild || '24 Months'}</p>
+                      <p className="text-white/60 text-xs tracking-widest uppercase mb-1 font-bold">Time to Build</p>
+                      <p className="text-white font-bold">{project.timeToBuild || '24 Months'}</p>
                     </div>
                   </div>
 
@@ -140,12 +140,12 @@ export default async function ProjectDetailsPage({ params }) {
 
                   {/* Engineers */}
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-[#FFB800]/10 flex items-center justify-center flex-shrink-0">
-                      <HiUserGroup className="h-5 w-5 text-[#FFB800]" />
+                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                      <HiUserGroup className="h-5 w-5 text-[#f36c21]" />
                     </div>
                     <div>
-                      <p className="text-white/50 text-xs tracking-widest uppercase mb-1 font-semibold">Key Engineers</p>
-                      <p className="text-white font-medium leading-snug">{project.engineers || 'John Doe, Jane Smith'}</p>
+                      <p className="text-white/60 text-xs tracking-widest uppercase mb-1 font-bold">Key Engineers</p>
+                      <p className="text-white font-bold leading-snug">{project.engineers || 'John Doe, Jane Smith'}</p>
                     </div>
                   </div>
 
@@ -153,13 +153,13 @@ export default async function ProjectDetailsPage({ params }) {
 
                 {/* Decorative Elements */}
                 <div className="mt-12 pt-8 border-t border-white/10 flex justify-between items-center">
-                  <div className="text-[#FFB800] text-xs font-bold tracking-[0.2em] uppercase">
-                    S Kumar Infracons (India) Private Limited
+                  <div className="text-white/50 text-xs font-bold tracking-[0.2em] uppercase">
+                    S Kumar Infracons
                   </div>
-                  <div className="flex gap-1">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#FFB800]"></div>
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#FFB800]/50"></div>
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#FFB800]/20"></div>
+                  <div className="flex gap-1.5">
+                    <div className="w-2 h-2 rounded-full bg-[#f36c21]"></div>
+                    <div className="w-2 h-2 rounded-full bg-[#f36c21]/50"></div>
+                    <div className="w-2 h-2 rounded-full bg-[#f36c21]/20"></div>
                   </div>
                 </div>
               </div>

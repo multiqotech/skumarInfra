@@ -38,8 +38,8 @@ export default async function NewsDetailPage({ params }) {
   });
 
   return (
-    <main className="min-h-screen bg-white dark:bg-[#09090B] text-[#09090B] dark:text-white">
-      <div className="bg-[#09090B]">
+    <main className="min-h-screen bg-white">
+      <div className="bg-white">
         <Navbar alwaysSolid={true} />
       </div>
 
@@ -48,18 +48,18 @@ export default async function NewsDetailPage({ params }) {
           
           <Link 
             href={`/newsroom?type=${newsItem.type}`}
-            className="inline-flex items-center gap-2 text-zinc-500 dark:text-zinc-400 hover:text-[#17375E] dark:hover:text-white transition-colors mb-8 text-sm uppercase tracking-wider font-semibold"
+            className="inline-flex items-center gap-2 text-[#4b5563] hover:text-[#f36c21] transition-colors mb-8 text-sm uppercase tracking-wider font-bold"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to {newsItem.type.replace('-', ' ')}
           </Link>
 
-          <header className="mb-10">
-            <h1 className="text-3xl md:text-5xl font-light text-[#09090B] dark:text-white leading-tight mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
+          <header className="mb-10 border-b border-[#183964]/10 pb-8">
+            <h1 className="text-3xl md:text-5xl font-bold text-[#183964] leading-tight mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
               {newsItem.headline}
             </h1>
-            <div className="flex items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400">
-              <span className="font-medium text-[#17375E] uppercase tracking-wider bg-[#17375E]/10 px-3 py-1 rounded">
+            <div className="flex items-center gap-4 text-sm font-medium text-[#4b5563]">
+              <span className="font-bold text-white uppercase tracking-wider bg-[#f36c21] px-3 py-1 rounded shadow-sm">
                 {newsItem.type.replace('-', ' ')}
               </span>
               <span>{formattedDate}</span>
@@ -69,7 +69,7 @@ export default async function NewsDetailPage({ params }) {
           {newsItem.type === 'press-releases' && (
             <div className="space-y-8">
               {newsItem.image && (
-                <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-zinc-100 dark:bg-[#18181B] border border-black/5 dark:border-white/10 shadow-sm">
+                <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-[#f7f9fc] border border-[#183964]/5 shadow-sm">
                   <Image 
                     src={newsItem.image} 
                     alt={newsItem.headline}
@@ -79,7 +79,7 @@ export default async function NewsDetailPage({ params }) {
                 </div>
               )}
               
-              <div className="prose prose-lg max-w-none text-zinc-700 dark:text-zinc-300 font-light leading-relaxed whitespace-pre-wrap">
+              <div className="prose prose-lg max-w-none text-[#4b5563] leading-relaxed whitespace-pre-wrap font-medium">
                 {newsItem.body}
               </div>
             </div>
@@ -88,7 +88,7 @@ export default async function NewsDetailPage({ params }) {
           {newsItem.type === 'electronic-media' && (
             <div className="space-y-8">
               {newsItem.videoLink && (
-                <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-black shadow-xl dark:shadow-none">
+                <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-[#183964] shadow-xl border border-[#183964]/10">
                   {newsItem.videoLink.includes('youtube.com') || newsItem.videoLink.includes('youtu.be') ? (
                     <iframe 
                       className="w-full h-full"
@@ -99,9 +99,9 @@ export default async function NewsDetailPage({ params }) {
                       allowFullScreen
                     ></iframe>
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center flex-col gap-4 bg-zinc-100 p-8 text-center border border-black/5">
-                      <p className="text-zinc-600">Video link provided is not a standard YouTube embed.</p>
-                      <a href={newsItem.videoLink} target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-[#17375E] text-white rounded font-medium hover:bg-[#17375E]/90 transition-colors">
+                    <div className="w-full h-full flex items-center justify-center flex-col gap-4 bg-[#f7f9fc] p-8 text-center border border-[#183964]/5">
+                      <p className="text-[#183964] font-medium">Video link provided is not a standard YouTube embed.</p>
+                      <a href={newsItem.videoLink} target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-[#f36c21] text-white rounded font-bold hover:bg-[#d45a14] transition-colors shadow-md">
                         Watch Original Video
                       </a>
                     </div>
@@ -110,7 +110,7 @@ export default async function NewsDetailPage({ params }) {
               )}
               
               {newsItem.description && (
-                <div className="prose prose-lg max-w-none text-zinc-700 dark:text-zinc-300 font-light leading-relaxed">
+                <div className="prose prose-lg max-w-none text-[#4b5563] leading-relaxed font-medium">
                   {newsItem.description}
                 </div>
               )}
@@ -118,13 +118,13 @@ export default async function NewsDetailPage({ params }) {
           )}
 
           {newsItem.type === 'featured-stories' && (
-            <div className="py-20 text-center border-t border-black/5 dark:border-white/10 mt-12">
-              <p className="text-zinc-500 dark:text-zinc-400 mb-6">This featured story is available as a PDF document.</p>
+            <div className="py-20 text-center border-t border-[#183964]/10 mt-12 bg-[#f7f9fc] rounded-2xl">
+              <p className="text-[#4b5563] font-medium mb-6 text-lg">This featured story is available as a PDF document.</p>
               <a 
                 href={newsItem.pdf}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-3 bg-[#FFB800] text-[#09090B] rounded-lg font-bold hover:bg-[#FFB800]/90 transition-colors shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-[#f36c21] text-white rounded-lg font-bold hover:bg-[#d45a14] transition-colors shadow-[0_10px_20px_rgba(243,108,33,0.3)]"
               >
                 View PDF Document
               </a>

@@ -55,7 +55,7 @@ export default async function LandmarkProjectsPage({ params }) {
   const heroImage = typeLabels[type].heroImage;
 
   return (
-    <main className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090B]">
+    <main className="min-h-screen bg-[#f7f9fc]">
       <Navbar />
 
       {/* Hero Section */}
@@ -64,15 +64,16 @@ export default async function LandmarkProjectsPage({ params }) {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImage})` }}
         />
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-[#183964]/80 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#183964] via-[#183964]/40 to-transparent" />
         
         <div className="relative z-10 container-custom text-center mt-20">
           <div className="inline-flex items-center gap-4 mb-4 md:mb-6">
-            <div className="w-12 h-1 bg-[#FFB800]" />
-            <span className="text-[#FFB800] uppercase tracking-[0.3em] font-bold text-xs md:text-sm">
+            <div className="w-12 h-1 bg-[#f36c21]" />
+            <span className="text-[#f36c21] uppercase tracking-[0.3em] font-bold text-xs md:text-sm">
               {pageTitle}
             </span>
-            <div className="w-12 h-1 bg-[#FFB800]" />
+            <div className="w-12 h-1 bg-[#f36c21]" />
           </div>
           
           <h1 
@@ -82,7 +83,7 @@ export default async function LandmarkProjectsPage({ params }) {
             {pageTitle}
           </h1>
           
-          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto font-light leading-relaxed px-4">
+          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto font-medium leading-relaxed px-4 drop-shadow">
             {pageTagline}
           </p>
         </div>
@@ -92,14 +93,14 @@ export default async function LandmarkProjectsPage({ params }) {
       <section className="py-20 md:py-32">
         <div className="container-custom">
           {!projects || projects.length === 0 ? (
-            <div className="text-center py-20 bg-white dark:bg-[#18181B] rounded-3xl border border-black/5 dark:border-white/5 shadow-xl">
-              <h3 className="text-2xl font-bold text-[#09090B] dark:text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>No {pageTitle} Found</h3>
-              <p className="text-zinc-500 dark:text-zinc-400">More projects are being added. Check back soon.</p>
+            <div className="text-center py-20 bg-white rounded-3xl border border-[#183964]/10 shadow-xl">
+              <h3 className="text-2xl font-bold text-[#183964] mb-4" style={{ fontFamily: 'var(--font-heading)' }}>No {pageTitle} Found</h3>
+              <p className="text-[#4b5563]">More projects are being added. Check back soon.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project) => (
-                <div key={project._id} className="group block bg-white dark:bg-[#18181B] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-black/5 dark:border-white/5 flex flex-col h-full">
+                <div key={project._id} className="group block bg-white rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(24,57,100,0.06)] hover:shadow-[0_20px_50px_rgba(24,57,100,0.12)] transition-all duration-300 border border-[#183964]/5 flex flex-col h-full hover:-translate-y-1">
                   <div className="relative w-full h-64 overflow-hidden">
                     <Image
                       src={project.image}
@@ -107,11 +108,11 @@ export default async function LandmarkProjectsPage({ params }) {
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#183964] via-[#183964]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
                     
                     {/* Category Badge */}
                     <div className="absolute top-6 right-6">
-                      <span className="px-3 py-1 bg-[#FFB800] text-black text-xs font-bold uppercase tracking-wider rounded shadow-lg">
+                      <span className="px-3 py-1 bg-[#f36c21] text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-lg">
                         {project.category.replace(/-/g, ' ')}
                       </span>
                     </div>
@@ -121,20 +122,21 @@ export default async function LandmarkProjectsPage({ params }) {
                     </h3>
                   </div>
                   
-                  <div className="p-6 md:p-8 flex-1 flex flex-col">
+                  <div className="p-6 md:p-8 flex-1 flex flex-col relative">
+                    <div className="absolute -top-3 left-6 w-12 h-1 bg-[#f36c21]" />
                     {project.location && (
-                      <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 mb-4 text-sm font-medium">
-                        <HiMapPin className="w-5 h-5 text-[#FFB800]" />
+                      <div className="flex items-center gap-2 text-[#183964] mb-4 text-sm font-semibold">
+                        <HiMapPin className="w-5 h-5 text-[#f36c21]" />
                         {project.location}
                       </div>
                     )}
-                    <p className="text-zinc-600 dark:text-zinc-400 line-clamp-3 flex-1">
+                    <p className="text-[#4b5563] line-clamp-3 flex-1 text-sm leading-relaxed">
                       {project.description || "No description provided."}
                     </p>
                     
                     <Link 
                       href={`/we-build/${project.category}/${project._id}`}
-                      className="mt-6 inline-flex items-center gap-2 text-[#FFB800] font-semibold uppercase tracking-wider text-sm hover:text-[#09090B] dark:hover:text-white transition-colors"
+                      className="mt-6 inline-flex items-center gap-2 text-[#f36c21] font-bold uppercase tracking-wider text-sm hover:text-[#d45a14] transition-colors"
                     >
                       View Project Details
                       <span className="transition-transform group-hover:translate-x-1">→</span>

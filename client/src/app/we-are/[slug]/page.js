@@ -66,7 +66,7 @@ export default async function WeArePage({ params }) {
     }));
 
     return (
-      <main className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090B]">
+      <main className="min-h-screen bg-[#f7f9fc]">
         <Navbar />
         
         {/* Simple Page Header */}
@@ -77,13 +77,14 @@ export default async function WeArePage({ params }) {
               alt="Our Businesses"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-black/60 dark:bg-black/80" />
+            <div className="absolute inset-0 bg-[#183964]/80 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#183964] via-[#183964]/40 to-transparent" />
           </div>
           <div className="container-custom relative z-10 text-center text-white">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
-              Our <span className="text-[#FFB800]">Businesses</span>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg" style={{ fontFamily: 'var(--font-heading)' }}>
+              Our <span className="text-[#f36c21]">Businesses</span>
             </h1>
-            <p className="text-lg text-zinc-300 max-w-2xl mx-auto">
+            <p className="text-lg text-white/90 max-w-2xl mx-auto font-medium">
               Diverse Capabilities, Singular Focus
             </p>
           </div>
@@ -92,13 +93,13 @@ export default async function WeArePage({ params }) {
         <VerticalsSection />
 
         {subsidiaryItems.length > 0 && (
-          <section className="py-24 bg-[#FAFAFA] dark:bg-[#09090B]">
+          <section className="py-24 bg-white border-t border-[#183964]/5">
             <div className="container-custom">
               <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-white" style={{ fontFamily: 'var(--font-heading)' }}>
-                  Our <span className="text-[#FFB800]">Subsidiaries</span>
+                <h2 className="text-4xl md:text-5xl font-bold text-[#183964]" style={{ fontFamily: 'var(--font-heading)' }}>
+                  Our <span className="text-[#f36c21]">Subsidiaries</span>
                 </h2>
-                <div className="w-24 h-1 bg-[#FFB800] mx-auto mt-6" />
+                <div className="w-24 h-1 bg-[#f36c21] mx-auto mt-6" />
               </div>
               <CardLayout items={subsidiaryItems} />
             </div>
@@ -112,7 +113,7 @@ export default async function WeArePage({ params }) {
 
   if (slug === 'board-of-directors') {
     return (
-      <main className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090B]">
+      <main className="min-h-screen bg-white">
         <Navbar />
         <div className="pt-[70px]">
            <BoardDirectorSection />
@@ -124,7 +125,7 @@ export default async function WeArePage({ params }) {
 
   if (slug === 'our-team') {
     return (
-      <main className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090B]">
+      <main className="min-h-screen bg-white">
         <Navbar />
         <div className="pt-[70px]">
            <TeamSection />
@@ -163,7 +164,7 @@ export default async function WeArePage({ params }) {
     ) || [];
 
     return (
-      <main className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090B]">
+      <main className="min-h-screen bg-white">
         <Navbar />
         <div className="pt-[70px]">
            <VideoShowcase />
@@ -200,7 +201,7 @@ function WeAreRenderer({ data, layoutType }) {
   const pageInfo = data.pageData || {};
 
   return (
-    <main className="min-h-screen bg-[#FAFAFA]">
+    <main className="min-h-screen bg-white">
       <Navbar />
 
       {/* Hero Section */}
@@ -211,17 +212,18 @@ function WeAreRenderer({ data, layoutType }) {
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${pageInfo.heroImage})` }}
             />
-            <div className="absolute inset-0 bg-black/60" />
+            <div className="absolute inset-0 bg-[#183964]/80 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#183964] via-[#183964]/40 to-transparent" />
           </>
         )}
         
         <div className="relative z-10 container-custom text-center mt-20">
           <div className="inline-flex items-center gap-4 mb-6">
-            <div className="w-12 h-1 bg-[#FFB800]" />
-            <span className="text-[#FFB800] uppercase tracking-[0.3em] font-bold text-sm md:text-base">
+            <div className="w-12 h-1 bg-[#f36c21]" />
+            <span className="text-[#f36c21] uppercase tracking-[0.3em] font-bold text-sm md:text-base">
               S KUMAR INFRACONS
             </span>
-            <div className="w-12 h-1 bg-[#FFB800]" />
+            <div className="w-12 h-1 bg-[#f36c21]" />
           </div>
           
           <h1 
@@ -232,7 +234,7 @@ function WeAreRenderer({ data, layoutType }) {
           </h1>
           
           {pageInfo.tagline && (
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-medium leading-relaxed drop-shadow-md">
               {pageInfo.tagline}
             </p>
           )}

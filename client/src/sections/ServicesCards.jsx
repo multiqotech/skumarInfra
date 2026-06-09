@@ -8,24 +8,18 @@ import { servicesData } from '@/data/siteData';
 
 export default function ServicesCards() {
   return (
-    <section className="bg-[#FAFAFA] dark:bg-[#09090B] pb-14 lg:pb-24 pt-4" id="services">
+    <section className="bg-[#f7f9fc] pb-14 lg:pb-24 pt-4" id="services">
       <div className="container-custom">
         {/* Heading */}
         <AnimateOnScroll className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-3">
-            <div className="w-8 h-[2px] bg-[#FFB800]" />
-            <span
-              className="text-[#FFB800] text-[11px] tracking-[0.25em] uppercase font-semibold"
-              
-            >
+            <div className="w-8 h-[2px] bg-[#f36c21]" />
+            <span className="text-[#f36c21] text-[11px] tracking-[0.25em] uppercase font-semibold">
               Our Expertise
             </span>
-            <div className="w-8 h-[2px] bg-[#FFB800]" />
+            <div className="w-8 h-[2px] bg-[#f36c21]" />
           </div>
-          <h2
-            className="text-[#09090B] dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold max-w-2xl mx-auto leading-tight"
-            
-          >
+          <h2 className="text-[#183964] text-2xl md:text-3xl lg:text-4xl font-bold max-w-2xl mx-auto leading-tight">
             We Assist in Choosing the Perfect Materials for Your Project
           </h2>
         </AnimateOnScroll>
@@ -39,8 +33,8 @@ export default function ServicesCards() {
                 whileTap={{ scale: 0.98 }}
                 className={`group relative overflow-hidden rounded-2xl transition-all duration-500 h-full flex flex-col ${
                   service.featured
-                    ? 'bg-[#09090B] text-white shadow-[0_20px_50px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10 border border-transparent dark:border-[#FFB800]/30'
-                    : 'bg-[#FDFCF8] dark:bg-[#18181B] text-[#09090B] dark:text-white border border-[#EAEAEA] dark:border-white/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] hover:border-[#FFB800]/30 dark:hover:border-[#FFB800]/30'
+                    ? 'bg-[#183964] text-white shadow-[0_20px_50px_rgba(24,57,100,0.2)] z-10 border border-transparent'
+                    : 'bg-white text-[#183964] border border-[#183964]/10 hover:shadow-[0_20px_40px_rgba(24,57,100,0.08)] hover:border-[#f36c21]/30'
                 }`}
               >
                 {/* Image */}
@@ -52,37 +46,33 @@ export default function ServicesCards() {
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   {service.featured && (
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#09090B] via-[#09090B]/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#183964] via-[#183964]/40 to-transparent" />
                   )}
-                  {/* Yellow accent on featured */}
+                  {/* Orange accent on featured */}
                   {service.featured && (
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-[#FFB800]" />
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-[#f36c21]" />
                   )}
                 </div>
 
                 {/* Content */}
-                <div className="p-7">
-                  <div className="w-8 h-[3px] bg-[#FFB800] mb-4" />
-                  <h3
-                    className="text-xl font-bold mb-3"
-                    
-                  >
+                <div className="p-7 flex-1 flex flex-col">
+                  <div className="w-8 h-[3px] bg-[#f36c21] mb-4" />
+                  <h3 className="text-xl font-bold mb-3">
                     {service.title}
                   </h3>
                   <p
-                    className={`text-sm leading-relaxed mb-5 ${
-                      service.featured ? 'text-white/60' : 'text-[#666] dark:text-zinc-400'
+                    className={`text-[14px] leading-relaxed mb-5 flex-1 ${
+                      service.featured ? 'text-white/80' : 'text-[#4b5563]'
                     }`}
                   >
                     {service.description}
                   </p>
                   <button
-                    className={`inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.15em] transition-colors duration-300 ${
+                    className={`inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.15em] transition-colors duration-300 mt-auto ${
                       service.featured
-                        ? 'text-[#FFB800] hover:text-[#FFC933]'
-                        : 'text-[#09090B] dark:text-zinc-300 hover:text-[#FFB800] dark:hover:text-[#FFB800]'
+                        ? 'text-[#f36c21] hover:text-[#f7893e]'
+                        : 'text-[#183964] hover:text-[#f36c21]'
                     }`}
-                    
                   >
                     View More
                     <HiArrowRight className="transition-transform group-hover:translate-x-1" />

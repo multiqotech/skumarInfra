@@ -8,15 +8,15 @@ export default function FinancialOverview({ overview }) {
     <div className="mb-12">
       <AnimateOnScroll>
         <div className="flex items-center gap-3 mb-3">
-          <div className="w-10 h-[3px] bg-[#FFB800]" />
-          <span className="text-[#FFB800] text-[11px] tracking-[0.25em] uppercase font-semibold">
+          <div className="w-10 h-[3px] bg-[#f36c21]" />
+          <span className="text-[#f36c21] text-[11px] tracking-[0.25em] uppercase font-semibold">
             At a Glance
           </span>
         </div>
-        <h2 className="text-zinc-900 dark:text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
+        <h2 className="text-[#183964] text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
           {overview.title}
         </h2>
-        <p className="text-zinc-600 dark:text-zinc-300 text-sm md:text-base leading-relaxed max-w-3xl">
+        <p className="text-[#4b5563] text-sm md:text-base leading-relaxed max-w-3xl">
           {overview.description}
         </p>
       </AnimateOnScroll>

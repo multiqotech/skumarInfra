@@ -47,13 +47,13 @@ export default function VideoManager({ showFeedback }) {
   return (
     <div className="space-y-6">
       <div className="bg-[var(--color-dark-card)] rounded-xl border border-[var(--color-dark-border)] overflow-hidden">
-        <div className="p-6 border-b border-[var(--color-dark-border)] bg-[#1a1a1a]">
+        <div className="p-6 border-b border-[var(--color-dark-border)] bg-[#f7f9fc]">
           <h3 className="text-lg font-semibold">Video Showcase</h3>
-          <p className="text-sm text-gray-400 mt-1">Update the YouTube video shown on the homepage.</p>
+          <p className="text-sm text-[#6b7280] mt-1">Update the YouTube video shown on the homepage.</p>
         </div>
         
         {loading ? (
-          <div className="p-12 flex justify-center text-gray-400">
+          <div className="p-12 flex justify-center text-[#6b7280]">
             <Loader2 className="h-8 w-8 animate-spin text-[var(--color-yellow)]" />
           </div>
         ) : (
@@ -70,7 +70,7 @@ export default function VideoManager({ showFeedback }) {
               <button
                 type="submit"
                 disabled={formLoading}
-                className="px-6 py-2.5 bg-[var(--color-yellow)] text-black font-semibold rounded-lg hover:bg-[#e5a600] disabled:opacity-50 min-w-[140px] flex justify-center items-center gap-2"
+                className="px-6 py-2.5 bg-[var(--color-yellow)] text-white font-semibold rounded-lg hover:bg-[#e5a600] disabled:opacity-50 min-w-[140px] flex justify-center items-center gap-2"
               >
                 {formLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Save Video"}
               </button>
@@ -87,7 +87,7 @@ export default function VideoManager({ showFeedback }) {
                   allowFullScreen
                 ></iframe>
               ) : (
-                <div className="absolute inset-0 flex items-center justify-center text-gray-500">
+                <div className="absolute inset-0 flex items-center justify-center text-[#6b7280]">
                   No video URL set
                 </div>
               )}

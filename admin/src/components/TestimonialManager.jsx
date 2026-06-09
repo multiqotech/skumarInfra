@@ -155,7 +155,7 @@ export default function TestimonialManager({ showFeedback }) {
   return (
     <div className="space-y-6">
       <div className="bg-[var(--color-dark-card)] rounded-xl border border-[var(--color-dark-border)] overflow-hidden">
-        <div className="p-6 border-b border-[var(--color-dark-border)] bg-[#1a1a1a]">
+        <div className="p-6 border-b border-[var(--color-dark-border)] bg-[#f7f9fc]">
           <h3 className="text-lg font-semibold flex items-center gap-2">
             <Plus className="h-5 w-5 text-[var(--color-yellow)]" />
             {isEditing ? "Edit Testimonial" : "Add Testimonial"}
@@ -215,7 +215,7 @@ export default function TestimonialManager({ showFeedback }) {
               {testimonialPreview && (
                 <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-[var(--color-dark-border)] group">
                   <img src={testimonialPreview} alt="Preview" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="absolute inset-0 bg-[#183964]/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <button type="button" onClick={handleRemoveFile} className="text-red-400 hover:text-red-300">
                       <Trash2 className="h-5 w-5" />
                     </button>
@@ -225,8 +225,8 @@ export default function TestimonialManager({ showFeedback }) {
               <div className="flex-1">
                 <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-[var(--color-dark-border)] rounded-lg cursor-pointer hover:border-[var(--color-yellow)] transition-colors bg-[var(--color-dark)]/50">
                   <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                    <Upload className="w-6 h-6 mb-2 text-gray-400" />
-                    <p className="text-xs text-gray-400"><span className="font-semibold text-white">Upload Avatar</span></p>
+                    <Upload className="w-6 h-6 mb-2 text-[#6b7280]" />
+                    <p className="text-xs text-[#6b7280]"><span className="font-semibold text-[#183964]">Upload Avatar</span></p>
                   </div>
                   <input type="file" className="hidden" accept="image/*" onChange={handleFileSelect} />
                 </label>
@@ -237,7 +237,7 @@ export default function TestimonialManager({ showFeedback }) {
             <button
               type="submit"
               disabled={formLoading || uploadingImage}
-              className="px-6 py-2.5 bg-[var(--color-yellow)] text-black font-semibold rounded-lg hover:bg-[#e5a600] disabled:opacity-50 flex items-center gap-2"
+              className="px-6 py-2.5 bg-[var(--color-yellow)] text-white font-semibold rounded-lg hover:bg-[#e5a600] disabled:opacity-50 flex items-center gap-2"
             >
               {(formLoading || uploadingImage) ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
               {uploadingImage ? "Uploading..." : isEditing ? "Update Testimonial" : "Add Testimonial"}
@@ -246,7 +246,7 @@ export default function TestimonialManager({ showFeedback }) {
               <button
                 type="button"
                 onClick={cancelEdit}
-                className="px-6 py-2.5 bg-gray-800 text-white font-medium rounded-lg hover:bg-gray-700 transition-colors"
+                className="px-6 py-2.5 bg-[#f0f4f8] text-[#183964] font-medium rounded-lg hover:bg-gray-200 transition-colors"
               >
                 Cancel
               </button>
@@ -260,30 +260,30 @@ export default function TestimonialManager({ showFeedback }) {
           <h3 className="text-lg font-semibold">Current Testimonials ({testimonials.length})</h3>
         </div>
         {loading ? (
-          <div className="p-12 flex justify-center text-gray-400">
+          <div className="p-12 flex justify-center text-[#6b7280]">
             <Loader2 className="h-8 w-8 animate-spin text-[var(--color-yellow)]" />
           </div>
         ) : testimonials.length === 0 ? (
-          <div className="p-12 text-center text-gray-400 border-t border-[var(--color-dark-border)]">
+          <div className="p-12 text-center text-[#6b7280] border-t border-[var(--color-dark-border)]">
             No testimonials added yet.
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
             {testimonials.map((testi) => (
-              <div key={testi._id} className="p-6 rounded-xl border border-[var(--color-dark-border)] bg-[#1a1a1a] hover:border-[var(--color-yellow)]/30 transition-colors flex flex-col h-full group">
+              <div key={testi._id} className="p-6 rounded-xl border border-[var(--color-dark-border)] bg-[#f7f9fc] hover:border-[var(--color-yellow)]/30 transition-colors flex flex-col h-full group">
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex items-center gap-4">
                     <img src={testi.image} alt={testi.name} className="w-12 h-12 rounded-full object-cover border border-[var(--color-dark-border)]" />
                     <div>
-                      <h4 className="font-bold text-white">{testi.name}</h4>
+                      <h4 className="font-bold text-[#183964]">{testi.name}</h4>
                       <p className="text-xs text-[var(--color-yellow)]">{testi.role}</p>
                     </div>
                   </div>
                   <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button onClick={() => handleEdit(testi)} className="p-1.5 text-gray-400 hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
+                    <button onClick={() => handleEdit(testi)} className="p-1.5 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
                       <Edit2 className="h-3.5 w-3.5" />
                     </button>
-                    <button onClick={() => handleDelete(testi._id)} className="p-1.5 text-gray-400 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
+                    <button onClick={() => handleDelete(testi._id)} className="p-1.5 text-[#6b7280] hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>
                   </div>
@@ -296,7 +296,7 @@ export default function TestimonialManager({ showFeedback }) {
                     <span key={i} className="text-gray-600">★</span>
                   ))}
                 </div>
-                <p className="text-gray-400 text-sm leading-relaxed italic flex-1">"{testi.text}"</p>
+                <p className="text-[#6b7280] text-sm leading-relaxed italic flex-1">"{testi.text}"</p>
               </div>
             ))}
           </div>
