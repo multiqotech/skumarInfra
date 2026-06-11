@@ -60,6 +60,7 @@ export default function ApplicationManager({ showFeedback }) {
         prev.map((app) => (app._id === selectedApp._id ? { ...app, adminNotes: notes } : app))
       );
       showFeedback('Notes saved');
+      setSelectedApp(null);
     } catch (err) {
       showFeedback('Failed to save notes');
     }

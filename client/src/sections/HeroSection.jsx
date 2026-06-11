@@ -47,7 +47,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="home" className="relative min-h-screen flex items-center overflow-hidden bg-white">
+    <section ref={sectionRef} id="home" className="relative min-h-[90vh] lg:min-h-screen flex items-center overflow-hidden bg-white mt-[70px] lg:mt-0">
       {/* Background carousel */}
       <div ref={bgRef} className="absolute inset-[-20%] w-[140%] h-[140%]">
         <AnimatePresence initial={false}>
@@ -63,17 +63,17 @@ export default function HeroSection() {
               src={backgroundImages[currentBg]}
               alt="Construction site background"
               fill
-              className="object-cover opacity-100 blur-[3px]"
+              className="object-cover opacity-100 blur-0 lg:blur-[3px]"
               priority
             />
           </motion.div>
         </AnimatePresence>
         {/* Gradient for text readability */}
-        <div className="absolute inset-0 w-full lg:w-[60%] bg-gradient-to-r from-white/80 via-white/30 to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_right,black_70%,transparent_100%)] [mask-image:linear-gradient(to_right,black_70%,transparent_100%)]" />
+        <div className="absolute inset-0 w-full lg:w-[60%] bg-gradient-to-r from-white/80 via-white/40 lg:from-white/80 lg:via-white/30 to-transparent backdrop-blur-none lg:backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_right,black_90%,transparent_100%)] lg:[-webkit-mask-image:linear-gradient(to_right,black_70%,transparent_100%)] [mask-image:linear-gradient(to_right,black_90%,transparent_100%)] lg:[mask-image:linear-gradient(to_right,black_70%,transparent_100%)]" />
       </div>
 
       {/* Content */}
-      <div className="relative container-custom pt-16 pb-16 lg:pt-24 lg:pb-20 z-10">
+      <div className="relative container-custom pt-8 pb-12 sm:pt-16 sm:pb-16 lg:pt-24 lg:pb-20 z-10">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           {/* Left Content */}
           <div className="max-w-xl z-10">

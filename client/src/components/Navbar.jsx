@@ -8,6 +8,117 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
+function MobileNavItem({ link, handleNavClick, i }) {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleClick = (e) => {
+    if (link.hasDropdown && !link.href.startsWith('http')) {
+      e.preventDefault();
+      setExpanded(!expanded);
+    } else {
+      handleNavClick(e, link.href);
+    }
+  };
+
+  return (
+    <div className="border-b border-[#183964]/5">
+      <motion.a
+        href={link.href}
+        onClick={handleClick}
+        target={link.href.startsWith('http') ? '_blank' : undefined}
+        rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: i * 0.05 }}
+        className="flex items-center justify-between text-[#183964] hover:text-[#f36c21] text-[15px] font-medium py-3 transition-colors tracking-wide"
+      >
+        {link.label}
+        {link.hasDropdown && !link.href.startsWith('http') && (
+          <HiChevronDown size={18} className={`transition-transform duration-300 ${expanded ? 'rotate-180 text-[#f36c21]' : 'opacity-50'}`} />
+        )}
+      </motion.a>
+      
+      {/* Sub menu items */}
+      <AnimatePresence>
+        {expanded && link.hasDropdown && link.dropdownItems && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden"
+          >
+            <div className="pl-4 pb-3 flex flex-col gap-2">
+              {link.dropdownLayout === 'mega' ? (
+                // Flatten mega menu items for mobile
+                link.dropdownItems.flatMap(col => col.items).map((item, idx) => {
+                  const label = typeof item === 'string' ? item : item.name;
+                  const slug = typeof item === 'string' ? item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-') : item.slug;
+                  return (
+                    <a
+                      key={idx}
+                      href={`/we-build/${slug}`}
+                      onClick={(e) => handleNavClick(e, `/we-build/${slug}`)}
+                      className="text-[14px] text-[#4b5563] hover:text-[#f36c21] py-1.5"
+                    >
+                      {label}
+                    </a>
+                  );
+                })
+              ) : (
+                link.dropdownItems.map((item, idx) => {
+                  let href = '#';
+                  let target = undefined;
+                  let rel = undefined;
+                  if (link.label === 'We Are') {
+                    if (item === 'Corporate Excellence') href = '/we-are/corporate';
+                    else if (item === 'Plant and Machinery') href = '/#plant-machinery';
+                    else if (item === 'CSR & Sustainability') href = '/we-are/csr';
+                    else href = `/we-are/${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`;
+                  } else if (link.label === 'Landmark projects') {
+                    if (item === 'Ongoing Projects') href = '/landmark-projects/ongoing';
+                    else if (item === 'Completed Projects') href = '/landmark-projects/completed';
+                    else if (item === 'Awarded Projects') href = '/landmark-projects/awarded';
+                  } else if (link.label === 'Newsroom') {
+                    if (item === 'Press Releases') href = '/newsroom?type=press-releases';
+                    else if (item === 'Electronic Media') href = '/newsroom?type=electronic-media';
+                    else if (item === 'Featured Stories') href = '/newsroom?type=featured-stories';
+                  } else if (link.label === 'Careers') {
+                    if (item === 'Visit career portal') {
+                      href = process.env.NEXT_PUBLIC_CAREER_URL || 'https://sk-construction-s2k6.vercel.app';
+                      target = '_blank';
+                      rel = 'noopener noreferrer';
+                    }
+                  } else if (link.label === 'InvestorHub') {
+                    if (item === 'Key Investors') href = '/#investors';
+                    else if (item === 'Financial Highlights') href = '/#financial-highlights';
+                  }
+                  return (
+                    <a
+                      key={idx}
+                      href={href}
+                      target={target}
+                      rel={rel}
+                      onClick={(e) => {
+                        if (!href.startsWith('http')) {
+                          handleNavClick(e, href);
+                        }
+                      }}
+                      className="text-[14px] text-[#4b5563] hover:text-[#f36c21] py-1.5"
+                    >
+                      {item}
+                    </a>
+                  );
+                })
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export default function Navbar({ alwaysSolid = false }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -241,24 +352,11 @@ export default function Navbar({ alwaysSolid = false }) {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden overflow-hidden bg-white border-t border-[#183964]/5"
+            className="lg:hidden overflow-hidden bg-white border-t border-[#183964]/5 max-h-[85vh] overflow-y-auto"
           >
-            <div className="container-custom py-6 flex flex-col gap-3">
+            <div className="container-custom py-4 flex flex-col gap-1">
               {dynamicNavLinks.map((link, i) => (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  target={link.href.startsWith('http') ? '_blank' : undefined}
-                  rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  className="flex items-center justify-between text-[#183964] hover:text-[#f36c21] text-[15px] font-medium py-3 border-b border-[#183964]/5 transition-colors tracking-wide"
-                >
-                  {link.label}
-                  {link.hasDropdown && !link.href.startsWith('http') && <HiChevronDown size={18} className="opacity-50" />}
-                </motion.a>
+                <MobileNavItem key={link.label} link={link} handleNavClick={handleNavClick} i={i} />
               ))}
               <a
                 href={`tel:${phoneNumber.replace(/\s/g, '')}`}

@@ -79,7 +79,7 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Right - Image */}
-        <div className="relative min-h-[400px] lg:min-h-full lg:p-10 flex items-center">
+        <div className="relative min-h-[400px] lg:min-h-full p-4 sm:p-6 lg:p-10 flex items-center">
           <div className="relative w-full h-full min-h-[350px] lg:min-h-[500px] rounded-3xl overflow-hidden shadow-2xl border border-[#183964]/5">
             <Image
               src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&h=700&fit=crop"

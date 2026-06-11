@@ -1,5 +1,5 @@
 const applicationService = require('../services/applicationService');
-const { validateApplication } = require('../validators/applicationValidator');
+const { validateApplication, validateExperienceForJob } = require('../validators/applicationValidator');
 
 /**
  * @desc    Submit a job application (public)
@@ -10,6 +10,12 @@ const submitApplication = async (req, res) => {
     const { isValid, errors } = validateApplication(req.body);
     if (!isValid) {
       return res.status(400).json({ message: 'Validation failed', errors });
+    }
+
+    // Validate experience against job requirements
+    const expValidation = await validateExperienceForJob(req.body);
+    if (!expValidation.isValid) {
+      return res.status(400).json({ message: expValidation.errors[0], errors: expValidation.errors });
     }
 
     let hasExistingResume = false;

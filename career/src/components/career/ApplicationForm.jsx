@@ -1,11 +1,22 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import { Upload, X, CheckCircle2, Loader2, FileText } from 'lucide-react';
+import { Upload, X, CheckCircle2, Loader2, FileText, AlertCircle } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 
 const API = process.env.NEXT_PUBLIC_API_URL;
+
+// Inline error component
+function FieldError({ error }) {
+  if (!error) return null;
+  return (
+    <div className="flex items-center gap-1.5 mt-1.5 text-red-500">
+      <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+      <span className="text-xs font-semibold">{error}</span>
+    </div>
+  );
+}
 
 export default function ApplicationForm({ job, onSuccess }) {
   const [formData, setFormData] = useState({
@@ -19,6 +30,8 @@ export default function ApplicationForm({ job, onSuccess }) {
     coverLetter: '',
   });
   const [file, setFile] = useState(null);
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [touched, setTouched] = useState({});
   
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
   const [message, setMessage] = useState('');
@@ -42,8 +55,98 @@ export default function ApplicationForm({ job, onSuccess }) {
     }
   }, [user, profile]);
 
+  // Validation logic
+  const validateField = useCallback((name, value) => {
+    switch (name) {
+      case 'fullName':
+        if (!value || value.trim().length === 0) return 'Full name is required';
+        if (value.trim().length < 2) return 'Name must be at least 2 characters';
+        return null;
+
+      case 'email':
+        if (!value || value.trim().length === 0) return 'Email is required';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Please enter a valid email address';
+        return null;
+
+      case 'phone':
+        if (!value || value.trim().length === 0) return 'Phone number is required';
+        // Allow formats: +91 98765 43210, 9876543210, +919876543210, etc.
+        const cleaned = value.replace(/[\s\-()]/g, '');
+        if (!/^\+?\d{10,15}$/.test(cleaned)) return 'Enter a valid phone number (10-15 digits)';
+        return null;
+
+      case 'experience': {
+        if (!value && value !== '0' && value !== 0) return 'Experience is required';
+        const exp = parseFloat(value);
+        if (isNaN(exp)) return 'Experience must be a number';
+        if (exp < 0) return 'Experience cannot be negative';
+        
+        // Validate against job minimum requirement only
+        const minExp = job?.experience?.min;
+        
+        if (minExp !== undefined && minExp > 0 && exp < minExp) {
+          return `This role requires minimum ${minExp} year${minExp !== 1 ? 's' : ''} of experience. You have entered ${exp} year${exp !== 1 ? 's' : ''}.`;
+        }
+        return null;
+      }
+
+      case 'linkedin':
+        if (value && value.trim().length > 0) {
+          if (!/^https?:\/\/(www\.)?linkedin\.com\//.test(value)) {
+            return 'Enter a valid LinkedIn URL (e.g. https://linkedin.com/in/yourname)';
+          }
+        }
+        return null;
+
+      case 'portfolio':
+        if (value && value.trim().length > 0) {
+          if (!/^https?:\/\/.+\..+/.test(value)) {
+            return 'Enter a valid URL (e.g. https://yoursite.com)';
+          }
+        }
+        return null;
+
+      case 'coverLetter':
+        if (value && value.length > 5000) return 'Cover letter cannot exceed 5000 characters';
+        return null;
+
+      default:
+        return null;
+    }
+  }, [job]);
+
+  // Validate all fields
+  const validateAll = useCallback(() => {
+    const errors = {};
+    Object.keys(formData).forEach(key => {
+      const err = validateField(key, formData[key]);
+      if (err) errors[key] = err;
+    });
+    return errors;
+  }, [formData, validateField]);
+
+  // Run validation on field change (only for touched fields)
+  useEffect(() => {
+    const newErrors = {};
+    Object.keys(touched).forEach(key => {
+      if (touched[key]) {
+        const err = validateField(key, formData[key]);
+        if (err) newErrors[key] = err;
+      }
+    });
+    setFieldErrors(newErrors);
+  }, [formData, touched, validateField]);
+
   const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    // Mark as touched on change for instant feedback
+    setTouched(prev => ({ ...prev, [name]: true }));
+  };
+
+  const handleBlur = (e) => {
+    const { name } = e.target;
+    setTouched(prev => ({ ...prev, [name]: true }));
   };
 
   const handleFileChange = (e) => {
@@ -68,6 +171,21 @@ export default function ApplicationForm({ job, onSuccess }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    // Touch all fields to show errors
+    const allTouched = {};
+    Object.keys(formData).forEach(key => { allTouched[key] = true; });
+    setTouched(allTouched);
+
+    // Validate all
+    const errors = validateAll();
+    setFieldErrors(errors);
+
+    if (Object.keys(errors).length > 0) {
+      setStatus('error');
+      setMessage('Please fix the highlighted errors before submitting.');
+      return;
+    }
+
     if (!file && !profile?.resumeUrl) {
       setStatus('error');
       setMessage('Please upload your resume');
@@ -114,6 +232,8 @@ export default function ApplicationForm({ job, onSuccess }) {
         coverLetter: '',
       });
       setFile(null);
+      setTouched({});
+      setFieldErrors({});
       if (fileInputRef.current) fileInputRef.current.value = '';
 
       if (onSuccess) {
@@ -128,8 +248,16 @@ export default function ApplicationForm({ job, onSuccess }) {
     }
   };
 
-  const inputClass = "w-full bg-[#f7f9fc] border border-[#183964]/10 px-4 py-3.5 text-[#183964] rounded-xl focus:border-[#f36c21] focus:ring-1 focus:ring-[#f36c21]/30 focus:outline-none transition-all";
+  const getInputClass = (fieldName) => {
+    const hasError = touched[fieldName] && fieldErrors[fieldName];
+    return `w-full bg-[#f7f9fc] border ${hasError ? 'border-red-400 ring-1 ring-red-300/30' : 'border-[#183964]/10'} px-4 py-3.5 text-[#183964] rounded-xl focus:border-[#f36c21] focus:ring-1 focus:ring-[#f36c21]/30 focus:outline-none transition-all`;
+  };
   const labelClass = "block text-sm font-semibold text-[#6b7280] mb-2";
+
+  // Experience requirement hint
+  const expHint = job?.experience?.min || job?.experience?.max
+    ? `Required: ${job.experience.min || 0}–${job.experience.max || '∞'} years`
+    : null;
 
   if (status === 'success') {
     return (
@@ -166,41 +294,52 @@ export default function ApplicationForm({ job, onSuccess }) {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6" noValidate>
         <div>
           <label className={labelClass}>Full Name *</label>
-          <input required type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} className={inputClass} placeholder="John Doe" />
+          <input required type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} onBlur={handleBlur} className={getInputClass('fullName')} placeholder="John Doe" />
+          <FieldError error={touched.fullName && fieldErrors.fullName} />
         </div>
 
         <div>
           <label className={labelClass}>Email Address *</label>
-          <input required type="email" name="email" value={formData.email} onChange={handleInputChange} className={inputClass} placeholder="john@example.com" />
+          <input required type="email" name="email" value={formData.email} onChange={handleInputChange} onBlur={handleBlur} className={getInputClass('email')} placeholder="john@example.com" />
+          <FieldError error={touched.email && fieldErrors.email} />
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className={labelClass}>Phone *</label>
-            <input required type="tel" name="phone" value={formData.phone} onChange={handleInputChange} className={inputClass} placeholder="+91 98765 43210" />
+            <input required type="tel" name="phone" value={formData.phone} onChange={handleInputChange} onBlur={handleBlur} className={getInputClass('phone')} placeholder="+91 98765 43210" />
+            <FieldError error={touched.phone && fieldErrors.phone} />
           </div>
           <div>
-            <label className={labelClass}>Experience (Yrs) *</label>
-            <input required type="number" name="experience" min="0" step="0.5" value={formData.experience} onChange={handleInputChange} className={inputClass} placeholder="5" />
+            <label className={labelClass}>
+              Experience (Yrs) *
+              {expHint && (
+                <span className="ml-1 text-[10px] text-[#f36c21] font-bold tracking-wide">({expHint})</span>
+              )}
+            </label>
+            <input required type="number" name="experience" min="0" step="0.5" value={formData.experience} onChange={handleInputChange} onBlur={handleBlur} className={getInputClass('experience')} placeholder="5" />
+            <FieldError error={touched.experience && fieldErrors.experience} />
           </div>
         </div>
 
         <div>
           <label className={labelClass}>Current Location</label>
-          <input type="text" name="location" value={formData.location} onChange={handleInputChange} className={inputClass} placeholder="City, Country" />
+          <input type="text" name="location" value={formData.location} onChange={handleInputChange} onBlur={handleBlur} className={getInputClass('location')} placeholder="City, Country" />
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className={labelClass}>LinkedIn Profile</label>
-            <input type="url" name="linkedin" value={formData.linkedin} onChange={handleInputChange} className={inputClass} placeholder="https://linkedin.com/in/johndoe" />
+            <input type="url" name="linkedin" value={formData.linkedin} onChange={handleInputChange} onBlur={handleBlur} className={getInputClass('linkedin')} placeholder="https://linkedin.com/in/johndoe" />
+            <FieldError error={touched.linkedin && fieldErrors.linkedin} />
           </div>
           <div>
             <label className={labelClass}>Portfolio Website</label>
-            <input type="url" name="portfolio" value={formData.portfolio} onChange={handleInputChange} className={inputClass} placeholder="https://johndoe.com" />
+            <input type="url" name="portfolio" value={formData.portfolio} onChange={handleInputChange} onBlur={handleBlur} className={getInputClass('portfolio')} placeholder="https://johndoe.com" />
+            <FieldError error={touched.portfolio && fieldErrors.portfolio} />
           </div>
         </div>
 
@@ -252,7 +391,8 @@ export default function ApplicationForm({ job, onSuccess }) {
 
         <div>
           <label className={labelClass}>Cover Letter (Optional)</label>
-          <textarea name="coverLetter" value={formData.coverLetter} onChange={handleInputChange} rows={4} className={`${inputClass} resize-none`} placeholder="Why are you a good fit for this role?" />
+          <textarea name="coverLetter" value={formData.coverLetter} onChange={handleInputChange} onBlur={handleBlur} rows={4} className={`${getInputClass('coverLetter')} resize-none`} placeholder="Why are you a good fit for this role?" />
+          <FieldError error={touched.coverLetter && fieldErrors.coverLetter} />
         </div>
 
         <button 

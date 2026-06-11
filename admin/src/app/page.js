@@ -27,6 +27,7 @@ import JobManager from "../components/career/JobManager";
 import ApplicationManager from "../components/career/ApplicationManager";
 import CandidateManager from "../components/career/CandidateManager";
 import StatsManager from "../components/StatsManager";
+import DashboardCards from "../components/DashboardCards";
 import { useAuth } from "@/context/AuthContext";
 
 export default function Dashboard() {
@@ -252,99 +253,7 @@ export default function Dashboard() {
           </header>
 
           {activeTab === "dashboard" && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
-                <div className="h-12 w-12 bg-[#f36c21]/10 rounded-xl flex items-center justify-center mb-4">
-                  <Construction className="h-6 w-6 text-[var(--color-yellow)]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#183964] mb-1">Projects</h3>
-                <p className="text-sm text-[#6b7280]">Manage 'We Build' portfolio.</p>
-              </div>
-              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
-                <div className="h-12 w-12 bg-[#f36c21]/10 rounded-xl flex items-center justify-center mb-4">
-                  <LayoutDashboard className="h-6 w-6 text-[var(--color-yellow)]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#183964] mb-1">Categories</h3>
-                <p className="text-sm text-[#6b7280]">Manage 'We Build' categories.</p>
-              </div>
-              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
-                <div className="h-12 w-12 bg-[#f36c21]/10 rounded-xl flex items-center justify-center mb-4">
-                  <LayoutDashboard className="h-6 w-6 text-[var(--color-yellow)]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#183964] mb-1">We Are Pages</h3>
-                <p className="text-sm text-[#6b7280]">Manage corporate info pages.</p>
-              </div>
-              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
-                <div className="h-12 w-12 bg-[#f36c21]/10 rounded-xl flex items-center justify-center mb-4">
-                  <Newspaper className="h-6 w-6 text-[var(--color-yellow)]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#183964] mb-1">Newsroom</h3>
-                <p className="text-sm text-[#6b7280]">Manage press releases and media.</p>
-              </div>
-              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
-                <div className="h-12 w-12 bg-[#f36c21]/10 rounded-xl flex items-center justify-center mb-4">
-                  <HelpCircle className="h-6 w-6 text-[var(--color-yellow)]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#183964] mb-1">FAQs</h3>
-                <p className="text-sm text-[#6b7280]">Manage frequently asked questions.</p>
-              </div>
-              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
-                <div className="h-12 w-12 bg-[#f36c21]/10 rounded-xl flex items-center justify-center mb-4">
-                  <BarChart3 className="h-6 w-6 text-[var(--color-yellow)]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#183964] mb-1">Financial Highlights</h3>
-                <p className="text-sm text-[#6b7280]">Manage financial stats & charts.</p>
-              </div>
-              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
-                <div className="h-12 w-12 bg-[#f36c21]/10 rounded-xl flex items-center justify-center mb-4">
-                  <Users className="h-6 w-6 text-[var(--color-yellow)]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#183964] mb-1">Investors</h3>
-                <p className="text-sm text-[#6b7280]">Manage investors section.</p>
-              </div>
-              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
-                <div className="h-12 w-12 bg-[#f36c21]/10 rounded-xl flex items-center justify-center mb-4">
-                  <Users className="h-6 w-6 text-[var(--color-yellow)]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#183964] mb-1">Board of Directors</h3>
-                <p className="text-sm text-[#6b7280]">Manage board members.</p>
-              </div>
-              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
-                <div className="h-12 w-12 bg-[#f36c21]/10 rounded-xl flex items-center justify-center mb-4">
-                  <Users className="h-6 w-6 text-[var(--color-yellow)]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#183964] mb-1">Team</h3>
-                <p className="text-sm text-[#6b7280]">Manage your building team.</p>
-              </div>
-              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
-                <div className="h-12 w-12 bg-[#f36c21]/10 rounded-xl flex items-center justify-center mb-4">
-                  <MessageSquare className="h-6 w-6 text-[var(--color-yellow)]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#183964] mb-1">Testimonials</h3>
-                <p className="text-sm text-[#6b7280]">Manage client reviews.</p>
-              </div>
-              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
-                <div className="h-12 w-12 bg-[#f36c21]/10 rounded-xl flex items-center justify-center mb-4">
-                  <Video className="h-6 w-6 text-[var(--color-yellow)]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#183964] mb-1">Video</h3>
-                <p className="text-sm text-[#6b7280]">Update homepage showcase video.</p>
-              </div>
-              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
-                <div className="h-12 w-12 bg-[#f36c21]/10 rounded-xl flex items-center justify-center mb-4">
-                  <Phone className="h-6 w-6 text-[var(--color-yellow)]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#183964] mb-1">Contact Info</h3>
-                <p className="text-sm text-[#6b7280]">Manage footer contact details.</p>
-              </div>
-              <div className="bg-[var(--color-dark-card)] p-6 rounded-2xl border border-[var(--color-dark-border)] shadow-lg hover:border-[var(--color-yellow)]/50 transition-colors">
-                <div className="h-12 w-12 bg-[#f36c21]/10 rounded-xl flex items-center justify-center mb-4">
-                  <Trophy className="h-6 w-6 text-[var(--color-yellow)]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#183964] mb-1">Company Stats</h3>
-                <p className="text-sm text-[#6b7280]">Manage statistics banner values.</p>
-              </div>
-            </div>
+            <DashboardCards setActiveTab={setActiveTab} />
           )}
 
           {activeTab === "faqs" && <FaqManager showFeedback={showFeedback} />}
