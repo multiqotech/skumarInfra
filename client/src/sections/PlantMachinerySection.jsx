@@ -26,7 +26,7 @@ export default function PlantMachinerySection() {
   if (items.length === 0) return null;
 
   return (
-    <section className="relative bg-white py-14 lg:py-20 overflow-hidden border-t border-[#183964]/5">
+    <section className="relative bg-white py-14 lg:py-20 overflow-hidden border-t border-[#183964]/5" id="plant-machinery">
       {/* Large watermark text */}
       <div className="absolute bottom-10 left-10 whitespace-nowrap pointer-events-none select-none">
         <span className="text-[100px] sm:text-[130px] lg:text-[180px] xl:text-[220px] font-bold text-black/[0.02] uppercase tracking-[0.15em]">

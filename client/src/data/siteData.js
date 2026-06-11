@@ -56,6 +56,7 @@ export const navLinks = [
       'Board of Directors',
       'Our Team',
       'Our Subsidiary',
+      'Plant and Machinery',
       'Corporate Excellence',
       'CSR & Sustainability',
     ]
@@ -89,6 +90,16 @@ export const navLinks = [
     dropdownLayout: 'simple',
     dropdownItems: [
       'Visit career portal',
+    ]
+  },
+  {
+    label: 'InvestorHub',
+    href: '/#investors',
+    hasDropdown: true,
+    dropdownLayout: 'simple',
+    dropdownItems: [
+      'Key Investors',
+      'Financial Highlights',
     ]
   },
   {

@@ -45,7 +45,7 @@ export default function FinancialHighlightsSection() {
   if (error || !data) return null;
 
   return (
-    <section className="relative bg-[#f0f4f8] py-14 lg:py-24 overflow-hidden border-t border-[#183964]/5">
+    <section className="relative bg-[#f0f4f8] py-14 lg:py-24 overflow-hidden border-t border-[#183964]/5" id="financial-highlights">
       <div className="relative container-custom z-10">
         
         <FinancialOverview overview={data.overview} />

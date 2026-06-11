@@ -26,7 +26,7 @@ export default function InvestorSection() {
   if (investors.length === 0) return null; // Don't render if no investors
 
   return (
-    <section className="relative bg-white py-14 lg:py-20 overflow-hidden">
+    <section className="relative bg-white py-14 lg:py-20 overflow-hidden" id="investors">
       {/* Large watermark text */}
       <div className="absolute bottom-10 right-10 whitespace-nowrap pointer-events-none select-none">
         <span className="text-[100px] sm:text-[130px] lg:text-[180px] xl:text-[220px] font-bold text-black/[0.02] uppercase tracking-[0.15em]">

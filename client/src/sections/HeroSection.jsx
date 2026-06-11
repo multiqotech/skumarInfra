@@ -73,7 +73,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative container-custom pt-24 pb-16 lg:pt-32 lg:pb-20 z-10">
+      <div className="relative container-custom pt-16 pb-16 lg:pt-24 lg:pb-20 z-10">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           {/* Left Content */}
           <div className="max-w-xl z-10">
@@ -95,7 +95,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold leading-[1.08] mb-3 text-[#183964] drop-shadow-xl tracking-tight"
+              className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold leading-[1.0] mb-3 text-[#183964] drop-shadow-xl tracking-tight"
             >
               Comprehensive{' '}
               <span className="text-[#f36c21]">Construction</span>{' '}

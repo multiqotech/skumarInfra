@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { HiArrowRight } from 'react-icons/hi';
 import { motion } from 'framer-motion';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
 import { servicesData } from '@/data/siteData';
@@ -67,16 +66,6 @@ export default function ServicesCards() {
                   >
                     {service.description}
                   </p>
-                  <button
-                    className={`inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.15em] transition-colors duration-300 mt-auto ${
-                      service.featured
-                        ? 'text-[#f36c21] hover:text-[#f7893e]'
-                        : 'text-[#183964] hover:text-[#f36c21]'
-                    }`}
-                  >
-                    View More
-                    <HiArrowRight className="transition-transform group-hover:translate-x-1" />
-                  </button>
                 </div>
               </motion.div>
             </AnimateOnScroll>

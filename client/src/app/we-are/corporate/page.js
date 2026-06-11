@@ -411,7 +411,7 @@ export default function CorporateExcellencePage() {
             viewport={{ once: true }}
             className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
-            <Link href="/we-build" className="px-8 py-4 bg-[#183964] text-white font-bold rounded-lg hover:bg-[#183964]/90 transition-all shadow-[0_10px_20px_rgba(24,57,100,0.3)] hover:-translate-y-1 flex items-center gap-2">
+            <Link href="/landmark-projects/completed" className="px-8 py-4 bg-[#183964] text-white font-bold rounded-lg hover:bg-[#183964]/90 transition-all shadow-[0_10px_20px_rgba(24,57,100,0.3)] hover:-translate-y-1 flex items-center gap-2">
               Explore Projects <ArrowRight className="w-5 h-5" />
             </Link>
             <Link href="/contact-us" className="px-8 py-4 bg-white text-[#183964] font-bold rounded-lg hover:bg-gray-50 transition-all shadow-lg hover:-translate-y-1">

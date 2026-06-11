@@ -28,12 +28,12 @@ export default function Home() {
         <VerticalsSection />
         <PlantMachinerySection />
         <WhyChooseUs />
+        <InvestorSection />
+        <FinancialHighlightsSection />
         <EngineeringSolutions />
         <FeaturedProjects />
         <VideoShowcase />
         <FAQSection />
-        <InvestorSection />
-        <FinancialHighlightsSection />
         <BoardDirectorSection />
         <TeamSection />
         <TestimonialsSection />

@@ -6,11 +6,13 @@ import { HiPhone, HiMenuAlt3, HiX, HiChevronDown } from 'react-icons/hi';
 import { navLinks, phoneNumber } from '@/data/siteData';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar({ alwaysSolid = false }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dynamicNavLinks, setDynamicNavLinks] = useState(navLinks);
+  const pathname = usePathname();
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -70,17 +72,23 @@ export default function Navbar({ alwaysSolid = false }) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white/80 backdrop-blur-lg ${
-        scrolled || alwaysSolid
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white/80 backdrop-blur-lg ${scrolled || alwaysSolid
           ? 'border-b border-[#183964]/10 shadow-[0_10px_40px_rgba(24,57,100,0.08)]'
           : 'border-b border-transparent shadow-none'
-      }`}
+        }`}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-[70px]">
           {/* Logo */}
           <Link
             href="/"
+            onClick={(e) => {
+              if (pathname === '/') {
+                e.preventDefault();
+                const hero = document.getElementById('home');
+                if (hero) hero.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
             className="flex items-center gap-3 group"
           >
             <Image
@@ -114,9 +122,8 @@ export default function Navbar({ alwaysSolid = false }) {
                 {/* Dropdown Menu */}
                 {link.hasDropdown && link.dropdownItems && link.dropdownItems.length > 0 && (
                   <div
-                    className={`absolute top-[45px] left-0 pt-4 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-400 ease-out transform translate-y-3 group-hover/nav:translate-y-0 ${
-                      link.dropdownLayout === 'mega' ? 'w-[750px] xl:w-[900px] -left-[200px]' : 'w-[280px]'
-                    }`}
+                    className={`absolute top-[45px] left-0 pt-4 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-400 ease-out transform translate-y-3 group-hover/nav:translate-y-0 ${link.dropdownLayout === 'mega' ? 'w-[750px] xl:w-[900px] -left-[200px]' : 'w-[280px]'
+                      }`}
                   >
                     <div className="bg-white/95 backdrop-blur-2xl rounded-xl border border-[#183964]/10 text-[#183964] shadow-[0_20px_50px_rgba(24,57,100,0.12)] overflow-hidden">
                       {link.dropdownLayout === 'mega' ? (
@@ -128,15 +135,16 @@ export default function Navbar({ alwaysSolid = false }) {
                                   const label = typeof item === 'string' ? item : item.name;
                                   const slug = typeof item === 'string' ? item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-') : item.slug;
                                   return (
-                                  <li key={itemIdx}>
-                                    <a
-                                      href={`/we-build/${slug}`}
-                                      className="text-[14px] text-[#183964]/80 hover:text-[#f36c21] transition-colors"
-                                    >
-                                      {label}
-                                    </a>
-                                  </li>
-                                )})}
+                                    <li key={itemIdx}>
+                                      <a
+                                        href={`/we-build/${slug}`}
+                                        className="text-[14px] text-[#183964]/80 hover:text-[#f36c21] transition-colors"
+                                      >
+                                        {label}
+                                      </a>
+                                    </li>
+                                  )
+                                })}
                               </ul>
                             </div>
                           ))}
@@ -157,6 +165,7 @@ export default function Navbar({ alwaysSolid = false }) {
                             let rel = undefined;
                             if (link.label === 'We Are') {
                               if (item === 'Corporate Excellence') href = '/we-are/corporate';
+                              else if (item === 'Plant and Machinery') href = '/#plant-machinery';
                               else if (item === 'CSR & Sustainability') href = '/we-are/csr';
                               else href = `/we-are/${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`;
                             } else if (link.label === 'Landmark projects') {
@@ -173,6 +182,9 @@ export default function Navbar({ alwaysSolid = false }) {
                                 target = '_blank';
                                 rel = 'noopener noreferrer';
                               }
+                            } else if (link.label === 'InvestorHub') {
+                              if (item === 'Key Investors') href = '/#investors';
+                              else if (item === 'Financial Highlights') href = '/#financial-highlights';
                             }
                             return (
                               <li key={itemIdx}>

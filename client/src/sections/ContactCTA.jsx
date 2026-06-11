@@ -77,7 +77,7 @@ export default function ContactCTA() {
                 ))}
               </div>
 
-              <a href="#footer" className="btn-primary">
+              <a href="/contact-us" className="btn-primary">
                 CONTACT US <HiArrowRight />
               </a>
             </div>

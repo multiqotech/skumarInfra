@@ -29,7 +29,7 @@ export default function FAQSection() {
   return (
     <section className="bg-white py-14 lg:py-20 border-y border-[#183964]/5">
       <div className="container-custom">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
           {/* Left - Image */}
           <AnimateOnScroll
             variants={{
@@ -41,7 +41,7 @@ export default function FAQSection() {
               },
             }}
           >
-            <div className="relative h-[350px] lg:h-[500px] overflow-hidden rounded-3xl shadow-[0_20px_50px_rgba(24,57,100,0.1)]">
+            <div className="relative h-[350px] lg:h-[400px] overflow-hidden rounded-3xl shadow-[0_20px_50px_rgba(24,57,100,0.1)]">
               <Image
                 src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=700&h=600&fit=crop"
                 alt="Construction site"
@@ -72,18 +72,18 @@ export default function FAQSection() {
               },
             }}
           >
-            <div>
+            <div className="flex flex-col h-full">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-[3px] bg-[#f36c21]" />
                 <span className="text-[#f36c21] text-[11px] tracking-[0.25em] uppercase font-semibold">
                   FAQ
                 </span>
               </div>
-              <h2 className="text-[#183964] text-2xl lg:text-3xl font-bold mb-8 leading-tight">
+              <h2 className="text-[#183964] text-2xl lg:text-3xl font-bold mb-5 leading-tight">
                 Trusted Engineering Services for Your Project
               </h2>
 
-              <div className="bg-[#f0f4f8] rounded-2xl p-6 border border-[#183964]/5">
+              <div className="bg-[#f0f4f8] rounded-2xl p-5 border border-[#183964]/5 max-h-[310px] overflow-y-auto [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#183964]/20 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-[#f36c21]/50">
                 {faqs.map((faq, index) => (
                   <div key={index} className="border-b border-[#183964]/10 last:border-0">
                     <button

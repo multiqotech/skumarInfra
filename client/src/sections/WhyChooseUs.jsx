@@ -1,11 +1,40 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { HiArrowRight } from 'react-icons/hi';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
-import { whyChooseUsData } from '@/data/siteData';
+import { whyChooseUsData, statsData } from '@/data/siteData';
 
 export default function WhyChooseUs() {
+  const [stats, setStats] = useState(statsData);
+
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/settings/stats`)
+      .then((res) => {
+        if (!res.ok) throw new Error('Not found');
+        return res.json();
+      })
+      .then((data) => {
+        if (data && data.value) {
+          try {
+            const parsed = JSON.parse(data.value);
+            setStats([
+              { value: parsed.projectValue || '₹650Cr+', label: 'Total Project Value' },
+              { value: parsed.completedProjects || '14', label: 'Completed Projects' },
+              { value: parsed.ongoingProjects || '5', label: 'Ongoing Projects' },
+              { value: parsed.indianStates || '7', label: 'Indian States' },
+            ]);
+          } catch (e) {
+            console.error('Error parsing stats JSON', e);
+          }
+        }
+      })
+      .catch((err) => {
+        console.log('Using default static stats for WhyChooseUs');
+      });
+  }, []);
+
   return (
     <section className="relative overflow-hidden bg-white">
       <div className="grid lg:grid-cols-2 min-h-[550px]">
@@ -28,10 +57,10 @@ export default function WhyChooseUs() {
                 {whyChooseUsData.description}
               </p>
 
-              {/* Stats row */}
-              <div className="flex gap-6 mb-8">
-                {whyChooseUsData.stats.map((stat, i) => (
-                  <div key={i} className="text-center bg-white border border-[#183964]/5 px-4 py-3 rounded-lg shadow-sm flex-1">
+              {/* Stats row - 4 cards from backend */}
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {stats.map((stat, i) => (
+                  <div key={i} className="text-center bg-white border border-[#183964]/5 px-4 py-3 rounded-lg shadow-sm">
                     <div className="text-[#f36c21] text-2xl lg:text-3xl font-bold">
                       {stat.value}
                     </div>
