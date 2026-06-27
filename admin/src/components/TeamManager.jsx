@@ -9,7 +9,7 @@ export default function TeamManager({ showFeedback }) {
   const [formLoading, setFormLoading] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   
-  const [form, setForm] = useState({ id: "", name: "", role: "", image: "", description: "" });
+  const [form, setForm] = useState({ id: "", name: "", role: "", image: "", description: "", facebook: "", twitter: "", linkedin: "" });
   const [teamFile, setTeamFile] = useState(null);
   const [teamPreview, setTeamPreview] = useState("");
   const [uploadingImage, setUploadingImage] = useState(false);
@@ -91,7 +91,10 @@ export default function TeamManager({ showFeedback }) {
           name: form.name,
           role: form.role,
           image: finalImageUrl,
-          description: form.description
+          description: form.description,
+          facebook: form.facebook,
+          twitter: form.twitter,
+          linkedin: form.linkedin
         }, config);
         showFeedback("Team member updated successfully!");
       } else {
@@ -99,13 +102,16 @@ export default function TeamManager({ showFeedback }) {
           name: form.name,
           role: form.role,
           image: finalImageUrl,
-          description: form.description
+          description: form.description,
+          facebook: form.facebook,
+          twitter: form.twitter,
+          linkedin: form.linkedin
         }, config);
         showFeedback("Team member added successfully!");
       }
       
       handleRemoveFile();
-      setForm({ id: "", name: "", role: "", image: "", description: "" });
+      setForm({ id: "", name: "", role: "", image: "", description: "", facebook: "", twitter: "", linkedin: "" });
       setIsEditing(false);
       fetchTeam();
     } catch (err) {
@@ -116,7 +122,16 @@ export default function TeamManager({ showFeedback }) {
   };
 
   const handleEdit = (member) => {
-    setForm({ id: member._id, name: member.name, role: member.role, image: member.image, description: member.description || "" });
+    setForm({ 
+      id: member._id, 
+      name: member.name, 
+      role: member.role, 
+      image: member.image, 
+      description: member.description || "",
+      facebook: member.facebook || "",
+      twitter: member.twitter || "",
+      linkedin: member.linkedin || ""
+    });
     setTeamPreview(member.image);
     setTeamFile(null);
     setIsEditing(true);
@@ -139,7 +154,7 @@ export default function TeamManager({ showFeedback }) {
 
   const cancelEdit = () => {
     setIsEditing(false);
-    setForm({ id: "", name: "", role: "", image: "", description: "" });
+    setForm({ id: "", name: "", role: "", image: "", description: "", facebook: "", twitter: "", linkedin: "" });
     handleRemoveFile();
   };
 
@@ -190,6 +205,38 @@ export default function TeamManager({ showFeedback }) {
             ></textarea>
             <div className="text-xs mt-1 text-right text-[#6b7280]">
               {form.description ? form.description.split(/\s+/).filter(word => word.length > 0).length : 0} words
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label className="block text-sm font-medium mb-1">Facebook URL</label>
+              <input
+                type="url"
+                value={form.facebook}
+                onChange={(e) => setForm({ ...form, facebook: e.target.value })}
+                className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2.5 focus:outline-none focus:border-[var(--color-yellow)]"
+                placeholder="https://facebook.com/..."
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1">Twitter URL</label>
+              <input
+                type="url"
+                value={form.twitter}
+                onChange={(e) => setForm({ ...form, twitter: e.target.value })}
+                className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2.5 focus:outline-none focus:border-[var(--color-yellow)]"
+                placeholder="https://twitter.com/..."
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1">LinkedIn URL</label>
+              <input
+                type="url"
+                value={form.linkedin}
+                onChange={(e) => setForm({ ...form, linkedin: e.target.value })}
+                className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2.5 focus:outline-none focus:border-[var(--color-yellow)]"
+                placeholder="https://linkedin.com/..."
+              />
             </div>
           </div>
           <div>
@@ -257,14 +304,14 @@ export default function TeamManager({ showFeedback }) {
                 <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[var(--color-yellow)] flex-shrink-0">
                   <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
                 </div>
-                <div className="flex-1">
-                  <h4 className="text-lg font-bold text-[#183964]">{member.name}</h4>
-                  <p className="text-[var(--color-yellow)] text-sm">{member.role}</p>
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-lg font-bold text-[#183964] truncate">{member.name}</h4>
+                  <p className="text-[var(--color-yellow)] text-sm truncate">{member.role}</p>
                   {member.description && (
                     <p className="text-[#6b7280] text-sm mt-1 line-clamp-2">{member.description}</p>
                   )}
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 shrink-0">
                   <button onClick={() => handleEdit(member)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
                     <Edit2 className="h-4 w-4" />
                   </button>

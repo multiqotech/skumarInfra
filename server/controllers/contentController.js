@@ -71,9 +71,9 @@ const getTeamMembers = async (req, res) => {
 };
 
 const createTeamMember = async (req, res) => {
-  const { name, role, image, description } = req.body;
+  const { name, role, image, description, facebook, twitter, linkedin } = req.body;
   try {
-    const member = await TeamMember.create({ name, role, image, description });
+    const member = await TeamMember.create({ name, role, image, description, facebook, twitter, linkedin });
     res.status(201).json(member);
   } catch (error) {
     res.status(400).json({ message: 'Invalid data', error: error.message });
@@ -81,16 +81,18 @@ const createTeamMember = async (req, res) => {
 };
 
 const updateTeamMember = async (req, res) => {
-  const { name, role, image, description } = req.body;
+  const { name, role, image, description, facebook, twitter, linkedin } = req.body;
   try {
     const member = await TeamMember.findById(req.params.id);
     if (member) {
       member.name = name || member.name;
       member.role = role || member.role;
       member.image = image || member.image;
-      if (description !== undefined) {
-        member.description = description;
-      }
+      if (description !== undefined) member.description = description;
+      if (facebook !== undefined) member.facebook = facebook;
+      if (twitter !== undefined) member.twitter = twitter;
+      if (linkedin !== undefined) member.linkedin = linkedin;
+      
       const updatedMember = await member.save();
       res.json(updatedMember);
     } else {

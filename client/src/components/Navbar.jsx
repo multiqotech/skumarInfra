@@ -213,7 +213,7 @@ export default function Navbar({ alwaysSolid = false }) {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-7 h-full">
+          <div className="hidden xl:flex items-center gap-7 h-full">
             {dynamicNavLinks.map((link) => (
               <div key={link.label} className="relative h-full flex items-center group/nav">
                 <a
@@ -334,7 +334,7 @@ export default function Navbar({ alwaysSolid = false }) {
             </a>
 
             <button
-              className="lg:hidden text-[#183964] p-2 hover:text-[#f36c21] transition-colors"
+              className="xl:hidden text-[#183964] p-2 hover:text-[#f36c21] transition-colors"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
@@ -352,7 +352,7 @@ export default function Navbar({ alwaysSolid = false }) {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden overflow-hidden bg-white border-t border-[#183964]/5 max-h-[85vh] overflow-y-auto"
+            className="xl:hidden overflow-hidden bg-white border-t border-[#183964]/5 max-h-[85vh] overflow-y-auto"
           >
             <div className="container-custom py-4 flex flex-col gap-1">
               {dynamicNavLinks.map((link, i) => (

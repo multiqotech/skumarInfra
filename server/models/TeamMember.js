@@ -16,6 +16,18 @@ const teamMemberSchema = new mongoose.Schema({
   description: {
     type: String,
     default: "",
+  },
+  facebook: {
+    type: String,
+    default: "",
+  },
+  twitter: {
+    type: String,
+    default: "",
+  },
+  linkedin: {
+    type: String,
+    default: "",
   }
 }, {
   timestamps: true
