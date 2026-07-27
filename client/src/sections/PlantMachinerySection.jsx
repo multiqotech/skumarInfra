@@ -25,10 +25,59 @@ export default function PlantMachinerySection() {
 
   if (items.length === 0) return null;
 
+  const plants = items.filter(item => item.type === 'Plant');
+  const machinery = items.filter(item => item.type === 'Machinery');
+
+  const renderGrid = (data, title) => {
+    if (data.length === 0) return null;
+    return (
+      <div className="mb-16 last:mb-0">
+        <AnimateOnScroll>
+          <h3 className="text-[#183964] text-xl md:text-2xl font-bold mb-8 flex items-center gap-3">
+            <span className="w-8 h-[2px] bg-[#f36c21]"></span>
+            {title}
+          </h3>
+        </AnimateOnScroll>
+        
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+          {data.map((item, index) => (
+            <AnimateOnScroll key={item._id || index} delay={index * 0.05}>
+              <div className="group relative overflow-hidden bg-[#f7f9fc] border border-[#183964]/5 rounded-xl hover:border-[#f36c21]/30 hover:shadow-[0_10px_30px_rgba(24,57,100,0.08)] hover:-translate-y-1.5 transition-all duration-500 h-full flex flex-col">
+                
+                {/* Image Section */}
+                <div className="relative w-full h-36 md:h-40 overflow-hidden bg-white">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    fill
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"
+                    unoptimized={true}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#f7f9fc] via-transparent to-transparent"></div>
+                </div>
+
+                {/* Content Section */}
+                <div className="p-4 flex-1 flex flex-col relative z-10">
+                  <h4 className="text-[#183964] text-base md:text-lg font-bold mb-2 group-hover:text-[#f36c21] transition-colors line-clamp-2 leading-tight">
+                    {item.name}
+                  </h4>
+                  <div className="w-8 h-[2px] bg-[#f36c21] mb-3 transition-all duration-300 group-hover:w-1/2" />
+                  <p className="text-[#4b5563] text-xs md:text-sm leading-relaxed flex-1 line-clamp-3">
+                    {item.description || "No description provided."}
+                  </p>
+                </div>
+              </div>
+            </AnimateOnScroll>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <section className="relative bg-white py-14 lg:py-20 overflow-hidden border-t border-[#183964]/5" id="plant-machinery">
       {/* Large watermark text */}
-      <div className="absolute bottom-10 left-10 whitespace-nowrap pointer-events-none select-none">
+      <div className="absolute top-20 left-10 whitespace-nowrap pointer-events-none select-none">
         <span className="text-[100px] sm:text-[130px] lg:text-[180px] xl:text-[220px] font-bold text-black/[0.02] uppercase tracking-[0.15em]">
           EQUIPMENT
         </span>
@@ -50,54 +99,9 @@ export default function PlantMachinerySection() {
           </AnimateOnScroll>
         </div>
 
-        {/* Equipment Cards - Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {items.map((item, index) => (
-            <AnimateOnScroll key={item._id || index} delay={index * 0.1}>
-              <div className="group relative overflow-hidden bg-[#f7f9fc] border border-[#183964]/5 rounded-2xl hover:border-[#f36c21]/30 hover:shadow-[0_15px_40px_rgba(24,57,100,0.08)] hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
-                
-                {/* Top badges */}
-                <div className="absolute top-4 left-4 z-20 flex gap-2">
-                  <span className={`px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest rounded-lg shadow-sm ${
-                    item.type === 'Plant' ? 'bg-[#183964] text-white' : 'bg-[#f36c21] text-white'
-                  }`}>
-                    {item.type}
-                  </span>
-                </div>
-                <div className="absolute top-4 right-4 z-20">
-                  <span className="px-3 py-1.5 text-[11px] font-bold bg-white/90 backdrop-blur-sm text-[#183964] rounded-lg border border-[#183964]/10 shadow-sm">
-                    Qty: {item.quantity}
-                  </span>
-                </div>
-
-                {/* Image Section */}
-                <div className="relative w-full h-56 overflow-hidden bg-white">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    className="object-cover object-center transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"
-                    unoptimized={true}
-                  />
-                  {/* Subtle gradient at bottom for text contrast */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#f7f9fc] via-transparent to-transparent"></div>
-                </div>
-
-                {/* Content Section */}
-                <div className="p-6 flex-1 flex flex-col relative z-10">
-                  <h3 className="text-[#183964] text-xl font-bold mb-3 group-hover:text-[#f36c21] transition-colors line-clamp-1">
-                    {item.name}
-                  </h3>
-                  <div className="w-12 h-[3px] bg-[#f36c21] mb-4 transition-all duration-300 group-hover:w-1/2" />
-                  <p className="text-[#4b5563] text-sm leading-relaxed whitespace-pre-line flex-1 line-clamp-3">
-                    {item.description || "No description provided."}
-                  </p>
-                </div>
-
-              </div>
-            </AnimateOnScroll>
-          ))}
-        </div>
+        {/* Separated Sections */}
+        {renderGrid(plants, "Our Plants")}
+        {renderGrid(machinery, "Our Machinery")}
       </div>
     </section>
   );

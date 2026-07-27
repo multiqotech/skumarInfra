@@ -323,7 +323,7 @@ const getPlantMachinery = async (req, res) => {
 };
 
 const createPlantMachinery = async (req, res) => {
-  const { type, name, image, description, quantity } = req.body;
+  const { type, name, image, description } = req.body;
   
   // Validation for 50 words description
   const wordCount = description ? description.split(' ').length : 0;
@@ -332,7 +332,7 @@ const createPlantMachinery = async (req, res) => {
   }
 
   try {
-    const item = await PlantMachinery.create({ type, name, image, description, quantity });
+    const item = await PlantMachinery.create({ type, name, image, description });
     res.status(201).json(item);
   } catch (error) {
     res.status(400).json({ message: 'Invalid data', error: error.message });
@@ -340,7 +340,7 @@ const createPlantMachinery = async (req, res) => {
 };
 
 const updatePlantMachinery = async (req, res) => {
-  const { type, name, image, description, quantity } = req.body;
+  const { type, name, image, description } = req.body;
   
   if (description) {
     const wordCount = description.split(' ').length;
@@ -356,7 +356,6 @@ const updatePlantMachinery = async (req, res) => {
       item.name = name || item.name;
       item.image = image || item.image;
       if (description !== undefined) item.description = description;
-      if (quantity !== undefined) item.quantity = quantity;
       
       const updatedItem = await item.save();
       res.json(updatedItem);
