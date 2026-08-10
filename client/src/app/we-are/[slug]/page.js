@@ -135,7 +135,7 @@ export default async function WeArePage({ params }) {
     );
   }
 
-  if (slug === 'our-subsidiary') {
+  if (slug === 'our-subsidiary-portfolio') {
     const subsidiaries = await getSubsidiaries();
     const items = subsidiaries.map(sub => ({
       id: sub._id,
