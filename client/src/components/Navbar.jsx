@@ -74,6 +74,7 @@ function MobileNavItem({ link, handleNavClick, i }) {
                     if (item === 'Corporate Excellence') href = '/we-are/corporate';
                     else if (item === 'Plant and Machinery') href = '/#plant-machinery';
                     else if (item === 'CSR & Sustainability') href = '/we-are/csr';
+                    else if (item === 'About Us') href = '/we-are/our-company';
                     else href = `/we-are/${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`;
                   } else if (link.label === 'Landmark projects') {
                     if (item === 'Ongoing Projects') href = '/landmark-projects/ongoing';
@@ -278,6 +279,7 @@ export default function Navbar({ alwaysSolid = false }) {
                               if (item === 'Corporate Excellence') href = '/we-are/corporate';
                               else if (item === 'Plant and Machinery') href = '/#plant-machinery';
                               else if (item === 'CSR & Sustainability') href = '/we-are/csr';
+                              else if (item === 'About Us') href = '/we-are/our-company';
                               else href = `/we-are/${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`;
                             } else if (link.label === 'Landmark projects') {
                               if (item === 'Ongoing Projects') href = '/landmark-projects/ongoing';

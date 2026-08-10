@@ -101,7 +101,7 @@ export default function PlantMachinerySection() {
 
         {/* Separated Sections */}
         {renderGrid(plants, "Our Plants")}
-        {renderGrid(machinery, "Our Machinery")}
+        {renderGrid(machinery, "")}
       </div>
     </section>
   );

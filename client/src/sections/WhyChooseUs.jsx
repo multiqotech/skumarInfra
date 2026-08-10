@@ -92,7 +92,7 @@ export default function WhyChooseUs() {
           {/* Badge */}
           <div className="absolute bottom-4 left-4 lg:bottom-16 lg:-left-6 bg-[#f36c21] text-white p-6 lg:p-8 rounded-2xl shadow-xl z-10 max-w-[200px] border-4 border-white">
             <div className="text-white text-4xl font-bold mb-1">
-              25+
+              15+
             </div>
             <div className="text-white/90 text-[11px] font-bold uppercase tracking-[0.15em] leading-tight">
               Years of Excellence

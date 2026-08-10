@@ -50,9 +50,8 @@ export const navLinks = [
     hasDropdown: true,
     dropdownLayout: 'simple',
     dropdownItems: [
-      'Our Company',
-      'Our Businesses',
       'About Us',
+      'Our Businesses',
       'Board of Directors',
       'Our Team',
       'Our Subsidiary',
@@ -115,7 +114,7 @@ export const phoneNumber = '+91 79 4938 9854';
 export const heroData = {
   heading: 'Comprehensive Construction Solutions for All',
   subtext:
-    'With over two decades of unwavering commitment, S Kumar Infracons (India) Private Limited delivers landmark infrastructure projects that stand the test of time. Our team of experts ensures precision engineering, cutting-edge technology, and uncompromising quality in every structure we build.',
+    'With a strong legacy of excellence, S Kumar Infracons (India) Private Limited delivers landmark infrastructure projects built to stand the test of time. Our team of experts combines precision engineering, advanced technology, and uncompromising quality to create structures that make a lasting impact.',
   cta: 'OUR SERVICES',
 };
 
@@ -179,20 +178,20 @@ export const servicesData = [
     title: 'Engineering Techniques',
     description:
       'We employ cutting-edge engineering methodologies and state-of-the-art technology to deliver structures that exceed industry standards.',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop',
+    image: 'https://res.cloudinary.com/dkhyb43ae/image/upload/v1786383368/igtqomw0xaqbclpuh70d.jpg',
   },
   {
     title: 'Project Management',
     description:
       'Our seasoned project managers ensure timely delivery, cost optimization, and seamless coordination across all project phases.',
-    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&h=400&fit=crop',
+    image: 'https://res.cloudinary.com/dkhyb43ae/image/upload/v1786383468/cyjbblm45gur0lburbhj.jpg',
     featured: true,
   },
   {
     title: 'Financial Results',
     description:
       'Transparent financial planning and cost-effective execution deliver maximum value and exceptional returns for our stakeholders.',
-    image: 'https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=600&h=400&fit=crop',
+    image: 'https://res.cloudinary.com/dkhyb43ae/image/upload/v1786383619/zuc4gudrvlpmfgdcaxbg.jpg',
   },
 ];
 
@@ -203,7 +202,7 @@ export const whyChooseUsData = {
     'With a proven track record spanning decades, S Kumar Infracons brings unmatched expertise, innovation, and reliability to every project. Our commitment to quality craftsmanship and on-time delivery has earned us the trust of government agencies, industrial corporations, and private developers alike.',
   stats: [
     { value: '500+', label: 'Projects Completed' },
-    { value: '25+', label: 'Years Experience' },
+    { value: '15+', label: 'Years Experience' },
     { value: '200+', label: 'Expert Engineers' },
   ],
 };

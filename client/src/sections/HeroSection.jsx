@@ -9,10 +9,10 @@ import { HiArrowRight, HiPhone } from 'react-icons/hi';
 import { heroData, phoneNumber } from '@/data/siteData';
 
 const backgroundImages = [
-  "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=1080&fit=crop",
-  "https://images.unsplash.com/photo-1580901368919-7738efb0f87e?w=1920&h=1080&fit=crop",
-  "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&h=1080&fit=crop",
-  "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1920&h=1080&fit=crop"
+  "https://res.cloudinary.com/dkhyb43ae/image/upload/v1786382730/zrdphxmu4ivnqfifcshe.jpg",
+  "https://res.cloudinary.com/dkhyb43ae/image/upload/v1786382859/verkmuql0plwagko4c1u.jpg",
+  "https://res.cloudinary.com/dkhyb43ae/image/upload/v1786382924/anuz3x3ehtg5v9pq65x9.jpg",
+  "https://res.cloudinary.com/dkhyb43ae/image/upload/v1786382989/ct74izcipaju8h8an2pn.jpg"
 ];
 
 export default function HeroSection() {
@@ -87,7 +87,7 @@ export default function HeroSection() {
               <span
                 className="text-[#f36c21] text-[11px] tracking-[0.25em] uppercase font-semibold"
               >
-                Since 2001
+                Since 2011
               </span>
             </motion.div>
 

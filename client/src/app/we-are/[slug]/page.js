@@ -146,10 +146,10 @@ export default async function WeArePage({ params }) {
     }));
 
     const subsidiaryData = {
-      title: 'Our Subsidiary',
+      title: 'Our Subsidiaries',
       pageData: {
         tagline: 'Expanding our horizons with strategic partnerships and group companies.',
-        heroImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&h=600&fit=crop',
+        heroImage: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786296849/skconstruction/clw39vzvch81qw9x7fbb.jpg',
         items
       }
     };
@@ -230,7 +230,7 @@ function WeAreRenderer({ data, layoutType }) {
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-white uppercase tracking-wider mb-6 drop-shadow-lg"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            {data.title}
+            {data.title === 'Our Company' ? 'About US' : data.title}
           </h1>
           
           {pageInfo.tagline && (

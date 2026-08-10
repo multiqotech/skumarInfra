@@ -50,9 +50,8 @@ export const navLinks = [
     hasDropdown: true,
     dropdownLayout: 'simple',
     dropdownItems: [
-      'Our Company',
-      'Our Businesses',
       'About Us',
+      'Our Businesses',
       'Board of Directors',
       'Our Team',
       'Our Subsidiary',
@@ -192,7 +191,7 @@ export const whyChooseUsData = {
     'With a proven track record spanning decades, S Kumar Infracons (India) Private Limiteds brings unmatched expertise, innovation, and reliability to every project. Our commitment to quality craftsmanship and on-time delivery has earned us the trust of government agencies, industrial corporations, and private developers alike.',
   stats: [
     { value: '500+', label: 'Projects Completed' },
-    { value: '25+', label: 'Years Experience' },
+    { value: '15+', label: 'Years Experience' },
     { value: '200+', label: 'Expert Engineers' },
   ],
 };
@@ -359,7 +358,7 @@ export const testimonialsData = [
 export const statsData = [
   { value: '500+', label: 'Projects Completed' },
   { value: '1200+', label: 'Happy Clients' },
-  { value: '25+', label: 'Years Experience' },
+  { value: '15+', label: 'Years Experience' },
   { value: '50+', label: 'Awards Won' },
 ];
 

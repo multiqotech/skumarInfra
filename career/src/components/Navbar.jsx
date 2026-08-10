@@ -116,6 +116,7 @@ export default function Navbar({ alwaysSolid = false }) {
                             if (link.label === 'We Are') {
                               if (item === 'Corporate Excellence') href = `${portfolioUrl}/we-are/corporate`;
                               else if (item === 'CSR & Sustainability') href = `${portfolioUrl}/we-are/csr`;
+                              else if (item === 'About Us') href = `${portfolioUrl}/we-are/our-company`;
                               else href = `${portfolioUrl}/we-are/${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`;
                             } else if (link.label === 'Landmark projects') {
                               if (item === 'Ongoing Projects') href = `${portfolioUrl}/landmark-projects/ongoing`;
