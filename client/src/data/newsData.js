@@ -6,7 +6,7 @@ export const fallbackNews = [
     slug: "sk-constructions-wins-major-contract-for-sustainable-urban-development",
     date: "2026-05-15T00:00:00Z",
     body: "S Kumar Infracons (India) Private Limiteds is thrilled to announce that we have been awarded a multi-million dollar contract to lead a new sustainable urban development project. This project will feature state-of-the-art green building technologies, eco-friendly materials, and smart infrastructure designed to minimize environmental impact while maximizing community well-being.\n\nThe development will span over 50 acres and include residential, commercial, and recreational spaces. 'This is a landmark moment for our company and a testament to our commitment to sustainability and innovation,' said the CEO of S Kumar Infracons (India) Private Limiteds. Construction is slated to begin early next year, with completion expected by 2030.",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&h=800&fit=crop"
+    image: "https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=1920&h=800&fit=crop"
   },
   {
     _id: "dummy-news-2",

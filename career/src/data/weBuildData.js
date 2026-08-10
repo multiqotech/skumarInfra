@@ -48,7 +48,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN BRIDGES',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of bridges projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Bridges Project I',
@@ -92,7 +92,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN DEFENCE INSTALLATIONS',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of defence installations projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Defence Installations Project I',
@@ -136,7 +136,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN DIGITAL ENERGY SOLUTIONS',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of digital energy solutions projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Digital Energy Solutions Project I',
@@ -180,7 +180,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN FACTORIES',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of factories projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Factories Project I',
@@ -224,7 +224,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN MINERALS METALS',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of minerals metals projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Minerals Metals Project I',
@@ -268,7 +268,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN HOSPITALS',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of hospitals projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Hospitals Project I',
@@ -312,7 +312,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN HOUSING',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of housing projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Housing Project I',
@@ -356,7 +356,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN HYDEL PROJECTS',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of hydel projects projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Hydel Projects Project I',
@@ -400,7 +400,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN METROS',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of metros projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Metros Project I',
@@ -444,7 +444,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN NUCLEAR PLANTS',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of nuclear plants projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Nuclear Plants Project I',
@@ -488,7 +488,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN OFFICE SPACES',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of office spaces projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Office Spaces Project I',
@@ -532,7 +532,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN PORTS',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of ports projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Ports Project I',
@@ -576,7 +576,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN POWER TRANSMISSION DISTRIBUTION INFRASTRUCTURE',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of power transmission distribution infrastructure projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Power Transmission Distribution Infrastructure Project I',
@@ -620,7 +620,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN PUBLIC SPACES',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of public spaces projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Public Spaces Project I',
@@ -664,7 +664,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN RAILWAYS',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of railways projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Railways Project I',
@@ -708,7 +708,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN RENEWABLES',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of renewables projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Renewables Project I',
@@ -752,7 +752,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN SMART WORLD SOLUTIONS',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of smart world solutions projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Smart World Solutions Project I',
@@ -796,7 +796,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN TRANSPORTATION INFRASTRUCTURE',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of transportation infrastructure projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Transportation Infrastructure Project I',
@@ -840,7 +840,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN UNDERGROUND STRUCTURES',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of underground structures projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Underground Structures Project I',
@@ -884,7 +884,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN UNIQUE STRUCTURES',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of unique structures projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Unique Structures Project I',
@@ -928,7 +928,7 @@ export const weBuildData = {
     heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&h=800&fit=crop',
     tagline: 'PIONEERING EXCELLENCE IN WATER INFRASTRUCTURE',
     description: 'S Kumar Infracons (India) Private Limiteds is a trusted leader in the development and execution of water infrastructure projects globally. We bring decades of specialized engineering expertise to deliver end-to-end solutions that exceed industry standards. Our dedicated business verticals possess the capability to handle complex planning, structural engineering, and modern execution methodologies. We are committed to building robust infrastructure that drives growth, sustainability, and technological advancement for communities worldwide.',
-    descriptionImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop',
+    descriptionImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop',
     projects: [
       {
         title: 'Iconic Water Infrastructure Project I',

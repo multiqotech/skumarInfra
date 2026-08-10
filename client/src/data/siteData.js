@@ -254,7 +254,7 @@ export const featuredProjects = [
   {
     title: 'Path to the Future',
     location: 'Chennai, Tamil Nadu',
-    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&h=500&fit=crop',
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=400&h=500&fit=crop',
   },
   {
     title: 'Heritage Bridge',

@@ -36,7 +36,7 @@ export default async function LandmarkProjectsPage({ params }) {
     'ongoing': { 
       title: 'Ongoing Projects', 
       tagline: 'Building the future with groundbreaking infrastructure across the globe.',
-      heroImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&h=800&fit=crop'
+      heroImage: 'https://res.cloudinary.com/dkhyb43ae/image/upload/v1786391852/is36dtziemk5xib4omzq.jpg'
     },
     'completed': { 
       title: 'Completed Projects', 

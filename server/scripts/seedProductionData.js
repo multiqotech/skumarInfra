@@ -80,7 +80,7 @@ const weArePagesData = [
     title: 'Our Company',
     pageData: {
       tagline: 'Building the Future with Unwavering Commitment and Excellence',
-      heroImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=600&fit=crop',
+      heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=1600&h=600&fit=crop',
       items: [
         {
           id: '1',

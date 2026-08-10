@@ -21,40 +21,22 @@ export default function HeroSection() {
   const bgRef = useRef(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const ctx = gsap.context(() => {
-      gsap.to(bgRef.current, {
-        yPercent: 30,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true
-        }
-      });
-    }, sectionRef);
-
     const timer = setInterval(() => {
       setCurrentBg((prev) => (prev + 1) % backgroundImages.length);
     }, 5000);
 
-    return () => {
-      clearInterval(timer);
-      ctx.revert();
-    };
+    return () => clearInterval(timer);
   }, []);
 
   return (
     <section ref={sectionRef} id="home" className="relative min-h-[90vh] lg:min-h-screen flex items-center overflow-hidden bg-white mt-[70px] lg:mt-0">
       {/* Background carousel */}
-      <div ref={bgRef} className="absolute inset-[-20%] w-[140%] h-[140%]">
+      <div ref={bgRef} className="absolute inset-0 w-full h-full">
         <AnimatePresence initial={false}>
           <motion.div
             key={currentBg}
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
             className="absolute inset-0"
@@ -63,13 +45,13 @@ export default function HeroSection() {
               src={backgroundImages[currentBg]}
               alt="Construction site background"
               fill
-              className="object-cover opacity-100 blur-0 lg:blur-[3px]"
+              className="object-cover opacity-100"
               priority
             />
           </motion.div>
         </AnimatePresence>
         {/* Gradient for text readability */}
-        <div className="absolute inset-0 w-full lg:w-[60%] bg-gradient-to-r from-white/80 via-white/40 lg:from-white/80 lg:via-white/30 to-transparent backdrop-blur-none lg:backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_right,black_90%,transparent_100%)] lg:[-webkit-mask-image:linear-gradient(to_right,black_70%,transparent_100%)] [mask-image:linear-gradient(to_right,black_90%,transparent_100%)] lg:[mask-image:linear-gradient(to_right,black_70%,transparent_100%)]" />
+        <div className="absolute inset-0 w-full bg-gradient-to-r from-black/70 to-black/20" />
       </div>
 
       {/* Content */}
@@ -95,7 +77,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold leading-[1.0] mb-3 text-[#183964] drop-shadow-xl tracking-tight"
+              className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold leading-[1.0] mb-3 text-white drop-shadow-xl tracking-tight"
             >
               Comprehensive{' '}
               <span className="text-[#f36c21]">Construction</span>{' '}
@@ -106,7 +88,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-[#4b5563] text-[15px] lg:text-[16px] leading-relaxed mb-5 max-w-lg drop-shadow-md"
+              className="text-white/90 text-[15px] lg:text-[16px] leading-relaxed mb-5 max-w-lg drop-shadow-md"
             >
               {heroData.subtext}
             </motion.p>
@@ -122,12 +104,12 @@ export default function HeroSection() {
                 <HiPhone className="text-white text-md" />
               </div>
               <div>
-                <p className="text-[#6b7280] text-[10px] uppercase tracking-[0.2em]">
+                <p className="text-white/70 text-[10px] uppercase tracking-[0.2em]">
                   Call Us Anytime
                 </p>
                 <a
                   href={`tel:${phoneNumber.replace(/\s/g, '')}`}
-                  className="text-[#183964] text-xl font-bold hover:text-[#f36c21] transition-colors"
+                  className="text-white text-xl font-bold hover:text-[#f36c21] transition-colors"
                 >
                   {phoneNumber}
                 </a>
@@ -144,7 +126,7 @@ export default function HeroSection() {
                 {heroData.cta}
                 <HiArrowRight />
               </a>
-              <a href="#projects" className="btn-outline">
+              <a href="#projects" className="btn-outline border-white text-white hover:bg-white hover:text-[#183964]">
                 VIEW PROJECTS
               </a>
             </motion.div>
@@ -160,7 +142,7 @@ export default function HeroSection() {
                 <button
                   key={i}
                   onClick={() => setCurrentBg(i)}
-                  className={`h-[4px] transition-all duration-300 ${currentBg === i ? 'w-10 bg-[#f36c21]' : 'w-4 bg-[#183964]/20 hover:bg-[#183964]/40'
+                  className={`h-[4px] transition-all duration-300 ${currentBg === i ? 'w-10 bg-[#f36c21]' : 'w-4 bg-white/30 hover:bg-white/60'
                     } rounded-full`}
                   aria-label={`Go to slide ${i + 1}`}
                 />

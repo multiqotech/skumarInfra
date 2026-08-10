@@ -263,7 +263,7 @@ export default function Navbar({ alwaysSolid = false }) {
                           {/* Image Column */}
                           <div className="relative h-full w-full">
                             <img
-                              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&h=600&fit=crop"
+                              src="https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=400&h=600&fit=crop"
                               alt="Featured Building"
                               className="object-cover w-full h-full"
                             />
@@ -322,7 +322,7 @@ export default function Navbar({ alwaysSolid = false }) {
           </div>
 
           {/* Phone + Mobile Toggle */}
-          <div className="flex items-center gap-4">
+          {/* <div className="flex items-center gap-4">
             <a
               href={`tel:${phoneNumber.replace(/\s/g, '')}`}
               className="hidden md:flex items-center gap-2 text-[#183964] hover:text-[#f36c21] transition-colors duration-300"
@@ -342,7 +342,7 @@ export default function Navbar({ alwaysSolid = false }) {
             >
               {mobileOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 

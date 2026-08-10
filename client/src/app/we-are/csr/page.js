@@ -104,7 +104,7 @@ export default function CSRSustainabilityPage() {
                 viewport={{ once: true }}
                 className="w-full md:w-1/2 relative h-[400px] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(24,57,100,0.15)] border-4 border-white"
               >
-                <Image src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop" fill alt="Connectivity" className="object-cover" />
+                <Image src="https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop" fill alt="Connectivity" className="object-cover" />
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, x: 50 }}
@@ -262,7 +262,7 @@ export default function CSRSustainabilityPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
               { title: "PPE Compliance", num: "100%", icon: ShieldCheck, img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=300&fit=crop" },
-              { title: "Safety Training", num: "50k+", icon: BookOpen, img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&h=300&fit=crop" },
+              { title: "Safety Training", num: "50k+", icon: BookOpen, img: "https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=400&h=300&fit=crop" },
               { title: "Site Inspections", num: "Daily", icon: CheckCircle2, img: "https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=400&h=300&fit=crop" },
               { title: "Risk Management", num: "Zero", icon: TrendingUp, img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=300&fit=crop" }
             ].map((safety, i) => (

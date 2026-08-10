@@ -34,8 +34,8 @@ export default function CorporateExcellencePage() {
       <section className="relative h-screen w-full flex items-center justify-center overflow-hidden pt-20">
         <motion.div style={{ y: yHero }} className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&h=1080&fit=crop"
-            alt="Highway infrastructure"
+            src="/images/corporate_infrastructure.jpg"
+            alt="Corporate infrastructure"
             fill
             className="object-cover"
             priority
@@ -160,10 +160,10 @@ export default function CorporateExcellencePage() {
             </div>
 
             {[
-              { title: "Bharatmala Pariyojana", desc: "Developing robust highway corridors to improve freight movement and border connectivity.", img: "https://images.unsplash.com/photo-1464938050520-ef2270bb8ce8?w=800&h=500&fit=crop" },
-              { title: "PM Gati Shakti", desc: "Multimodal connectivity infrastructure for seamless economic growth.", img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=500&fit=crop" },
-              { title: "Sagarmala", desc: "Port-led development projects enhancing coastal infrastructure.", img: "https://images.unsplash.com/photo-1494607239400-ff147da48308?w=800&h=500&fit=crop" },
-              { title: "National Infrastructure Pipeline", desc: "Executing critical long-term projects for social and economic progression.", img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=500&fit=crop" }
+              { title: "Bharatmala Pariyojana", desc: "Developing robust highway corridors to improve freight movement and border connectivity.", img: "https://res.cloudinary.com/dkhyb43ae/image/upload/v1786390498/bysb1xtk18qvhx5lfwwh.jpg" },
+              { title: "PM Gati Shakti", desc: "Multimodal connectivity infrastructure for seamless economic growth.", img: "https://res.cloudinary.com/dkhyb43ae/image/upload/v1786390676/rweyroofaklklefoeekk.jpg" },
+              { title: "Sagarmala", desc: "Port-led development projects enhancing coastal infrastructure.", img: "https://res.cloudinary.com/dkhyb43ae/image/upload/v1786390844/wrxhhbrzyvwxszbjcn8k.webp" },
+              { title: "National Infrastructure Pipeline", desc: "Executing critical long-term projects for social and economic progression.", img: "https://res.cloudinary.com/dkhyb43ae/image/upload/v1786391016/cb8jjhjuv92dk86yoz7b.jpg" }
             ].map((initiative, i) => (
               <motion.div
                 key={i}
@@ -321,10 +321,10 @@ export default function CorporateExcellencePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Road Infrastructure", icon: Building2, img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&h=800&fit=crop" },
-              { title: "Bridges & Structures", icon: Building2, img: "https://images.unsplash.com/photo-1513467535987-fd81bc7d600f?w=600&h=800&fit=crop" },
-              { title: "Housing Projects", icon: Building2, img: "https://images.unsplash.com/photo-1448630360428-65456885c650?w=600&h=800&fit=crop" },
-              { title: "Irrigation & Pipelines", icon: Building2, img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=800&fit=crop" }
+              { title: "Road Infrastructure", icon: Building2, img: "https://res.cloudinary.com/dkhyb43ae/image/upload/v1786391145/uhnf3hrxdfbip58waeqk.jpg" },
+              { title: "Bridges & Structures", icon: Building2, img: "https://res.cloudinary.com/dkhyb43ae/image/upload/v1786391382/haei1ffbuepsy8mh7k6y.jpg" },
+              { title: "Housing Projects", icon: Building2, img: "https://res.cloudinary.com/dkhyb43ae/image/upload/v1786391626/jasvph6aw3ehaorlcyns.jpg" },
+              { title: "Irrigation & Pipelines", icon: Building2, img: "https://res.cloudinary.com/dkhyb43ae/image/upload/v1786391495/eltqhtfsehjmanfw8kuu.jpg" }
             ].map((cap, i) => (
               <motion.div
                 key={i}

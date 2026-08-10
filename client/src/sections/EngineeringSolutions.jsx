@@ -10,7 +10,7 @@ export default function EngineeringSolutions() {
       {/* Background */}
       <div className="absolute inset-0 bg-white">
         <Image
-          src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&h=600&fit=crop"
+          src="https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=1920&h=600&fit=crop"
           alt="Construction background"
           fill
           className="object-cover opacity-[0.05]"
