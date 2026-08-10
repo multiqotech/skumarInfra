@@ -54,7 +54,7 @@ export const navLinks = [
       'Our Businesses',
       'Board of Directors',
       'Our Team',
-      'Our Subsidiary',
+      'Our Subsidiary Portfolio',
       'Plant and Machinery',
       'Corporate Excellence',
       'CSR & Sustainability',

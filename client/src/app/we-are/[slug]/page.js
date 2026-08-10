@@ -97,7 +97,7 @@ export default async function WeArePage({ params }) {
             <div className="container-custom">
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold text-[#183964]" style={{ fontFamily: 'var(--font-heading)' }}>
-                  Our <span className="text-[#f36c21]">Subsidiaries</span>
+                  Our <span className="text-[#f36c21]">Subsidiary Portfolio</span>
                 </h2>
                 <div className="w-24 h-1 bg-[#f36c21] mx-auto mt-6" />
               </div>
@@ -146,7 +146,7 @@ export default async function WeArePage({ params }) {
     }));
 
     const subsidiaryData = {
-      title: 'Our Subsidiaries',
+      title: 'Our Subsidiary Portfolio',
       pageData: {
         tagline: 'Expanding our horizons with strategic partnerships and group companies.',
         heroImage: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786296849/skconstruction/clw39vzvch81qw9x7fbb.jpg',
