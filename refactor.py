@@ -1,6 +1,7 @@
 import os
 import re
 
+
 def process_dir(directory):
     count = 0
     for root, dirs, files in os.walk(directory):
