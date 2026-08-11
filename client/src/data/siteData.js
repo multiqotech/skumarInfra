@@ -213,13 +213,13 @@ export const engineeringSolutions = [
     title: 'Old Building Renovation',
     description:
       'Breathing new life into aging structures with modern renovation techniques that preserve heritage while enhancing functionality and safety.',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=350&fit=crop',
+    image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786473233/node_uploads/gnm1giczyzgvbpuwxdvs.png',
   },
   {
     title: 'Expertise and Experience',
     description:
       'Our team of seasoned professionals brings decades of specialized knowledge to tackle the most complex engineering challenges with confidence.',
-    image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=500&h=350&fit=crop',
+    image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786473387/node_uploads/b6qy7bljl1f5sruhunbq.png',
   },
   {
     title: 'Community Engagement',
@@ -357,7 +357,7 @@ export const testimonialsData = [
 
 // ===== STATS =====
 export const statsData = [
-  { value: '₹650Cr+', label: 'Total Project Value' },
+  { value: '₹650Cr+', label: 'Total Order Book Value' },
   { value: '14', label: 'Completed Projects' },
   { value: '5', label: 'Ongoing Projects' },
   { value: '7', label: 'Indian States' },

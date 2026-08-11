@@ -85,11 +85,11 @@ export default function StatsManager({ showFeedback }) {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
-                {/* Total Project Value */}
+                {/* Total Order Book Value */}
                 <div className="space-y-2">
                   <label className="flex items-center gap-2 text-sm font-medium text-[#4b5563]">
                     <IndianRupee className="h-4 w-4 text-[var(--color-yellow)]" />
-                    Total Project Value
+                    Total Order Book Value
                   </label>
                   <input
                     type="text"

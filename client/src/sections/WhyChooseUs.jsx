@@ -20,7 +20,7 @@ export default function WhyChooseUs() {
           try {
             const parsed = JSON.parse(data.value);
             setStats([
-              { value: parsed.projectValue || '₹650Cr+', label: 'Total Project Value' },
+              { value: parsed.projectValue || '₹650Cr+', label: 'Total Order Book Value' },
               { value: parsed.completedProjects || '14', label: 'Completed Projects' },
               { value: parsed.ongoingProjects || '5', label: 'Ongoing Projects' },
               { value: parsed.indianStates || '7', label: 'Indian States' },
@@ -82,7 +82,7 @@ export default function WhyChooseUs() {
         <div className="relative min-h-[400px] lg:min-h-full p-4 sm:p-6 lg:p-10 flex items-center">
           <div className="relative w-full h-full min-h-[350px] lg:min-h-[500px] rounded-3xl overflow-hidden shadow-2xl border border-[#183964]/5">
             <Image
-              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&h=700&fit=crop"
+              src="https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786473124/node_uploads/zs78uchfw0pjomegvwdz.png"
               alt="Engineer working on site"
               fill
               className="object-cover"

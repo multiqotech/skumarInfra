@@ -20,7 +20,7 @@ export default function ContactCTA() {
           try {
             const parsed = JSON.parse(data.value);
             setStats([
-              { value: parsed.projectValue || '₹650Cr+', label: 'Total Project Value' },
+              { value: parsed.projectValue || '₹650Cr+', label: 'Total Order Book Value' },
               { value: parsed.completedProjects || '14', label: 'Completed Projects' },
               { value: parsed.ongoingProjects || '5', label: 'Ongoing Projects' },
               { value: parsed.indianStates || '7', label: 'Indian States' },
