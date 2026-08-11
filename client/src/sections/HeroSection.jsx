@@ -9,10 +9,11 @@ import { HiArrowRight, HiPhone } from 'react-icons/hi';
 import { heroData, phoneNumber } from '@/data/siteData';
 
 const backgroundImages = [
-  "https://res.cloudinary.com/dkhyb43ae/image/upload/v1786382730/zrdphxmu4ivnqfifcshe.jpg",
-  "https://res.cloudinary.com/dkhyb43ae/image/upload/v1786382859/verkmuql0plwagko4c1u.jpg",
-  "https://res.cloudinary.com/dkhyb43ae/image/upload/v1786382924/anuz3x3ehtg5v9pq65x9.jpg",
-  "https://res.cloudinary.com/dkhyb43ae/image/upload/v1786382989/ct74izcipaju8h8an2pn.jpg"
+  "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786471923/node_uploads/yclwxbo06jphwfcdj2lw.png",
+  "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786472283/node_uploads/lcgvebpohavkcthdqyao.png",
+  "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786472391/node_uploads/wkdlkp7ixymnbminknng.png",
+  "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786472457/node_uploads/bridgome9xmujulkpeep.png",
+  "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786472529/node_uploads/cfv3wdtxjmgeueu8ydft.png"
 ];
 
 export default function HeroSection() {
