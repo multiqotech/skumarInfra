@@ -128,7 +128,7 @@ export default async function ContactUsPage() {
             
             {/* International */}
             {internationalNumber && (
-              <div className="bg-[#f7f9fc] p-8 rounded-2xl border border-[#183964]/5 shadow-sm hover:shadow-[0_15px_40px_rgba(24,57,100,0.08)] flex flex-col items-center text-center group hover:-translate-y-2 transition-all duration-300 md:col-span-2 lg:col-span-1 lg:col-start-2">
+              <div className="bg-[#f7f9fc] p-8 rounded-2xl border border-[#183964]/5 shadow-sm hover:shadow-[0_15px_40px_rgba(24,57,100,0.08)] flex flex-col items-center text-center group hover:-translate-y-2 transition-all duration-300">
                 <div className="w-16 h-16 bg-white border border-[#183964]/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#f36c21] group-hover:border-transparent transition-colors duration-300 shadow-sm">
                   <Globe className="w-8 h-8 text-[#183964] group-hover:text-white transition-colors duration-300" />
                 </div>

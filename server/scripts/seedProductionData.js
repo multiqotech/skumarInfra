@@ -56,7 +56,7 @@ const teamData = [
 
 const contactData = {
   companyAddress: "414-Shreeya Amalga, Opp. Avalon Hotel,\nThaltej, Ahmedabad, Gujarat- 380 059",
-  tollFreeNumber: "+91 79 4938 9854",
+  tollFreeNumber: "",
   availability: "Mon - Sat: 9:00 AM - 6:00 PM",
   internationalNumber: "+91 99253 52460",
   internationalAvailability: "Regional Office: Bhopal, MP & Chikhli, Gujarat",

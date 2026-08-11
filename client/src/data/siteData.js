@@ -108,7 +108,7 @@ export const navLinks = [
   }
 ];
 
-export const phoneNumber = '+91 79 4938 9854';
+export const phoneNumber = '';
 
 // ===== HERO =====
 export const heroData = {
@@ -120,7 +120,7 @@ export const heroData = {
 
 // ===== CONTACT STRIP =====
 export const contactStripData = {
-  phone: '+91 79 4938 9854',
+  phone: '',
   phoneLabel: 'CALL US ANYTIME',
   intro:
     'S Kumar Infracons is a premier construction firm delivering world-class infrastructure, residential, and commercial projects across India. We combine innovation with integrity to build the future.',
@@ -377,5 +377,5 @@ export const companyInfo = {
   address: '414-Shreeya Amalga, Opp. Avalon Hotel, Thaltej, Ahmedabad, Gujarat- 380 059',
   workingHours: 'Mon - Sat: 9:00 AM - 6:00 PM',
   email: 'info@skumarinfracons.com',
-  phone: '+91 79 4938 9854',
+  phone: '',
 };

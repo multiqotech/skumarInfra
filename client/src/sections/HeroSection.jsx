@@ -93,29 +93,6 @@ export default function HeroSection() {
               {heroData.subtext}
             </motion.p>
 
-            {/* Phone callout */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex items-center gap-4 mb-6"
-            >
-              <div className="w-10 h-10 bg-[#f36c21] rounded-full flex items-center justify-center">
-                <HiPhone className="text-white text-md" />
-              </div>
-              <div>
-                <p className="text-white/70 text-[10px] uppercase tracking-[0.2em]">
-                  Call Us Anytime
-                </p>
-                <a
-                  href={`tel:${phoneNumber.replace(/\s/g, '')}`}
-                  className="text-white text-xl font-bold hover:text-[#f36c21] transition-colors"
-                >
-                  {phoneNumber}
-                </a>
-              </div>
-            </motion.div>
-
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

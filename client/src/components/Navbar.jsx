@@ -321,19 +321,8 @@ export default function Navbar({ alwaysSolid = false }) {
             ))}
           </div>
 
-          {/* Phone + Mobile Toggle */}
-          {/* <div className="flex items-center gap-4">
-            <a
-              href={`tel:${phoneNumber.replace(/\s/g, '')}`}
-              className="hidden md:flex items-center gap-2 text-[#183964] hover:text-[#f36c21] transition-colors duration-300"
-            >
-              <div className="w-8 h-8 border border-[#183964]/20 flex items-center justify-center hover:border-[#f36c21]/50 transition-colors">
-                <HiPhone className="text-[#f36c21] text-sm" />
-              </div>
-              <span className="text-[12px] font-medium tracking-wider">
-                {phoneNumber}
-              </span>
-            </a>
+          {/* Mobile Toggle */}
+          <div className="flex items-center gap-4">
 
             <button
               className="xl:hidden text-[#183964] p-2 hover:text-[#f36c21] transition-colors"
@@ -342,7 +331,7 @@ export default function Navbar({ alwaysSolid = false }) {
             >
               {mobileOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
             </button>
-          </div> */}
+          </div>
         </div>
       </div>
 
@@ -360,15 +349,6 @@ export default function Navbar({ alwaysSolid = false }) {
               {dynamicNavLinks.map((link, i) => (
                 <MobileNavItem key={link.label} link={link} handleNavClick={handleNavClick} i={i} />
               ))}
-              <a
-                href={`tel:${phoneNumber.replace(/\s/g, '')}`}
-                className="flex items-center gap-2 text-[#f36c21] mt-3"
-              >
-                <HiPhone />
-                <span className="text-sm font-medium tracking-wider">
-                  {phoneNumber}
-                </span>
-              </a>
             </div>
           </motion.div>
         )}

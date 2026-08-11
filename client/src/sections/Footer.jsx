@@ -165,7 +165,7 @@ export default function Footer() {
 
               {(contactInfo.internationalNumber || contactInfo.internationalAvailability) && (
                 <div>
-                  {contactInfo.internationalNumber && <p className="font-semibold text-white">International No: <span className="font-normal text-white/70">{contactInfo.internationalNumber}</span></p>}
+                  {/* {contactInfo.internationalNumber && <p className="font-semibold text-white">International No: <span className="font-normal text-white/70">{contactInfo.internationalNumber}</span></p>} */}
                   {contactInfo.internationalAvailability && <p>{contactInfo.internationalAvailability}</p>}
                 </div>
               )}
