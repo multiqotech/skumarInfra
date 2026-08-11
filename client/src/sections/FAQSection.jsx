@@ -43,7 +43,7 @@ export default function FAQSection() {
           >
             <div className="relative h-[350px] lg:h-[400px] overflow-hidden rounded-3xl shadow-[0_20px_50px_rgba(24,57,100,0.1)]">
               <Image
-                src="https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=700&h=600&fit=crop"
+                src="https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786474697/node_uploads/ytimglbdhln7yeqwk7an.png"
                 alt="Construction site"
                 fill
                 className="object-cover"

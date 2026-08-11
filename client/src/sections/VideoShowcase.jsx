@@ -51,24 +51,25 @@ export default function VideoShowcase() {
             onClick={() => setIsOpen(true)}
             className="relative group cursor-pointer overflow-hidden mb-16 rounded-3xl shadow-2xl border border-[#183964]/5"
           >
-            <div className="relative w-full h-[280px] sm:h-[380px] lg:h-[500px]">
+            <div className="relative w-full">
               <Image
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&h=600&fit=crop"
+                src="https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786474233/node_uploads/et7tqls85ct9e2hcgufx.png"
                 alt="Construction site video"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                width={1920}
+                height={1080}
+                className="w-full h-auto transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-[#183964]/40 group-hover:bg-[#183964]/20 transition-all duration-500" />
 
               {/* Play Button */}
-              <div className="absolute inset-0 flex items-center justify-center">
+              {/* <div className="absolute inset-0 flex items-center justify-center">
                 <div
                   className="w-18 h-18 lg:w-22 lg:h-22 bg-[#f36c21] rounded-full flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-[0_0_30px_rgba(243,108,33,0.4)]"
                   style={{ width: '80px', height: '80px' }}
                 >
                   <HiPlay className="text-white text-4xl ml-1" />
                 </div>
-              </div>
+              </div> */}
 
               {/* Corner brackets */}
               <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-[#f36c21]/80" />
