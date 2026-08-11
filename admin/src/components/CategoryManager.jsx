@@ -204,7 +204,7 @@ export default function CategoryManager({ showFeedback }) {
               value={form.tagline}
               onChange={(e) => setForm({ ...form, tagline: e.target.value })}
               className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2.5 focus:outline-none focus:border-[var(--color-yellow)] transition-colors"
-              placeholder="e.g. BUILDING THE GREAT GATEWAYS FOR THE WORLD"
+              placeholder="e.g. Building Pathways to a Better Future"
             />
           </div>
 

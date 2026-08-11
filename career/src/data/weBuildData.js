@@ -2,7 +2,7 @@ export const weBuildData = {
   airports: {
     title: 'Airports',
     heroImage: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920&h=800&fit=crop',
-    tagline: 'BUILDING THE GREAT GATEWAYS FOR THE WORLD',
+    tagline: 'Building Pathways to a Better Future',
     description: 'We are pioneers in designing-and-building airports and we can handle an airport project end-to-end. Our track record of having executed 12 international airports in India and the Middle East with a cumulative built-up area of 24 million sq. feet to handle 180 million passengers per annum is reflective of our capability. Our Buildings business vertical possess the expertise to handle space planning, construct airside & landside works, passenger terminal buildings, cargo terminals, MEP & airport special systems, Air Traffic Control towers and maintenance & overhaul facilities. Our Transportation Infrastructure business vertical constructs airside infrastructure that includes runways incorporating CAT IIIB instrument landing systems, taxiways, aprons and service roads, drainages, fire and fuel lines, storm water drains, airfield ground lighting and approach lights, high fill embankments and landscaping with green features.',
     descriptionImage: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop',
     projects: [
@@ -17,28 +17,28 @@ export const weBuildData = {
         title: 'Kannur International Airport',
         projectType: 'Iconic',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1554110397-9bac083977c6?w=600&h=400&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786475487/node_uploads/ec99n89w8ragh0kaxl0s.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
         title: 'Mumbai International Airport',
         projectType: 'Landmark',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1518014556488-0678d49a4fba?w=600&h=400&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786475555/node_uploads/x12cfgjapmyccdixhxj9.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
         title: 'Bengaluru International Airport',
         projectType: 'Iconic',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786475619/node_uploads/tfs7dhiujbkygktiufah.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
         title: 'Hyderabad International Airport',
         projectType: 'Landmark',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=600&h=400&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786475691/node_uploads/dpswlngwjmn9qpgbdl8n.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       }
     ]

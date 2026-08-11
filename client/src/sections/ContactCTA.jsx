@@ -88,7 +88,7 @@ export default function ContactCTA() {
         <div className="relative min-h-[400px] lg:min-h-full lg:p-10 flex items-center bg-white z-10">
           <div className="relative w-full h-full min-h-[350px] lg:min-h-[500px] rounded-3xl overflow-hidden shadow-2xl">
             <Image
-              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=900&h=700&fit=crop"
+              src="https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786476386/node_uploads/ande0trbpwhjkieyst5o.png"
               alt="Construction project"
               fill
               className="object-cover"

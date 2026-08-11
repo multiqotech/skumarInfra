@@ -261,13 +261,13 @@ export default function Navbar({ alwaysSolid = false }) {
                             </div>
                           ))}
                           {/* Image Column */}
-                          <div className="relative h-full w-full">
+                          {/* <div className="relative h-full w-full">
                             <img
                               src="https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=400&h=600&fit=crop"
                               alt="Featured Building"
                               className="object-cover w-full h-full"
                             />
-                          </div>
+                          </div> */}
                         </div>
                       ) : (
                         <ul className="flex flex-col py-3">

@@ -86,7 +86,7 @@ const weArePagesData = [
           id: '1',
           title: 'S Kumar Infracons (India) Private Limited',
           content: 'S Kumar Infracons (India) Private Limited (SKIPL) is a dynamic and rapidly expanding infrastructure and construction company with a strong footprint in civil engineering projects across India. Founded in 2006 and incorporated in 2011, SKIPL has grown into a trusted name in the infrastructure sector under visionary leadership. The company has built a solid reputation for executing projects under EPC (Engineering, Procurement, and Construction) and PPP (Public-Private Partnership) frameworks, contributing to national initiatives like Bharatmala, Sagarmala, PM Gati Shakti, and the National Infrastructure Pipeline (NIP).',
-          image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=500&fit=crop'
+          image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786477132/node_uploads/r32jaakhawph7wbk4ych.png'
         },
         {
           id: '2',

@@ -26,6 +26,18 @@ export default function CorporateExcellencePage() {
   const { scrollYProgress } = useScroll();
   const yHero = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
 
+  const sliderRef = React.useRef(null);
+  
+  const scrollSlider = (direction) => {
+    if (sliderRef.current) {
+      const scrollAmount = 350; 
+      sliderRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <main className="min-h-screen bg-[#f7f9fc] overflow-hidden">
       <Navbar />
@@ -273,18 +285,35 @@ export default function CorporateExcellencePage() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#f36c21]/20 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2" />
         
         <div className="container-custom relative z-10">
-          <motion.h2 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold mb-16" style={{ fontFamily: 'var(--font-heading)' }}
-          >
-            Our Growth <span className="text-[#f36c21]">Story</span>
-          </motion.h2>
+          <div className="flex items-center justify-between mb-16">
+            <motion.h2 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl font-bold m-0" style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              Our Growth <span className="text-[#f36c21]">Story</span>
+            </motion.h2>
 
-          <div className="flex gap-6 overflow-x-auto pb-12 snap-x snap-mandatory custom-scrollbar">
+            <div className="flex gap-4">
+              <button 
+                onClick={() => scrollSlider('left')}
+                className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#f36c21] hover:border-[#f36c21] transition-all text-white"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <button 
+                onClick={() => scrollSlider('right')}
+                className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#f36c21] hover:border-[#f36c21] transition-all text-white"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div ref={sliderRef} className="flex gap-6 overflow-x-auto pb-12 snap-x snap-mandatory custom-scrollbar scroll-smooth hide-scroll-bar">
             {[
-              { year: "2006", title: "Foundation", desc: "The journey begins with a vision to build robust infrastructure." },
+              // { year: "2006", title: "Foundation", desc: "The journey begins with a vision to build robust infrastructure." },
               { year: "2011", title: "Incorporation", desc: "Officially incorporated as a Private Limited entity." },
               { year: "2015", title: "National Highways", desc: "Secured major contracts for National Highway expansion." },
               { year: "2018", title: "Bridge Expansion", desc: "Expanded portfolio into complex bridge and structural engineering." },
