@@ -72,5 +72,6 @@ def process_dir(directory):
                     count += 1
     print(f"Processed {count} files in {directory}")
 
+
 process_dir(r"d:\freelance\skConstruction\admin\src")
 process_dir(r"d:\freelance\skConstruction\career\src")
