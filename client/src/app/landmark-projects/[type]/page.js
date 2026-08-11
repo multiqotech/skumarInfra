@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/sections/Footer';
-import { HiMapPin } from 'react-icons/hi2';
+import { HiMapPin, HiClock, HiUserGroup, HiOutlineCalendar } from 'react-icons/hi2';
 import { weBuildData } from '@/data/weBuildData';
 
 async function getLandmarkProjects(type) {
@@ -92,56 +92,93 @@ export default async function LandmarkProjectsPage({ params }) {
       {/* Projects Grid */}
       <section className="py-20 md:py-32">
         <div className="container-custom">
-          {!projects || projects.length === 0 ? (
+          {type === 'completed' ? (
+            <div className="flex flex-col items-center justify-center py-32 text-center bg-white rounded-3xl border border-[#183964]/10 shadow-xl">
+              <div className="w-24 h-24 mb-8 bg-[#f36c21]/10 rounded-full flex items-center justify-center">
+                <svg className="w-12 h-12 text-[#f36c21]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+              </div>
+              <h2 className="text-4xl font-bold text-[#183964] mb-4" style={{ fontFamily: 'var(--font-heading)' }}>Under Construction</h2>
+              <p className="text-lg text-[#4b5563] max-w-lg mx-auto">
+                We are currently updating our completed projects portfolio. Please check back later to see our masterpieces of engineering.
+              </p>
+            </div>
+          ) : !projects || projects.length === 0 ? (
             <div className="text-center py-20 bg-white rounded-3xl border border-[#183964]/10 shadow-xl">
               <h3 className="text-2xl font-bold text-[#183964] mb-4" style={{ fontFamily: 'var(--font-heading)' }}>No {pageTitle} Found</h3>
               <p className="text-[#4b5563]">More projects are being added. Check back soon.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="flex flex-col gap-12">
               {projects.map((project) => (
-                <div key={project._id} className="group block bg-white rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(24,57,100,0.06)] hover:shadow-[0_20px_50px_rgba(24,57,100,0.12)] transition-all duration-300 border border-[#183964]/5 flex flex-col h-full hover:-translate-y-1">
-                  <div className="relative w-full h-64 overflow-hidden">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#183964] via-[#183964]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
-                    
-                    {/* Category Badge */}
-                    <div className="absolute top-6 right-6">
-                      <span className="px-3 py-1 bg-[#f36c21] text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-lg">
-                        {project.category.replace(/-/g, ' ')}
-                      </span>
+                <div key={project._id} className="flex flex-col lg:flex-row bg-[#130f54] rounded-sm overflow-hidden shadow-[0_20px_50px_rgba(19,15,84,0.3)] border border-white/5">
+                  
+                  {/* Left Side: Images */}
+                  <div className="w-full lg:w-1/2 flex flex-col p-2 gap-2 bg-white">
+                    <div className="relative w-full h-[300px] md:h-[400px]">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                      />
                     </div>
+                    {/* Thumbnails (Placeholder layout matching RSIL) */}
+                    <div className="grid grid-cols-4 gap-2">
+                      {[1, 2, 3, 4].map((idx) => (
+                        <div key={idx} className="relative w-full aspect-video group cursor-pointer overflow-hidden bg-gray-200">
+                          <Image 
+                            src={project.image} 
+                            alt={`${project.title} thumbnail ${idx}`} 
+                            fill 
+                            className="object-cover opacity-70 group-hover:opacity-100 transition-opacity group-hover:scale-110 duration-500" 
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
-                    <h3 className="absolute bottom-6 left-6 right-6 text-2xl font-bold text-white leading-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+                  {/* Right Side: Details */}
+                  <div className="w-full lg:w-1/2 p-8 md:p-10 lg:p-12 text-white flex flex-col justify-center">
+                    <h3 className="text-xl md:text-2xl font-bold uppercase mb-8 pb-4 leading-relaxed" style={{ fontFamily: 'var(--font-heading)' }}>
                       {project.title}
                     </h3>
-                  </div>
-                  
-                  <div className="p-6 md:p-8 flex-1 flex flex-col relative">
-                    <div className="absolute -top-3 left-6 w-12 h-1 bg-[#f36c21]" />
-                    {project.location && (
-                      <div className="flex items-center gap-2 text-[#183964] mb-4 text-sm font-semibold">
-                        <HiMapPin className="w-5 h-5 text-[#f36c21]" />
-                        {project.location}
-                      </div>
-                    )}
-                    <p className="text-[#4b5563] line-clamp-3 flex-1 text-sm leading-relaxed">
-                      {project.description || "No description provided."}
-                    </p>
                     
+                    <div className="space-y-5 text-sm md:text-base text-white/90">
+                      <div className="flex gap-4">
+                        <span className="font-semibold w-1/3 md:w-1/4 text-white">Location:</span>
+                        <span className="w-2/3 md:w-3/4">{project.location || 'N/A'}</span>
+                      </div>
+                      
+                      {project.timeToBuild && (
+                        <div className="flex gap-4">
+                          <span className="font-semibold w-1/3 md:w-1/4 text-white">Timeline:</span>
+                          <span className="w-2/3 md:w-3/4">{project.timeToBuild}</span>
+                        </div>
+                      )}
+                      
+                      {project.engineers && (
+                        <div className="flex gap-4">
+                          <span className="font-semibold w-1/3 md:w-1/4 text-white">Engineers/Team:</span>
+                          <span className="w-2/3 md:w-3/4">{project.engineers}</span>
+                        </div>
+                      )}
+
+                      {project.description && (
+                        <div className="flex gap-4">
+                          <span className="font-semibold w-1/3 md:w-1/4 text-white">Description:</span>
+                          <span className="w-2/3 md:w-3/4 line-clamp-3">{project.description}</span>
+                        </div>
+                      )}
+                    </div>
+
                     <Link 
                       href={`/we-build/${project.category}/${project._id}`}
-                      className="mt-6 inline-flex items-center gap-2 text-[#f36c21] font-bold uppercase tracking-wider text-sm hover:text-[#d45a14] transition-colors"
+                      className="mt-10 inline-flex items-center justify-center bg-white text-[#130f54] px-8 py-3 font-bold uppercase tracking-wider text-sm hover:bg-[#f36c21] hover:text-white transition-colors self-start rounded-sm"
                     >
-                      View Project Details
-                      <span className="transition-transform group-hover:translate-x-1">→</span>
+                      View Details
                     </Link>
                   </div>
+
                 </div>
               ))}
             </div>

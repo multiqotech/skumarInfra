@@ -104,7 +104,7 @@ export default function CSRSustainabilityPage() {
                 viewport={{ once: true }}
                 className="w-full md:w-1/2 relative h-[400px] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(24,57,100,0.15)] border-4 border-white"
               >
-                <Image src="https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=800&h=600&fit=crop" fill alt="Connectivity" className="object-cover" />
+                <Image src="https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786477948/node_uploads/iigbbpx4qfjxmhxs8ea4.png" fill alt="Connectivity" className="object-cover" />
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, x: 50 }}
@@ -134,7 +134,7 @@ export default function CSRSustainabilityPage() {
                 viewport={{ once: true }}
                 className="w-full md:w-1/2 relative h-[400px] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(24,57,100,0.15)] border-4 border-white"
               >
-                <Image src="https://images.unsplash.com/photo-1494607239400-ff147da48308?w=800&h=600&fit=crop" fill alt="Quality of Life" className="object-cover" />
+                <Image src="https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786478341/node_uploads/t782lxnvdamtgxzczhqr.png" fill alt="Quality of Life" className="object-cover" />
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, x: -50 }}
@@ -261,10 +261,10 @@ export default function CSRSustainabilityPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
-              { title: "PPE Compliance", num: "100%", icon: ShieldCheck, img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=300&fit=crop" },
-              { title: "Safety Training", num: "50k+", icon: BookOpen, img: "https://images.unsplash.com/photo-1504307651254-35680f35aa9e?w=400&h=300&fit=crop" },
+              { title: "PPE Compliance", num: "100%", icon: ShieldCheck, img: "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786478420/node_uploads/puuwliaewvhnsc9mrris.png" },
+              { title: "Safety Training", num: "50k+", icon: BookOpen, img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=400&h=300&fit=crop" },
               { title: "Site Inspections", num: "Daily", icon: CheckCircle2, img: "https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=400&h=300&fit=crop" },
-              { title: "Risk Management", num: "Zero", icon: TrendingUp, img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=300&fit=crop" }
+              { title: "Risk Management", num: "Zero", icon: TrendingUp, img: "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786478753/node_uploads/ljdg9koptwg7b59srcxl.png" }
             ].map((safety, i) => (
               <motion.div
                 key={i}
@@ -272,17 +272,22 @@ export default function CSRSustainabilityPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-[#f7f9fc] rounded-2xl overflow-hidden border border-[#183964]/5 shadow-md hover:shadow-xl transition-shadow duration-300 group"
+                className="bg-white rounded-2xl overflow-hidden border border-[#183964]/5 shadow-md hover:shadow-xl transition-shadow duration-300 group flex flex-col"
               >
-                <div className="h-48 relative">
-                  <Image src={safety.img} alt={safety.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#183964]/80 to-transparent opacity-80" />
-                  <div className="absolute top-4 right-4 bg-[#f36c21] p-2 rounded-xl text-white shadow-lg">
+                <div className="h-64 relative w-full bg-[#f7f9fc]">
+                  <Image 
+                    src={safety.img} 
+                    alt={safety.title} 
+                    fill 
+                    className="object-contain transition-transform duration-700 group-hover:scale-105" 
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#183964] via-[#183964]/60 to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute top-4 right-4 bg-[#f36c21] p-2 rounded-xl text-white shadow-lg z-10">
                     <safety.icon className="w-5 h-5" />
                   </div>
-                  <h4 className="absolute bottom-4 left-6 text-4xl font-black text-white drop-shadow-md">{safety.num}</h4>
+                  <h4 className="absolute bottom-4 left-6 text-4xl font-black text-white drop-shadow-md z-10">{safety.num}</h4>
                 </div>
-                <div className="p-6 text-center bg-white">
+                <div className="p-6 text-center bg-white flex-1 flex flex-col justify-center">
                   <p className="text-[#183964] font-bold text-lg">{safety.title}</p>
                 </div>
               </motion.div>
