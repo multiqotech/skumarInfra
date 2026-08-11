@@ -204,7 +204,7 @@ export default function Footer() {
                       bgColor="#ffffff"
                       fgColor="#000000"
                       level="L"
-                      includeMargin={true}
+                      includeMargin={false}
                     />
                   </a>
                 </div>
