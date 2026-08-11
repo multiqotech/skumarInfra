@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { QRCodeSVG } from 'qrcode.react';
 import { navLinks } from '@/data/siteData';
 
 export default function Footer() {
@@ -187,12 +188,25 @@ export default function Footer() {
                 </div>
               )}
 
-              {contactInfo.qrCodeImage && (
+              {contactInfo.companyAddress && (
                 <div className="pt-4 border-t border-white/10">
                   <h4 className="font-semibold text-white mb-3">Get Directions</h4>
-                  <div className="bg-white p-2 rounded inline-block shadow-sm">
-                    <img src={contactInfo.qrCodeImage} alt="Get Directions QR Code" className="w-24 h-24 object-contain" />
-                  </div>
+                  <a 
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.companyAddress.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim())}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white p-2 rounded inline-block shadow-sm hover:opacity-90 transition-opacity"
+                    title="Click or scan for directions"
+                  >
+                    <QRCodeSVG 
+                      value={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.companyAddress.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim())}`} 
+                      size={128} 
+                      bgColor="#ffffff"
+                      fgColor="#000000"
+                      level="L"
+                      includeMargin={true}
+                    />
+                  </a>
                 </div>
               )}
 
