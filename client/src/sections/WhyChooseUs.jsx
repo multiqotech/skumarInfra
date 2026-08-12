@@ -8,8 +8,10 @@ import { whyChooseUsData, statsData } from '@/data/siteData';
 
 export default function WhyChooseUs() {
   const [stats, setStats] = useState(statsData);
+  const [imageUrl, setImageUrl] = useState("https://res.cloudinary.com/dkhyb43ae/image/upload/v1786539963/node_uploads/lui9b4gn2jkvdtkqemp5.png");
 
   useEffect(() => {
+    // Fetch stats
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/settings/stats`)
       .then((res) => {
         if (!res.ok) throw new Error('Not found');
@@ -32,6 +34,21 @@ export default function WhyChooseUs() {
       })
       .catch((err) => {
         console.log('Using default static stats for WhyChooseUs');
+      });
+
+    // Fetch image
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/settings/why_choose_us_image`)
+      .then((res) => {
+        if (!res.ok) throw new Error('Not found');
+        return res.json();
+      })
+      .then((data) => {
+        if (data && data.value) {
+          setImageUrl(data.value);
+        }
+      })
+      .catch((err) => {
+        console.log('Using default static image for WhyChooseUs');
       });
   }, []);
 
@@ -82,7 +99,7 @@ export default function WhyChooseUs() {
         <div className="relative min-h-[400px] lg:min-h-full p-4 sm:p-6 lg:p-10 flex items-center">
           <div className="relative w-full h-full min-h-[350px] lg:min-h-[500px] rounded-3xl overflow-hidden shadow-2xl border border-[#183964]/5">
             <Image
-              src="https://res.cloudinary.com/dkhyb43ae/image/upload/v1786539963/node_uploads/lui9b4gn2jkvdtkqemp5.png"
+              src={imageUrl}
               alt="Engineer working on site"
               fill
               className="object-cover"
