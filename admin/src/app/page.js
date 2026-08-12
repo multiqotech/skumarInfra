@@ -22,6 +22,7 @@ import WeAreManager from "../components/WeAreManager";
 import NewsroomManager from "../components/NewsroomManager";
 import ContactInfoManager from "../components/ContactInfoManager";
 import SubsidiaryManager from "../components/SubsidiaryManager";
+import HeroImageManager from "../components/HeroImageManager";
 import CareerDashboard from "../components/career/CareerDashboard";
 import JobManager from "../components/career/JobManager";
 import ApplicationManager from "../components/career/ApplicationManager";
@@ -132,6 +133,7 @@ export default function Dashboard() {
 
           <div className="text-xs font-semibold text-[#6b7280] uppercase tracking-wider mt-8 mb-3 px-3">Content</div>
           {[
+            { id: "hero-images", label: "Hero Images", icon: LayoutDashboard },
             { id: "categories", label: "Categories", icon: LayoutDashboard },
             { id: "projects", label: "Projects", icon: Construction },
             { id: "we-are", label: "Pages", icon: LayoutDashboard },
@@ -271,6 +273,7 @@ export default function Dashboard() {
           { activeTab === "newsroom" && <NewsroomManager showFeedback={showFeedback} /> }
           { activeTab === "contact-info" && <ContactInfoManager showFeedback={showFeedback} /> }
           { activeTab === "plant-machinery" && <PlantMachineryManager showFeedback={showFeedback} /> }
+          { activeTab === "hero-images" && <HeroImageManager showFeedback={showFeedback} /> }
           
           { activeTab === "career-dashboard" && <CareerDashboard showFeedback={showFeedback} /> }
           { activeTab === "career-jobs" && <JobManager showFeedback={showFeedback} /> }

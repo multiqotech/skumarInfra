@@ -8,21 +8,35 @@ import Image from 'next/image';
 import { HiArrowRight, HiPhone } from 'react-icons/hi';
 import { heroData, phoneNumber } from '@/data/siteData';
 
-const backgroundImages = [
-  // "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786531482/node_uploads/xrya3s8rnewo7ubflpsk.png",
+const defaultBackgroundImages = [
   "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532230/node_uploads/siyu49wjfv7p1mtdxrvk.png",
   "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786531809/node_uploads/ifvx29fe0uqjrfv77ktj.png",
   "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786531707/node_uploads/ogw50wc8801errwlerdq.png",
   "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786472391/node_uploads/wkdlkp7ixymnbminknng.png",
-  // "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786472457/node_uploads/bridgome9xmujulkpeep.png",
   "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786531966/node_uploads/o6ketus8dinprrpnqpge.png",
   "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786472529/node_uploads/cfv3wdtxjmgeueu8ydft.png"
 ];
 
 export default function HeroSection() {
+  const [backgroundImages, setBackgroundImages] = useState(defaultBackgroundImages);
   const [currentBg, setCurrentBg] = useState(0);
   const sectionRef = useRef(null);
   const bgRef = useRef(null);
+
+  useEffect(() => {
+    const fetchHeroImages = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/hero-images`);
+        const data = await res.json();
+        if (data && data.length > 0) {
+          setBackgroundImages(data.map(img => img.image));
+        }
+      } catch (error) {
+        console.error("Failed to fetch hero images:", error);
+      }
+    };
+    fetchHeroImages();
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -30,7 +44,7 @@ export default function HeroSection() {
     }, 5000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [backgroundImages]);
 
   return (
     <section ref={sectionRef} id="home" className="relative min-h-[90vh] lg:min-h-screen flex items-center overflow-hidden bg-white mt-[70px] lg:mt-0">

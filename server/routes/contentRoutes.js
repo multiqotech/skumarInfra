@@ -4,6 +4,11 @@ const { protect } = require('../middlewares/authMiddleware');
 const upload = require('../middlewares/uploadMiddleware');
 const { isCloudinaryConfigured } = require('../config/cloudinary');
 const {
+  getHeroImages,
+  addHeroImage,
+  deleteHeroImage
+} = require('../controllers/heroImageController');
+const {
   getFAQs,
   createFAQ,
   updateFAQ,
@@ -109,6 +114,13 @@ router.route('/testimonials/:id')
 router.route('/settings/:key')
   .get(getSettingByKey)
   .post(protect, updateSetting);
+
+// Hero Images Routes
+router.route('/hero-images')
+  .get(getHeroImages)
+  .post(protect, addHeroImage);
+router.route('/hero-images/:id')
+  .delete(protect, deleteHeroImage);
 
 // Projects Routes
 router.route('/projects')
