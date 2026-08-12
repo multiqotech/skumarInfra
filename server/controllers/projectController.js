@@ -42,6 +42,16 @@ const getProjectsByType = async (req, res) => {
   }
 };
 
+// Get featured projects (Ongoing and Awarded)
+const getFeaturedProjects = async (req, res) => {
+  try {
+    const projects = await Project.find({ projectType: { $in: ['Ongoing', 'Awarded'] } }).sort({ createdAt: -1 });
+    res.json(projects);
+  } catch (error) {
+    res.status(500).json({ message: 'Server Error fetching featured projects', error: error.message });
+  }
+};
+
 // Get a single project by ID
 const getProjectById = async (req, res) => {
   try {
@@ -84,7 +94,7 @@ const createProject = async (req, res) => {
 };
 
 // Update a project
-const updateProject = async (req, res) => {
+const updateProject = async (req, res) => { console.log('updateProject', req.params.id, req.body);
   try {
     const { title, category, projectType, image, description, timeToBuild, engineers, location } = req.body;
     
@@ -111,7 +121,7 @@ const updateProject = async (req, res) => {
 };
 
 // Delete a project
-const deleteProject = async (req, res) => {
+const deleteProject = async (req, res) => { console.log('deleteProject', req.params.id);
   try {
     const project = await Project.findById(req.params.id);
     
@@ -130,6 +140,7 @@ module.exports = {
   getProjectsByCategory,
   getAllProjects,
   getProjectsByType,
+  getFeaturedProjects,
   getProjectById,
   createProject,
   updateProject,

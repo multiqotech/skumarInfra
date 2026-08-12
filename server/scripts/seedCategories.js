@@ -50,7 +50,7 @@ const seed = async () => {
             await Project.create({
               title: proj.title,
               category: slug,
-              projectType: proj.projectType || 'Normal',
+              projectType: (proj.projectType === 'Iconic' ? 'Awarded' : 'Ongoing'),
               image: proj.image,
             });
             console.log(`Created project: ${proj.title} under ${slug}`);

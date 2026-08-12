@@ -82,7 +82,7 @@ export default function WhyChooseUs() {
         <div className="relative min-h-[400px] lg:min-h-full p-4 sm:p-6 lg:p-10 flex items-center">
           <div className="relative w-full h-full min-h-[350px] lg:min-h-[500px] rounded-3xl overflow-hidden shadow-2xl border border-[#183964]/5">
             <Image
-              src="https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786473124/node_uploads/zs78uchfw0pjomegvwdz.png"
+              src="https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532185/node_uploads/iqpncvomkwwxpeqorlib.png"
               alt="Engineer working on site"
               fill
               className="object-cover"

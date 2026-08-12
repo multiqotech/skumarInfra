@@ -9,10 +9,13 @@ import { HiArrowRight, HiPhone } from 'react-icons/hi';
 import { heroData, phoneNumber } from '@/data/siteData';
 
 const backgroundImages = [
-  "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786471923/node_uploads/yclwxbo06jphwfcdj2lw.png",
-  "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786472283/node_uploads/lcgvebpohavkcthdqyao.png",
+  // "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786531482/node_uploads/xrya3s8rnewo7ubflpsk.png",
+  "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532230/node_uploads/siyu49wjfv7p1mtdxrvk.png",
+  "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786531809/node_uploads/ifvx29fe0uqjrfv77ktj.png",
+  "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786531707/node_uploads/ogw50wc8801errwlerdq.png",
   "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786472391/node_uploads/wkdlkp7ixymnbminknng.png",
-  "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786472457/node_uploads/bridgome9xmujulkpeep.png",
+  // "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786472457/node_uploads/bridgome9xmujulkpeep.png",
+  "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786531966/node_uploads/o6ketus8dinprrpnqpge.png",
   "https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786472529/node_uploads/cfv3wdtxjmgeueu8ydft.png"
 ];
 
@@ -104,7 +107,7 @@ export default function HeroSection() {
                 {heroData.cta}
                 <HiArrowRight />
               </a>
-              <a href="#projects" className="btn-outline border-white text-white hover:bg-white hover:text-[#183964]">
+              <a href="#projects" className="btn-outline !border-white !text-white hover:!bg-white hover:!text-[#183964]">
                 VIEW PROJECTS
               </a>
             </motion.div>

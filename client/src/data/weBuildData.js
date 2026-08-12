@@ -75,7 +75,7 @@ export const weBuildData = {
         title: 'Regional Bridges Development',
         projectType: 'Landmark',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -119,7 +119,7 @@ export const weBuildData = {
         title: 'Regional Defence Installations Development',
         projectType: 'Iconic',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -163,7 +163,7 @@ export const weBuildData = {
         title: 'Regional Digital Energy Solutions Development',
         projectType: 'Landmark',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -207,7 +207,7 @@ export const weBuildData = {
         title: 'Regional Factories Development',
         projectType: 'Iconic',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -251,7 +251,7 @@ export const weBuildData = {
         title: 'Regional Minerals Metals Development',
         projectType: 'Landmark',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -295,7 +295,7 @@ export const weBuildData = {
         title: 'Regional Hospitals Development',
         projectType: 'Iconic',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -339,7 +339,7 @@ export const weBuildData = {
         title: 'Regional Housing Development',
         projectType: 'Landmark',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -383,7 +383,7 @@ export const weBuildData = {
         title: 'Regional Hydel Projects Development',
         projectType: 'Iconic',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -427,7 +427,7 @@ export const weBuildData = {
         title: 'Regional Metros Development',
         projectType: 'Landmark',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -471,7 +471,7 @@ export const weBuildData = {
         title: 'Regional Nuclear Plants Development',
         projectType: 'Iconic',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -515,7 +515,7 @@ export const weBuildData = {
         title: 'Regional Office Spaces Development',
         projectType: 'Landmark',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -559,7 +559,7 @@ export const weBuildData = {
         title: 'Regional Ports Development',
         projectType: 'Iconic',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -603,7 +603,7 @@ export const weBuildData = {
         title: 'Regional Power Transmission Distribution Infrastructure Development',
         projectType: 'Landmark',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -647,7 +647,7 @@ export const weBuildData = {
         title: 'Regional Public Spaces Development',
         projectType: 'Iconic',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -691,7 +691,7 @@ export const weBuildData = {
         title: 'Regional Railways Development',
         projectType: 'Landmark',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -735,7 +735,7 @@ export const weBuildData = {
         title: 'Regional Renewables Development',
         projectType: 'Iconic',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -779,7 +779,7 @@ export const weBuildData = {
         title: 'Regional Smart World Solutions Development',
         projectType: 'Landmark',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -823,7 +823,7 @@ export const weBuildData = {
         title: 'Regional Transportation Infrastructure Development',
         projectType: 'Iconic',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -867,7 +867,7 @@ export const weBuildData = {
         title: 'Regional Underground Structures Development',
         projectType: 'Landmark',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -911,7 +911,7 @@ export const weBuildData = {
         title: 'Regional Unique Structures Development',
         projectType: 'Iconic',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {
@@ -955,7 +955,7 @@ export const weBuildData = {
         title: 'Regional Water Infrastructure Development',
         projectType: 'Landmark',
         category: 'fallback-category',
-        image: 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=800&h=600&fit=crop',
+        image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786532446/node_uploads/ojyg6ektprql37bvje8b.png',
         className: 'col-span-1 md:col-span-1 md:row-span-1',
       },
       {

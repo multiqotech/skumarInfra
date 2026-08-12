@@ -175,7 +175,7 @@ export default function ProjectManager({ showFeedback }) {
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Are you sure you want to delete this project?")) return;
+    if (!window.confirm("Are you sure you want to delete this project?")) return;
     const config = getAuthHeader();
     if (!config) return;
 
@@ -390,10 +390,10 @@ export default function ProjectManager({ showFeedback }) {
                       )}
                     </h4>
                     <div className="flex gap-2">
-                      <button onClick={() => handleEdit(project)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
+                      <button type="button" onClick={() => handleEdit(project)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
                         <Edit2 className="h-4 w-4" />
                       </button>
-                      <button onClick={() => handleDelete(project._id)} className="p-2 text-[#6b7280] hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
+                      <button type="button" onClick={() => handleDelete(project._id)} className="p-2 text-[#6b7280] hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
                         <Trash2 className="h-4 w-4" />
                       </button>
                     </div>

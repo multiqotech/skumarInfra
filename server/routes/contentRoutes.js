@@ -36,6 +36,7 @@ const {
   getProjectsByCategory,
   getAllProjects,
   getProjectsByType,
+  getFeaturedProjects,
   getProjectById,
   createProject,
   updateProject,
@@ -113,6 +114,8 @@ router.route('/settings/:key')
 router.route('/projects')
   .get(getAllProjects)
   .post(protect, createProject);
+router.route('/projects/featured')
+  .get(getFeaturedProjects);
 router.route('/projects/category/:category')
   .get(getProjectsByCategory);
 router.route('/projects/type/:type')
