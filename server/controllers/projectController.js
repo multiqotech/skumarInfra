@@ -69,7 +69,7 @@ const getProjectById = async (req, res) => {
 // Create a project
 const createProject = async (req, res) => {
   try {
-    const { title, category, projectType, image, description, timeToBuild, engineers, location } = req.body;
+    const { title, category, projectType, image, projectCost, timeToBuild, client, epcContractor, epcSubContractor, location } = req.body;
     
     if (!title || !category || !image) {
       return res.status(400).json({ message: 'Title, category, and image are required' });
@@ -80,9 +80,11 @@ const createProject = async (req, res) => {
       category,
       projectType: projectType || ['Ongoing'],
       image,
-      description,
+      projectCost,
       timeToBuild,
-      engineers,
+      client,
+      epcContractor,
+      epcSubContractor,
       location
     });
 
@@ -96,7 +98,7 @@ const createProject = async (req, res) => {
 // Update a project
 const updateProject = async (req, res) => { console.log('updateProject', req.params.id, req.body);
   try {
-    const { title, category, projectType, image, description, timeToBuild, engineers, location } = req.body;
+    const { title, category, projectType, image, projectCost, timeToBuild, client, epcContractor, epcSubContractor, location } = req.body;
     
     const project = await Project.findById(req.params.id);
     
@@ -105,9 +107,11 @@ const updateProject = async (req, res) => { console.log('updateProject', req.par
       project.category = category || project.category;
       project.projectType = projectType || project.projectType || ['Ongoing'];
       project.image = image || project.image;
-      project.description = description !== undefined ? description : project.description;
+      project.projectCost = projectCost !== undefined ? projectCost : project.projectCost;
       project.timeToBuild = timeToBuild !== undefined ? timeToBuild : project.timeToBuild;
-      project.engineers = engineers !== undefined ? engineers : project.engineers;
+      project.client = client !== undefined ? client : project.client;
+      project.epcContractor = epcContractor !== undefined ? epcContractor : project.epcContractor;
+      project.epcSubContractor = epcSubContractor !== undefined ? epcSubContractor : project.epcSubContractor;
       project.location = location !== undefined ? location : project.location;
       
       const updatedProject = await project.save();

@@ -19,7 +19,7 @@ const projectSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  description: {
+  projectCost: {
     type: String,
     default: '',
   },
@@ -27,7 +27,15 @@ const projectSchema = new mongoose.Schema({
     type: String,
     default: '',
   },
-  engineers: {
+  client: {
+    type: String,
+    default: '',
+  },
+  epcContractor: {
+    type: String,
+    default: '',
+  },
+  epcSubContractor: {
     type: String,
     default: '',
   },

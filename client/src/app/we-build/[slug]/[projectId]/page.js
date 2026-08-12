@@ -80,11 +80,11 @@ export default async function ProjectDetailsPage({ params }) {
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-8 h-[3px] bg-[#f36c21]"></div>
                     <h3 className="text-[#183964] text-sm font-bold tracking-[0.15em] uppercase" style={{ fontFamily: 'var(--font-heading)' }}>
-                      Project Description
+                      Project Cost
                     </h3>
                   </div>
                   <p className="text-[#4b5563] text-[16px] leading-relaxed text-justify font-medium">
-                    {project.description || 'Detailed description for this project will be available soon. This is a landmark project showcasing our engineering excellence and commitment to delivering world-class infrastructure.'}
+                    {project.projectCost || 'N/A'}
                   </p>
                 </div>
               </div>
@@ -138,16 +138,50 @@ export default async function ProjectDetailsPage({ params }) {
 
                   <div className="w-full h-px bg-white/10"></div>
 
-                  {/* Engineers */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                      <HiUserGroup className="h-5 w-5 text-[#f36c21]" />
+                  {/* Client */}
+                  {project.client && (
+                    <>
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                          <HiUserGroup className="h-5 w-5 text-[#f36c21]" />
+                        </div>
+                        <div>
+                          <p className="text-white/60 text-xs tracking-widest uppercase mb-1 font-bold">Client</p>
+                          <p className="text-white font-bold leading-snug">{project.client}</p>
+                        </div>
+                      </div>
+                      <div className="w-full h-px bg-white/10"></div>
+                    </>
+                  )}
+
+                  {/* EPC Contractor */}
+                  {project.epcContractor && (
+                    <>
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                          <HiUserGroup className="h-5 w-5 text-[#f36c21]" />
+                        </div>
+                        <div>
+                          <p className="text-white/60 text-xs tracking-widest uppercase mb-1 font-bold">EPC Contractor</p>
+                          <p className="text-white font-bold leading-snug">{project.epcContractor}</p>
+                        </div>
+                      </div>
+                      <div className="w-full h-px bg-white/10"></div>
+                    </>
+                  )}
+
+                  {/* EPC Sub-Contractor */}
+                  {project.epcSubContractor && (
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                        <HiUserGroup className="h-5 w-5 text-[#f36c21]" />
+                      </div>
+                      <div>
+                        <p className="text-white/60 text-xs tracking-widest uppercase mb-1 font-bold">EPC Sub-Contractor</p>
+                        <p className="text-white font-bold leading-snug">{project.epcSubContractor}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-white/60 text-xs tracking-widest uppercase mb-1 font-bold">Key Engineers</p>
-                      <p className="text-white font-bold leading-snug">{project.engineers || 'John Doe, Jane Smith'}</p>
-                    </div>
-                  </div>
+                  )}
 
                 </div>
 

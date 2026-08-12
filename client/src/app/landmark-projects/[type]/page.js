@@ -156,17 +156,31 @@ export default async function LandmarkProjectsPage({ params }) {
                         </div>
                       )}
                       
-                      {project.engineers && (
+                      {project.client && (
                         <div className="flex gap-4">
-                          <span className="font-semibold w-1/3 md:w-1/4 text-white">Engineers/Team:</span>
-                          <span className="w-2/3 md:w-3/4">{project.engineers}</span>
+                          <span className="font-semibold w-1/3 md:w-1/4 text-white">Client:</span>
+                          <span className="w-2/3 md:w-3/4">{project.client}</span>
                         </div>
                       )}
 
-                      {project.description && (
+                      {project.epcContractor && (
                         <div className="flex gap-4">
-                          <span className="font-semibold w-1/3 md:w-1/4 text-white">Description:</span>
-                          <span className="w-2/3 md:w-3/4 line-clamp-3">{project.description}</span>
+                          <span className="font-semibold w-1/3 md:w-1/4 text-white">EPC Contractor:</span>
+                          <span className="w-2/3 md:w-3/4">{project.epcContractor}</span>
+                        </div>
+                      )}
+
+                      {project.epcSubContractor && (
+                        <div className="flex gap-4">
+                          <span className="font-semibold w-1/3 md:w-1/4 text-white">EPC Sub-Contractor:</span>
+                          <span className="w-2/3 md:w-3/4">{project.epcSubContractor}</span>
+                        </div>
+                      )}
+
+                      {project.projectCost && (
+                        <div className="flex gap-4">
+                          <span className="font-semibold w-1/3 md:w-1/4 text-white">Project Cost:</span>
+                          <span className="w-2/3 md:w-3/4 line-clamp-3">{project.projectCost}</span>
                         </div>
                       )}
                     </div>

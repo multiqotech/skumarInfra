@@ -16,9 +16,11 @@ export default function ProjectManager({ showFeedback }) {
     id: "",
     title: "",
     category: "",
-    description: "",
+    projectCost: "",
     timeToBuild: "",
-    engineers: "",
+    client: "",
+    epcContractor: "",
+    epcSubContractor: "",
     location: "",
     image: "",
     projectType: ["Ongoing"]
@@ -129,9 +131,11 @@ export default function ProjectManager({ showFeedback }) {
       const payload = {
         title: form.title,
         category: form.category || (categories.length > 0 ? categories[0].slug : ""),
-        description: form.description,
+        projectCost: form.projectCost,
         timeToBuild: form.timeToBuild,
-        engineers: form.engineers,
+        client: form.client,
+        epcContractor: form.epcContractor,
+        epcSubContractor: form.epcSubContractor,
         location: form.location,
         projectType: form.projectType,
         image: finalImageUrl
@@ -146,7 +150,7 @@ export default function ProjectManager({ showFeedback }) {
       }
 
       handleRemoveFile();
-      setForm({ id: "", title: "", category: categories.length > 0 ? categories[0].slug : "", description: "", timeToBuild: "", engineers: "", location: "", image: "", projectType: ["Ongoing"] });
+      setForm({ id: "", title: "", category: categories.length > 0 ? categories[0].slug : "", projectCost: "", timeToBuild: "", client: "", epcContractor: "", epcSubContractor: "", location: "", image: "", projectType: ["Ongoing"] });
       setIsEditing(false);
       fetchProjects();
     } catch (err) {
@@ -161,9 +165,11 @@ export default function ProjectManager({ showFeedback }) {
       id: project._id,
       title: project.title,
       category: project.category || (categories.length > 0 ? categories[0].slug : ""),
-      description: project.description || "",
+      projectCost: project.projectCost || "",
       timeToBuild: project.timeToBuild || "",
-      engineers: project.engineers || "",
+      client: project.client || "",
+      epcContractor: project.epcContractor || "",
+      epcSubContractor: project.epcSubContractor || "",
       location: project.location || "",
       image: project.image,
       projectType: Array.isArray(project.projectType) ? project.projectType : (project.projectType ? [project.projectType] : ["Ongoing"])
@@ -190,7 +196,7 @@ export default function ProjectManager({ showFeedback }) {
 
   const cancelEdit = () => {
     setIsEditing(false);
-    setForm({ id: "", title: "", category: categories.length > 0 ? categories[0].slug : "", description: "", timeToBuild: "", engineers: "", location: "", image: "", projectType: ["Ongoing"] });
+    setForm({ id: "", title: "", category: categories.length > 0 ? categories[0].slug : "", projectCost: "", timeToBuild: "", client: "", epcContractor: "", epcSubContractor: "", location: "", image: "", projectType: ["Ongoing"] });
     handleRemoveFile();
   };
 
@@ -296,25 +302,45 @@ export default function ProjectManager({ showFeedback }) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Engineers Involved</label>
+              <label className="block text-sm font-medium mb-1">Client</label>
               <input
                 type="text"
-                value={form.engineers}
-                onChange={(e) => setForm({ ...form, engineers: e.target.value })}
+                value={form.client}
+                onChange={(e) => setForm({ ...form, client: e.target.value })}
                 className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2.5 focus:outline-none focus:border-[var(--color-yellow)] transition-colors"
-                placeholder="e.g. John Doe, Jane Smith"
+                placeholder="e.g. MP PWD Dhar"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1">EPC Contractor</label>
+              <input
+                type="text"
+                value={form.epcContractor}
+                onChange={(e) => setForm({ ...form, epcContractor: e.target.value })}
+                className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2.5 focus:outline-none focus:border-[var(--color-yellow)] transition-colors"
+                placeholder="e.g. ABC Corp"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1">EPC Sub-Contractor</label>
+              <input
+                type="text"
+                value={form.epcSubContractor}
+                onChange={(e) => setForm({ ...form, epcSubContractor: e.target.value })}
+                className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2.5 focus:outline-none focus:border-[var(--color-yellow)] transition-colors"
+                placeholder="e.g. XYZ Ltd"
               />
             </div>
           </div>
           
           <div>
-            <label className="block text-sm font-medium mb-1">Project Description</label>
-            <textarea
-              rows="3"
-              value={form.description}
-              onChange={(e) => setForm({ ...form, description: e.target.value })}
-              className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2.5 focus:outline-none focus:border-[var(--color-yellow)] transition-colors resize-none"
-              placeholder="Detailed description of the project..."
+            <label className="block text-sm font-medium mb-1">Project Cost</label>
+            <input
+              type="text"
+              value={form.projectCost}
+              onChange={(e) => setForm({ ...form, projectCost: e.target.value })}
+              className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2.5 focus:outline-none focus:border-[var(--color-yellow)] transition-colors"
+              placeholder="e.g. Rs 14.56 Cr"
             />
           </div>
 
@@ -412,8 +438,10 @@ export default function ProjectManager({ showFeedback }) {
                   <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm mt-4">
                     <div><span className="text-[#6b7280]">Location:</span> {project.location || '-'}</div>
                     <div><span className="text-[#6b7280]">Time:</span> {project.timeToBuild || '-'}</div>
-                    <div className="col-span-2 truncate"><span className="text-[#6b7280]">Engineers:</span> {project.engineers || '-'}</div>
-                    <div className="col-span-2 text-[#6b7280] line-clamp-2 mt-2">{project.description}</div>
+                    <div className="col-span-2 truncate"><span className="text-[#6b7280]">Client:</span> {project.client || '-'}</div>
+                    <div className="col-span-2 truncate"><span className="text-[#6b7280]">EPC Contractor:</span> {project.epcContractor || '-'}</div>
+                    <div className="col-span-2 truncate"><span className="text-[#6b7280]">EPC Sub-Contractor:</span> {project.epcSubContractor || '-'}</div>
+                    <div className="col-span-2 text-[#6b7280] line-clamp-2 mt-2">Cost: {project.projectCost || '-'}</div>
                   </div>
                 </div>
               </div>
