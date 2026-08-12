@@ -21,7 +21,7 @@ export default function ProjectManager({ showFeedback }) {
     engineers: "",
     location: "",
     image: "",
-    projectType: "Ongoing"
+    projectType: ["Ongoing"]
   });
 
   const [projectFile, setProjectFile] = useState(null);
@@ -146,7 +146,7 @@ export default function ProjectManager({ showFeedback }) {
       }
 
       handleRemoveFile();
-      setForm({ id: "", title: "", category: categories.length > 0 ? categories[0].slug : "", description: "", timeToBuild: "", engineers: "", location: "", image: "", projectType: "Ongoing" });
+      setForm({ id: "", title: "", category: categories.length > 0 ? categories[0].slug : "", description: "", timeToBuild: "", engineers: "", location: "", image: "", projectType: ["Ongoing"] });
       setIsEditing(false);
       fetchProjects();
     } catch (err) {
@@ -166,7 +166,7 @@ export default function ProjectManager({ showFeedback }) {
       engineers: project.engineers || "",
       location: project.location || "",
       image: project.image,
-      projectType: project.projectType || "Ongoing"
+      projectType: Array.isArray(project.projectType) ? project.projectType : (project.projectType ? [project.projectType] : ["Ongoing"])
     });
     setProjectPreview(project.image);
     setProjectFile(null);
@@ -190,7 +190,7 @@ export default function ProjectManager({ showFeedback }) {
 
   const cancelEdit = () => {
     setIsEditing(false);
-    setForm({ id: "", title: "", category: categories.length > 0 ? categories[0].slug : "", description: "", timeToBuild: "", engineers: "", location: "", image: "", projectType: "Ongoing" });
+    setForm({ id: "", title: "", category: categories.length > 0 ? categories[0].slug : "", description: "", timeToBuild: "", engineers: "", location: "", image: "", projectType: ["Ongoing"] });
     handleRemoveFile();
   };
 
@@ -264,16 +264,26 @@ export default function ProjectManager({ showFeedback }) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Project Type (Optional)</label>
-              <select
-                value={form.projectType}
-                onChange={(e) => setForm({ ...form, projectType: e.target.value })}
-                className="w-full bg-[var(--color-dark)] border border-[var(--color-dark-border)] rounded-lg px-4 py-2.5 focus:outline-none focus:border-[var(--color-yellow)] transition-colors appearance-none"
-              >
-                <option value="Ongoing">Ongoing</option>
-                <option value="Completed">Completed</option>
-                <option value="Awarded">Awarded</option>
-              </select>
+              <label className="block text-sm font-medium mb-1">Project Type (Multi-select)</label>
+              <div className="flex gap-4 items-center h-[42px]">
+                {["Ongoing", "Completed", "Awarded"].map((type) => (
+                  <label key={type} className="flex items-center gap-2 text-sm cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={form.projectType.includes(type)}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          setForm({ ...form, projectType: [...form.projectType, type] });
+                        } else {
+                          setForm({ ...form, projectType: form.projectType.filter((t) => t !== type) });
+                        }
+                      }}
+                      className="accent-[var(--color-yellow)] cursor-pointer"
+                    />
+                    {type}
+                  </label>
+                ))}
+              </div>
             </div>
             <div>
               <label className="block text-sm font-medium mb-1">Time to Build</label>
@@ -381,13 +391,13 @@ export default function ProjectManager({ showFeedback }) {
                 
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between items-start mb-2">
-                    <h4 className="text-lg font-bold text-[#183964] flex items-center gap-2">
+                    <h4 className="text-lg font-bold text-[#183964] flex items-center gap-2 flex-wrap">
                       {project.title}
-                      {project.projectType && (
-                        <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-[var(--color-yellow)]/20 text-[var(--color-yellow)] rounded">
-                          {project.projectType}
+                      {project.projectType && Array.isArray(project.projectType) && project.projectType.map(type => (
+                        <span key={type} className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-[var(--color-yellow)]/20 text-[var(--color-yellow)] rounded">
+                          {type}
                         </span>
-                      )}
+                      ))}
                     </h4>
                     <div className="flex gap-2">
                       <button type="button" onClick={() => handleEdit(project)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">

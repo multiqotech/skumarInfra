@@ -15,7 +15,7 @@ export default function FeaturedProjects() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects/featured`);
         if (res.ok) {
           const data = await res.json();
           setFeaturedProjects(data);

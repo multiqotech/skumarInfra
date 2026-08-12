@@ -78,7 +78,7 @@ const createProject = async (req, res) => {
     const project = new Project({
       title,
       category,
-      projectType: projectType || 'Ongoing',
+      projectType: projectType || ['Ongoing'],
       image,
       description,
       timeToBuild,
@@ -103,7 +103,7 @@ const updateProject = async (req, res) => { console.log('updateProject', req.par
     if (project) {
       project.title = title || project.title;
       project.category = category || project.category;
-      project.projectType = projectType || project.projectType;
+      project.projectType = projectType || project.projectType || ['Ongoing'];
       project.image = image || project.image;
       project.description = description !== undefined ? description : project.description;
       project.timeToBuild = timeToBuild !== undefined ? timeToBuild : project.timeToBuild;
