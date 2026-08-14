@@ -63,15 +63,15 @@ export default function TeamSection() {
         {/* Team Cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {team.map((member, index) => (
-            <AnimateOnScroll key={index} delay={index * 0.1}>
+            <AnimateOnScroll key={index} delay={index * 0.1} className="h-full">
               <div className="group relative flex flex-col h-full overflow-hidden bg-white border border-[#183964]/5 rounded-2xl hover:border-[#f36c21]/30 hover:shadow-[0_15px_40px_rgba(24,57,100,0.08)] transition-all duration-500">
                 {/* Image */}
-                <div className="relative h-64 overflow-hidden shrink-0">
+                <div className="relative h-64 overflow-hidden shrink-0 bg-[#f7f9fc]">
                   <Image
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                    className="object-contain object-center transition-transform duration-700 group-hover:scale-105 p-2"
                     unoptimized={true}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#183964]/80 via-transparent to-transparent opacity-50" />
@@ -150,12 +150,12 @@ export default function TeamSection() {
                 <FaTimes size={14} />
               </button>
               
-              <div className="relative h-64 md:h-full md:w-[40%] shrink-0">
+              <div className="relative h-64 md:h-full md:w-[40%] shrink-0 bg-[#f7f9fc]">
                 <Image
                   src={selectedMember.image}
                   alt={selectedMember.name}
                   fill
-                  className="object-cover"
+                  className="object-contain p-4"
                   unoptimized={true}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#183964]/80 via-transparent to-transparent md:hidden" />
