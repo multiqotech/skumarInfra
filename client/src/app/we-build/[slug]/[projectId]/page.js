@@ -12,6 +12,7 @@ export default async function ProjectDetailsPage({ params }) {
   const { slug, projectId } = resolvedParams;
 
   let project = null;
+  let categoryData = null;
 
   // Try to fetch from DB first
   try {
@@ -23,6 +24,18 @@ export default async function ProjectDetailsPage({ params }) {
     }
   } catch (err) {
     console.log(`Failed to fetch project ${projectId} from DB.`);
+  }
+
+  // Fetch Category
+  try {
+    const resCat = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories/slug/${slug}`, {
+      cache: 'no-store'
+    });
+    if (resCat.ok) {
+      categoryData = await resCat.json();
+    }
+  } catch (err) {
+    console.log(`Failed to fetch category ${slug} from DB.`);
   }
 
   // Fallback to static dummy data if not found in DB
@@ -54,7 +67,7 @@ export default async function ProjectDetailsPage({ params }) {
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             <HiArrowLeft className="h-5 w-5" />
-            Back to {slug.replace(/-/g, ' ')}
+            Back to {categoryData ? categoryData.name : slug.replace(/-/g, ' ')}
           </Link>
 
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
@@ -106,7 +119,7 @@ export default async function ProjectDetailsPage({ params }) {
                     </div>
                     <div>
                       <p className="text-white/60 text-xs tracking-widest uppercase mb-1 font-bold">Category</p>
-                      <p className="text-white font-bold capitalize">{slug.replace(/-/g, ' ')}</p>
+                      <p className="text-white font-bold capitalize">{categoryData ? categoryData.name : slug.replace(/-/g, ' ')}</p>
                     </div>
                   </div>
 
