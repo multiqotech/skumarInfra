@@ -6,7 +6,11 @@ const {
   addSubsidiary,
   updateSubsidiary,
   deleteSubsidiary,
+  reorderSubsidiaries,
 } = require('../controllers/subsidiaryController');
+
+router.route('/reorder')
+  .put(protect, reorderSubsidiaries);
 
 router.route('/')
   .get(getSubsidiaries)

@@ -193,7 +193,7 @@ export default function Dashboard() {
             { id: "team", label: "Team", icon: Users },
             { id: "subsidiary", label: "Our Subsidiary", icon: Users },
             { id: "testimonials", label: "Testimonials", icon: MessageSquare },
-            { id: "video", label: "Video Showcase", icon: Video },
+            // { id: "video", label: "Video Showcase", icon: Video },
             { id: "stats", label: "Company Stats", icon: Trophy },
           ].map((item) => {
             const Icon = item.icon;
@@ -267,7 +267,7 @@ export default function Dashboard() {
           {activeTab === "team" && <TeamManager showFeedback={showFeedback} />}
           {activeTab === "subsidiary" && <SubsidiaryManager showFeedback={showFeedback} />}
           {activeTab === "testimonials" && <TestimonialManager showFeedback={showFeedback} />}
-          { activeTab === "video" && <VideoManager showFeedback={showFeedback} /> }
+          {/* { activeTab === "video" && <VideoManager showFeedback={showFeedback} /> } */}
           { activeTab === "stats" && <StatsManager showFeedback={showFeedback} /> }
           { activeTab === "categories" && <CategoryManager showFeedback={showFeedback} /> }
           { activeTab === "projects" && <ProjectManager showFeedback={showFeedback} /> }

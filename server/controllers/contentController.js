@@ -12,7 +12,7 @@ const { uploadToCloudinary } = require('../config/cloudinary');
 
 const getFAQs = async (req, res) => {
   try {
-    const faqs = await FAQ.find({});
+    const faqs = await FAQ.find({}).sort({ order: 1, createdAt: 1 });
     res.json(faqs);
   } catch (error) {
     res.status(500).json({ message: 'Server Error', error: error.message });
@@ -63,7 +63,7 @@ const deleteFAQ = async (req, res) => {
 
 const getTeamMembers = async (req, res) => {
   try {
-    const members = await TeamMember.find({});
+    const members = await TeamMember.find({}).sort({ order: 1, createdAt: 1 });
     res.json(members);
   } catch (error) {
     res.status(500).json({ message: 'Server Error', error: error.message });
@@ -120,7 +120,7 @@ const deleteTeamMember = async (req, res) => {
 
 const getBoardDirectors = async (req, res) => {
   try {
-    const directors = await BoardDirector.find({});
+    const directors = await BoardDirector.find({}).sort({ order: 1, createdAt: 1 });
     res.json(directors);
   } catch (error) {
     res.status(500).json({ message: 'Server Error', error: error.message });
@@ -261,7 +261,7 @@ const updateSetting = async (req, res) => {
 
 const getInvestors = async (req, res) => {
   try {
-    const investors = await Investor.find({});
+    const investors = await Investor.find({}).sort({ order: 1, createdAt: 1 });
     res.json(investors);
   } catch (error) {
     res.status(500).json({ message: 'Server Error', error: error.message });
@@ -315,7 +315,7 @@ const deleteInvestor = async (req, res) => {
 
 const getPlantMachinery = async (req, res) => {
   try {
-    const items = await PlantMachinery.find({});
+    const items = await PlantMachinery.find({}).sort({ order: 1, createdAt: 1 });
     res.json(items);
   } catch (error) {
     res.status(500).json({ message: 'Server Error', error: error.message });
@@ -403,6 +403,57 @@ const uploadImage = async (req, res) => {
   }
 };
 
+// ===== REORDER CONTROLLERS =====
+const reorderFAQs = async (req, res) => {
+  try {
+    const { items } = req.body;
+    if (!Array.isArray(items)) return res.status(400).json({ message: 'Items array is required' });
+    const updates = items.map(item => ({ updateOne: { filter: { _id: item.id }, update: { $set: { order: item.order } } } }));
+    await FAQ.bulkWrite(updates);
+    res.json({ message: 'FAQs reordered successfully' });
+  } catch (error) { res.status(500).json({ message: 'Server Error', error: error.message }); }
+};
+
+const reorderTeamMembers = async (req, res) => {
+  try {
+    const { items } = req.body;
+    if (!Array.isArray(items)) return res.status(400).json({ message: 'Items array is required' });
+    const updates = items.map(item => ({ updateOne: { filter: { _id: item.id }, update: { $set: { order: item.order } } } }));
+    await TeamMember.bulkWrite(updates);
+    res.json({ message: 'Team members reordered successfully' });
+  } catch (error) { res.status(500).json({ message: 'Server Error', error: error.message }); }
+};
+
+const reorderBoardDirectors = async (req, res) => {
+  try {
+    const { items } = req.body;
+    if (!Array.isArray(items)) return res.status(400).json({ message: 'Items array is required' });
+    const updates = items.map(item => ({ updateOne: { filter: { _id: item.id }, update: { $set: { order: item.order } } } }));
+    await BoardDirector.bulkWrite(updates);
+    res.json({ message: 'Board directors reordered successfully' });
+  } catch (error) { res.status(500).json({ message: 'Server Error', error: error.message }); }
+};
+
+const reorderInvestors = async (req, res) => {
+  try {
+    const { items } = req.body;
+    if (!Array.isArray(items)) return res.status(400).json({ message: 'Items array is required' });
+    const updates = items.map(item => ({ updateOne: { filter: { _id: item.id }, update: { $set: { order: item.order } } } }));
+    await Investor.bulkWrite(updates);
+    res.json({ message: 'Investors reordered successfully' });
+  } catch (error) { res.status(500).json({ message: 'Server Error', error: error.message }); }
+};
+
+const reorderPlantMachinery = async (req, res) => {
+  try {
+    const { items } = req.body;
+    if (!Array.isArray(items)) return res.status(400).json({ message: 'Items array is required' });
+    const updates = items.map(item => ({ updateOne: { filter: { _id: item.id }, update: { $set: { order: item.order } } } }));
+    await PlantMachinery.bulkWrite(updates);
+    res.json({ message: 'Plant/Machinery reordered successfully' });
+  } catch (error) { res.status(500).json({ message: 'Server Error', error: error.message }); }
+};
+
 module.exports = {
   getFAQs,
   createFAQ,
@@ -431,5 +482,10 @@ module.exports = {
   createPlantMachinery,
   updatePlantMachinery,
   deletePlantMachinery,
+  reorderFAQs,
+  reorderTeamMembers,
+  reorderBoardDirectors,
+  reorderInvestors,
+  reorderPlantMachinery
 };
 

@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Upload, Trash2, X, Plus } from "lucide-react";
+import { Upload, Trash2, X, Plus, GripVertical } from "lucide-react";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { getAuthHeader, uploadFileToServer } from "../utils/api";
 
 export default function HeroImageManager() {
@@ -91,6 +92,34 @@ export default function HeroImageManager() {
     }
   };
 
+  const handleDragEnd = async (result) => {
+    if (!result.destination) return;
+
+    const items = Array.from(heroImages);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    const updatedItems = items.map((item, index) => ({
+      ...item,
+      order: index
+    }));
+
+    setHeroImages(updatedItems);
+
+    try {
+      const config = getAuthHeader();
+      await axios.put(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/hero-images/reorder`,
+        { items: updatedItems.map(i => ({ id: i._id, order: i.order })) },
+        config
+      );
+    } catch (err) {
+      console.error(err);
+      showFeedback("Failed to save new order", "error");
+      fetchHeroImages(); // revert
+    }
+  };
+
   if (loading) {
     return <div className="p-8 text-center text-[var(--color-dark-text)]">Loading hero images...</div>;
   }
@@ -158,30 +187,55 @@ export default function HeroImageManager() {
       <div className="bg-[var(--color-dark-card)] rounded-xl border border-[var(--color-dark-border)] overflow-hidden p-6">
         <h3 className="text-xl font-bold text-white mb-6">Current Hero Images ({heroImages.length})</h3>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {heroImages.length === 0 ? (
-            <p className="text-[#6b7280] col-span-full text-center py-8">No hero images uploaded yet.</p>
-          ) : (
-            heroImages.map((img) => (
-              <div key={img._id} className="relative group rounded-xl overflow-hidden border border-[var(--color-dark-border)] aspect-video bg-[#1a2332]">
-                <img 
-                  src={img.image} 
-                  alt="Hero Preview" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <button
-                    type="button"
-                    onClick={() => handleDelete(img._id)}
-                    className="p-3 bg-red-500/20 text-red-500 hover:bg-red-500 hover:text-white rounded-full transition-colors"
-                  >
-                    <Trash2 className="w-5 h-5" />
-                  </button>
-                </div>
+        <DragDropContext onDragEnd={handleDragEnd}>
+          <Droppable droppableId="hero-images" direction="vertical">
+            {(provided) => (
+              <div 
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {heroImages.length === 0 ? (
+                  <p className="text-[#6b7280] col-span-full text-center py-8">No hero images uploaded yet.</p>
+                ) : (
+                  heroImages.map((img, index) => (
+                    <Draggable key={img._id} draggableId={img._id} index={index}>
+                      {(provided) => (
+                        <div 
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          className="relative group rounded-xl overflow-hidden border border-[var(--color-dark-border)] aspect-video bg-[#1a2332]"
+                        >
+                          <img 
+                            src={img.image} 
+                            alt="Hero Preview" 
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                            <div 
+                              {...provided.dragHandleProps}
+                              className="p-3 bg-white/20 text-white rounded-full hover:bg-white/40 transition-colors cursor-grab"
+                            >
+                              <GripVertical className="w-5 h-5" />
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => handleDelete(img._id)}
+                              className="p-3 bg-red-500/20 text-red-500 hover:bg-red-500 hover:text-white rounded-full transition-colors"
+                            >
+                              <Trash2 className="w-5 h-5" />
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </Draggable>
+                  ))
+                )}
+                {provided.placeholder}
               </div>
-            ))
-          )}
-        </div>
+            )}
+          </Droppable>
+        </DragDropContext>
       </div>
     </div>
   );

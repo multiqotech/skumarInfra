@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Plus, Edit2, Trash2, Loader2, Upload } from 'lucide-react';
+import { Plus, Edit2, Trash2, Loader2, Upload, GripVertical } from 'lucide-react';
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { getAuthHeader, uploadFileToServer } from '../utils/api';
 
 // CATEGORIES will be fetched dynamically from API
@@ -408,45 +409,89 @@ export default function ProjectManager({ showFeedback }) {
             <p className="text-sm mt-1 text-[#6b7280]">The website will show default dummy data for this category.</p>
           </div>
         ) : (
-          <div className="divide-y divide-[var(--color-dark-border)]">
-            {projects.map((project) => (
-              <div key={project._id} className="p-6 flex flex-col md:flex-row gap-6 hover:bg-[var(--color-dark)]/50 transition-colors">
-                <div className="w-full md:w-48 h-32 flex-shrink-0 relative rounded-lg overflow-hidden border border-[var(--color-dark-border)]">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+          <DragDropContext onDragEnd={async (result) => {
+            if (!result.destination) return;
+            const items = Array.from(projects);
+            const [reorderedItem] = items.splice(result.source.index, 1);
+            items.splice(result.destination.index, 0, reorderedItem);
+            
+            const updatedItems = items.map((item, index) => ({ ...item, order: index }));
+            setProjects(updatedItems);
+            
+            try {
+              const config = getAuthHeader();
+              await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/projects/reorder`, {
+                items: updatedItems.map(i => ({ id: i._id, order: i.order }))
+              }, config);
+            } catch (err) {
+              console.error(err);
+              showFeedback("Failed to save new order", "error");
+              fetchProjects();
+            }
+          }}>
+            <Droppable droppableId="projects" direction="vertical">
+              {(provided) => (
+                <div 
+                  className="divide-y divide-[var(--color-dark-border)]"
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {projects.map((project, index) => (
+                    <Draggable key={project._id} draggableId={project._id} index={index}>
+                      {(provided) => (
+                        <div 
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          className="p-6 flex flex-col md:flex-row gap-6 hover:bg-[var(--color-dark)]/50 transition-colors bg-[var(--color-dark-card)]"
+                        >
+                          <div 
+                            {...provided.dragHandleProps} 
+                            className="flex items-center justify-center text-[#6b7280] hover:text-[var(--color-yellow)] cursor-grab p-2"
+                          >
+                            <GripVertical className="h-5 w-5" />
+                          </div>
+                          <div className="w-full md:w-48 h-32 flex-shrink-0 relative rounded-lg overflow-hidden border border-[var(--color-dark-border)]">
+                            <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                          </div>
+                          
+                          <div className="flex-1 min-w-0">
+                            <div className="flex justify-between items-start mb-2">
+                              <h4 className="text-lg font-bold text-[#183964] flex items-center gap-2 flex-wrap">
+                                {project.title}
+                                {project.projectType && Array.isArray(project.projectType) && project.projectType.map(type => (
+                                  <span key={type} className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-[var(--color-yellow)]/20 text-[var(--color-yellow)] rounded">
+                                    {type}
+                                  </span>
+                                ))}
+                              </h4>
+                              <div className="flex gap-2">
+                                <button type="button" onClick={() => handleEdit(project)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
+                                  <Edit2 className="h-4 w-4" />
+                                </button>
+                                <button type="button" onClick={() => handleDelete(project._id)} className="p-2 text-[#6b7280] hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
+                                  <Trash2 className="h-4 w-4" />
+                                </button>
+                              </div>
+                            </div>
+                            
+                            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm mt-4">
+                              <div><span className="text-[#6b7280]">Location:</span> {project.location || '-'}</div>
+                              <div><span className="text-[#6b7280]">Time:</span> {project.timeToBuild || '-'}</div>
+                              <div className="col-span-2 truncate"><span className="text-[#6b7280]">Client:</span> {project.client || '-'}</div>
+                              <div className="col-span-2 truncate"><span className="text-[#6b7280]">EPC Contractor:</span> {project.epcContractor || '-'}</div>
+                              <div className="col-span-2 truncate"><span className="text-[#6b7280]">EPC Sub-Contractor:</span> {project.epcSubContractor || '-'}</div>
+                              <div className="col-span-2 text-[#6b7280] line-clamp-2 mt-2">Cost: {project.projectCost || '-'}</div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
                 </div>
-                
-                <div className="flex-1 min-w-0">
-                  <div className="flex justify-between items-start mb-2">
-                    <h4 className="text-lg font-bold text-[#183964] flex items-center gap-2 flex-wrap">
-                      {project.title}
-                      {project.projectType && Array.isArray(project.projectType) && project.projectType.map(type => (
-                        <span key={type} className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-[var(--color-yellow)]/20 text-[var(--color-yellow)] rounded">
-                          {type}
-                        </span>
-                      ))}
-                    </h4>
-                    <div className="flex gap-2">
-                      <button type="button" onClick={() => handleEdit(project)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
-                        <Edit2 className="h-4 w-4" />
-                      </button>
-                      <button type="button" onClick={() => handleDelete(project._id)} className="p-2 text-[#6b7280] hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
-                        <Trash2 className="h-4 w-4" />
-                      </button>
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm mt-4">
-                    <div><span className="text-[#6b7280]">Location:</span> {project.location || '-'}</div>
-                    <div><span className="text-[#6b7280]">Time:</span> {project.timeToBuild || '-'}</div>
-                    <div className="col-span-2 truncate"><span className="text-[#6b7280]">Client:</span> {project.client || '-'}</div>
-                    <div className="col-span-2 truncate"><span className="text-[#6b7280]">EPC Contractor:</span> {project.epcContractor || '-'}</div>
-                    <div className="col-span-2 truncate"><span className="text-[#6b7280]">EPC Sub-Contractor:</span> {project.epcSubContractor || '-'}</div>
-                    <div className="col-span-2 text-[#6b7280] line-clamp-2 mt-2">Cost: {project.projectCost || '-'}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+              )}
+            </Droppable>
+          </DragDropContext>
         )}
       </div>
     </div>

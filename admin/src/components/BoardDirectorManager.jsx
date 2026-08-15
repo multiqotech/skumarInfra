@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Plus, Edit2, Trash2, Loader2, Upload } from 'lucide-react';
+import { Plus, Edit2, Trash2, Loader2, Upload, GripVertical } from 'lucide-react';
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { getAuthHeader, uploadFileToServer } from '../utils/api';
 
 export default function BoardDirectorManager({ showFeedback }) {
@@ -246,30 +247,74 @@ export default function BoardDirectorManager({ showFeedback }) {
             No board directors added yet.
           </div>
         ) : (
-          <div className="divide-y divide-[var(--color-dark-border)]">
-            {directors.map((director) => (
-              <div key={director._id} className="p-6 flex items-center gap-6 hover:bg-[var(--color-dark)]/50 transition-colors">
-                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[var(--color-yellow)] flex-shrink-0">
-                  <img src={director.image} alt={director.name} className="w-full h-full object-cover" />
+          <DragDropContext onDragEnd={async (result) => {
+            if (!result.destination) return;
+            const updatedDirectors = Array.from(directors);
+            const [reorderedDirector] = updatedDirectors.splice(result.source.index, 1);
+            updatedDirectors.splice(result.destination.index, 0, reorderedDirector);
+            
+            const reorderedWithOrder = updatedDirectors.map((dir, index) => ({ ...dir, order: index }));
+            setDirectors(reorderedWithOrder);
+            
+            try {
+              const config = getAuthHeader();
+              await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/board-directors/reorder`, {
+                items: reorderedWithOrder.map(i => ({ id: i._id, order: i.order }))
+              }, config);
+            } catch (err) {
+              console.error(err);
+              showFeedback("Failed to save new order", "error");
+              fetchDirectors();
+            }
+          }}>
+            <Droppable droppableId="board-directors" direction="vertical">
+              {(provided) => (
+                <div 
+                  className="divide-y divide-[var(--color-dark-border)]"
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {directors.map((director, index) => (
+                    <Draggable key={director._id} draggableId={director._id} index={index}>
+                      {(provided) => (
+                        <div 
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          className="p-6 flex items-center gap-6 hover:bg-[var(--color-dark)]/50 transition-colors bg-[var(--color-dark-card)]"
+                        >
+                          <div 
+                            {...provided.dragHandleProps} 
+                            className="flex items-center justify-center text-[#6b7280] hover:text-[var(--color-yellow)] cursor-grab p-2"
+                          >
+                            <GripVertical className="h-5 w-5" />
+                          </div>
+                          <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[var(--color-yellow)] flex-shrink-0">
+                            <img src={director.image} alt={director.name} className="w-full h-full object-cover" />
+                          </div>
+                          <div className="flex-1">
+                            <h4 className="text-lg font-bold text-[#183964]">{director.name}</h4>
+                            <p className="text-[var(--color-yellow)] text-sm">{director.designation}</p>
+                            {director.description && (
+                              <p className="text-[#6b7280] text-sm mt-1 line-clamp-2">{director.description}</p>
+                            )}
+                          </div>
+                          <div className="flex gap-2">
+                            <button onClick={() => handleEdit(director)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
+                              <Edit2 className="h-4 w-4" />
+                            </button>
+                            <button onClick={() => handleDelete(director._id)} className="p-2 text-[#6b7280] hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
+                              <Trash2 className="h-4 w-4" />
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
                 </div>
-                <div className="flex-1">
-                  <h4 className="text-lg font-bold text-[#183964]">{director.name}</h4>
-                  <p className="text-[var(--color-yellow)] text-sm">{director.designation}</p>
-                  {director.description && (
-                    <p className="text-[#6b7280] text-sm mt-1 line-clamp-2">{director.description}</p>
-                  )}
-                </div>
-                <div className="flex gap-2">
-                  <button onClick={() => handleEdit(director)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
-                    <Edit2 className="h-4 w-4" />
-                  </button>
-                  <button onClick={() => handleDelete(director._id)} className="p-2 text-[#6b7280] hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
-                    <Trash2 className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+              )}
+            </Droppable>
+          </DragDropContext>
         )}
       </div>
     </div>

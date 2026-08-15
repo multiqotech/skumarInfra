@@ -93,7 +93,7 @@ export default function DashboardCards({ setActiveTab }) {
     { key: "team", label: "Team", desc: "Team members", icon: Users, tab: "team", color: "bg-fuchsia-500/10", iconColor: "text-fuchsia-500" },
     { key: "plantMachinery", label: "Plant & Machinery", desc: "Equipment & machinery", icon: Truck, tab: "plant-machinery", color: "bg-lime-500/10", iconColor: "text-lime-600" },
     { key: "testimonials", label: "Testimonials", desc: "Client reviews", icon: MessageSquare, tab: "testimonials", color: "bg-rose-500/10", iconColor: "text-rose-500" },
-    { key: "video", label: "Video Showcase", desc: "Homepage showcase video", icon: Video, tab: "video", color: "bg-red-500/10", iconColor: "text-red-500" },
+    // { key: "video", label: "Video Showcase", desc: "Homepage showcase video", icon: Video, tab: "video", color: "bg-red-500/10", iconColor: "text-red-500" },
     { key: "contactInfo", label: "Contact Info", desc: "Footer contact details", icon: Phone, tab: "contact-info", color: "bg-green-500/10", iconColor: "text-green-500" },
     { key: "stats", label: "Company Stats", desc: "Statistics banner values", icon: Trophy, tab: "stats", color: "bg-yellow-500/10", iconColor: "text-yellow-600" },
   ];

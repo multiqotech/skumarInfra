@@ -3,7 +3,7 @@ const Project = require('../models/Project');
 // Get all projects for a specific category
 const getProjectsByCategory = async (req, res) => {
   try {
-    const projects = await Project.find({ category: req.params.category }).sort({ createdAt: -1 });
+    const projects = await Project.find({ category: req.params.category }).sort({ order: 1, createdAt: -1 });
     res.json(projects);
   } catch (error) {
     res.status(500).json({ message: 'Server Error fetching projects', error: error.message });
@@ -13,7 +13,7 @@ const getProjectsByCategory = async (req, res) => {
 // Get all projects
 const getAllProjects = async (req, res) => {
   try {
-    const projects = await Project.find({}).sort({ createdAt: -1 });
+    const projects = await Project.find({}).sort({ order: 1, createdAt: -1 });
     res.json(projects);
   } catch (error) {
     res.status(500).json({ message: 'Server Error fetching all projects', error: error.message });
@@ -35,7 +35,7 @@ const getProjectsByType = async (req, res) => {
       return res.status(400).json({ message: 'Invalid project type specified.' });
     }
 
-    const projects = await Project.find({ projectType }).sort({ createdAt: -1 });
+    const projects = await Project.find({ projectType }).sort({ order: 1, createdAt: -1 });
     res.json(projects);
   } catch (error) {
     res.status(500).json({ message: 'Server Error fetching classified projects', error: error.message });
@@ -45,7 +45,7 @@ const getProjectsByType = async (req, res) => {
 // Get featured projects (Ongoing and Awarded)
 const getFeaturedProjects = async (req, res) => {
   try {
-    const projects = await Project.find({ projectType: { $in: ['Ongoing', 'Awarded'] } }).sort({ createdAt: -1 });
+    const projects = await Project.find({ projectType: { $in: ['Ongoing', 'Awarded'] } }).sort({ order: 1, createdAt: -1 });
     res.json(projects);
   } catch (error) {
     res.status(500).json({ message: 'Server Error fetching featured projects', error: error.message });
@@ -140,6 +140,28 @@ const deleteProject = async (req, res) => { console.log('deleteProject', req.par
   }
 };
 
+// Reorder projects
+const reorderProjects = async (req, res) => {
+  try {
+    const { items } = req.body;
+    if (!Array.isArray(items)) {
+      return res.status(400).json({ message: 'Items array is required' });
+    }
+    
+    const updates = items.map(item => ({
+      updateOne: {
+        filter: { _id: item.id },
+        update: { $set: { order: item.order } }
+      }
+    }));
+    
+    await Project.bulkWrite(updates);
+    res.json({ message: 'Projects reordered successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Server Error reordering projects', error: error.message });
+  }
+};
+
 module.exports = {
   getProjectsByCategory,
   getAllProjects,
@@ -148,5 +170,6 @@ module.exports = {
   getProjectById,
   createProject,
   updateProject,
-  deleteProject
+  deleteProject,
+  reorderProjects
 };

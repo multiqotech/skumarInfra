@@ -8,6 +8,10 @@ const faqSchema = new mongoose.Schema({
   answer: {
     type: String,
     required: true,
+  },
+  order: {
+    type: Number,
+    default: 0,
   }
 }, {
   timestamps: true

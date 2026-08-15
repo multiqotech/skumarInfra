@@ -6,7 +6,8 @@ const { isCloudinaryConfigured } = require('../config/cloudinary');
 const {
   getHeroImages,
   addHeroImage,
-  deleteHeroImage
+  deleteHeroImage,
+  reorderHeroImages
 } = require('../controllers/heroImageController');
 const {
   getFAQs,
@@ -36,6 +37,11 @@ const {
   createPlantMachinery,
   updatePlantMachinery,
   deletePlantMachinery,
+  reorderFAQs,
+  reorderTeamMembers,
+  reorderBoardDirectors,
+  reorderInvestors,
+  reorderPlantMachinery
 } = require('../controllers/contentController');
 const {
   getProjectsByCategory,
@@ -46,6 +52,7 @@ const {
   createProject,
   updateProject,
   deleteProject,
+  reorderProjects
 } = require('../controllers/projectController');
 const {
   getWeArePages,
@@ -63,6 +70,8 @@ router.route('/upload')
   .post(protect, upload.single('file'), uploadImage);
 
 // FAQs Routes
+router.route('/faqs/reorder')
+  .put(protect, reorderFAQs);
 router.route('/faqs')
   .get(getFAQs)
   .post(protect, createFAQ);
@@ -71,6 +80,8 @@ router.route('/faqs/:id')
   .delete(protect, deleteFAQ);
 
 // Team Members Routes
+router.route('/team/reorder')
+  .put(protect, reorderTeamMembers);
 router.route('/team')
   .get(getTeamMembers)
   .post(protect, createTeamMember);
@@ -79,6 +90,8 @@ router.route('/team/:id')
   .delete(protect, deleteTeamMember);
 
 // Board Directors Routes
+router.route('/board-directors/reorder')
+  .put(protect, reorderBoardDirectors);
 router.route('/board-directors')
   .get(getBoardDirectors)
   .post(protect, createBoardDirector);
@@ -87,6 +100,8 @@ router.route('/board-directors/:id')
   .delete(protect, deleteBoardDirector);
 
 // Investors Routes
+router.route('/investors/reorder')
+  .put(protect, reorderInvestors);
 router.route('/investors')
   .get(getInvestors)
   .post(protect, createInvestor);
@@ -95,6 +110,8 @@ router.route('/investors/:id')
   .delete(protect, deleteInvestor);
 
 // Plant and Machinery Routes
+router.route('/plant-machinery/reorder')
+  .put(protect, reorderPlantMachinery);
 router.route('/plant-machinery')
   .get(getPlantMachinery)
   .post(protect, createPlantMachinery);
@@ -116,6 +133,8 @@ router.route('/settings/:key')
   .post(protect, updateSetting);
 
 // Hero Images Routes
+router.route('/hero-images/reorder')
+  .put(protect, reorderHeroImages);
 router.route('/hero-images')
   .get(getHeroImages)
   .post(protect, addHeroImage);
@@ -123,6 +142,8 @@ router.route('/hero-images/:id')
   .delete(protect, deleteHeroImage);
 
 // Projects Routes
+router.route('/projects/reorder')
+  .put(protect, reorderProjects);
 router.route('/projects')
   .get(getAllProjects)
   .post(protect, createProject);

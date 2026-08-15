@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Plus, Edit2, Trash2, Loader2, Upload } from 'lucide-react';
-import { getAuthHeader, uploadFileToServer } from '../utils/api';
+import { Plus, Edit2, Trash2, Loader2, Upload, GripVertical } from "lucide-react";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import { getAuthHeader, uploadFileToServer } from "../utils/api";
 
 export default function PlantMachineryManager({ showFeedback }) {
   const [items, setItems] = useState([]);
@@ -280,34 +281,78 @@ export default function PlantMachineryManager({ showFeedback }) {
             No plants or machinery added yet.
           </div>
         ) : (
-          <div className="divide-y divide-[var(--color-dark-border)]">
-            {items.map((item) => (
-              <div key={item._id} className="p-6 flex items-center gap-6 hover:bg-[var(--color-dark)]/50 transition-colors">
-                <div className="w-24 h-24 rounded-lg overflow-hidden border border-[var(--color-dark-border)] flex-shrink-0">
-                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+          <DragDropContext onDragEnd={async (result) => {
+            if (!result.destination) return;
+            const updatedItems = Array.from(items);
+            const [reorderedItem] = updatedItems.splice(result.source.index, 1);
+            updatedItems.splice(result.destination.index, 0, reorderedItem);
+            
+            const reorderedWithOrder = updatedItems.map((item, index) => ({ ...item, order: index }));
+            setItems(reorderedWithOrder);
+            
+            try {
+              const config = getAuthHeader();
+              await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/plant-machinery/reorder`, {
+                items: reorderedWithOrder.map(i => ({ id: i._id, order: i.order }))
+              }, config);
+            } catch (err) {
+              console.error(err);
+              showFeedback("Failed to save new order", "error");
+              fetchItems();
+            }
+          }}>
+            <Droppable droppableId="plant-machinery" direction="vertical">
+              {(provided) => (
+                <div 
+                  className="divide-y divide-[var(--color-dark-border)]"
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {items.map((item, index) => (
+                    <Draggable key={item._id} draggableId={item._id} index={index}>
+                      {(provided) => (
+                        <div 
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          className="p-6 flex items-center gap-6 hover:bg-[var(--color-dark)]/50 transition-colors bg-[var(--color-dark-card)]"
+                        >
+                          <div 
+                            {...provided.dragHandleProps} 
+                            className="flex items-center justify-center text-[#6b7280] hover:text-[var(--color-yellow)] cursor-grab p-2"
+                          >
+                            <GripVertical className="h-5 w-5" />
+                          </div>
+                          <div className="w-24 h-24 rounded-lg overflow-hidden border border-[var(--color-dark-border)] flex-shrink-0">
+                            <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-3 mb-1">
+                              <h4 className="text-lg font-bold text-[#183964]">{item.name}</h4>
+                              <span className="px-2 py-0.5 rounded text-xs font-semibold bg-[#f36c21]/20 text-[#f36c21]">
+                                {item.type}
+                              </span>
+                            </div>
+                            {item.description && (
+                              <p className="text-[#6b7280] text-sm mt-2 line-clamp-2">{item.description}</p>
+                            )}
+                          </div>
+                          <div className="flex gap-2">
+                            <button onClick={() => handleEdit(item)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
+                              <Edit2 className="h-4 w-4" />
+                            </button>
+                            <button onClick={() => handleDelete(item._id)} className="p-2 text-[#6b7280] hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
+                              <Trash2 className="h-4 w-4" />
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
                 </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-1">
-                    <h4 className="text-lg font-bold text-[#183964]">{item.name}</h4>
-                    <span className="px-2 py-0.5 rounded text-xs font-semibold bg-[#f36c21]/20 text-[#f36c21]">
-                      {item.type}
-                    </span>
-                  </div>
-                  {item.description && (
-                    <p className="text-[#6b7280] text-sm mt-2 line-clamp-2">{item.description}</p>
-                  )}
-                </div>
-                <div className="flex gap-2">
-                  <button onClick={() => handleEdit(item)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
-                    <Edit2 className="h-4 w-4" />
-                  </button>
-                  <button onClick={() => handleDelete(item._id)} className="p-2 text-[#6b7280] hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
-                    <Trash2 className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+              )}
+            </Droppable>
+          </DragDropContext>
         )}
       </div>
     </div>

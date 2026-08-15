@@ -47,8 +47,32 @@ const deleteHeroImage = async (req, res) => {
   }
 };
 
+// Reorder hero images
+const reorderHeroImages = async (req, res) => {
+  try {
+    const { items } = req.body;
+    if (!Array.isArray(items)) {
+      return res.status(400).json({ message: 'Items array is required' });
+    }
+    
+    // Bulk update
+    const updates = items.map(item => ({
+      updateOne: {
+        filter: { _id: item.id },
+        update: { $set: { order: item.order } }
+      }
+    }));
+    
+    await HeroImage.bulkWrite(updates);
+    res.json({ message: 'Order updated successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Server Error reordering hero images', error: error.message });
+  }
+};
+
 module.exports = {
   getHeroImages,
   addHeroImage,
-  deleteHeroImage
+  deleteHeroImage,
+  reorderHeroImages
 };

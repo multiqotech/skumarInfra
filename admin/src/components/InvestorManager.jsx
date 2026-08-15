@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Plus, Edit2, Trash2, Loader2, Upload } from 'lucide-react';
+import { Plus, Edit2, Trash2, Loader2, Upload, GripVertical } from 'lucide-react';
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { getAuthHeader, uploadFileToServer } from '../utils/api';
 
 export default function InvestorManager({ showFeedback }) {
@@ -232,29 +233,73 @@ export default function InvestorManager({ showFeedback }) {
             No investors added yet.
           </div>
         ) : (
-          <div className="divide-y divide-[var(--color-dark-border)]">
-            {investors.map((investor) => (
-              <div key={investor._id} className="p-6 flex items-center gap-6 hover:bg-[var(--color-dark)]/50 transition-colors">
-                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[var(--color-yellow)] flex-shrink-0">
-                  <img src={investor.image} alt={investor.name} className="w-full h-full object-cover" />
+          <DragDropContext onDragEnd={async (result) => {
+            if (!result.destination) return;
+            const updatedInvestors = Array.from(investors);
+            const [reorderedInvestor] = updatedInvestors.splice(result.source.index, 1);
+            updatedInvestors.splice(result.destination.index, 0, reorderedInvestor);
+            
+            const reorderedWithOrder = updatedInvestors.map((inv, index) => ({ ...inv, order: index }));
+            setInvestors(reorderedWithOrder);
+            
+            try {
+              const config = getAuthHeader();
+              await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/investors/reorder`, {
+                items: reorderedWithOrder.map(i => ({ id: i._id, order: i.order }))
+              }, config);
+            } catch (err) {
+              console.error(err);
+              showFeedback("Failed to save new order", "error");
+              fetchInvestors();
+            }
+          }}>
+            <Droppable droppableId="investors" direction="vertical">
+              {(provided) => (
+                <div 
+                  className="divide-y divide-[var(--color-dark-border)]"
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {investors.map((investor, index) => (
+                    <Draggable key={investor._id} draggableId={investor._id} index={index}>
+                      {(provided) => (
+                        <div 
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          className="p-6 flex items-center gap-6 hover:bg-[var(--color-dark)]/50 transition-colors bg-[var(--color-dark-card)]"
+                        >
+                          <div 
+                            {...provided.dragHandleProps} 
+                            className="flex items-center justify-center text-[#6b7280] hover:text-[var(--color-yellow)] cursor-grab p-2"
+                          >
+                            <GripVertical className="h-5 w-5" />
+                          </div>
+                          <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[var(--color-yellow)] flex-shrink-0">
+                            <img src={investor.image} alt={investor.name} className="w-full h-full object-cover" />
+                          </div>
+                          <div className="flex-1">
+                            <h4 className="text-lg font-bold text-[#183964]">{investor.name}</h4>
+                            {investor.description && (
+                              <p className="text-[#6b7280] text-sm mt-1 line-clamp-2">{investor.description}</p>
+                            )}
+                          </div>
+                          <div className="flex gap-2">
+                            <button onClick={() => handleEdit(investor)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
+                              <Edit2 className="h-4 w-4" />
+                            </button>
+                            <button onClick={() => handleDelete(investor._id)} className="p-2 text-[#6b7280] hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
+                              <Trash2 className="h-4 w-4" />
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
                 </div>
-                <div className="flex-1">
-                  <h4 className="text-lg font-bold text-[#183964]">{investor.name}</h4>
-                  {investor.description && (
-                    <p className="text-[#6b7280] text-sm mt-1 line-clamp-2">{investor.description}</p>
-                  )}
-                </div>
-                <div className="flex gap-2">
-                  <button onClick={() => handleEdit(investor)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
-                    <Edit2 className="h-4 w-4" />
-                  </button>
-                  <button onClick={() => handleDelete(investor._id)} className="p-2 text-[#6b7280] hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
-                    <Trash2 className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+              )}
+            </Droppable>
+          </DragDropContext>
         )}
       </div>
     </div>

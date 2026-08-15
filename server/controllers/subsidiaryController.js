@@ -3,7 +3,7 @@ const Subsidiary = require('../models/Subsidiary');
 // Get all subsidiaries
 const getSubsidiaries = async (req, res) => {
   try {
-    const subsidiaries = await Subsidiary.find().sort({ createdAt: 1 });
+    const subsidiaries = await Subsidiary.find().sort({ order: 1, createdAt: 1 });
     res.json(subsidiaries);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -62,9 +62,29 @@ const deleteSubsidiary = async (req, res) => {
   }
 };
 
+// Reorder subsidiaries
+const reorderSubsidiaries = async (req, res) => {
+  try {
+    const { items } = req.body;
+    if (!Array.isArray(items)) return res.status(400).json({ message: 'Items array is required' });
+    
+    const updates = items.map(item => ({
+      updateOne: {
+        filter: { _id: item.id },
+        update: { $set: { order: item.order } }
+      }
+    }));
+    await Subsidiary.bulkWrite(updates);
+    res.json({ message: 'Subsidiaries reordered successfully' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 module.exports = {
   getSubsidiaries,
   addSubsidiary,
   updateSubsidiary,
   deleteSubsidiary,
+  reorderSubsidiaries
 };
