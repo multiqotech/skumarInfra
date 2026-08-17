@@ -318,7 +318,7 @@ export default function ProfilePage() {
                         onChange={handleInputChange} 
                         disabled={!isEditing}
                         className={getInputClass('phone')} 
-                        placeholder="+91 98765 43210" 
+                        placeholder="+91 99251 90298" 
                       />
                     </div>
                   </div>

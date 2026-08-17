@@ -70,7 +70,7 @@ export default function ApplicationForm({ job, onSuccess }) {
 
       case 'phone':
         if (!value || value.trim().length === 0) return 'Phone number is required';
-        // Allow formats: +91 98765 43210, 9876543210, +919876543210, etc.
+        // Allow formats: +91 99251 90298, 9876543210, +919876543210, etc.
         const cleaned = value.replace(/[\s\-()]/g, '');
         if (!/^\+?\d{10,15}$/.test(cleaned)) return 'Enter a valid phone number (10-15 digits)';
         return null;
@@ -310,7 +310,7 @@ export default function ApplicationForm({ job, onSuccess }) {
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className={labelClass}>Phone *</label>
-            <input required type="tel" name="phone" value={formData.phone} onChange={handleInputChange} onBlur={handleBlur} className={getInputClass('phone')} placeholder="+91 98765 43210" />
+            <input required type="tel" name="phone" value={formData.phone} onChange={handleInputChange} onBlur={handleBlur} className={getInputClass('phone')} placeholder="+91 99251 90298" />
             <FieldError error={touched.phone && fieldErrors.phone} />
           </div>
           <div>

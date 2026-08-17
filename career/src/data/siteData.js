@@ -97,7 +97,7 @@ export const navLinks = [
   }
 ];
 
-export const phoneNumber = '+91 98765 43210';
+export const phoneNumber = '+91 99251 90298';
 
 // ===== HERO =====
 export const heroData = {
@@ -109,7 +109,7 @@ export const heroData = {
 
 // ===== CONTACT STRIP =====
 export const contactStripData = {
-  phone: '+91 98765 43210',
+  phone: '+91 99251 90298',
   phoneLabel: 'CALL US ANYTIME',
   intro:
     'S Kumar Infracons (India) Private Limited is a premier construction firm delivering world-class infrastructure, residential, and commercial projects across India. We combine innovation with integrity to build the future.',
@@ -376,5 +376,5 @@ export const companyInfo = {
   address: '123 Construction Avenue, Industrial Area, Mumbai - 400001, Maharashtra, India',
   workingHours: 'Mon - Sat: 9:00 AM - 6:00 PM',
   email: 'info@skconstructions.com',
-  phone: '+91 98765 43210',
+  phone: '+91 99251 90298',
 };
