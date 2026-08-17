@@ -62,7 +62,7 @@ export default function CultureSection() {
               className="bg-[#f7f9fc] p-8 rounded-2xl border border-[#183964]/10 hover:border-[#f36c21]/50 hover:bg-white hover:shadow-[0_20px_50px_rgba(24,57,100,0.08)] transition-all duration-300 group"
             >
               <div className="w-14 h-14 bg-[#183964]/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#f36c21] transition-colors duration-300">
-                <value.icon className="w-7 h-7 text-[#183964] group-hover:text-white transition-colors duration-300" />
+                <value.icon className="w-7 h-7 text-[#183964] group-hover:text-[#183964] transition-colors duration-300" />
               </div>
               <h3 className="text-xl font-bold text-[#183964] mb-3">{value.title}</h3>
               <p className="text-[#4b5563] text-sm leading-relaxed font-medium">

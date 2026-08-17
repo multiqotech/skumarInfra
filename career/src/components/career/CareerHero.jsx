@@ -20,11 +20,11 @@ export default function CareerHero() {
     <section ref={containerRef} className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
+        {/* <img 
           src="https://images.unsplash.com/photo-1504307651254-35680f35aa9e?q=80&w=2070&auto=format&fit=crop" 
           alt="Construction Site" 
           className="w-full h-full object-cover"
-        />
+        /> */}
         {/* Light overlay for text readability without blurring the image */}
         <div className="absolute inset-0 bg-white/60" />
         {/* Fade to background color at the very bottom */}

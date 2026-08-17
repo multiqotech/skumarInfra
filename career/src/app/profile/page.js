@@ -72,7 +72,7 @@ export default function ProfilePage() {
     return (
       <div className="min-h-[70vh] flex flex-col items-center justify-center gap-4">
         <Loader2 className="w-10 h-10 animate-spin text-[#f36c21]" />
-        <p className="text-gray-400 text-sm tracking-wide">Loading your profile details...</p>
+        <p className="text-[#6b7280] text-sm tracking-wide">Loading your profile details...</p>
       </div>
     );
   }
@@ -153,11 +153,11 @@ export default function ProfilePage() {
     const isFieldEditable = isEditing && name !== 'email';
     return `w-full px-4 py-3.5 rounded-xl transition-all pl-11 text-sm focus:outline-none ${
       isFieldEditable
-        ? 'bg-white border border-[#2A2A2A] text-white focus:border-[#f36c21] focus:ring-1 focus:ring-[#FFB800]'
-        : 'bg-[#151515] border border-transparent text-gray-400 cursor-not-allowed'
+        ? 'bg-white border border-[#2A2A2A] text-[#183964] focus:border-[#f36c21] focus:ring-1 focus:ring-[#FFB800]'
+        : 'bg-[#151515] border border-transparent text-[#6b7280] cursor-not-allowed'
     }`;
   };
-  const labelClass = "block text-sm font-semibold text-gray-400 mb-2 tracking-wide uppercase text-xs";
+  const labelClass = "block text-sm font-semibold text-[#6b7280] mb-2 tracking-wide uppercase text-xs";
   
   // Calculate profile completion percentage
   const fields = [
@@ -175,10 +175,10 @@ export default function ProfilePage() {
   const completionPercentage = Math.round((completedFieldsCount / fields.length) * 100);
 
   return (
-    <div className="py-12 bg-[#0C0C0C]">
+    <div className="py-12 bg-[#f7f9fc]">
       <div className="container-custom max-w-5xl">
         {/* Profile Header Card */}
-        <div className="bg-[#141414] rounded-3xl p-6 md:p-8 border border-[#2A2A2A] shadow-xl mb-8 relative overflow-hidden">
+        <div className="bg-white rounded-3xl p-6 md:p-8 border border-[#2A2A2A] shadow-xl mb-8 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#f36c21]/5 rounded-full blur-3xl pointer-events-none" />
           
           {/* Edit Button on Top Right */}
@@ -212,8 +212,8 @@ export default function ProfilePage() {
                 </span>
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-white tracking-tight">{user.name}</h1>
-                <p className="text-gray-400 text-sm mt-1">{user.email}</p>
+                <h1 className="text-2xl font-bold text-[#183964] tracking-tight">{user.name}</h1>
+                <p className="text-[#6b7280] text-sm mt-1">{user.email}</p>
                 <div className="flex items-center gap-2 mt-3 justify-center md:justify-start">
                   <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${
                     user.profileCompleted 
@@ -229,7 +229,7 @@ export default function ProfilePage() {
             {/* Profile Progress */}
             <div className="w-full md:w-64 bg-[#1C1C1C] border border-[#2A2A2A] rounded-2xl p-4 mt-4 md:mt-0">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-xs font-semibold text-gray-400 tracking-wide uppercase">Profile Setup</span>
+                <span className="text-xs font-semibold text-[#6b7280] tracking-wide uppercase">Profile Setup</span>
                 <span className="text-sm font-bold text-[#f36c21]">{completionPercentage}%</span>
               </div>
               <div className="w-full bg-[#2A2A2A] h-2 rounded-full overflow-hidden">
@@ -238,7 +238,7 @@ export default function ProfilePage() {
                   style={{ width: `${completionPercentage}%` }}
                 />
               </div>
-              <p className="text-[11px] text-gray-500 mt-2 leading-relaxed text-center md:text-left">
+              <p className="text-[11px] text-[#6b7280] mt-2 leading-relaxed text-center md:text-left">
                 {completionPercentage === 100 
                   ? 'Fantastic! Your profile is 100% complete.' 
                   : 'Complete your profile to unlock instant single-click job applications.'}
@@ -270,8 +270,8 @@ export default function ProfilePage() {
             <div className="lg:col-span-2 space-y-8">
               
               {/* Personal Details Section */}
-              <div className="bg-[#141414] rounded-3xl p-6 md:p-8 border border-[#2A2A2A] shadow-xl space-y-6">
-                <h2 className="text-lg font-bold text-white border-b border-[#2A2A2A] pb-4 tracking-tight flex items-center gap-2">
+              <div className="bg-white rounded-3xl p-6 md:p-8 border border-[#2A2A2A] shadow-xl space-y-6">
+                <h2 className="text-lg font-bold text-[#183964] border-b border-[#2A2A2A] pb-4 tracking-tight flex items-center gap-2">
                   <User className="text-[#f36c21] w-5 h-5" /> Personal Details
                 </h2>
 
@@ -301,7 +301,7 @@ export default function ProfilePage() {
                         disabled 
                         type="email" 
                         value={user.email} 
-                        className="w-full bg-[#151515] border border-transparent px-4 py-3.5 text-gray-500 rounded-xl cursor-not-allowed pl-11 text-sm font-medium" 
+                        className="w-full bg-[#151515] border border-transparent px-4 py-3.5 text-[#6b7280] rounded-xl cursor-not-allowed pl-11 text-sm font-medium" 
                       />
                     </div>
                   </div>
@@ -342,8 +342,8 @@ export default function ProfilePage() {
               </div>
 
               {/* Professional & Social Details Section */}
-              <div className="bg-[#141414] rounded-3xl p-6 md:p-8 border border-[#2A2A2A] shadow-xl space-y-6">
-                <h2 className="text-lg font-bold text-white border-b border-[#2A2A2A] pb-4 tracking-tight flex items-center gap-2">
+              <div className="bg-white rounded-3xl p-6 md:p-8 border border-[#2A2A2A] shadow-xl space-y-6">
+                <h2 className="text-lg font-bold text-[#183964] border-b border-[#2A2A2A] pb-4 tracking-tight flex items-center gap-2">
                   <Briefcase className="text-[#f36c21] w-5 h-5" /> Professional Details
                 </h2>
 
@@ -439,8 +439,8 @@ export default function ProfilePage() {
             <div className="space-y-8">
               
               {/* Resume Card */}
-              <div className="bg-[#141414] rounded-3xl p-6 md:p-8 border border-[#2A2A2A] shadow-xl space-y-6">
-                <h2 className="text-lg font-bold text-white border-b border-[#2A2A2A] pb-4 tracking-tight flex items-center gap-2">
+              <div className="bg-white rounded-3xl p-6 md:p-8 border border-[#2A2A2A] shadow-xl space-y-6">
+                <h2 className="text-lg font-bold text-[#183964] border-b border-[#2A2A2A] pb-4 tracking-tight flex items-center gap-2">
                   <FileText className="text-[#f36c21] w-5 h-5" /> Resume / CV
                 </h2>
 
@@ -452,10 +452,10 @@ export default function ProfilePage() {
                   }}
                   className={`border-2 border-dashed rounded-2xl p-6 text-center transition-all ${
                     !isEditing
-                      ? 'border-[#222] bg-[#111] cursor-not-allowed opacity-80'
+                      ? 'border-[#183964]/10 bg-white cursor-not-allowed opacity-80'
                       : file || profile?.resumeUrl 
                         ? 'border-[#f36c21] bg-[#f36c21]/5 cursor-pointer' 
-                        : 'border-[#333] hover:border-[#f36c21]/50 bg-white cursor-pointer'
+                        : 'border-[#183964]/20 hover:border-[#f36c21]/50 bg-white cursor-pointer'
                   }`}
                 >
                   <input 
@@ -470,8 +470,8 @@ export default function ProfilePage() {
                   {file ? (
                     <div className="flex flex-col items-center justify-center">
                       <FileText className="w-8 h-8 text-[#f36c21] mb-3" />
-                      <p className="text-white font-medium text-xs truncate max-w-[180px]">{file.name}</p>
-                      <p className="text-gray-500 text-[10px] mt-1">{(file.size / (1024 * 1024)).toFixed(2)} MB</p>
+                      <p className="text-[#183964] font-medium text-xs truncate max-w-[180px]">{file.name}</p>
+                      <p className="text-[#6b7280] text-[10px] mt-1">{(file.size / (1024 * 1024)).toFixed(2)} MB</p>
                       {isEditing && (
                         <button 
                           type="button" 
@@ -489,35 +489,35 @@ export default function ProfilePage() {
                   ) : profile?.resumeUrl ? (
                     <div className="flex flex-col items-center justify-center">
                       <FileText className="w-8 h-8 text-[#f36c21] mb-3" />
-                      <p className="text-white font-semibold text-xs text-[#f36c21]">Resume is Uploaded</p>
+                      <p className="text-[#183964] font-semibold text-xs text-[#f36c21]">Resume is Uploaded</p>
                       <a 
                         href={profile.resumeUrl} 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         onClick={(e) => e.stopPropagation()} 
-                        className="text-gray-400 hover:text-white hover:underline text-xs mt-1.5 inline-block"
+                        className="text-[#6b7280] hover:text-[#183964] hover:underline text-xs mt-1.5 inline-block"
                       >
                         View Saved Resume
                       </a>
                       {isEditing ? (
-                        <p className="text-gray-500 text-[10px] mt-4 leading-relaxed">
+                        <p className="text-[#6b7280] text-[10px] mt-4 leading-relaxed">
                           Drag or click here to upload a new resume file
                         </p>
                       ) : (
-                        <p className="text-gray-500 text-[10px] mt-4 leading-relaxed">
+                        <p className="text-[#6b7280] text-[10px] mt-4 leading-relaxed">
                           Enable edit mode to update resume
                         </p>
                       )}
                     </div>
                   ) : (
                     <div className="flex flex-col items-center justify-center py-4">
-                      <div className="w-10 h-10 bg-[#222] rounded-full flex items-center justify-center mb-3">
-                        <Upload className="w-5 h-5 text-gray-400" />
+                      <div className="w-10 h-10 bg-[#f0f4f8] rounded-full flex items-center justify-center mb-3">
+                        <Upload className="w-5 h-5 text-[#6b7280]" />
                       </div>
-                      <p className="text-white font-medium text-xs mb-1">
+                      <p className="text-[#183964] font-medium text-xs mb-1">
                         {isEditing ? 'Upload Resume' : 'No Resume Uploaded'}
                       </p>
-                      <p className="text-gray-500 text-[10px]">
+                      <p className="text-[#6b7280] text-[10px]">
                         {isEditing ? 'PDF, DOC or DOCX (max 5MB)' : 'Enable edit mode to upload'}
                       </p>
                     </div>
@@ -526,12 +526,12 @@ export default function ProfilePage() {
               </div>
 
               {/* Action Buttons Card */}
-              <div className="bg-[#141414] rounded-3xl p-6 border border-[#2A2A2A] shadow-xl space-y-4">
+              <div className="bg-white rounded-3xl p-6 border border-[#2A2A2A] shadow-xl space-y-4">
                 {isEditing ? (
                   <button 
                     type="submit" 
                     disabled={submitting}
-                    className="w-full bg-[#f36c21] text-black font-bold py-4 rounded-xl hover:bg-[#e5a600] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-[#FFB800]/5 text-sm"
+                    className="w-full bg-[#f36c21] text-[#183964] font-bold py-4 rounded-xl hover:bg-[#e5a600] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-[#FFB800]/5 text-sm"
                   >
                     {submitting ? (
                       <>
@@ -555,7 +555,7 @@ export default function ProfilePage() {
                 <button 
                   type="button"
                   onClick={() => router.push('/')}
-                  className="w-full border border-[#2A2A2A] text-white hover:bg-white/5 font-semibold py-3.5 rounded-xl transition-all duration-300 text-sm"
+                  className="w-full border border-[#2A2A2A] text-[#183964] hover:bg-[#183964]/5 font-semibold py-3.5 rounded-xl transition-all duration-300 text-sm"
                 >
                   Back to Careers
                 </button>

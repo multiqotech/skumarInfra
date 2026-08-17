@@ -85,7 +85,7 @@ export default async function ContactUsPage() {
                 <div className="w-16 h-16 bg-white border border-[#183964]/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#f36c21] group-hover:border-transparent transition-colors duration-300 shadow-sm">
                   <MapPin className="w-8 h-8 text-[#183964] group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="text-xl font-bold text-[#183964] mb-4">Corporate Office</h3>
+                <h3 className="text-xl font-bold text-[#183964] mb-4">Registered Office</h3>
                 <p className="text-[#4b5563] font-medium whitespace-pre-line leading-relaxed">
                   {companyAddress.replace(/\\n/g, '\n')}
                 </p>
@@ -132,7 +132,7 @@ export default async function ContactUsPage() {
                 <div className="w-16 h-16 bg-white border border-[#183964]/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#f36c21] group-hover:border-transparent transition-colors duration-300 shadow-sm">
                   <Globe className="w-8 h-8 text-[#183964] group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="text-xl font-bold text-[#183964] mb-4">International Support</h3>
+                <h3 className="text-xl font-bold text-[#183964] mb-4">Reach Us On</h3>
                 <p className="text-xl font-bold text-[#f36c21] mb-2 tracking-wide">{internationalNumber}</p>
                 {internationalAvailability && (
                   <div className="flex items-center text-sm font-medium text-[#4b5563] mt-4 justify-center">

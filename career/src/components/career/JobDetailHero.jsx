@@ -28,7 +28,7 @@ export default function JobDetailHero({ job }) {
       <div className="container-custom relative z-10">
         <div className="max-w-4xl">
           <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1.5 bg-[#f36c21] text-white text-sm font-bold uppercase tracking-wider rounded-md shadow-sm">
+            <span className="px-4 py-1.5 bg-[#f36c21] text-[#183964] text-sm font-bold uppercase tracking-wider rounded-md shadow-sm">
               {job.department}
             </span>
             <span className="text-[#6b7280] text-sm font-medium">

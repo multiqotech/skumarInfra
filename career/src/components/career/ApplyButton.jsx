@@ -37,7 +37,7 @@ export default function ApplyButton({ job }) {
       ) : (
         <button 
           onClick={handleApplyClick}
-          className="inline-block bg-[#f36c21] text-white font-bold px-8 py-4 rounded-xl hover:bg-[#d45a14] hover:-translate-y-1 transition-all shadow-[0_10px_20px_rgba(243,108,33,0.3)] uppercase tracking-wide"
+          className="inline-block bg-[#f36c21] text-[#183964] font-bold px-8 py-4 rounded-xl hover:bg-[#d45a14] hover:-translate-y-1 transition-all shadow-[0_10px_20px_rgba(243,108,33,0.3)] uppercase tracking-wide"
         >
           Apply for this Role
         </button>

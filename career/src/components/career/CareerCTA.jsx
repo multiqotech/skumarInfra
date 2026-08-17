@@ -5,10 +5,10 @@ export default function CareerCTA() {
     <section className="py-24 bg-[#f36c21] relative overflow-hidden">
       <div className="absolute inset-0 bg-[#183964]/5" />
       <div className="container-custom relative z-10 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-sm" style={{ fontFamily: 'var(--font-heading)' }}>
+        <h2 className="text-4xl md:text-5xl font-bold text-[#183964] mb-6 drop-shadow-sm" style={{ fontFamily: 'var(--font-heading)' }}>
           Don't see a perfect fit?
         </h2>
-        <p className="text-white/90 text-lg mb-10 max-w-2xl mx-auto font-medium">
+        <p className="text-[#183964]/90 text-lg mb-10 max-w-2xl mx-auto font-medium">
           We are always looking for talented individuals to join our growing team. Send us your resume and we'll keep you in mind for future opportunities.
         </p>
         <a 

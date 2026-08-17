@@ -73,6 +73,6 @@ function walk(dir) {
   }
 }
 
-walk('d:/freelance/skConstruction/admin/src/app');
-walk('d:/freelance/skConstruction/admin/src/components');
+walk('/home/krishna-gupta/Desktop/skumarInfra/career/src/app');
+walk('/home/krishna-gupta/Desktop/skumarInfra/career/src/components');
 

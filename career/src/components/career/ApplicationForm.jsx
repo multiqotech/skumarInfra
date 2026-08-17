@@ -398,7 +398,7 @@ export default function ApplicationForm({ job, onSuccess }) {
         <button 
           type="submit" 
           disabled={status === 'loading'}
-          className="w-full bg-[#f36c21] text-white font-bold py-4 rounded-xl hover:bg-[#d45a14] transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-[0_10px_20px_rgba(243,108,33,0.2)]"
+          className="w-full bg-[#f36c21] text-[#183964] font-bold py-4 rounded-xl hover:bg-[#d45a14] transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-[0_10px_20px_rgba(243,108,33,0.2)]"
         >
           {status === 'loading' ? (
             <>

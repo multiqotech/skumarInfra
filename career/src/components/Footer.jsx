@@ -51,7 +51,7 @@ export default function Footer() {
   const portfolioUrl = process.env.NEXT_PUBLIC_PORTFOLIO_URL || 'http://localhost:3000';
 
   return (
-    <footer className="bg-[#183964] text-white py-16 font-poppins relative z-20">
+    <footer className="bg-[#183964] text-[#183964] py-16 font-poppins relative z-20">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
 
@@ -95,7 +95,7 @@ export default function Footer() {
                 );
               })}
               <li>
-                <a href={`${portfolioUrl}/#we-build`} target="_blank" rel="noopener noreferrer" className="text-[#f36c21] hover:text-white transition-colors text-sm font-semibold">
+                <a href={`${portfolioUrl}/#we-build`} target="_blank" rel="noopener noreferrer" className="text-[#f36c21] hover:text-[#183964] transition-colors text-sm font-semibold">
                   View All Businesses &rarr;
                 </a>
               </li>
@@ -165,21 +165,21 @@ export default function Footer() {
 
               {(contactInfo.tollFreeNumber || contactInfo.availability) && (
                 <div>
-                  {contactInfo.tollFreeNumber && <p className="font-semibold text-white">Toll Free: <span className="font-normal text-blue-100">{contactInfo.tollFreeNumber}</span></p>}
+                  {contactInfo.tollFreeNumber && <p className="font-semibold text-[#183964]">Toll Free: <span className="font-normal text-blue-100">{contactInfo.tollFreeNumber}</span></p>}
                   {contactInfo.availability && <p>{contactInfo.availability}</p>}
                 </div>
               )}
 
               {(contactInfo.internationalNumber || contactInfo.internationalAvailability) && (
                 <div>
-                  {/* {contactInfo.internationalNumber && <p className="font-semibold text-white">International No: <span className="font-normal text-blue-100">{contactInfo.internationalNumber}</span></p>} */}
+                  {/* {contactInfo.internationalNumber && <p className="font-semibold text-[#183964]">International No: <span className="font-normal text-blue-100">{contactInfo.internationalNumber}</span></p>} */}
                   {contactInfo.internationalAvailability && <p>{contactInfo.internationalAvailability}</p>}
                 </div>
               )}
 
               {contactInfo.email && (
                 <div>
-                  <p className="font-semibold text-white">Email:</p>
+                  <p className="font-semibold text-[#183964]">Email:</p>
                   {contactInfo.email.split('/').map((em, i) => (
                     <a key={i} href={`mailto:${em.trim()}`} className="block hover:text-[#f36c21] transition-colors">{em.trim()}</a>
                   ))}
@@ -196,7 +196,7 @@ export default function Footer() {
 
               {contactInfo.qrCodeImage && (
                 <div className="pt-4 border-t border-[#224c85]">
-                  <h4 className="font-semibold text-white mb-3">Get Directions</h4>
+                  <h4 className="font-semibold text-[#183964] mb-3">Get Directions</h4>
                   <div className="bg-white p-2 rounded inline-block shadow-sm">
                     <img src={contactInfo.qrCodeImage} alt="Get Directions QR Code" className="w-24 h-24 object-contain" />
                   </div>

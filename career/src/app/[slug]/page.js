@@ -41,7 +41,7 @@ export default async function JobDetailsPage({ params }) {
   }
 
   return (
-    <div className="font-body selection:bg-[#f36c21] selection:text-white bg-[#f7f9fc]">
+    <div className="font-body selection:bg-[#f36c21] selection:text-[#183964] bg-[#f7f9fc]">
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-white border-b border-[#183964]/10 shadow-[0_10px_40px_rgba(24,57,100,0.03)]">
         <div className="container-custom">

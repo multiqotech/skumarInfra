@@ -30,7 +30,7 @@ export default function Navbar({ alwaysSolid = false }) {
     };
   }, [mobileOpen]);
 
-  const portfolioUrl = process.env.NEXT_PUBLIC_PORTFOLIO_URL || 'http://localhost:3002';
+  const portfolioUrl = process.env.NEXT_PUBLIC_PORTFOLIO_URL || 'http://localhost:3001';
 
   return (
     <nav
@@ -185,7 +185,7 @@ export default function Navbar({ alwaysSolid = false }) {
                   <Link href="/login" className="text-[#183964] hover:text-[#f36c21] text-sm font-semibold tracking-wide transition-colors uppercase">
                     Login
                   </Link>
-                  <Link href="/signup" className="bg-[#f36c21] text-white hover:bg-[#d45a14] px-4 py-1.5 rounded-sm text-sm font-bold tracking-wide transition-colors uppercase">
+                  <Link href="/signup" className="bg-[#f36c21] text-[#183964] hover:bg-[#d45a14] px-4 py-1.5 rounded-sm text-sm font-bold tracking-wide transition-colors uppercase">
                     Sign Up
                   </Link>
                 </>
@@ -265,7 +265,7 @@ export default function Navbar({ alwaysSolid = false }) {
                     <Link href="/login" onClick={() => setMobileOpen(false)} className="flex-1 text-center py-2.5 border border-[#f36c21] text-[#f36c21] hover:bg-[#f36c21]/10 rounded-sm font-semibold transition-colors uppercase text-sm">
                       Login
                     </Link>
-                    <Link href="/signup" onClick={() => setMobileOpen(false)} className="flex-1 text-center py-2.5 bg-[#f36c21] text-white hover:bg-[#d45a14] rounded-sm font-semibold transition-colors uppercase text-sm">
+                    <Link href="/signup" onClick={() => setMobileOpen(false)} className="flex-1 text-center py-2.5 bg-[#f36c21] text-[#183964] hover:bg-[#d45a14] rounded-sm font-semibold transition-colors uppercase text-sm">
                       Sign Up
                     </Link>
                   </div>
