@@ -6,8 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/sections/Footer';
-import { fallbackNews, fallbackMediaContacts } from '@/data/newsData';
-
 function NewsroomContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -45,21 +43,21 @@ function NewsroomContent() {
         
         if (newsRes.ok) {
           const data = await newsRes.json();
-          setNews(data.length > 0 ? data : fallbackNews.filter(n => n.type === activeTab));
+          setNews(data);
         } else {
-          setNews(fallbackNews.filter(n => n.type === activeTab));
+          setNews([]);
         }
 
         if (contactsRes.ok) {
           const data = await contactsRes.json();
-          setContacts(data.length > 0 ? data : fallbackMediaContacts);
+          setContacts(data);
         } else {
-          setContacts(fallbackMediaContacts);
+          setContacts([]);
         }
       } catch (err) {
-        console.error("Error fetching newsroom data, using fallbacks:", err);
-        setNews(fallbackNews.filter(n => n.type === activeTab));
-        setContacts(fallbackMediaContacts);
+        console.error("Error fetching newsroom data:", err);
+        setNews([]);
+        setContacts([]);
       } finally {
         setLoading(false);
       }

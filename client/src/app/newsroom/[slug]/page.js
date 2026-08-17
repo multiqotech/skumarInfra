@@ -4,20 +4,17 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/sections/Footer';
 import { ArrowLeft } from 'lucide-react';
-import { fallbackNews } from '@/data/newsData';
 
 async function getNewsItem(slug) {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/news/slug/${slug}`, { cache: 'no-store' });
     if (!res.ok) {
-      const fallbackItem = fallbackNews.find(n => n.slug === slug);
-      return fallbackItem || null;
+      return null;
     }
     return await res.json();
   } catch (error) {
     console.error(`Error fetching news item:`, error);
-    const fallbackItem = fallbackNews.find(n => n.slug === slug);
-    return fallbackItem || null;
+    return null;
   }
 }
 
