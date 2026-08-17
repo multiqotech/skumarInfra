@@ -39,11 +39,11 @@ class EmailService {
   async sendApplicationConfirmation(candidate, job) {
     await this.sendMail({
       to: candidate.email,
-      subject: `Application Received — ${job.title} at S Kumar Infracons (India) Private Limiteds`,
+      subject: `Application Received — ${job.title} at S Kumar Infracons (India) Private Limited`,
       html: `
         <div style="font-family: 'Poppins', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #f9f9f9; padding: 32px;">
           <div style="background: #0C0C0C; padding: 24px 32px; border-radius: 8px 8px 0 0;">
-            <h1 style="color: #FFB800; font-size: 20px; margin: 0;">S Kumar Infracons (India) Private Limiteds</h1>
+            <h1 style="color: #FFB800; font-size: 20px; margin: 0;">S Kumar Infracons (India) Private Limited</h1>
           </div>
           <div style="background: #ffffff; padding: 32px; border-radius: 0 0 8px 8px; border: 1px solid #e5e5e5;">
             <h2 style="color: #0C0C0C; font-size: 18px;">Thank you for your application, ${candidate.fullName}!</h2>
@@ -57,7 +57,7 @@ class EmailService {
             </p>
             <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #eee;">
               <p style="color: #999; font-size: 12px;">
-                This is an automated email from S Kumar Infracons (India) Private Limiteds Career Portal. 
+                This is an automated email from S Kumar Infracons (India) Private Limited Career Portal. 
                 Please do not reply to this email.
               </p>
             </div>

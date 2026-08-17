@@ -68,7 +68,7 @@ export const navLinks = [
     dropdownItems: [
       'Ongoing Projects',
       'Completed Projects',
-      'Awarded Projects',
+      'Newly Awarded Projects',
     ]
   },
   {

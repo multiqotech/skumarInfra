@@ -38,7 +38,7 @@ export default function CultureSection() {
             className="text-3xl md:text-5xl font-bold text-[#183964] mb-6"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            Why Work With <span className="text-[#f36c21]">S Kumar Infracons (India) Private Limiteds</span>?
+            Why Work With <span className="text-[#f36c21]">S Kumar Infracons (India) Private Limited</span>?
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

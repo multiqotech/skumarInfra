@@ -103,7 +103,7 @@ export const phoneNumber = '+91 98765 43210';
 export const heroData = {
   heading: 'Comprehensive Construction Solutions for All',
   subtext:
-    'With over two decades of unwavering commitment, S Kumar Infracons (India) Private Limiteds delivers landmark infrastructure projects that stand the test of time. Our team of experts ensures precision engineering, cutting-edge technology, and uncompromising quality in every structure we build.',
+    'With over two decades of unwavering commitment, S Kumar Infracons (India) Private Limited delivers landmark infrastructure projects that stand the test of time. Our team of experts ensures precision engineering, cutting-edge technology, and uncompromising quality in every structure we build.',
   cta: 'OUR SERVICES',
 };
 
@@ -112,7 +112,7 @@ export const contactStripData = {
   phone: '+91 98765 43210',
   phoneLabel: 'CALL US ANYTIME',
   intro:
-    'S Kumar Infracons (India) Private Limiteds is a premier construction firm delivering world-class infrastructure, residential, and commercial projects across India. We combine innovation with integrity to build the future.',
+    'S Kumar Infracons (India) Private Limited is a premier construction firm delivering world-class infrastructure, residential, and commercial projects across India. We combine innovation with integrity to build the future.',
   description:
     'From highways to high-rises, our expertise spans every vertical of the construction industry. Trust us to turn your vision into a landmark reality.',
 };
@@ -188,7 +188,7 @@ export const servicesData = [
 export const whyChooseUsData = {
   heading: 'Why choose us?',
   description:
-    'With a proven track record spanning decades, S Kumar Infracons (India) Private Limiteds brings unmatched expertise, innovation, and reliability to every project. Our commitment to quality craftsmanship and on-time delivery has earned us the trust of government agencies, industrial corporations, and private developers alike.',
+    'With a proven track record spanning decades, S Kumar Infracons (India) Private Limited brings unmatched expertise, innovation, and reliability to every project. Our commitment to quality craftsmanship and on-time delivery has earned us the trust of government agencies, industrial corporations, and private developers alike.',
   stats: [
     { value: '500+', label: 'Projects Completed' },
     { value: '15+', label: 'Years Experience' },
@@ -313,42 +313,42 @@ export const testimonialsData = [
   {
     name: 'Rajesh Mehta',
     role: 'Director, Mehta Industries',
-    text: 'S Kumar Infracons (India) Private Limiteds delivered our industrial facility ahead of schedule and under budget. Their professionalism and attention to detail are truly unmatched in the industry.',
+    text: 'S Kumar Infracons (India) Private Limited delivered our industrial facility ahead of schedule and under budget. Their professionalism and attention to detail are truly unmatched in the industry.',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
     rating: 5,
   },
   {
     name: 'Kavita Singh',
     role: 'CEO, Singh Real Estate',
-    text: 'Working with S Kumar Infracons (India) Private Limiteds has been a game-changer for our real estate projects. Their engineering expertise and quality standards set them apart from the competition.',
+    text: 'Working with S Kumar Infracons (India) Private Limited has been a game-changer for our real estate projects. Their engineering expertise and quality standards set them apart from the competition.',
     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=face',
     rating: 5,
   },
   {
     name: 'Amit Joshi',
     role: 'Government Official',
-    text: 'The highway project completed by S Kumar Infracons (India) Private Limiteds is a testament to their engineering excellence. The quality of work speaks volumes about their dedication.',
+    text: 'The highway project completed by S Kumar Infracons (India) Private Limited is a testament to their engineering excellence. The quality of work speaks volumes about their dedication.',
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
     rating: 5,
   },
   {
     name: 'Deepika Nair',
     role: 'Homeowner',
-    text: 'Our dream home was built to perfection by S Kumar Infracons (India) Private Limiteds. Every detail was handled with care, and the final result exceeded all our expectations.',
+    text: 'Our dream home was built to perfection by S Kumar Infracons (India) Private Limited. Every detail was handled with care, and the final result exceeded all our expectations.',
     image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face',
     rating: 5,
   },
   {
     name: 'Vikram Reddy',
     role: 'MD, Reddy Corp',
-    text: 'From the initial consultation to project handover, S Kumar Infracons (India) Private Limiteds maintained the highest level of transparency and professionalism throughout.',
+    text: 'From the initial consultation to project handover, S Kumar Infracons (India) Private Limited maintained the highest level of transparency and professionalism throughout.',
     image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face',
     rating: 5,
   },
   {
     name: 'Sunita Verma',
     role: 'Architect, Verma Associates',
-    text: 'As an architect, I appreciate the precision with which S Kumar Infracons (India) Private Limiteds executes designs. They bring blueprints to life with remarkable accuracy and craftsmanship.',
+    text: 'As an architect, I appreciate the precision with which S Kumar Infracons (India) Private Limited executes designs. They bring blueprints to life with remarkable accuracy and craftsmanship.',
     image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face',
     rating: 5,
   },

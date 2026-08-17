@@ -79,7 +79,7 @@ function MobileNavItem({ link, handleNavClick, i }) {
                   } else if (link.label === 'Landmark projects') {
                     if (item === 'Ongoing Projects') href = '/landmark-projects/ongoing';
                     else if (item === 'Completed Projects') href = '/landmark-projects/completed';
-                    else if (item === 'Awarded Projects') href = '/landmark-projects/awarded';
+                    else if (item === 'Newly Awarded Projects') href = '/landmark-projects/awarded';
                   } else if (link.label === 'Newsroom') {
                     if (item === 'Press Releases') href = '/newsroom?type=press-releases';
                     else if (item === 'Electronic Media') href = '/newsroom?type=electronic-media';
@@ -284,7 +284,7 @@ export default function Navbar({ alwaysSolid = false }) {
                             } else if (link.label === 'Landmark projects') {
                               if (item === 'Ongoing Projects') href = '/landmark-projects/ongoing';
                               else if (item === 'Completed Projects') href = '/landmark-projects/completed';
-                              else if (item === 'Awarded Projects') href = '/landmark-projects/awarded';
+                              else if (item === 'Newly Awarded Projects') href = '/landmark-projects/awarded';
                             } else if (link.label === 'Newsroom') {
                               if (item === 'Press Releases') href = '/newsroom?type=press-releases';
                               else if (item === 'Electronic Media') href = '/newsroom?type=electronic-media';

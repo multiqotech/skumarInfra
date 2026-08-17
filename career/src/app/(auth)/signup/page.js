@@ -70,7 +70,7 @@ export default function SignupPage() {
             Create <span className="text-[#f36c21]">Account</span>
           </h1>
           <p className="text-[#6b7280] text-sm">
-            Join S Kumar Infracons (India) Private Limiteds and build your future.
+            Join S Kumar Infracons (India) Private Limited and build your future.
           </p>
         </div>
 

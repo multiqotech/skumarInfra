@@ -129,7 +129,7 @@ export default function Footer() {
                 let href = '#';
                 if (item === 'Ongoing Projects') href = '/landmark-projects/ongoing';
                 else if (item === 'Completed Projects') href = '/landmark-projects/completed';
-                else if (item === 'Awarded Projects') href = '/landmark-projects/awarded';
+                else if (item === 'Newly Awarded Projects') href = '/landmark-projects/awarded';
                 return (
                   <li key={idx}>
                     <Link href={href} className="text-white/70 hover:text-[#f36c21] transition-colors text-sm">

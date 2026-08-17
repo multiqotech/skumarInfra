@@ -273,21 +273,21 @@ export default function ProjectManager({ showFeedback }) {
             <div>
               <label className="block text-sm font-medium mb-1">Project Type (Multi-select)</label>
               <div className="flex gap-4 items-center h-[42px]">
-                {["Ongoing", "Completed", "Awarded"].map((type) => (
-                  <label key={type} className="flex items-center gap-2 text-sm cursor-pointer">
+                {[{value: "Ongoing", label: "Ongoing"}, {value: "Completed", label: "Completed"}, {value: "Awarded", label: "Newly Awarded"}].map((type) => (
+                  <label key={type.value} className="flex items-center gap-2 text-sm cursor-pointer">
                     <input
                       type="checkbox"
-                      checked={form.projectType.includes(type)}
+                      checked={form.projectType.includes(type.value)}
                       onChange={(e) => {
                         if (e.target.checked) {
-                          setForm({ ...form, projectType: [...form.projectType, type] });
+                          setForm({ ...form, projectType: [...form.projectType, type.value] });
                         } else {
-                          setForm({ ...form, projectType: form.projectType.filter((t) => t !== type) });
+                          setForm({ ...form, projectType: form.projectType.filter((t) => t !== type.value) });
                         }
                       }}
                       className="accent-[var(--color-yellow)] cursor-pointer"
                     />
-                    {type}
+                    {type.label}
                   </label>
                 ))}
               </div>
@@ -460,7 +460,7 @@ export default function ProjectManager({ showFeedback }) {
                                 {project.title}
                                 {project.projectType && Array.isArray(project.projectType) && project.projectType.map(type => (
                                   <span key={type} className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-[var(--color-yellow)]/20 text-[var(--color-yellow)] rounded">
-                                    {type}
+                                    {type === 'Awarded' ? 'Newly Awarded' : type}
                                   </span>
                                 ))}
                               </h4>

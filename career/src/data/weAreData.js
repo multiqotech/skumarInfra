@@ -9,7 +9,7 @@ export const weAreData = {
         {
           id: '1',
           title: 'A Legacy of Excellence',
-          content: 'S Kumar Infracons (India) Private Limiteds has been at the forefront of the Indian infrastructure industry for over two decades. We have consistently delivered projects that redefine the landscape and set new benchmarks in engineering excellence. Our journey is marked by a relentless pursuit of quality, safety, and sustainability.',
+          content: 'S Kumar Infracons (India) Private Limited has been at the forefront of the Indian infrastructure industry for over two decades. We have consistently delivered projects that redefine the landscape and set new benchmarks in engineering excellence. Our journey is marked by a relentless pursuit of quality, safety, and sustainability.',
           image: 'https://res.cloudinary.com/ddh5ynpqg/image/upload/v1786477132/node_uploads/r32jaakhawph7wbk4ych.png'
         },
         {

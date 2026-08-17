@@ -44,7 +44,7 @@ export default async function LandmarkProjectsPage({ params }) {
       heroImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=800&fit=crop'
     },
     'awarded': { 
-      title: 'Awarded Projects', 
+      title: 'Newly Awarded Projects', 
       tagline: 'Upcoming landmark projects poised to shape tomorrow.',
       heroImage: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&h=800&fit=crop'
     }
