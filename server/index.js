@@ -34,6 +34,7 @@ let allowedOrigins = [
   'https://api.skumarinfracons.com'
 ];
 
+
 if (process.env.ALLOWED_ORIGINS) {
   // Parse comma-separated list, stripping brackets, quotes, newlines, and whitespace
   const origins = process.env.ALLOWED_ORIGINS
