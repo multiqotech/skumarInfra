@@ -86,7 +86,7 @@ function MobileNavItem({ link, handleNavClick, i }) {
                     else if (item === 'Featured Stories') href = '/newsroom?type=featured-stories';
                   } else if (link.label === 'Careers') {
                     if (item === 'Visit career portal') {
-                      href = process.env.NEXT_PUBLIC_CAREER_URL || 'https://sk-construction-s2k6.vercel.app';
+                      href = process.env.NEXT_PUBLIC_CAREER_URL || 'https://career.skumarinfracons.com';
                       target = '_blank';
                       rel = 'noopener noreferrer';
                     }
@@ -291,7 +291,7 @@ export default function Navbar({ alwaysSolid = false }) {
                               else if (item === 'Featured Stories') href = '/newsroom?type=featured-stories';
                             } else if (link.label === 'Careers') {
                               if (item === 'Visit career portal') {
-                                href = process.env.NEXT_PUBLIC_CAREER_URL || 'https://sk-construction-s2k6.vercel.app';
+                                href = process.env.NEXT_PUBLIC_CAREER_URL || 'https://career.skumarinfracons.com';
                                 target = '_blank';
                                 rel = 'noopener noreferrer';
                               }
