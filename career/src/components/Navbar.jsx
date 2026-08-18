@@ -43,7 +43,7 @@ export default function Navbar({ alwaysSolid = false }) {
         <div className="flex items-center justify-between h-[70px]">
           {/* Logo */}
           <Link
-            href="/"
+            href="https://skumarinfracons.com/"
             className="flex items-center gap-3 group"
           >
             <Image
