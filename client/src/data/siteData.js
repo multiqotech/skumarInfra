@@ -84,7 +84,7 @@ export const navLinks = [
   },
   {
     label: 'Careers',
-    href: 'https://sk-construction-s2k6.vercel.app',
+    href: 'https://career.skumarinfracons.com/',
     hasDropdown: true,
     dropdownLayout: 'simple',
     dropdownItems: [
