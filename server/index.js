@@ -31,7 +31,8 @@ let allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:3001',
   'http://localhost:3002',
-  'https://api.skumarinfracons.com'
+  'https://skumarinfracons.com',
+  'https://www.skumarinfracons.com'
 ];
 
 
