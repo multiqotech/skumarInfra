@@ -23,6 +23,9 @@ const careerAuthRoutes = require('./career/routes/authRoutes');
 
 const app = express();
 
+// Trust the reverse proxy to accurately identify the client's IP address
+app.set('trust proxy', 1);
+
 // Connect to MongoDB
 connectDB();
 
@@ -63,7 +66,7 @@ app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 // Rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 200,
+  max: 1000,
   message: { message: 'Too many requests, please try again later.' },
 });
 app.use('/api/', limiter);
