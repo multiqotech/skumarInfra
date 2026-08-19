@@ -33,7 +33,8 @@ let allowedOrigins = [
   'http://localhost:3002',
   'https://skumarinfracons.com',
   'https://www.skumarinfracons.com',
-  'https://career.skumarinfracons.com'
+  'https://career.skumarinfracons.com',
+  'https://admin.skumarinfracons.com'
 ];
 
 
