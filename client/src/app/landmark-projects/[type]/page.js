@@ -123,6 +123,7 @@ export default async function LandmarkProjectsPage({ params }) {
                       />
                     </div>
                     {/* Thumbnails (Placeholder layout matching RSIL) */}
+                    {/* 
                     <div className="grid grid-cols-4 gap-2">
                       {[1, 2, 3, 4].map((idx) => (
                         <div key={idx} className="relative w-full aspect-video group cursor-pointer overflow-hidden bg-gray-200">
@@ -135,6 +136,7 @@ export default async function LandmarkProjectsPage({ params }) {
                         </div>
                       ))}
                     </div>
+                    */}
                   </div>
 
                   {/* Right Side: Details */}
