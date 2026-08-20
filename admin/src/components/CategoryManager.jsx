@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Plus, Edit2, Trash2, Loader2, Upload } from 'lucide-react';
+import { Plus, Edit2, Trash2, Loader2, Upload, GripVertical } from 'lucide-react';
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { getAuthHeader, uploadFileToServer } from '../utils/api';
 
 export default function CategoryManager({ showFeedback }) {
@@ -170,6 +171,36 @@ export default function CategoryManager({ showFeedback }) {
     handleRemoveFile('desc');
   };
 
+  const handleDragEnd = async (result) => {
+    if (!result.destination) return;
+
+    const sourceIndex = result.source.index;
+    const destinationIndex = result.destination.index;
+
+    if (sourceIndex === destinationIndex) return;
+
+    const items = Array.from(categories);
+    const [reorderedItem] = items.splice(sourceIndex, 1);
+    items.splice(destinationIndex, 0, reorderedItem);
+
+    setCategories(items);
+
+    const config = getAuthHeader();
+    if (!config) return;
+
+    try {
+      await axios.put(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/categories/reorder`,
+        { orderedIds: items.map(c => c._id) },
+        config
+      );
+    } catch (err) {
+      console.error(err);
+      showFeedback("Error saving new order", "error");
+      fetchCategories();
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center bg-[var(--color-dark-card)] p-4 rounded-xl border border-[var(--color-dark-border)]">
@@ -307,43 +338,71 @@ export default function CategoryManager({ showFeedback }) {
             <p>No categories added yet.</p>
           </div>
         ) : (
-          <div className="divide-y divide-[var(--color-dark-border)]">
-            {categories.map((category) => (
-              <div key={category._id} className="p-6 flex flex-col md:flex-row gap-6 hover:bg-[var(--color-dark)]/50 transition-colors">
-                <div className="w-full md:w-32 h-24 flex-shrink-0 relative rounded-lg overflow-hidden border border-[var(--color-dark-border)]">
-                  {category.heroImage ? (
-                    <img src={category.heroImage} alt={category.name} className="w-full h-full object-cover" />
-                  ) : (
-                    <div className="w-full h-full bg-[#f0f4f8] flex items-center justify-center text-[#6b7280] text-xs">No Hero</div>
-                  )}
+          <DragDropContext onDragEnd={handleDragEnd}>
+            <Droppable droppableId="categoriesList">
+              {(provided) => (
+                <div 
+                  className="divide-y divide-[var(--color-dark-border)]"
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {categories.map((category, index) => (
+                    <Draggable key={category._id} draggableId={category._id} index={index}>
+                      {(provided, snapshot) => (
+                        <div 
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          className={`p-6 flex flex-col md:flex-row gap-6 hover:bg-[var(--color-dark)]/50 transition-colors ${
+                            snapshot.isDragging ? 'bg-[var(--color-dark)] shadow-2xl z-50' : ''
+                          }`}
+                        >
+                          <div 
+                            {...provided.dragHandleProps} 
+                            className="flex items-center justify-center cursor-grab text-[#6b7280] hover:text-[var(--color-yellow)]"
+                          >
+                            <GripVertical size={24} />
+                          </div>
+
+                          <div className="w-full md:w-32 h-24 flex-shrink-0 relative rounded-lg overflow-hidden border border-[var(--color-dark-border)]">
+                            {category.heroImage ? (
+                              <img src={category.heroImage} alt={category.name} className="w-full h-full object-cover" />
+                            ) : (
+                              <div className="w-full h-full bg-[#f0f4f8] flex items-center justify-center text-[#6b7280] text-xs">No Hero</div>
+                            )}
+                          </div>
+                          
+                          <div className="flex-1 min-w-0">
+                            <div className="flex justify-between items-start mb-2">
+                              <div>
+                                <h4 className="text-lg font-bold text-[#183964]">{category.name}</h4>
+                                <p className="text-xs font-mono text-[#6b7280]">/{category.slug}</p>
+                              </div>
+                              <div className="flex gap-2">
+                                <button onClick={() => handleEdit(category)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
+                                  <Edit2 className="h-4 w-4" />
+                                </button>
+                                <button onClick={() => handleDelete(category._id)} className="p-2 text-[#6b7280] hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
+                                  <Trash2 className="h-4 w-4" />
+                                </button>
+                              </div>
+                            </div>
+                            
+                            <div className="mt-2 text-sm">
+                              <div className="text-[#6b7280] line-clamp-2">{category.tagline || 'No tagline'}</div>
+                              <div className="mt-2 text-[var(--color-yellow)] text-xs font-semibold">
+                                {category.projects ? category.projects.length : 0} Project(s) linked
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
                 </div>
-                
-                <div className="flex-1 min-w-0">
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <h4 className="text-lg font-bold text-[#183964]">{category.name}</h4>
-                      <p className="text-xs font-mono text-[#6b7280]">/{category.slug}</p>
-                    </div>
-                    <div className="flex gap-2">
-                      <button onClick={() => handleEdit(category)} className="p-2 text-[#6b7280] hover:text-[var(--color-yellow)] hover:bg-[var(--color-yellow)]/10 rounded-lg transition-colors">
-                        <Edit2 className="h-4 w-4" />
-                      </button>
-                      <button onClick={() => handleDelete(category._id)} className="p-2 text-[#6b7280] hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
-                        <Trash2 className="h-4 w-4" />
-                      </button>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-2 text-sm">
-                    <div className="text-[#6b7280] line-clamp-2">{category.tagline || 'No tagline'}</div>
-                    <div className="mt-2 text-[var(--color-yellow)] text-xs font-semibold">
-                      {category.projects ? category.projects.length : 0} Project(s) linked
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+              )}
+            </Droppable>
+          </DragDropContext>
         )}
       </div>
     </div>

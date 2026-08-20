@@ -22,6 +22,10 @@ const categorySchema = new mongoose.Schema({
   },
   descriptionImage: {
     type: String,
+  },
+  order: {
+    type: Number,
+    default: 0
   }
 }, { 
   timestamps: true,

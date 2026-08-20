@@ -3,7 +3,7 @@ const Category = require('../models/Category');
 // Get all categories
 const getAllCategories = async (req, res) => {
   try {
-    const categories = await Category.find().populate('projects');
+    const categories = await Category.find().sort({ order: 1, createdAt: 1 }).populate('projects');
     res.json(categories);
   } catch (error) {
     console.error("Error fetching categories:", error);
@@ -95,10 +95,36 @@ const deleteCategory = async (req, res) => {
   }
 };
 
+// Reorder categories
+const reorderCategories = async (req, res) => {
+  try {
+    const { orderedIds } = req.body;
+    
+    if (!Array.isArray(orderedIds)) {
+      return res.status(400).json({ message: 'Invalid data format' });
+    }
+
+    const bulkOps = orderedIds.map((id, index) => ({
+      updateOne: {
+        filter: { _id: id },
+        update: { order: index }
+      }
+    }));
+
+    await Category.bulkWrite(bulkOps);
+
+    res.json({ message: 'Categories reordered successfully' });
+  } catch (error) {
+    console.error("Error reordering categories:", error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
 module.exports = {
   getAllCategories,
   getCategoryBySlug,
   createCategory,
   updateCategory,
-  deleteCategory
+  deleteCategory,
+  reorderCategories
 };
