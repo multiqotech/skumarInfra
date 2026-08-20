@@ -113,8 +113,8 @@ export default async function LandmarkProjectsPage({ params }) {
                 <div key={project._id} className="flex flex-col lg:flex-row bg-[#130f54] rounded-sm overflow-hidden shadow-[0_20px_50px_rgba(19,15,84,0.3)] border border-white/5">
                   
                   {/* Left Side: Images */}
-                  <div className="w-full lg:w-1/2 flex flex-col p-2 gap-2 bg-white">
-                    <div className="relative w-full h-[300px] md:h-[400px]">
+                  <div className="w-full lg:w-1/2 flex flex-col p-2 bg-white">
+                    <div className="relative w-full flex-1 min-h-[300px] md:min-h-[400px] lg:min-h-full">
                       <Image
                         src={project.image}
                         alt={project.title}
@@ -122,21 +122,6 @@ export default async function LandmarkProjectsPage({ params }) {
                         className="object-cover"
                       />
                     </div>
-                    {/* Thumbnails (Placeholder layout matching RSIL) */}
-                    {/* 
-                    <div className="grid grid-cols-4 gap-2">
-                      {[1, 2, 3, 4].map((idx) => (
-                        <div key={idx} className="relative w-full aspect-video group cursor-pointer overflow-hidden bg-gray-200">
-                          <Image 
-                            src={project.image} 
-                            alt={`${project.title} thumbnail ${idx}`} 
-                            fill 
-                            className="object-cover opacity-70 group-hover:opacity-100 transition-opacity group-hover:scale-110 duration-500" 
-                          />
-                        </div>
-                      ))}
-                    </div>
-                    */}
                   </div>
 
                   {/* Right Side: Details */}
