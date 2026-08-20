@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { navLinks } from '@/data/siteData';
+import { QRCodeSVG } from 'qrcode.react';
+import { navLinks } from '@/data/footerNavData';
 
 export default function Footer() {
   const [contactInfo, setContactInfo] = useState({
@@ -45,31 +46,27 @@ export default function Footer() {
   const newsroomLink = navLinks.find(n => n.label === 'Newsroom');
   const landmarkLink = navLinks.find(n => n.label === 'Landmark projects');
 
-  // Limit businesses to 6 to keep it clean
   const businessesList = weBuildLink?.dropdownItems?.[0]?.items?.slice(0, 6) || [];
 
-  const portfolioUrl = process.env.NEXT_PUBLIC_PORTFOLIO_URL || 'http://localhost:3000';
-
   return (
-    <footer className="bg-[#183964] text-[#183964] py-16 font-poppins relative z-20">
+    <footer className="bg-[#183964] text-white py-16 font-poppins relative z-20">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
-
+          
           {/* Column 1: Who We Are */}
           <div>
             <div className="mb-6">
-              <h3 className="text-xl font-semibold mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Who We Are</h3>
+              <h3 className="text-xl font-semibold mb-2" style={{ fontFamily: 'var(--font-heading)', color: 'white' }}>Who We Are</h3>
               <div className="w-12 h-1 bg-[#f36c21]"></div>
             </div>
             <ul className="space-y-3">
               {weAreLink?.dropdownItems?.map((item, idx) => {
-                const slug = typeof item === 'string' ? item.toLowerCase().replace(/[^a-z0-9]+/g, '-') : item.slug;
-                const label = typeof item === 'string' ? item : item.name;
+                const slug = item.toLowerCase().replace(/[^a-z0-9]+/g, '-');
                 return (
                   <li key={idx}>
-                    <a href={`${portfolioUrl}/we-are/${slug}`} target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-[#f36c21] transition-colors text-sm">
-                      {label}
-                    </a>
+                    <Link href={`/we-are/${slug}`} className="text-white/70 hover:text-[#f36c21] transition-colors text-sm">
+                      {item}
+                    </Link>
                   </li>
                 );
               })}
@@ -79,25 +76,24 @@ export default function Footer() {
           {/* Column 2: Businesses */}
           <div>
             <div className="mb-6">
-              <h3 className="text-xl font-semibold mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Businesses</h3>
+              <h3 className="text-xl font-semibold mb-2" style={{ fontFamily: 'var(--font-heading)', color: 'white' }}>Businesses</h3>
               <div className="w-12 h-1 bg-[#f36c21]"></div>
             </div>
             <ul className="space-y-3">
               {businessesList.map((item, idx) => {
-                const slug = typeof item === 'string' ? item.toLowerCase().replace(/[^a-z0-9]+/g, '-') : item.slug;
-                const label = typeof item === 'string' ? item : item.name;
+                const slug = item.toLowerCase().replace(/[^a-z0-9]+/g, '-');
                 return (
                   <li key={idx}>
-                    <a href={`${portfolioUrl}/we-build/${slug}`} target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-[#f36c21] transition-colors text-sm">
-                      {label}
-                    </a>
+                    <Link href={`/we-build/${slug}`} className="text-white/70 hover:text-[#f36c21] transition-colors text-sm">
+                      {item}
+                    </Link>
                   </li>
                 );
               })}
               <li>
-                <a href={`${portfolioUrl}/#we-build`} target="_blank" rel="noopener noreferrer" className="text-[#f36c21] hover:text-[#183964] transition-colors text-sm font-semibold">
+                <Link href="#we-build" className="text-[#f36c21] hover:text-white transition-colors text-sm font-semibold">
                   View All Businesses &rarr;
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -105,18 +101,17 @@ export default function Footer() {
           {/* Column 3: Newsroom */}
           <div>
             <div className="mb-6">
-              <h3 className="text-xl font-semibold mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Newsroom</h3>
+              <h3 className="text-xl font-semibold mb-2" style={{ fontFamily: 'var(--font-heading)', color: 'white' }}>Newsroom</h3>
               <div className="w-12 h-1 bg-[#f36c21]"></div>
             </div>
             <ul className="space-y-3">
               {newsroomLink?.dropdownItems?.map((item, idx) => {
-                const slug = typeof item === 'string' ? item.toLowerCase().replace(/[^a-z0-9]+/g, '-') : item.slug;
-                const label = typeof item === 'string' ? item : item.name;
+                const slug = item.toLowerCase().replace(/[^a-z0-9]+/g, '-');
                 return (
                   <li key={idx}>
-                    <a href={`${portfolioUrl}/newsroom/${slug}`} target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-[#f36c21] transition-colors text-sm">
-                      {label}
-                    </a>
+                    <Link href={`/newsroom/${slug}`} className="text-white/70 hover:text-[#f36c21] transition-colors text-sm">
+                      {item}
+                    </Link>
                   </li>
                 );
               })}
@@ -126,21 +121,20 @@ export default function Footer() {
           {/* Column 4: Landmark Projects */}
           <div>
             <div className="mb-6">
-              <h3 className="text-xl font-semibold mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Landmark Projects</h3>
+              <h3 className="text-xl font-semibold mb-2" style={{ fontFamily: 'var(--font-heading)', color: 'white' }}>Landmark Projects</h3>
               <div className="w-12 h-1 bg-[#f36c21]"></div>
             </div>
             <ul className="space-y-3">
               {landmarkLink?.dropdownItems?.map((item, idx) => {
                 let href = '#';
-                const label = typeof item === 'string' ? item : item.name;
-                if (label === 'Ongoing Projects') href = `${portfolioUrl}/landmark-projects/ongoing`;
-                else if (label === 'Completed Projects') href = `${portfolioUrl}/landmark-projects/completed`;
-                else if (label === 'Awarded Projects') href = `${portfolioUrl}/landmark-projects/awarded`;
+                if (item === 'Ongoing Projects') href = '/landmark-projects/ongoing';
+                else if (item === 'Completed Projects') href = '/landmark-projects/completed';
+                else if (item === 'Newly Awarded Projects') href = '/landmark-projects/awarded';
                 return (
                   <li key={idx}>
-                    <a href={href} target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-[#f36c21] transition-colors text-sm">
-                      {label}
-                    </a>
+                    <Link href={href} className="text-white/70 hover:text-[#f36c21] transition-colors text-sm">
+                      {item}
+                    </Link>
                   </li>
                 );
               })}
@@ -150,11 +144,11 @@ export default function Footer() {
           {/* Column 5: Contact Us */}
           <div>
             <div className="mb-6">
-              <h3 className="text-xl font-semibold mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Contact Us</h3>
+              <h3 className="text-xl font-semibold mb-2" style={{ fontFamily: 'var(--font-heading)', color: 'white' }}>Contact Us</h3>
               <div className="w-12 h-1 bg-[#f36c21]"></div>
             </div>
-            <div className="space-y-5 text-sm text-blue-100">
-
+            <div className="space-y-5 text-sm text-white/70">
+              
               {contactInfo.companyAddress && (
                 <div>
                   {contactInfo.companyAddress.split('\n').map((line, i) => (
@@ -165,21 +159,21 @@ export default function Footer() {
 
               {(contactInfo.tollFreeNumber || contactInfo.availability) && (
                 <div>
-                  {contactInfo.tollFreeNumber && <p className="font-semibold text-[#183964]">Toll Free: <span className="font-normal text-blue-100">{contactInfo.tollFreeNumber}</span></p>}
+                  {contactInfo.tollFreeNumber && <p className="font-semibold text-white">Toll Free: <span className="font-normal text-white/70">{contactInfo.tollFreeNumber}</span></p>}
                   {contactInfo.availability && <p>{contactInfo.availability}</p>}
                 </div>
               )}
 
               {(contactInfo.internationalNumber || contactInfo.internationalAvailability) && (
                 <div>
-                  {/* {contactInfo.internationalNumber && <p className="font-semibold text-[#183964]">International No: <span className="font-normal text-blue-100">{contactInfo.internationalNumber}</span></p>} */}
+                  {/* {contactInfo.internationalNumber && <p className="font-semibold text-white">International No: <span className="font-normal text-white/70">{contactInfo.internationalNumber}</span></p>} */}
                   {contactInfo.internationalAvailability && <p>{contactInfo.internationalAvailability}</p>}
                 </div>
               )}
 
               {contactInfo.email && (
                 <div>
-                  <p className="font-semibold text-[#183964]">Email:</p>
+                  <p className="font-semibold text-white">Email:</p>
                   {contactInfo.email.split('/').map((em, i) => (
                     <a key={i} href={`mailto:${em.trim()}`} className="block hover:text-[#f36c21] transition-colors">{em.trim()}</a>
                   ))}
@@ -187,19 +181,32 @@ export default function Footer() {
               )}
 
               {contactInfo.tagline && (
-                <div className="pt-4 border-t border-[#224c85] text-xs italic">
+                <div className="pt-4 border-t border-white/10 text-xs italic">
                   {contactInfo.tagline.split('\n').map((line, i) => (
                     <p key={i}>{line}</p>
                   ))}
                 </div>
               )}
 
-              {contactInfo.qrCodeImage && (
-                <div className="pt-4 border-t border-[#224c85]">
-                  <h4 className="font-semibold text-[#183964] mb-3">Get Directions</h4>
-                  <div className="bg-white p-2 rounded inline-block shadow-sm">
-                    <img src={contactInfo.qrCodeImage} alt="Get Directions QR Code" className="w-24 h-24 object-contain" />
-                  </div>
+              {contactInfo.companyAddress && (
+                <div className="pt-4 border-t border-white/10">
+                  <h4 className="font-semibold text-white mb-3">Get Directions</h4>
+                  <a 
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.companyAddress.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim())}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white p-2 rounded inline-block shadow-sm hover:opacity-90 transition-opacity"
+                    title="Click or scan for directions"
+                  >
+                    <QRCodeSVG 
+                      value={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.companyAddress.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim())}`} 
+                      size={128} 
+                      bgColor="#ffffff"
+                      fgColor="#000000"
+                      level="L"
+                      includeMargin={false}
+                    />
+                  </a>
                 </div>
               )}
 
@@ -208,7 +215,7 @@ export default function Footer() {
 
         </div>
 
-        <div className="mt-16 pt-6 border-t border-[#224c85] flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-blue-200">
+        <div className="mt-16 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/50">
           <p>© {new Date().getFullYear()} S Kumar Infracons (India) Private Limited. All Rights Reserved.</p>
           <p>Powered By Multiqo Concept Management Private Limited</p>
         </div>
