@@ -153,7 +153,7 @@ export default function Navbar({ alwaysSolid = false }) {
 
           {/* Phone + Mobile Toggle */}
           <div className="flex items-center gap-4">
-            <a
+            {/* <a
               href={`tel:${phoneNumber.replace(/\s/g, '')}`}
               className="hidden md:flex items-center gap-2 text-[#183964] hover:text-[#f36c21] transition-colors duration-300"
             >
@@ -163,7 +163,7 @@ export default function Navbar({ alwaysSolid = false }) {
               <span className="text-[12px] font-medium tracking-wider">
                 {phoneNumber}
               </span>
-            </a>
+            </a> */}
 
             {/* Auth Buttons */}
             <div className="hidden lg:flex items-center gap-3 border-l border-[#183964]/20 pl-4 ml-2">
@@ -230,7 +230,7 @@ export default function Navbar({ alwaysSolid = false }) {
                   {link.hasDropdown && <HiChevronDown size={18} className="opacity-50" />}
                 </motion.a>
               ))}
-              <a
+              {/* <a
                 href={`tel:${phoneNumber.replace(/\s/g, '')}`}
                 className="flex items-center gap-2 text-[#f36c21] mt-3"
               >
@@ -238,7 +238,7 @@ export default function Navbar({ alwaysSolid = false }) {
                 <span className="text-sm font-medium tracking-wider">
                   {phoneNumber}
                 </span>
-              </a>
+              </a> */}
 
               {/* Mobile Auth */}
               <div className="border-t border-[#183964]/5 mt-2 pt-4 flex flex-col gap-3">

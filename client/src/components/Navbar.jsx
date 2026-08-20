@@ -55,14 +55,14 @@ function MobileNavItem({ link, handleNavClick, i }) {
                   const label = typeof item === 'string' ? item : item.name;
                   const slug = typeof item === 'string' ? item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-') : item.slug;
                   return (
-                    <a
+                    <Link
                       key={idx}
                       href={`/we-build/${slug}`}
                       onClick={(e) => handleNavClick(e, `/we-build/${slug}`)}
                       className="text-[14px] text-[#4b5563] hover:text-[#f36c21] py-1.5"
                     >
                       {label}
-                    </a>
+                    </Link>
                   );
                 })
               ) : (
@@ -95,7 +95,7 @@ function MobileNavItem({ link, handleNavClick, i }) {
                     else if (item === 'Financial Highlights') href = '/#financial-highlights';
                   }
                   return (
-                    <a
+                    <Link
                       key={idx}
                       href={href}
                       target={target}
@@ -108,7 +108,7 @@ function MobileNavItem({ link, handleNavClick, i }) {
                       className="text-[14px] text-[#4b5563] hover:text-[#f36c21] py-1.5"
                     >
                       {item}
-                    </a>
+                    </Link>
                   );
                 })
               )}
@@ -217,7 +217,7 @@ export default function Navbar({ alwaysSolid = false }) {
           <div className="hidden xl:flex items-center gap-7 h-full">
             {dynamicNavLinks.map((link) => (
               <div key={link.label} className="relative h-full flex items-center group/nav">
-                <a
+                <Link
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
                   target={link.href.startsWith('http') ? '_blank' : undefined}
@@ -229,7 +229,7 @@ export default function Navbar({ alwaysSolid = false }) {
                     <HiChevronDown className="opacity-70 mt-[1px] transition-transform duration-300 group-hover/nav:-rotate-180" size={16} />
                   )}
                   <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#f36c21] transition-all duration-300 group-hover/nav:w-full rounded-full" />
-                </a>
+                </Link>
 
                 {/* Dropdown Menu */}
                 {link.hasDropdown && link.dropdownItems && link.dropdownItems.length > 0 && (
@@ -248,12 +248,12 @@ export default function Navbar({ alwaysSolid = false }) {
                                   const slug = typeof item === 'string' ? item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-') : item.slug;
                                   return (
                                     <li key={itemIdx}>
-                                      <a
+                                      <Link
                                         href={`/we-build/${slug}`}
                                         className="text-[14px] text-[#183964]/80 hover:text-[#f36c21] transition-colors"
                                       >
                                         {label}
-                                      </a>
+                                      </Link>
                                     </li>
                                   )
                                 })}
@@ -301,14 +301,14 @@ export default function Navbar({ alwaysSolid = false }) {
                             }
                             return (
                               <li key={itemIdx}>
-                                <a
+                                <Link
                                   href={href}
                                   target={target}
                                   rel={rel}
                                   className="block px-6 py-2.5 text-[15px] text-[#183964]/80 hover:bg-[#f0f4f8] hover:text-[#f36c21] transition-colors"
                                 >
                                   {item}
-                                </a>
+                                </Link>
                               </li>
                             );
                           })}
